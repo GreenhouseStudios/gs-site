@@ -1,0 +1,410 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+/* Mobile Home */
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.nav-img {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: auto;
+  z-index: -1;
+}
+
+.header {
+  position: fixed;
+  width: 100%;
+}
+
+.header ul {
+  font-family: "Libre Franklin";
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow: hidden;
+}
+
+.header li a {
+  display: block;
+  padding: 20px 20px;
+  text-decoration: none;
+  color: black;
+}
+
+.header li a:hover,
+.header .menu-btn:hover {
+  background-color: rgba(250, 250, 250, 0.4);
+}
+
+.header .logo {
+  display: block;
+  float: left;
+  font-size: 2em;
+  padding: 10px 20px;
+  text-decoration: none;
+}
+
+/* menu */
+
+.header .menu {
+  clear: both;
+  margin: 0;
+  padding: 0;
+  max-height: 0;
+  transition: max-height 0.2s ease-out;
+}
+
+/* menu icon */
+
+.header .menu-icon {
+  cursor: pointer;
+  display: inline-block;
+  float: right;
+  padding: 28px 20px;
+  position: relative;
+  user-select: none;
+}
+
+.header .menu-icon .navicon {
+  background: black;
+  display: block;
+  height: 2px;
+  position: relative;
+  transition: background 0.2s ease-out;
+  width: 18px;
+}
+
+.header .menu-icon .navicon:before,
+.header .menu-icon .navicon:after {
+  background: black;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  transition: all 0.2s ease-out;
+  width: 100%;
+}
+
+.header .menu-icon .navicon:before {
+  top: 5px;
+}
+
+.header .menu-icon .navicon:after {
+  top: -5px;
+}
+
+/* menu btn */
+
+.header .menu-btn {
+  display: none;
+}
+
+.header .menu-btn:checked ~ .menu {
+  max-height: 240px;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon {
+  background: transparent;
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:before {
+  transform: rotate(-45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon .navicon:after {
+  transform: rotate(45deg);
+}
+
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:before,
+.header .menu-btn:checked ~ .menu-icon:not(.steps) .navicon:after {
+  top: 0;
+}
+
+/* 48em = 768px */
+
+@media (min-width: 48em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
+
+.gs-intro h1 {
+  font-family: "Libre Franklin";
+  font-weight: 600;
+  font-size: 24px;
+  padding-top: 200px;
+  padding-right: 30px;
+  padding-left: 30px;
+  margin: 0;
+}
+
+.animation_fill img {
+  width: 100%;
+  height: auto;
+  padding-top: 100px;
+}
+
+.footer-img {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 750px;
+  z-index: -1;
+}
+
+.footer-information {
+  padding-top: 280px;
+  text-align: center;
+}
+
+.copyright {
+  padding-top: 15px;
+}
+
+.grants img {
+  height: 40px;
+  padding: 15px;
+  padding-top: 30px;
+}
+
+.social-media img {
+  height: 30px;
+  padding: 8px;
+  width: auto;
+}
+
+.social-media {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-top: 10px;
+}
+
+.footer-pages {
+  padding-top: 10px;
+}
+
+.footer-pages a {
+  text-decoration: none;
+  color: black;
+}
+
+.footer-people a:hover,
+.footer-projects a:hover,
+.footer-joinus a:hover {
+  text-decoration: wavy underline;
+}
+
+.footer-people,
+.footer-projects,
+.footer-joinus {
+  padding: 5px;
+}
+
+footer {
+  bottom: 0;
+  font-family: "Libre Franklin";
+  font-weight: 300;
+  font-size: 12px;
+}
+
+.card {
+  height: 350px;
+  width: 300px;
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.flipCard {
+  height: 350px;
+  width: 300px;
+  margin: 0px;
+}
+
+.img-front {
+  border-radius: 10px;
+  border: none;
+}
+
+.flipCard .card.flipped {
+  transform: rotatey(-180deg);
+}
+
+.flipCard .card {
+  height: 350px;
+  width: 300px;
+  transform-style: preserve-3d;
+  transition: 1s;
+  border: none;
+}
+
+.flipCard .card .side {
+  height: 350px;
+  width: 300px;
+  cursor: pointer;
+  position: absolute;
+  backface-visibility: hidden;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  border: none;
+}
+
+.flipCard .card .back {
+  transform: rotatey(-180deg);
+}
+
+.tile-back {
+  z-index: -5;
+  backface-visibility: hidden;
+}
+
+/* .flex-container {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          box-sizing: border-box;
+        } */
+
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
+}
+
+.people-img {
+  height: 200px;
+  width: 200px;
+  display: block;
+  margin-top: -90px;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: 5px solid white;
+  background-color: white;
+  border-radius: 100%;
+  display: inline-block;
+  margin-left: 15%;
+}
+
+.people-name {
+  font-family: "Samo";
+  text-align: center;
+  line-height: 35px;
+  font-size: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.people-title {
+  font-size: 12px;
+  text-align: center;
+  margin: 10px;
+  line-height: 20px;
+  font-family: "Libre Franklin";
+}
+
+.people-desc {
+  margin: 0;
+  padding: 18px;
+  margin-top: 14px;
+  position: absolute;
+  font-size: 12px;
+  line-height: 21px;
+  font-family: "Libre Franklin";
+  text-align: center;
+}
+
+.linkedin {
+  height: 10%;
+  width: auto;
+  position: absolute;
+  margin-top: 110%;
+  margin-right: 75%;
+}
+
+.title-new {
+  width: 250px;
+  height: 80px;
+  object-fit: contain;
+  padding-top: 35px;
+}
+
+.title-new-1 {
+  width: 250px;
+  height: 80px;
+  object-fit: contain;
+  padding-top: 35px;
+}
+
+.desc {
+  margin: 0px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  text-align: center;
+}
+
+#button {
+  border-radius: 5px;
+  letter-spacing: 2px;
+  padding: 5px 10px 5px 10px;
+  font-family: samo, Arial, Helvetica, sans-serif;
+}
+
+@font-face {
+  font-family: samo;
+  src: url("SAMO-Regular.ttf");
+}
+
+.grid {
+  display: grid;
+  grid-gap: 3rem;
+  grid-template-rows: repeat(4, 350px);
+  grid-template-columns: repeat(3, 300px);
+  justify-content: center;
+  padding-top: 20px;
+}
+
+@media (max-width: 660px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(1, 300px);
+  }
+}
+
+@media (min-width: 661px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+  }
+}
+
+@media (min-width: 1010px) {
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+  }
+}
