@@ -2,7 +2,7 @@
   <div>
     <div class="grid">
       <person-card
-        v-for="person in people"
+        v-for="person in peopleByLastName"
         :key="person.slug"
         :person="person"
       ></person-card>
@@ -14,6 +14,7 @@
 import axios from "axios";
 import PersonCard from "./components/PersonCard.vue";
 import WPAPI from "wpapi";
+import _ from "lodash"
 export default {
   name: "People",
   components: { PersonCard },
@@ -26,6 +27,11 @@ export default {
       posts: null,
       imgs: null,
     };
+  },
+  computed: {
+    peopleByLastName() {
+      return _.sortBy(this.people, [function(o){return o.custom_fields.last_name[0]}])
+    }
   },
   created() {
     axios
@@ -44,7 +50,6 @@ export default {
         //     });
         // }
         res.data.forEach((person) => {
-          console.log(person);
           if (person._links['wp:featuredmedia']) {
             axios
               .get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/media/" + person.featured_media)

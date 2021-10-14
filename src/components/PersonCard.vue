@@ -15,13 +15,10 @@
         />
         <img class="people-img" :src="person.image" />
         <h1 class="people-name" v-for="word in person.title.rendered.split(' ')" :key="word">{{word.toUpperCase()}}</h1>
-        <p class="people-title"></p>
+        <p class="people-title">{{person.custom_fields.title[0]}}</p>
       </div>
       <div class="side back flex" alt="">
-        <p class="people-desc">
-          Alexis thinks, writes, and teaches about visual culture, specifically
-          visual representations of race, gender, and sexuality. She teaches Art
-          History with a joint-appointment in the Africana Studies Institute.
+        <p class="people-desc" v-html="person.custom_fields.about[0]">
         </p>
         <img
           class="img-front"
