@@ -7,7 +7,7 @@
         ><span class="navicon"></span
       ></label>
       <ul class="menu">
-        <li><a href="#work">Home</a></li>
+        <li><router-link to="/">Home</router-link></li>
         <li><router-link to="/people">People</router-link></li>
         <li><router-link to="/projects">Projects</router-link></li>
         <li><router-link to="/people">Join Us</router-link></li>
