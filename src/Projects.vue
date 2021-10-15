@@ -20,7 +20,7 @@ export default {
   created() {
     axios
       .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?categories=85"
+        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?categories=85&per_page=100"
       )
       .then((res) => {
         this.projects = res.data;

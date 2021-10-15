@@ -36,7 +36,7 @@ export default {
   created() {
     axios
       .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?fields[]=department,about"
+        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?per_page=100"
       )
       .then((res) => {
         // this.people = res.data;
