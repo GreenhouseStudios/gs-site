@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="grid">
-      <card v-for="project in projects" :key="project.id"></card>
+      <card v-for="project in projects" :key="project.id" :project="project"></card>
     </div>
   </div>
 </template>

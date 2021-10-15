@@ -9,29 +9,26 @@
         <img
           class="img-front"
           style="height: 100%; width: 100%; object-fit: cover"
-          src="https://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2021/06/BOL_01-copy.jpg"
+          :src="project.custom_fields.project_card_front"
           alt="Front side of flippable card for the project 'By Our Love'"
         />
       </div>
       <div
-        style="
-          background-image: url('https://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2021/07/bol-4.png');
+        :style="
+          'background-image: url(' + project.custom_fields.project_card_back + ');'
         "
         class="side back flex"
-        alt="Back side of flippable card for the project 'By Our Love'"
+        :alt="'Back side of flippable card for the project' + project.title.rendered " 
       >
         <img
           class="title-new"
-          src="https://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2021/06/BOL_back.png"
+          :src="project.custom_fields.project_title_img"
           alt="by our love"
         />
-        <p class="desc">
-          An animated short set to an instrumental jazz arrangement of a
-          Christian hymn, that raises questions about the state of contemporary
-          Christendom, its relationship to politics, and our shared
-          responsibility to heal.
+        <p class="desc" v-if="project.custom_fields.about">
+          {{project.custom_fields.about[0]}}
         </p>
-        <a href="https://www.by-our-love.com/team/" target="_blank"
+        <a :href="project.custom_fields.website_url" target="_blank"
           ><button id="button" class="btn-bol">WEBSITE</button></a
         >
       </div>
@@ -42,6 +39,12 @@
 <script>
 export default {
   name: "Card",
+  props: {
+    project: {
+      type: Object,
+      default: () => {}
+    },
+  },
   data() {
     return {
       isFlipped: false,
