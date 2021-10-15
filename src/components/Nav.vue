@@ -21,7 +21,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 @import "../assets/projects.css";
 ul{
     background-color: rgba(1,1,1,0) !important;
