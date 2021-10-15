@@ -27,6 +27,7 @@
     "@vue/cli-service": "~5.0.0-beta.4",
     "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.6.0",
+    "uconn-banner": "^2.0.2",
     "vue-template-compiler": "^2.6.14"
   },
   "eslintConfig": {
