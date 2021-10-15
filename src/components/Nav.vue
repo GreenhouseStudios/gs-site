@@ -7,10 +7,11 @@
         ><span class="navicon"></span
       ></label>
       <ul class="menu">
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/people">People</router-link></li>
-        <li><router-link to="/projects">Projects</router-link></li>
-        <li><router-link to="/people">Join Us</router-link></li>
+        <li><router-link to="/">HOME</router-link></li>
+        <li><router-link to="/people">PEOPLE</router-link></li>
+        <li><router-link to="/projects">PROJECTS</router-link></li>
+        <li><router-link to="/people">JOIN US</router-link></li>
+        <li><router-link to="/blog">BLOG</router-link></li>
       </ul>
     </header>
   </div>
@@ -23,6 +24,9 @@ export default {};
 <style>
 @import "../assets/projects.css";
 ul{
-    background-color: rgba(1,1,1,0);
+    background-color: rgba(1,1,1,0) !important;
+}
+a{
+  font-family: Samo;
 }
 </style>
