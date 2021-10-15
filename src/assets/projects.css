@@ -264,6 +264,13 @@ font-size: 12px;
         border: none;
       }
 
+      .person-card-watercolor-back{
+        position: absolute;
+        bottom: 0;
+        border-radius: 10px;
+        border: none;
+      }
+
       
       .flipCard .card.flipped {
           transform: rotatey(-180deg);
@@ -316,8 +323,8 @@ font-size: 12px;
  
 
       .people-img{
-        height: 200px;
         width: 200px;
+        height: 200px;
         display: block;
         margin-top: -90px;
         margin-left: auto;
@@ -350,7 +357,6 @@ font-size: 12px;
       .people-desc{
           margin: 0;
           padding: 1em;
-          position: absolute;
           font-size: 14px;
           font-family: 'Libre Franklin';
           text-align: left;

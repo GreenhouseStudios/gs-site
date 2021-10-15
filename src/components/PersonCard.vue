@@ -1,7 +1,7 @@
 <template>
   <div class="flipCard" @click="isFlipped = !isFlipped">
     <div class="card" :class="{ flipped: isFlipped }">
-      <div class="side front">
+      <div class="side front" style="overflow: hidden">
         <img
           class="img-front"
           style="
@@ -13,26 +13,25 @@
           src="img/GH-Watercolor.png"
           alt="watercolor card background image"
         />
-        <img class="people-img" :src="person.image" />
+        <div class="people-img" :style="'background-image:url(' + person.image + '); background-repeat: no-repeat; background-size: 100%'"></div>
         <h1 class="people-name" v-for="word in person.title.rendered.split(' ')" :key="word">{{word.toUpperCase()}}</h1>
         <p class="people-title">{{person.custom_fields.title[0]}}</p>
       </div>
-      <div class="side back flex" alt="">
-        <p class="people-desc" v-html="person.custom_fields.about[0]">
+      <div class="side back flex" alt="" style="text-overflow: ellipsis;">
+        <p class="people-desc" v-html="person.custom_fields.about[0]" style="overflow:hidden">
         </p>
         <img
-          class="img-front"
+          class="person-card-watercolor-back"
           style="
             height: 15%;
             width: 100%;
             padding-top: 300px;
             object-fit: cover;
-            border-radius: 0px 0px 5px 5px;
           "
           src="img/GH-Watercolor.png"
           alt="watercolor card background image"
         />
-        <img
+        <!-- <img
           class="linkedin"
           style="
             height: 10%;
@@ -42,7 +41,7 @@
             margin-right: 75%;
           "
           src="img/linkedin-logo-white.png"
-        />
+        /> -->
       </div>
     </div>
   </div>
