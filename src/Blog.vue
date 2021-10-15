@@ -7,6 +7,7 @@
             :content="post.content"
             :date="post.date"
       ></blog-card>
+      <div style="margin-bottom: 5%"></div>
     </div>
 </template>
 

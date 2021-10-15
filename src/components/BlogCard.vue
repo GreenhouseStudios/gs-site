@@ -19,6 +19,7 @@
 <script>
 export default {
     name: "BlogCard",
+    date: "",
     props: {
         title: {
             type: Object,
@@ -42,9 +43,10 @@ export default {
         return false;
         else{
           str = str.toString();
-          str = str.replace("&#8217;", "'");
+          str = str.replace(/&#8217;/g, "'");
           str = str.replace( /(<([^>]+)>)/ig, '');
-          str.replace("&amp;", "&");
+          str = str.replace(/&amp;/g, "&");
+          str = str.replace(/&nbsp;/g, " ");
         }
         return this.trimString(str)
       },
@@ -59,7 +61,7 @@ export default {
       getDate(str){
         const date = new Date(str);  // 2009-11-10
         const month = date.toLocaleString('default', { month: 'short' });
-        const day = date.getDay();
+        const day = date.getDate();
         const year = date.getFullYear();
         const newdate = {month: month, day: day, year: year}
         return newdate;
