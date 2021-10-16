@@ -49,16 +49,7 @@
             </p>
             <h1 id="site-title"><a href="/" style="color: white;">Greenhouse Studios</a></h1>
           </div>
-          <div id="search-container">
-            <form class="form-search">
-              <input
-                type="text"
-                class="input-medium"
-                placeholder="Search this site..."
-              />
-              <button type="submit" class="btn">Search</button>
-            </form>
-          </div>
+          
         </div>
       </div>
     </div>
