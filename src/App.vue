@@ -68,21 +68,6 @@
     <router-view></router-view>
     <!-- <home></home> -->
     <hr>
-    <!-- <footer id="footer" class="site-footer" role="contentinfo">
-			<div class="container">
-				<ul id="uc-footer-links" class="clearfix">
-											<li>
-							© <a href="http://uconn.edu">University of Connecticut</a>
-						</li>
-						<li>
-							<a href="http://uconn.edu/disclaimers-privacy-copyright/">Disclaimers, Privacy &amp; Copyright</a>
-						</li>
-                        <li>
-							<a href="https://accessibility.uconn.edu/">Accessibility</a>
-						</li>
-				</ul>
-			</div>
-		</footer> -->
     <Footer></Footer>
   </div>
 </template>
