@@ -2,7 +2,7 @@
     <div id="blogmain">
       <div id="blogcontent" v-if="post">
         <h1>{{post.title.rendered}}</h1>
-        <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}} by [author]</div>
+        <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <p><em>{{removeTags(post.content.rendered).split('.\n', 1)[0]}}</em></p>
         <hr>
         <div class="textbox">
@@ -11,11 +11,11 @@
             {{getTextblock(post.content.rendered)}}
           </p>
         </div>
-        <p>This entry was posted in [Category] and tagged [tags]</p>
-        <div class="nav-links row">
+        <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
+        <!-- <div class="nav-links row">
           <a style="float: left" href="#">← Previous</a>
           <a style="float: right" href="#">Next →</a>
-        </div>
+        </div> -->
       </div>
     </div>
 </template>
@@ -34,6 +34,10 @@ export default {
     this.post = this.$store.getters.postBySlug(this.slug);
   },
   methods: {
+    // getIndex(){
+    //   this.postindex = this.posts.findIndex(p => p.slug == this.slug);
+    //   return this.postindex;
+    // },
     getTextblock(str){
       var textblock = this.removeTags(str);
       var lines = textblock.split('\n');
@@ -61,6 +65,17 @@ export default {
         console.log(this.date);
         return this.date;
       },
+      getImg(str){
+        var regex = /src=".*?"/;
+        var src = regex.exec(str);
+        if(src == null){
+          src = ""
+        }else{
+          src = src[0].replace("src=", "");
+        }
+        console.log(src);
+        return src;
+      }
   }
 };
 </script>

@@ -10,7 +10,7 @@
          </div>
           <h1 class="title">{{title.rendered}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <a class="link" v-on:click="readMore()" href="#">read more</a>
+          <router-link class="link" :to="`/blog/${slug}`">read more</router-link>
           </p>
         </div>
       </div>
@@ -40,11 +40,6 @@ export default {
         }
     },
     methods: {
-      readMore(){
-
-        // this.$router.push({ path: `/blogread/${this.slug}` }) // -> /blog/title
-        this.$router.push({ path: `/blog/${this.slug}` }) // not sure how to accomplish this...
-      },
       removeTags(str) {
         if ((str===null) || (str===''))
         return false;
