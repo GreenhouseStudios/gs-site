@@ -10,7 +10,8 @@
          </div>
           <h1 class="title">{{title.rendered}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <a class="link" href="https://greenhousestudios.uconn.edu/2021/10/01/spotlight-jin-liu/">read more</a></p>
+          <a class="link" v-on:click="readMore" href="#">read more</a>
+          </p>
         </div>
       </div>
     </div>
@@ -19,7 +20,6 @@
 <script>
 export default {
     name: "BlogCard",
-    date: "",
     props: {
         title: {
             type: Object,
@@ -38,6 +38,11 @@ export default {
         }
     },
     methods: {
+      readMore(){
+
+        // this.$router.push({ path: `/blogread/${this.slug}` }) // -> /blog/title
+        this.$router.push({ path: `/blogread` }) // not sure how to accomplish this...
+      },
       removeTags(str) {
         if ((str===null) || (str===''))
         return false;

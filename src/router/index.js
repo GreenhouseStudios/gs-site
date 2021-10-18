@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Home from '../Home'
 import People from '../People'
 import Blog from '../Blog'
+import BlogRead from '../BlogRead'
 import Projects from '../Projects'
 import VueRouter from 'vue-router'
 Vue.use(
@@ -11,6 +12,7 @@ const routes = [
     { path: '/projects', component: Projects },
     { path: '/people', component: People },
     { path: '/blog', component: Blog },
+    { path: '/blogread', component: BlogRead },
     { path: '/', component: Home },
 ]
 
