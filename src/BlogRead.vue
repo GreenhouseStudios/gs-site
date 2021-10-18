@@ -1,14 +1,14 @@
 <template>
     <div id="blogmain">
-      <div id="blogcontent">
-        <h1>{{posts[postindex].title.rendered}}</h1>
-        <div class="credits"> Posted on {{getDate(posts[postindex].date).month}} {{date.day}}, {{date.year}} by [author]</div>
-        <p><em>{{removeTags(posts[postindex].content.rendered).split('.\n', 1)[0]}}</em></p>
+      <div id="blogcontent" v-if="post">
+        <h1>{{post.title.rendered}}</h1>
+        <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}} by [author]</div>
+        <p><em>{{removeTags(post.content.rendered).split('.\n', 1)[0]}}</em></p>
         <hr>
         <div class="textbox">
           <p>
             <img class="img alignleft" src="../public/img/GS_G_logo.png" />
-            {{getTextblock(posts[postindex].content.rendered)}}
+            {{getTextblock(post.content.rendered)}}
           </p>
         </div>
         <p>This entry was posted in [Category] and tagged [tags]</p>
@@ -21,25 +21,17 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "BlogRead",
   data() {
     return {
-      posts: null,
-      postindex: 0,
       date: "",
+      post: null,
+      slug: this.$route.params.slug
     };
   },
   created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/posts"
-      )
-      .then((res) => {
-        this.posts = res.data;
-        console.log(this.posts);
-      });
+    this.post = this.$store.getters.postBySlug(this.slug);
   },
   methods: {
     getTextblock(str){

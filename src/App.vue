@@ -83,6 +83,9 @@ export default {
     HomeButton,
     Footer,
   },
+  created () {
+    this.$store.dispatch('getSiteData')
+  },
 };
 </script>
 

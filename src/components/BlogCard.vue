@@ -10,7 +10,7 @@
          </div>
           <h1 class="title">{{title.rendered}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <a class="link" v-on:click="readMore" href="#">read more</a>
+          <a class="link" v-on:click="readMore()" href="#">read more</a>
           </p>
         </div>
       </div>
@@ -30,7 +30,9 @@ export default {
         date: {
             type: String,
         },
-        
+        slug: {
+          type: String
+        }
     },
     data(){
         return {
@@ -41,7 +43,7 @@ export default {
       readMore(){
 
         // this.$router.push({ path: `/blogread/${this.slug}` }) // -> /blog/title
-        this.$router.push({ path: `/blogread` }) // not sure how to accomplish this...
+        this.$router.push({ path: `/blog/${this.slug}` }) // not sure how to accomplish this...
       },
       removeTags(str) {
         if ((str===null) || (str===''))
