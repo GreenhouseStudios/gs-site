@@ -7,7 +7,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import Card from "./components/Card.vue";
 export default {
   name: "Projects",
@@ -18,13 +17,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?categories=85&per_page=100"
-      )
-      .then((res) => {
-        this.projects = res.data;
-      });
+    this.projects = this.$store.getters.allProjects
   },
 };
 </script>

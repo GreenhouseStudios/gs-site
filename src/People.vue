@@ -11,9 +11,7 @@
 </template>
 
 <script>
-import axios from "axios";
 import PersonCard from "./components/PersonCard.vue";
-import WPAPI from "wpapi";
 import _ from "lodash"
 export default {
   name: "People",
@@ -21,9 +19,6 @@ export default {
   data() {
     return {
       people: [],
-      wp: new WPAPI({
-        endpoint: "https://dev-greenhouse-studios.pantheonsite.io/wp-json",
-      }),
       posts: null,
       imgs: null,
     };
@@ -34,39 +29,7 @@ export default {
     }
   },
   created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?per_page=100"
-      )
-      .then((res) => {
-        // this.people = res.data;
-        // var imgs = [];
-        // for (var i = 0; i < this.people.length; i++) {
-        //   axios
-        //     .get(res.data[i]._links["wp:featuredmedia"][0].href)
-        //     .then((result) => {
-        //       imgs.push(result.data.guid.rendered);
-        //       this.imgs = imgs;
-        //     });
-        // }
-        res.data.forEach((person) => {
-          if (person._links['wp:featuredmedia']) {
-            axios
-              .get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/media/" + person.featured_media)
-              .then((imgSrc) => {
-                person["image"] = imgSrc.data.guid.rendered;
-                this.people.push(person);
-              });
-          }
-        });
-      });
-
-    // this.wp
-    //   .pages()
-    //   .get()
-    //   .then((posts) => {
-    //     this.posts = posts;
-    //   });
+    this.people = this.$store.getters.allPeople;
   },
 };
 </script>

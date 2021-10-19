@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import BlogCard from "./components/BlogCard.vue";
 export default {
   name: "Blog",
@@ -24,14 +23,7 @@ export default {
     };
   },
   created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/posts"
-      )
-      .then((res) => {
-        this.posts = res.data;
-        console.log(this.posts);
-      });
+    this.posts = this.$store.getters.allPosts;
   },
 };
 </script>

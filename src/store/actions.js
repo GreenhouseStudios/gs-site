@@ -21,7 +21,18 @@ const actions = {
           "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?per_page=100"
         )
         .then((res) => {
-          commit("setPeople",res.data)
+          var people = []
+          res.data.forEach((person) => {
+            if (person._links['wp:featuredmedia']) {
+              axios
+                .get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/media/" + person.featured_media)
+                .then((imgSrc) => {
+                  person["image"] = imgSrc.data.guid.rendered;
+                  people.push(person);
+                });
+            }
+          });
+          commit("setPeople",people)
         });
     },
     async getProjects({commit}){
