@@ -1,4 +1,7 @@
 const getters = {
+    loading: state => {
+        return state.loading;
+    },
     postBySlug: state => slug => {
         return state.posts.find(p => p.slug === slug)
     },

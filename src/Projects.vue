@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <div class="grid">
+  <div v-if="!$store.getters.loading">
+    <div class="grid" v-if="projects">
       <card v-for="project in projects" :key="project.id" :project="project"></card>
     </div>
   </div>
@@ -16,7 +16,7 @@ export default {
       projects: null,
     };
   },
-  created() {
+  updated() {
     this.projects = this.$store.getters.allProjects
   },
 };

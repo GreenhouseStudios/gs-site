@@ -1,13 +1,14 @@
 import axios from 'axios'
 
 const actions = {
-    async getSiteData({dispatch}){
+    async getSiteData({commit,dispatch}){
         await dispatch('getPosts')
         await dispatch('getPeople')
         await dispatch('getProjects')
+        commit('setLoadingState', false)
     },
     async getPosts({commit}){
-        axios
+        return axios
         .get(
           "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/posts?per_page=100"
         )
@@ -16,7 +17,7 @@ const actions = {
         });
     },
     async getPeople({commit}){
-        axios
+        return axios
         .get(
           "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?per_page=100"
         )
@@ -36,7 +37,7 @@ const actions = {
         });
     },
     async getProjects({commit}){
-        axios
+        return axios
         .get(
           "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?categories=85&per_page=100"
         )
