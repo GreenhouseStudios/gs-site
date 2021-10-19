@@ -82,5 +82,17 @@
 </script>
 
 <style lang="scss" scoped>
-
+section{
+padding-bottom: 30px;
+}
+footer{
+  position: relative;
+}
+.footer-img{
+  position: absolute;
+  bottom: 0;
+}
+.grants{
+  position: relative;
+}
 </style>

@@ -6,6 +6,7 @@
             :title="post.title"
             :content="post.content"
             :date="post.date"
+            :slug="post.slug"
       ></blog-card>
       <div style="margin-bottom: 5%"></div>
     </div>

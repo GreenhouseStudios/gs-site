@@ -10,7 +10,8 @@
          </div>
           <h1 class="title">{{title.rendered}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <a class="link" href="https://greenhousestudios.uconn.edu/2021/10/01/spotlight-jin-liu/">read more</a></p>
+          <router-link class="link" :to="`/blog/${slug}`">read more</router-link>
+          </p>
         </div>
       </div>
     </div>
@@ -19,7 +20,6 @@
 <script>
 export default {
     name: "BlogCard",
-    date: "",
     props: {
         title: {
             type: Object,
@@ -30,7 +30,9 @@ export default {
         date: {
             type: String,
         },
-        
+        slug: {
+          type: String
+        }
     },
     data(){
         return {
