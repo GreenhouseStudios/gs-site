@@ -3,13 +3,8 @@
       <div id="blogcontent" v-if="post">
         <h1>{{post.title.rendered}}</h1>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
-        <p><em>{{removeTags(post.content.rendered).split('.\n', 1)[0]}}</em></p>
-        <hr>
         <div class="textbox">
-          <p>
-            <img class="img alignleft" src="../public/img/GS_G_logo.png" />
-            {{getTextblock(post.content.rendered)}}
-          </p>
+          <span v-html="post.content.rendered"></span>
         </div>
         <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
         <!-- <div class="nav-links row">
@@ -34,28 +29,6 @@ export default {
     this.post = this.$store.getters.postBySlug(this.slug);
   },
   methods: {
-    // getIndex(){
-    //   this.postindex = this.posts.findIndex(p => p.slug == this.slug);
-    //   return this.postindex;
-    // },
-    getTextblock(str){
-      var textblock = this.removeTags(str);
-      var lines = textblock.split('\n');
-      lines.splice(0,1);
-      return lines.join('\n');
-    },
-    removeTags(str) {
-        if ((str===null) || (str===''))
-        return false;
-        else{
-          str = str.toString();
-          str = str.replace(/&#8217;/g, "'");
-          str = str.replace( /(<([^>]+)>)/ig, '');
-          str = str.replace(/&amp;/g, "&");
-          str = str.replace(/&nbsp;/g, " ");
-        }
-        return str;
-      },
       getDate(str){
         const date = new Date(str);  // 2009-11-10
         const month = date.toLocaleString('default', { month: 'long' });
@@ -65,17 +38,6 @@ export default {
         console.log(this.date);
         return this.date;
       },
-      getImg(str){
-        var regex = /src=".*?"/;
-        var src = regex.exec(str);
-        if(src == null){
-          src = ""
-        }else{
-          src = src[0].replace("src=", "");
-        }
-        console.log(src);
-        return src;
-      }
   }
 };
 </script>
@@ -122,9 +84,9 @@ hr{
   border: 0;
   border-top: 1px solid #eeeeee;
 }
-.img{
+img{
   height: auto;
-  max-width: 50%;
+  max-width: 100%;
 }
 a{
   color: #717073;
