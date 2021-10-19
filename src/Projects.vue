@@ -19,6 +19,9 @@ export default {
   updated() {
     this.projects = this.$store.getters.allProjects
   },
+  mounted () {
+    this.projects = this.$store.getters.allProjects;
+  },
 };
 </script>
 

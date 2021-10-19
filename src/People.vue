@@ -46,6 +46,9 @@ export default {
   updated() {
     this.people = this.$store.getters.allPeople;
   },
+  mounted(){
+    this.people = this.$store.getters.allPeople;
+  }
 };
 </script>
 

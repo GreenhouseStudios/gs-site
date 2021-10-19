@@ -25,6 +25,9 @@ export default {
   updated() {
     this.posts = this.$store.getters.allPosts;
   },
+  mounted () {
+    this.posts = this.$store.getters.allPosts;
+  },
 };
 </script>
 
