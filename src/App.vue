@@ -51,7 +51,6 @@
     </div>
 
     <Nav></Nav>
-    <home-button></home-button>
     <loading v-if="$store.getters.loading"></loading>
     <router-view></router-view>
     <!-- <home></home> -->
@@ -62,14 +61,12 @@
 
 <script>
 import Footer from './components/Footer.vue';
-import HomeButton from "./components/HomeButton.vue";
 import Loading from './components/Loading.vue';
 import Nav from "./components/Nav.vue";
 export default {
   name: "App",
   components: {
     Nav,
-    HomeButton,
     Footer,
     Loading,
   },

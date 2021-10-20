@@ -1,6 +1,7 @@
 <template>
   <div>
     <header class="header">
+      <home-button></home-button>
       <img class="nav-img" src="../../public/img/watercolor-nav.png" />
       <input class="menu-btn" type="checkbox" id="menu-btn" />
       <label class="menu-icon" for="menu-btn"
@@ -18,7 +19,9 @@
 </template>
 
 <script>
-export default {};
+import HomeButton from './HomeButton.vue';
+export default {
+  components: { HomeButton },};
 </script>
 
 <style scoped>
@@ -29,7 +32,7 @@ a{
   font-family: Samo;
 }
 li{
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   animation: out 0.5s ease-in-out;
 }
 li:hover{
