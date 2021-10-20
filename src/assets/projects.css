@@ -38,10 +38,6 @@ body {
   color: black;
 }
 
-.header li a:hover,
-.header .menu-btn:hover {
-  background-color: #dfdfdf;
-}
 
 .header .logo {
   display: block;

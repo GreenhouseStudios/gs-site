@@ -22,7 +22,6 @@ export default {};
 </script>
 
 <style scoped>
-@import "../assets/projects.css";
 ul{
     background-color: rgba(1,1,1,0) !important;
 }
@@ -31,8 +30,26 @@ a{
 }
 li{
   font-size: 1.5rem;
+  animation: out 0.5s ease-in-out;
 }
 li:hover{
-  transform: scale(1.1);
+  animation: in 0.5s ease-in-out forwards;
+}
+
+@keyframes in {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+}
+@keyframes out {
+  from {
+    transform: scale(1.1);
+  }
+  to {
+    transform: scale(1);
+  }
 }
 </style>
