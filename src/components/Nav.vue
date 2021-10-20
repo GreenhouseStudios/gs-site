@@ -10,7 +10,7 @@
         <li><router-link to="/">HOME</router-link></li>
         <li><router-link to="/people">PEOPLE</router-link></li>
         <li><router-link to="/projects">PROJECTS</router-link></li>
-        <li><router-link to="/people">JOIN US</router-link></li>
+        <li><router-link to="/page/join-us">JOIN US</router-link></li>
         <li><router-link to="/blog">BLOG</router-link></li>
       </ul>
     </header>
@@ -28,5 +28,11 @@ ul{
 }
 a{
   font-family: Samo;
+}
+li{
+  font-size: 1.5rem;
+}
+li:hover{
+  transform: scale(1.1);
 }
 </style>

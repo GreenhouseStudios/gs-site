@@ -4,6 +4,7 @@ import People from '../People'
 import Blog from '../Blog'
 import BlogRead from '../BlogRead'
 import Projects from '../Projects'
+import Page from '../Page'
 import VueRouter from 'vue-router'
 Vue.use(
     VueRouter
@@ -13,6 +14,7 @@ const routes = [
     { path: '/people', component: People },
     { path: '/blog', component: Blog },
     { path: '/blog/:slug', component: BlogRead },
+    { path: '/page/:slug', component: Page},
     { path: '/', component: Home },
 ]
 
