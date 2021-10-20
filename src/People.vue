@@ -1,15 +1,17 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="grid" v-if="activePeople.length > 0">
+    <div id="tab-btn-container" class="w-100 flex flex-row justify-center"><button @click="activeTab = index" class="pa2 grow bn ma1 bg-transparent" :class="{underline: activeTab === index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0">{{tab}}</h1></button></div>
+    <div id="active-people w-100" v-show="activeTab === 0"><div class="grid" v-if="activePeople.length > 0" >
       <person-card
         v-for="person in activePeople"
         :key="person.slug"
         :person="person"
       ></person-card>
-    </div>
-    <div  v-if="alumni.length > 0">
-      <h1>Alumni</h1>
+    </div></div>
+    <div  v-if="alumni.length > 0" v-show="activeTab === 1">
       <ul><li v-for="a in alumni" :key="a.title.rendered">{{a.title.rendered}}</li></ul>
+    </div>
+    <div>
     </div>
   </div>
 </template>
@@ -25,6 +27,8 @@ export default {
       people: [],
       posts: null,
       imgs: null,
+      tabs: ['Active', 'Alumni', 'Partners'],
+      activeTab: 0,
     };
   },
   computed: {
