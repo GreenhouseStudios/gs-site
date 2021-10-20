@@ -1,23 +1,46 @@
 <template>
-  <div>
+  <div class="body">
     <div class="gs-intro">
-      <h1>
+      <h2 class="title">
         Facilitating humanities research through collaboration, digital
         technology and design.
-      </h1>
+      </h2>
     </div>
 
-    <div class="animation_fill">
-      <img src="../public/img/Animation_Fill.png" />
+    <div class = "video-container">
+      <!-- <img src="../public/img/Animation_Fill.png" /> -->
+      <iframe width="100vw" height="" src="https://www.youtube.com/embed/v7Mja4xyrI4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+    <div class="text-1">
+        <h2 class="title-2">Collaborative Culture</h2>
+        <p>Greenhouse Studios implements a “collaboration first” approach that brings a wide variety of people together to create original works of research from start to finish. </p>
+        <p>We are dedicated to addressing the persistent, intertwined problems of workflow and hierarchy with a mission that equally values all stakeholders involved in producing scholarship. Everyone has a seat at the table and a voice in the conversation.</p>
+        <p>As a scholarly research lab, we have created a unique workspace—a scholarly communications design studio—which….</p>
+    </div>
+    <div class="text-1">
+      <h2 class="title-2">What We Do</h2>  
+      <p>We lead an inquiry-driven, collaboration-first scholarly design process together with an interdisciplinary team. Based on collective interests, backgrounds, skills, and aspirations, we conceive and implement a multimodal response to a challenge posed by a prompt.</p>
+      <p>Depending on audiences and aims, projects may take shape in diverse media outputs ranging from interactive websites and immersive virtual reality to exhibitions and documentary films.</p>
+    </div>
+    <div class="text-1">
+      <h2 class="title-2">Who We Are</h2>  
+      <p>As an interdisciplinary research unit, the Greenhouse Studios team comprises a wide variety of scholars, designers, developers, library professionals, editors, and more. We are a joint effort of the University of Connecticut’s College of Liberal Arts and Sciences, Library, and School of Fine Arts; our team members come from both within and beyond the university.</p>
+  </div>
+
+  <!-- <div class="text-1">
+    <h2 class="title-2">Blog</h2> 
+    <blog></blog>
+  </div> -->
 
 
   </div>
 </template>
 
 <script>
+// import Blog from ".//Blog.vue";
 export default {
-    name: "Home"
+    name: "Home",
+    // components: { Blog },
 };
 </script>
 
@@ -29,6 +52,26 @@ export default {
 body {
   margin: 0;
   padding: 0;
+}
+
+.video-container { 
+  position: relative; 
+  padding-bottom: 56.25%; 
+  padding-top: 30px; 
+  // padding-left: 50px; 
+  // padding-right: 50px; 
+  height: 0; 
+  overflow: hidden; 
+}
+
+.video-container iframe, .video-container object, .video-container embed { 
+  position: absolute; 
+  padding: 20; 
+  top: 0; 
+  right: -20;
+  left: 40; 
+  width: 100%; 
+  height: 100%; 
 }
 
 .nav-img {
@@ -454,5 +497,55 @@ footer {
     display: grid;
     grid-template-columns: repeat(3, 300px);
   }
+}
+
+.title{
+  padding: 70px;
+  font-size: 35px;
+  line-height: 1.5em;
+}
+
+.title-1 {
+  padding: 30px 30px 50px;
+  font-weight: 600;
+  font-size: 38px;
+  margin: 0px;
+  font-family: "Samo";
+}
+
+
+.title-2 {
+  font-weight: 600;
+  font-size: 24px;
+}
+
+.line {
+  position: relative;
+  bottom: 35px;
+  width: 300px;
+  padding-left: 30px;
+}
+
+p, li, span, a {
+  line-height: 1.5;
+  font-size: 16px;
+  max-width: 80ch;
+}
+
+p a {
+  color: black;
+}
+
+.text-1, .text-2 {
+  padding: 30px;
+}
+
+.text-1 h2, .text-2 h2{
+  padding-bottom: 20px;
+}
+
+.body {
+  margin: 0 auto;
+  max-width: fit-content;
 }
 </style>

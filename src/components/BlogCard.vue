@@ -8,7 +8,7 @@
             <span class="day">{{getDate(date).day}}, </span>
             <span class="year">{{getDate(date).year}}</span>
          </div>
-          <h1 class="title">{{title.rendered}}</h1>
+          <h1 class="title">{{removeTags(title.rendered)}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
           <router-link class="link" :to="`/blog/${slug}`">read more</router-link>
           </p>
