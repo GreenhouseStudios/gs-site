@@ -99,6 +99,9 @@ color: rgba(255, 255, 255, 0.7);
     background-color: #FFF !important;
     color: #000;
 }
+#uconn-banner{
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) !important;
+}
 #wordmark{
   color: #000E2F !important;
 }
