@@ -43,21 +43,8 @@
         <div class="row-fluid">
           <div>
             <p id="super-title">
-              <a href="http://lib.uconn.edu/" style="color: white;"
-                >UCONN LIBRARY</a
-              >
             </p>
-            <h1 id="site-title"><a href="/" style="color: white;">Greenhouse Studios</a></h1>
-          </div>
-          <div id="search-container">
-            <form class="form-search">
-              <input
-                type="text"
-                class="input-medium"
-                placeholder="Search this site..."
-              />
-              <button type="submit" class="btn">Search</button>
-            </form>
+            <h1 id="site-title"><a href="/" style="color: #000E2F;">Greenhouse Studios</a></h1>
           </div>
         </div>
       </div>
@@ -105,6 +92,17 @@ padding: 1.5em 0;
 color: rgba(255, 255, 255, 0.7);
 }
 #site-header{
-  background: #9ac840!important;
+  background: white!important;
+  padding: 0 15px !important;
+}
+#uconn-header-container {
+    background-color: #FFF !important;
+    color: #000;
+}
+#wordmark{
+  color: #000E2F !important;
+}
+#university-of-connecticut{
+  color: #000E2F !important;
 }
 </style>
