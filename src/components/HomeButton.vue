@@ -1,6 +1,6 @@
 <template>
     <router-link to="/">
-        <img src="../../public/img/Greenhouse Studios Logos_LONG-WORDMARK_GREEN.png" alt="Greenhouse Studios">
+        <img class="home-btn-img" src="../../public/img/GS-Full-Brackets-Green:Black.png" alt="Greenhouse Studios">
     </router-link>
 </template>
 
@@ -13,5 +13,10 @@
 <style>
 router-link{
     z-index: 4;
+}
+.home-btn-img {
+    width: 100px;
+    height: auto;
+    margin: 10px;
 }
 </style>
