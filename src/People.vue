@@ -1,19 +1,21 @@
 <template>
-  <div>
-    <div class="grid">
+  <div v-if="!$store.getters.loading">
+    <div class="grid" v-if="activePeople.length > 0">
       <person-card
-        v-for="person in peopleByLastName"
+        v-for="person in activePeople"
         :key="person.slug"
         :person="person"
       ></person-card>
+    </div>
+    <div  v-if="alumni.length > 0">
+      <h1>Alumni</h1>
+      <ul><li v-for="a in alumni" :key="a.title.rendered">{{a.title.rendered}}</li></ul>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import PersonCard from "./components/PersonCard.vue";
-import WPAPI from "wpapi";
 import _ from "lodash"
 export default {
   name: "People",
@@ -21,9 +23,6 @@ export default {
   data() {
     return {
       people: [],
-      wp: new WPAPI({
-        endpoint: "https://dev-greenhouse-studios.pantheonsite.io/wp-json",
-      }),
       posts: null,
       imgs: null,
     };
@@ -31,43 +30,25 @@ export default {
   computed: {
     peopleByLastName() {
       return _.sortBy(this.people, [function(o){return o.custom_fields.last_name[0]}])
+    },
+    alumni(){
+      if(this.people.length > 0){
+        return this.people.filter(p => p.categories.indexOf(86) >= 0)
+      }
+      else return [];
+    },
+    activePeople(){
+      if(!this.$store.getters.loading && this.people.length > 0){
+        return _.sortBy(this.people.filter(p => p.categories.indexOf(86) < 0), [function(o){return o.custom_fields.last_name[0]}])
+      } else return [];
     }
   },
-  created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/person?per_page=100"
-      )
-      .then((res) => {
-        // this.people = res.data;
-        // var imgs = [];
-        // for (var i = 0; i < this.people.length; i++) {
-        //   axios
-        //     .get(res.data[i]._links["wp:featuredmedia"][0].href)
-        //     .then((result) => {
-        //       imgs.push(result.data.guid.rendered);
-        //       this.imgs = imgs;
-        //     });
-        // }
-        res.data.forEach((person) => {
-          if (person._links['wp:featuredmedia']) {
-            axios
-              .get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/media/" + person.featured_media)
-              .then((imgSrc) => {
-                person["image"] = imgSrc.data.guid.rendered;
-                this.people.push(person);
-              });
-          }
-        });
-      });
-
-    // this.wp
-    //   .pages()
-    //   .get()
-    //   .then((posts) => {
-    //     this.posts = posts;
-    //   });
+  updated() {
+    this.people = this.$store.getters.allPeople;
   },
+  mounted(){
+    this.people = this.$store.getters.allPeople;
+  }
 };
 </script>
 

@@ -15,7 +15,7 @@
         />
         <div class="people-img" :style="'background-image:url(' + person.image + '); background-repeat: no-repeat; background-size: 100%'"></div>
         <h1 class="people-name" v-for="word in person.title.rendered.split(' ')" :key="word">{{word.toUpperCase()}}</h1>
-        <p class="people-title">{{person.custom_fields.title[0]}}</p>
+        <p class="people-title" v-html="person.custom_fields.title[0]"></p>
       </div>
       <div class="side back flex" alt="" style="text-overflow: ellipsis;">
         <p class="people-desc" v-html="person.custom_fields.about[0]" style="overflow:hidden">

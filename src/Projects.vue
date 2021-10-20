@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <div class="grid">
+  <div v-if="!$store.getters.loading">
+    <div class="grid" v-if="projects">
       <card v-for="project in projects" :key="project.id" :project="project"></card>
     </div>
   </div>
 </template>
 
 <script>
-import axios from "axios";
 import Card from "./components/Card.vue";
 export default {
   name: "Projects",
@@ -17,14 +16,11 @@ export default {
       projects: null,
     };
   },
-  created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?categories=85&per_page=100"
-      )
-      .then((res) => {
-        this.projects = res.data;
-      });
+  updated() {
+    this.projects = this.$store.getters.allProjects
+  },
+  mounted () {
+    this.projects = this.$store.getters.allProjects;
   },
 };
 </script>

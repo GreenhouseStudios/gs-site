@@ -1,5 +1,5 @@
 <template>
-    <div class="grid">
+    <div class="grid" v-if="!$store.getters.loading">
         <blog-card
             v-for="post in posts"
             :key="post.slug"
@@ -13,7 +13,6 @@
 </template>
 
 <script>
-import axios from "axios";
 import BlogCard from "./components/BlogCard.vue";
 export default {
   name: "Blog",
@@ -23,15 +22,11 @@ export default {
       posts: null,
     };
   },
-  created() {
-    axios
-      .get(
-        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/posts"
-      )
-      .then((res) => {
-        this.posts = res.data;
-        console.log(this.posts);
-      });
+  updated() {
+    this.posts = this.$store.getters.allPosts;
+  },
+  mounted () {
+    this.posts = this.$store.getters.allPosts;
   },
 };
 </script>
