@@ -35,7 +35,6 @@ export default {
         const day = date.getDate();
         const year = date.getFullYear();
         this.date = {month: month, day: day, year: year}
-        console.log(this.date);
         return this.date;
       },
   }
