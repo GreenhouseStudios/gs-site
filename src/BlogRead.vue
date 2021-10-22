@@ -35,7 +35,6 @@ export default {
         const day = date.getDate();
         const year = date.getFullYear();
         this.date = {month: month, day: day, year: year}
-        console.log(this.date);
         return this.date;
       },
   }
@@ -68,6 +67,16 @@ h1{
 }
 #blogcontent{
   margin: 2em 20%;
+}
+@media (min-width: 38em) and (max-width: 52em) {
+  #blogcontent{
+    margin: 2em 10%;
+  }
+}
+@media (max-width: 38em) {
+  #blogcontent{
+    margin: 2em;
+  }
 }
 .textbox{
   height: 100%;

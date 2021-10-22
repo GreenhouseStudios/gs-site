@@ -70,4 +70,7 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/projects.css";
+.people-name{
+  font-family: "Libre Franklin";
+}
 </style>

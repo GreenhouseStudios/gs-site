@@ -19,6 +19,24 @@ body {
 
 
 
+/* 48em = 768px */
+
+@media (min-width: 62em) {
+  .header li {
+    float: left;
+  }
+  .header li a {
+    padding: 20px 30px;
+  }
+  .header .menu {
+    clear: none;
+    float: right;
+    max-height: none;
+  }
+  .header .menu-icon {
+    display: none;
+  }
+}
 
 .gs-intro h1 {
   font-family: "Libre Franklin";
@@ -128,7 +146,7 @@ footer {
   margin: 0px;
   height: 400px;
   width: 300px;
-  overflow: hidden;
+  overflow: visible;
   /* box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1); */
 }
 
