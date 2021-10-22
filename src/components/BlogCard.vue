@@ -1,13 +1,13 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + ')'" alt="">
+    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + ')'" alt="Blog Card Image">
       <div class="data">
         <div class="content">
           <hr>
-         <div class="date">
-            <span class="month">{{getDate(date).month}} </span>
-            <span class="day">{{getDate(date).day}}, </span>
-            <span class="year">{{getDate(date).year}}</span>
-         </div>
+          <div class="date">
+              <span class="month">{{getDate(date).month}} </span>
+              <span class="day">{{getDate(date).day}}, </span>
+              <span class="year">{{getDate(date).year}}</span>
+          </div>
           <h1 class="title">{{removeTags(title.rendered)}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
           <router-link class="link" :to="`/blog/${slug}`">read more</router-link>
@@ -69,12 +69,13 @@ export default {
         return newdate;
       },
       getImg(str){
-        var regex = /src=".*?"/;
+        var regex = /<img.*?src="(.*?)"/;
         var src = regex.exec(str);
         if(src == null){
-          src = "../public/img/GS_G_logo.png"
+          // Placeholder Image
+          src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
         }else{
-          src = src[0].replace("src=", "");
+          src = src[1];
         }
         return src;
       }
