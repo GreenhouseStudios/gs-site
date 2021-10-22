@@ -9,7 +9,7 @@
 
     <div class = "video-container">
       <!-- <img src="../public/img/Animation_Fill.png" /> -->
-      <iframe width="100vw" height="" src="https://www.youtube.com/embed/v7Mja4xyrI4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      <iframe width="100vw" src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview" title="GS Process Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
     <div class="text-1">
         <h2 class="title-2">Collaborative Culture</h2>
