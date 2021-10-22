@@ -69,6 +69,16 @@ h1{
 #blogcontent{
   margin: 2em 20%;
 }
+@media (min-width: 38em) and (max-width: 52em) {
+  #blogcontent{
+    margin: 2em 10%;
+  }
+}
+@media (max-width: 38em) {
+  #blogcontent{
+    margin: 2em;
+  }
+}
 .textbox{
   height: 100%;
 }
