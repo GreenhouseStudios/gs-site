@@ -15,7 +15,7 @@
       </div>
       <div
         :style="
-          'background-image: url(' + project.custom_fields.project_card_back + ');'
+          'background-image: url(' + project.custom_fields.project_card_back + '); background-repeat: no-repeat;'
         "
         class="side back flex"
         :alt="'Back side of flippable card for the project' + project.title.rendered " 

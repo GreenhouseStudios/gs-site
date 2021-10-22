@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="'background-image:url(' + require('../public/img/watercolor-nav.png') + '); background-size: 100%; background-repeat: no-repeat'">
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -77,6 +77,9 @@ export default {
 </script>
 
 <style>
+body{
+  overflow-x: hidden;
+}
 footer{
 font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 font-size: 14px;
