@@ -1,10 +1,12 @@
 <template>
     <div id="blogmain">
       <div id="blogcontent" v-if="post">
+        <img v-if="isMobile()" id="mainimg" class="img alignleft" v-bind:src="(`${getImg(post.content.rendered)}`)" />
         <h1>{{post.title.rendered}}</h1>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
-          <span v-html="post.content.rendered"></span>
+          <span v-if="!isMobile()" v-html="post.content.rendered"></span>
+          <span else>{{removeTags(post.content.rendered)}}</span> 
         </div>
         <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
         <!-- <div class="nav-links row">
@@ -29,14 +31,44 @@ export default {
     this.post = this.$store.getters.postBySlug(this.slug);
   },
   methods: {
-      getDate(str){
-        const date = new Date(str);  // 2009-11-10
-        const month = date.toLocaleString('default', { month: 'long' });
-        const day = date.getDate();
-        const year = date.getFullYear();
-        this.date = {month: month, day: day, year: year}
-        return this.date;
-      },
+    getDate(str){
+      const date = new Date(str);  // 2009-11-10
+      const month = date.toLocaleString('default', { month: 'long' });
+      const day = date.getDate();
+      const year = date.getFullYear();
+      this.date = {month: month, day: day, year: year}
+      return this.date;
+    },
+    removeTags(str) {
+      if ((str===null) || (str===''))
+      return false;
+      else{
+        str = str.toString();
+        str = str.replace(/&#8217;/g, "'");
+        str = str.replace( /(<([^>]+)>)/ig, '');
+        str = str.replace(/&amp;/g, "&");
+        str = str.replace(/&nbsp;/g, " ");
+      }
+      return str;
+    },
+    getImg(str){
+      var regex = /<img.*?src="(.*?)"/;
+      var src = regex.exec(str);
+      if(src == null){
+        // Placeholder Image
+        src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+      }else{
+        src = src[1];
+      }
+      return src;
+    },
+    isMobile() {
+      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+        return true
+      } else {
+        return false
+      }
+    }
   }
 };
 </script>
@@ -67,6 +99,10 @@ h1{
 }
 #blogcontent{
   margin: 2em 20%;
+}
+#mainimg{
+  width: 100%;
+  height: auto;
 }
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent{
