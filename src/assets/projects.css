@@ -182,7 +182,8 @@ footer {
   position: absolute;
   border-radius: 5px;
   backface-visibility: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
   border: none;
   border-radius: 10px;
   background-color: #FCFCFC;
@@ -233,9 +234,13 @@ footer {
   font-family: "Samo";
   text-align: center;
   line-height: 35px;
-  font-size: 30px;
+  font-size: 25px;
   margin: 0;
   padding: 0;
+  position: absolute;
+  top: 80%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .people-title {
@@ -248,7 +253,7 @@ footer {
 
 .people-desc {
   margin: 0;
-  padding: 1em;
+  padding: 1.5em;
   font-size: 14px;
   font-family: "Libre Franklin";
   text-align: left;
