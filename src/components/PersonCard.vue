@@ -13,7 +13,7 @@
           src="img/GH-Watercolor.png"
           alt="watercolor card background image"
         />
-        <div class="people-img" :style="'background-image:url(' + person.image + '); background-repeat: no-repeat; background-size: 100%'"></div>
+        <div class="people-img" :style="`background-image:url( ${person.image} ); background-repeat: no-repeat; background-size:  ${person.image.includes('placeholder') ? '80%;  background-position: center': '100%; background-position:center'}`"></div>
         <h1 class="people-name" style="width: 90%; text-overflow: wrap; margin: 0 auto;">{{(person.custom_fields.first_name[0] + " " + person.custom_fields.last_name[0]).toUpperCase()}}</h1>
         <!-- <h1 class="people-name">{{person.custom_fields.last_name[0].toUpperCase()}}</h1> -->
         <!-- <p class="people-title" v-html="person.custom_fields.title[0]"></p> -->
