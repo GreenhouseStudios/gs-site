@@ -10,7 +10,9 @@
           </div>
           <h1 class="title">{{removeTags(title.rendered)}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <router-link class="link" :to="`/blog/${slug}`">read more</router-link>
+          <router-link class="link" :to="`/blog/${slug}`">
+            <button id="button" class="btn-bol">READ MORE</button>
+          </router-link>
           </p>
         </div>
       </div>
@@ -85,4 +87,11 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/projects.css";
+.btn-bol{
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%, 0);
+
+}
 </style>
