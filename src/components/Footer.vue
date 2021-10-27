@@ -40,13 +40,13 @@
 
         <div class="footer-pages">
           <div class="footer-people">
-            <a href="">People</a>
+            <router-link to="/people">People</router-link>
           </div>
           <div class="footer-projects">
-            <a href="">Projects</a>
+            <router-link to="/projects">Projects</router-link>
           </div>
           <div class="footer-joinus">
-            <a href="">Join Us</a>
+            <router-link to="/page/join-us">Join Us</router-link>
           </div>
         </div>
 

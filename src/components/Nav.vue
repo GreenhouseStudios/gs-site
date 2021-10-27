@@ -19,7 +19,7 @@
         <li><router-link to="/blog">BLOG</router-link></li>
       </ul>
       <div class="mobile-menu absolute top-0 bottom-0 left-0 right-0 w-100 bg-white z-5" v-show="showMenu" id="mobile-menu">
-        <button @click="showMenu = false" class="absolute h2 w2 top-0 right-0 black bn bg-white f2 ma3"><i class="dib fa fa-xs fa-times"></i></button>
+        <button @click="showMenu = false" class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3" style="color: #161616"><i class="dib fa fa-xs fa-times"></i></button>
         <ul @click="showMenu = false" class="flex flex-column items-center justify-center h-100">
           <li><router-link to="/">HOME</router-link></li>
           <li><router-link to="/people">PEOPLE</router-link></li>
@@ -96,7 +96,7 @@ li:hover {
   display: block;
   padding: 20px 20px;
   text-decoration: none;
-  color: black;
+  color: #161616;
   font-size: 2rem;
 }
 
@@ -127,7 +127,7 @@ li:hover {
 }
 
 .header .menu-icon .navicon {
-  background: black;
+  background: #161616;
   display: block;
   height: 2px;
   position: relative;
@@ -137,7 +137,7 @@ li:hover {
 
 .header .menu-icon .navicon:before,
 .header .menu-icon .navicon:after {
-  background: black;
+  background: #161616;
   content: "";
   display: block;
   height: 100%;

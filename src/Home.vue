@@ -142,7 +142,7 @@ body {
 
 .footer-pages a {
   text-decoration: none;
-  color: black;
+  color: #161616;
 }
 
 .footer-people a:hover,
@@ -533,7 +533,7 @@ p, li, span, a {
 }
 
 p a {
-  color: black;
+  color: #161616;
 }
 
 .text-1, .text-2 {
