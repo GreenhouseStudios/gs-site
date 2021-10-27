@@ -121,10 +121,11 @@ footer {
 }
 
 .flipCard {
-  animation: out 1s;
+  transition: all 0.6s;
 }
 .flipCard:hover {
-  animation: in 0.6s ease-in-out forwards;
+  /* animation: in 0.6s ease-in-out forwards; */
+  transform: scale(1.05);
 }
 @keyframes in {
   from {
