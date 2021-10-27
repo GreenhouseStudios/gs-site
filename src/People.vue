@@ -1,7 +1,7 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div id="tab-btn-container" class="w-50 center flex flex-row justify-between"><button @click="activeTab = index" class="pa3 br2 grow ma1 bg-transparent" :class="{active: activeTab === index, inactive: activeTab !== index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0">{{tab}}</h1></button></div>
-    <div class="w-50-ns w-90 center f3 pv5 fw3 i">{{tabIntros[activeTab]}}</div>
+    <div id="tab-btn-container" class="w-50-ns center flex flex-row justify-between"><button @click="activeTab = index" class="pa3-ns pa2 br2 grow ma1 bg-transparent" :class="{active: activeTab === index, inactive: activeTab !== index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0 f2-ns f4">{{tab}}</h1></button></div>
+    <div class="w-50-ns w-90 center f3-ns f4 pv5-ns pv3 fw3 i">{{tabIntros[activeTab]}}</div>
     
     <div id="active-people w-100" v-show="activeTab === 0"><div class="grid" v-if="activePeople.length > 0" >
       <person-card
