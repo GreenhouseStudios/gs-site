@@ -1,5 +1,5 @@
 <template>
-    <div id="blogmain">
+    <div id="blogmain" v-if="!$store.state.loading">
       <div id="blogcontent" v-if="post">
         <img v-if="isMobile()" id="mainimg" class="img alignleft" v-bind:src="(`${getImg(post.content.rendered)}`)" />
         <h1>{{post.title.rendered}}</h1>
@@ -27,7 +27,10 @@ export default {
       slug: this.$route.params.slug
     };
   },
-  created() {
+  mounted() {
+    this.post = this.$store.getters.postBySlug(this.slug);
+  },
+  updated () {
     this.post = this.$store.getters.postBySlug(this.slug);
   },
   methods: {
