@@ -1,6 +1,7 @@
 <template>
   <div>
     <header class="header">
+      <img :src="require('../../public/img/watercolor-nav.png')" alt="gs-watercolor-background" class="absolute" id="watercolor-bg">
       <home-button></home-button>
       <input
         class="menu-btn"
@@ -50,6 +51,9 @@ export default {
 </script>
 
 <style scoped>
+#watercolor-bg{
+  z-index: -1;
+}
 a {
   font-family: Samo;
 }

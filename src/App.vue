@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="'background-image:url(' + require('../public/img/watercolor-nav.png') + '); background-size: 100%; background-repeat: no-repeat'">
+  <div id="app" >
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -50,9 +50,10 @@
       </div>
     </div>
 
+    <!-- <Nav :style="'background-image:url(' + require('../public/img/watercolor-nav.png') + '); background-size: 100%; background-position: top; background-repeat: no-repeat; overflow: visible'"></Nav> -->
     <Nav></Nav>
     <loading v-if="$store.getters.loading"></loading>
-    <router-view></router-view>
+    <router-view ></router-view>
     <!-- <home></home> -->
     <hr>
     <Footer></Footer>
@@ -77,6 +78,9 @@ export default {
 </script>
 
 <style>
+Nav{
+  overflow: visible !important;
+}
 body{
   overflow-x: hidden;
 }
