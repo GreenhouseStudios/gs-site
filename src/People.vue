@@ -1,7 +1,8 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="w-50-ns w-90 center f3 pv5">{{tabIntros[activeTab]}}</div>
-    <div id="tab-btn-container" class="w-100 flex flex-row justify-center"><button @click="activeTab = index" class="pa2 grow bn ma1 bg-transparent" :class="{underline: activeTab === index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0">{{tab}}</h1></button></div>
+    <div id="tab-btn-container" class="w-50 center flex flex-row justify-between"><button @click="activeTab = index" class="pa3 br2 grow ma1 bg-transparent" :class="{active: activeTab === index, inactive: activeTab !== index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0">{{tab}}</h1></button></div>
+    <div class="w-50-ns w-90 center f3 pv5 fw3 i">{{tabIntros[activeTab]}}</div>
+    
     <div id="active-people w-100" v-show="activeTab === 0"><div class="grid" v-if="activePeople.length > 0" >
       <person-card
         v-for="person in activePeople"
@@ -63,4 +64,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
+.active{
+  border: 2px solid black;
+}
+.inactive{
+  border: 2px dashed rgba(128,128,128,0.4);
+}
 </style>
