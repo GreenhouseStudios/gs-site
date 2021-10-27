@@ -87,10 +87,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/projects.css";
-.btn-bol{
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
-}
 </style>

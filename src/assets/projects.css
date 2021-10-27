@@ -216,6 +216,7 @@ footer {
 }
 
 .people-img {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
   width: 200px;
   height: 200px;
   display: block;
@@ -291,6 +292,7 @@ footer {
 }
 
 #button {
+  font-size: 120%;
   border-radius: 5px;
   letter-spacing: 2px;
   padding: 5px 10px 5px 10px;
@@ -301,6 +303,10 @@ footer {
   color: white;
   background-color: #246481;
   border: 2px solid #246481;
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translate(-50%, 0);
 }
 
 .btn-bol:hover {
