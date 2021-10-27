@@ -1,5 +1,6 @@
 <template>
   <div v-if="!$store.getters.loading">
+    <div class="w-50-ns w-90 center f3 pv5">{{tabIntros[activeTab]}}</div>
     <div id="tab-btn-container" class="w-100 flex flex-row justify-center"><button @click="activeTab = index" class="pa2 grow bn ma1 bg-transparent" :class="{underline: activeTab === index}" v-for="(tab,index) in tabs" :key="tab"><h1 class="ma0">{{tab}}</h1></button></div>
     <div id="active-people w-100" v-show="activeTab === 0"><div class="grid" v-if="activePeople.length > 0" >
       <person-card
@@ -28,6 +29,9 @@ export default {
       posts: null,
       imgs: null,
       tabs: ['Active', 'Alumni', 'Partners'],
+      tabIntros: ['Active: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!',
+      'Alumni: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!',
+      'Partners: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!'],
       activeTab: 0,
     };
   },
