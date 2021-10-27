@@ -21,6 +21,33 @@
       <div class="side back flex" alt="" style="text-overflow: ellipsis;">
         <p class="people-desc" v-html="person.custom_fields.about[0]" style="overflow:hidden">
         </p>
+        <div class="social-media">
+          <div v-if="person.custom_fields.email[0]" class="email">
+            <a :href="'mailto:' + person.custom_fields.email[0]"
+              ><img src="../../public/img/email.svg"
+            /></a>
+          </div>
+          <div v-if="person.custom_fields.instagram && person.custom_fields.instagram[0]" class="instagram">
+            <a :href="person.custom_fields.instagram[0]"
+              ><img src="../../public/img/instagram.svg"
+            /></a>
+          </div>
+          <div v-if="person.custom_fields.site && person.custom_fields.site[0]" class="site">
+            <a :href="person.custom_fields.site[0]"
+              ><img src="../../public/img/site.png"
+            /></a>
+          </div>
+          <div v-if="person.custom_fields.facebook && person.custom_fields.facebook[0]" class="facebook">
+            <a :href="person.custom_fields.facebook[0]"
+              ><img src="../../public/img/facebook.svg"
+            /></a>
+          </div>
+          <div v-if="person.custom_fields.twitter && person.custom_fields.twitter[0]" class="twitter">
+            <a :href="person.custom_fields.twitter[0]"
+              ><img src="../../public/img/twitter.svg"
+            /></a>
+          </div>
+        </div>
         <img
           class="person-card-watercolor-back"
           style="
@@ -32,17 +59,6 @@
           src="img/GH-Watercolor.png"
           alt="watercolor card background image"
         />
-        <!-- <img
-          class="linkedin"
-          style="
-            height: 10%;
-            width: auto;
-            position: absolute;
-            margin-top: 102.5%;
-            margin-right: 75%;
-          "
-          src="img/linkedin-logo-white.png"
-        /> -->
       </div>
     </div>
   </div>
