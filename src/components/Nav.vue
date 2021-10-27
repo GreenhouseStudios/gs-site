@@ -13,11 +13,11 @@
         ><span class="navicon"></span
       ></label>
       <ul class="menu">
-        <li><router-link to="/">HOME</router-link></li>
-        <li><router-link to="/people">PEOPLE</router-link></li>
-        <li><router-link to="/projects">PROJECTS</router-link></li>
-        <li><router-link to="/page/join-us">JOIN US</router-link></li>
-        <li><router-link to="/blog">BLOG</router-link></li>
+        <li><router-link class="shimmer" to="/">HOME</router-link></li>
+        <li><router-link class="shimmer" to="/people">PEOPLE</router-link></li>
+        <li><router-link class="shimmer" to="/projects">PROJECTS</router-link></li>
+        <li><router-link class="shimmer" to="/page/join-us">JOIN US</router-link></li>
+        <li><router-link class="shimmer" to="/blog">BLOG</router-link></li>
       </ul>
       <div class="mobile-menu absolute top-0 bottom-0 left-0 right-0 w-100 bg-white z-5" v-show="showMenu" id="mobile-menu">
         <button @click="showMenu = false" class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3" style="color: #161616"><i class="dib fa fa-xs fa-times"></i></button>
@@ -59,27 +59,9 @@ a {
 }
 li {
   font-size: 1.2rem;
-  animation: out 0.5s ease-in-out;
 }
 li:hover {
-  animation: in 0.5s ease-in-out forwards;
-}
 
-@keyframes in {
-  from {
-    transform: scale(1);
-  }
-  to {
-    transform: scale(1.1);
-  }
-}
-@keyframes out {
-  from {
-    transform: scale(1.1);
-  }
-  to {
-    transform: scale(1);
-  }
 }
 
 .header {
@@ -185,5 +167,36 @@ li:hover {
   .header .menu-icon {
     display: none;
   }
+}
+
+.shimmer:hover {
+  display: inline-block;
+  color:white;
+  
+  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #AAA), to(#444));
+  
+  background-position: -4rem top; /*50px*/
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 2.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-background-size: 4rem 100%; /*50px*/
+  
+}
+
+@-webkit-keyframes shimmer {
+    0% {
+        background-position: -4rem top; /*50px*/
+    }
+
+    70% {
+        background-position: 12.5rem top; /*200px*/
+    }
+
+    100% {
+        background-position: 12.5rem top; /*200px*/
+    }
 }
 </style>
