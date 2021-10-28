@@ -1,5 +1,8 @@
 <template>
   <div v-if="!$store.getters.loading">
+    <div class=" w-60-l w-90 bb bw1 center mb3">
+      <div class="flex flex-row justify-between w-80-l center"><span v-for="(cat,index) in categories" class="ma2" :key="cat"><button @click="activeTab = index" class="br3 f3-l f5 pa2 bg-transparent grow" :class="{active: activeTab === index, inactive: activeTab !== index}" >{{cat}}</button></span></div>
+    </div>
     <div class="grid" v-if="projects">
       <card v-for="project in projects" :key="project.id" :project="project"></card>
     </div>
@@ -14,6 +17,8 @@ export default {
   data() {
     return {
       projects: null,
+      categories: ["Research","Storytelling","Teaching", "All Projects"],
+      activeTab: 0,
     };
   },
   updated() {
@@ -28,4 +33,10 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
+.active{
+  border: 1px solid black;
+}
+.inactive{
+  border: 1px dashed rgba(0, 0, 0, 0.3)
+}
 </style>
