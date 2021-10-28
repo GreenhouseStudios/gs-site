@@ -1,5 +1,5 @@
 <template>
-  <div id="app" >
+  <div id="app">
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -42,9 +42,10 @@
       <div class="row-container" id="site-header">
         <div class="row-fluid">
           <div>
-            <p id="super-title">
-            </p>
-            <h1 id="site-title"><a href="/" style="color: #000E2F;">Greenhouse Studios</a></h1>
+            <p id="super-title"></p>
+            <h1 id="site-title">
+              <a href="/" style="color: #000e2f">Greenhouse Studios</a>
+            </h1>
           </div>
         </div>
       </div>
@@ -53,16 +54,24 @@
     <!-- <Nav :style="'background-image:url(' + require('../public/img/watercolor-nav.png') + '); background-size: 100%; background-position: top; background-repeat: no-repeat; overflow: visible'"></Nav> -->
     <Nav></Nav>
     <loading v-if="$store.getters.loading"></loading>
-    <router-view ></router-view>
+    <img
+      :src="bgImages[i % bgImages.length]"
+      class="absolute o-30"
+      style="height: 500px"
+      :style="`top: ${spacing * i}px; left:${randomXOffset()}px; transform: rotate(${Math.random() * 46}deg)`"
+      v-for="i in numBgImages"
+      :key="i"
+    />
+    <router-view></router-view>
     <!-- <home></home> -->
-    <hr>
+    <hr />
     <Footer></Footer>
   </div>
 </template>
 
 <script>
-import Footer from './components/Footer.vue';
-import Loading from './components/Loading.vue';
+import Footer from "./components/Footer.vue";
+import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
 export default {
   name: "App",
@@ -71,45 +80,83 @@ export default {
     Footer,
     Loading,
   },
-  created () {
-    this.$store.dispatch('getSiteData')
+  data() {
+    return {
+      height: null,
+      width: null,
+      spacing: 800,
+      bgImages: [
+        require("../public/bgImg/gs_center-table_line-art.png"),
+        require("../public/bgImg/gs_lightbulb_line-art.png"),
+        require("../public/bgImg/gs_scissors_line-art.png"),
+        require("../public/bgImg/gs_shovel_line-art.png"),
+        require("../public/bgImg/gs_spider-plant-fully-grown_bw.png"),
+        require("../public/bgImg/gs_cloud_line-art.png"),
+        require("../public/bgImg/gs_hand-seed-drop-hand-only_line-art.png"),
+        require("../public/bgImg/gs_hand-sticker_line-art.png"),
+      ],
+    };
+  },
+  created() {
+    this.$store.dispatch("getSiteData");
+  },
+  methods: {
+    randomXOffset() {
+      return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
+    },
+    scale(number, inMin, inMax, outMin, outMax) {
+      return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
+    },
+  },
+  computed: {
+    numBgImages() {
+      return Math.abs(Math.floor(this.height / this.spacing) - 1);
+    },
+  },
+  mounted() {
+    this.height = document.body.scrollHeight;
+    this.width = document.body.scrollWidth;
+  },
+  updated() {
+    this.height = document.body.scrollHeight;
+    this.width = document.body.scrollWidth;
   },
 };
 </script>
 
 <style>
-Nav{
+Nav {
   overflow: visible !important;
 }
-body{
+body {
   overflow-x: hidden;
 }
-footer{
-font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-font-size: 14px;
-line-height: 1.428571429;
-color: #333333;
-display: block;
+footer {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  display: block;
 }
 #footer {
-padding: 1.5em 0;
-color: rgba(255, 255, 255, 0.7);
+  padding: 1.5em 0;
+  color: rgba(255, 255, 255, 0.7);
 }
-#site-header{
-  background: white!important;
+#site-header {
+  background: white !important;
   padding: 0 15px !important;
 }
 #uconn-header-container {
-    background-color: #FFF !important;
-    color: #000;
+  background-color: #fff !important;
+  color: #000;
 }
-#uconn-banner{
+#uconn-banner {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) !important;
 }
-#wordmark{
-  color: #000E2F !important;
+#wordmark {
+  color: #000e2f !important;
 }
-#university-of-connecticut{
-  color: #000E2F !important;
+#university-of-connecticut {
+  color: #000e2f !important;
 }
 </style>
