@@ -13,7 +13,13 @@
     <div  v-if="alumni.length > 0" v-show="activeTab === 1">
       <ul><li v-for="a in alumni" :key="a.title.rendered">{{a.title.rendered}}</li></ul>
     </div>
-    <div>
+    <div v-show="activeTab === 2">
+      <div class="grid partner">
+          <img v-for="p in partners" :key="p"
+            class=""
+            :src="p"
+          />
+        </div>
     </div>
   </div>
 </template>
@@ -29,6 +35,14 @@ export default {
       people: [],
       posts: null,
       imgs: null,
+      partners: [
+        require("../public/img/UConn_Library_Logo.png"), 
+        require("../public/img/UConn_Humanities_Institute.png"), 
+        require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
+        require("../public/img/UConn_Library_Logo.png"), 
+        require("../public/img/UConn_Humanities_Institute.png"), 
+        require("../public/img/Andrew_W_Mellon_Foundation_Logo.png")
+        ],
       tabs: ['Active', 'Alumni', 'Partners'],
       tabIntros: ['Active: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!',
       'Alumni: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!',
@@ -69,5 +83,8 @@ export default {
 }
 .inactive{
   border: 2px dashed rgba(128,128,128,0.4);
+}
+.partner{
+  grid-template-rows: repeat(4, 200px) !important;
 }
 </style>
