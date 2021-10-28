@@ -27,19 +27,19 @@
               ><img src="../../public/img/email.svg"
             /></a>
           </div>
-          <div v-if="person.custom_fields.instagram && person.custom_fields.instagram[0]" class="instagram">
-            <a :href="person.custom_fields.instagram[0]"
-              ><img src="../../public/img/instagram.svg"
-            /></a>
-          </div>
           <div v-if="person.custom_fields.site && person.custom_fields.site[0]" class="site">
             <a :href="person.custom_fields.site[0]"
               ><img src="../../public/img/site.png"
             /></a>
           </div>
-          <div v-if="person.custom_fields.facebook && person.custom_fields.facebook[0]" class="facebook">
-            <a :href="person.custom_fields.facebook[0]"
-              ><img src="../../public/img/facebook.svg"
+          <div v-if="person.custom_fields.instagram && person.custom_fields.instagram[0]" class="instagram">
+            <a :href="person.custom_fields.instagram[0]"
+              ><img src="../../public/img/instagram.svg"
+            /></a>
+          </div>
+          <div v-if="person.custom_fields.linkedin && person.custom_fields.linkedin[0]" class="facebook">
+            <a :href="person.custom_fields.linkedin[0]"
+              ><img src="../../public/img/linkedin.png"
             /></a>
           </div>
           <div v-if="person.custom_fields.twitter && person.custom_fields.twitter[0]" class="twitter">

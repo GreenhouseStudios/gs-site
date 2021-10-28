@@ -1,8 +1,10 @@
 <template>
   <div class="overlay">
     <div class="container">
-      <img src="../../public/img/GS_G_logo.png" alt="" />
-      <h1>Loading...</h1>
+      <div class="contents">
+        <img src="../../public/img/GS_G_logo.png" alt="" />
+        <h1>Loading...</h1>
+      </div>
     </div>
   </div>
 </template>
@@ -23,10 +25,17 @@ export default {};
 }
 .container {
   position: fixed;
-  top: 20vh;
-  left: 30vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 350px;
   background: white;
-  padding: 10%;
+  padding: 5%;
+}
+@media (max-width: 38em) {
+  .container{
+    padding: 10%;
+  }
 }
 h1 {
   text-align: center;
