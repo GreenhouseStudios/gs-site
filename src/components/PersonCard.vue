@@ -10,10 +10,11 @@
             object-fit: cover;
             border-radius: 5px 5px 0px 0px;
           "
+          :style="`filter: hue-rotate(${Math.random()*40}deg) brightness(${Math.random()*10 + 90}%) saturate(${Math.random()*20 + 80}%)`"
           src="img/GH-Watercolor.png"
           alt="watercolor card background image"
         />
-        <div class="people-img" :style="`background-image:url( ${person.image} ); background-repeat: no-repeat; background-size:  ${person.image.includes('placeholder') ? '80%;  background-position: center': '100%; background-position:center'}`"></div>
+        <div class="people-img" :style="` filter: hue-rotate(${Math.random()*0}deg); background-image:url( ${person.image} ); background-repeat: no-repeat; background-size:  ${person.image.includes('placeholder') ? '80%;  background-position: center': '100%; background-position:center'}`"></div>
         <h1 class="people-name" style="width: 80%; text-overflow: wrap; margin: 0 auto;">{{(person.custom_fields.first_name[0] + " " + person.custom_fields.last_name[0])}}</h1>
         <!-- <h1 class="people-name">{{person.custom_fields.last_name[0].toUpperCase()}}</h1> -->
         <!-- <p class="people-title" v-html="person.custom_fields.title[0]"></p> -->
@@ -89,5 +90,8 @@ export default {
 .people-name{
   font-family: "Libre Franklin";
   text-transform: capitalize;
+}
+.img-front{
+  
 }
 </style>
