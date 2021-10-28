@@ -1,10 +1,9 @@
 <template>
   <div class="body">
     <div class="gs-intro">
-      <h2 class="title">
-        Facilitating humanities research through collaboration, digital
-        technology and design.
-      </h2>
+      <h1 class="title">
+        Facilitating humanities research through collaboration, digital technology and design.
+      </h1>
     </div>
 
     <div class = "video-container">
@@ -83,14 +82,28 @@ body {
   z-index: -1;
 }
 
+.gs-intro {
+  height: 75vh;
+  display: table;
+  overflow: hidden;
+}
+
 .gs-intro h1 {
   font-family: "Libre Franklin";
   font-weight: 600;
-  font-size: 24px;
-  padding-top: 200px;
-  padding-right: 30px;
-  padding-left: 30px;
+  font-size: 50px;
+  // padding-right: 30px;
+  // padding-left: 30px;
   margin: 0;
+  display: table-cell; 
+  vertical-align: middle;
+  padding-top: 10px !important;
+}
+
+@media (max-width: 660px) {
+  .gs-intro h1 {
+    font-size: 35px;
+  }
 }
 
 .animation_fill img {
