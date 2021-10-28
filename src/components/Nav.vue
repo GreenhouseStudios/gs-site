@@ -18,8 +18,8 @@
         <li><router-link class="shimmer" to="/projects">PROJECTS</router-link></li>
         <li><router-link class="shimmer" to="/page/join-us">JOIN US</router-link></li>
         <li><router-link class="shimmer" to="/blog">BLOG</router-link></li>
-      </ul>
-      <div class="mobile-menu absolute top-0 bottom-0 left-0 right-0 w-100 bg-white z-5" v-show="showMenu" id="mobile-menu">
+      </ul><transition name="slide-fade">
+      <div class="mobile-menu absolute top-0 bottom-0 left-0 right-0 w-100 bg-white z-5" v-if="showMenu" id="mobile-menu">
         <button @click="showMenu = false" class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3" style="color: #161616"><i class="dib fa fa-xs fa-times"></i></button>
         <ul @click="showMenu = false" class="flex flex-column items-center justify-center h-100">
           <li><router-link to="/">HOME</router-link></li>
@@ -28,7 +28,7 @@
           <li><router-link to="/page/join-us">JOIN US</router-link></li>
           <li><router-link to="/blog">BLOG</router-link></li>
         </ul>
-      </div>
+      </div></transition>
     </header>
   </div>
 </template>
@@ -51,6 +51,25 @@ export default {
 </script>
 
 <style scoped>
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all .3s ease;
+}
+.slide-fade-leave-active {
+  transition: all .3s ease-in;
+}
+.slide-fade-enter, .slide-fade-leave-to
+/* .slide-fade-leave-active below version 2.1.8 */ {
+  transform: translateY(1000px);
+}
+
 #watercolor-bg{
   z-index: -1;
 }
