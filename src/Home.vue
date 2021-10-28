@@ -91,13 +91,19 @@ body {
 .gs-intro h1 {
   font-family: "Libre Franklin";
   font-weight: 600;
-  font-size: 40px;
+  font-size: 50px;
   // padding-right: 30px;
   // padding-left: 30px;
   margin: 0;
   display: table-cell; 
   vertical-align: middle;
   padding-top: 10px !important;
+}
+
+@media (max-width: 660px) {
+  .gs-intro h1 {
+    font-size: 35px;
+  }
 }
 
 .animation_fill img {
