@@ -2,48 +2,92 @@
   <div class="flipCard" @click="isFlipped = !isFlipped">
     <div class="card" :class="{ flipped: isFlipped }">
       <div class="side front" style="overflow: hidden">
-        <img
+        <div
           class="img-front"
           style="
             height: 35%;
             width: 100%;
             object-fit: cover;
             border-radius: 5px 5px 0px 0px;
+            background-size: 150%;
+            back
           "
-          :style="`filter: hue-rotate(${Math.random()*40}deg) brightness(${Math.random()*10 + 90}%) saturate(${Math.random()*20 + 80}%)`"
-          src="img/GH-Watercolor.png"
+          :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${(Math.sin(phase)+1)/2 * 100}% ${(Math.cos(phase)+1)/2 * 100}%;
+           filter: hue-rotate(${Math.sin(phase) * 20 + 10}deg)`"
           alt="watercolor card background image"
-        />
-        <div class="people-img" :style="` filter: hue-rotate(${Math.random()*0}deg); background-image:url( ${person.image} ); background-repeat: no-repeat; background-size:  ${person.image.includes('placeholder') ? '80%;  background-position: center': '100%; background-position:center'}`"></div>
-        <h1 class="people-name" style="width: 80%; text-overflow: wrap; margin: 0 auto;">{{(person.custom_fields.first_name[0] + " " + person.custom_fields.last_name[0])}}</h1>
+        ></div>
+        <div
+          class="people-img"
+          :style="` filter: hue-rotate(${
+            Math.random() * 0
+          }deg); background-image:url( ${
+            person.image
+          } ); background-repeat: no-repeat; background-size:  ${
+            person.image.includes('placeholder')
+              ? '80%;  background-position: center'
+              : '101%; background-position:center'
+          }`"
+        ></div>
+        <h1
+          class="people-name"
+          style="width: 80%; text-overflow: wrap; margin: 0 auto"
+        >
+          {{
+            person.custom_fields.first_name[0] +
+            " " +
+            person.custom_fields.last_name[0]
+          }}
+        </h1>
         <!-- <h1 class="people-name">{{person.custom_fields.last_name[0].toUpperCase()}}</h1> -->
         <!-- <p class="people-title" v-html="person.custom_fields.title[0]"></p> -->
       </div>
-      <div class="side back flex" alt="" style="text-overflow: ellipsis;">
-        <p class="people-desc" v-html="person.custom_fields.about[0]" style="overflow:hidden">
-        </p>
+      <div class="side back flex" alt="" style="text-overflow: ellipsis">
+        <p
+          class="people-desc"
+          v-html="person.custom_fields.about[0]"
+          style="overflow: hidden"
+        ></p>
         <div class="social-media">
           <div v-if="person.custom_fields.email[0]" class="email">
             <a :href="'mailto:' + person.custom_fields.email[0]"
               ><img src="../../public/img/email.svg"
             /></a>
           </div>
-          <div v-if="person.custom_fields.site && person.custom_fields.site[0]" class="site">
+          <div
+            v-if="person.custom_fields.site && person.custom_fields.site[0]"
+            class="site"
+          >
             <a :href="person.custom_fields.site[0]"
               ><img src="../../public/img/site.png"
             /></a>
           </div>
-          <div v-if="person.custom_fields.instagram && person.custom_fields.instagram[0]" class="instagram">
+          <div
+            v-if="
+              person.custom_fields.instagram &&
+              person.custom_fields.instagram[0]
+            "
+            class="instagram"
+          >
             <a :href="person.custom_fields.instagram[0]"
               ><img src="../../public/img/instagram.svg"
             /></a>
           </div>
-          <div v-if="person.custom_fields.linkedin && person.custom_fields.linkedin[0]" class="facebook">
+          <div
+            v-if="
+              person.custom_fields.linkedin && person.custom_fields.linkedin[0]
+            "
+            class="facebook"
+          >
             <a :href="person.custom_fields.linkedin[0]"
               ><img src="../../public/img/linkedin.png"
             /></a>
           </div>
-          <div v-if="person.custom_fields.twitter && person.custom_fields.twitter[0]" class="twitter">
+          <div
+            v-if="
+              person.custom_fields.twitter && person.custom_fields.twitter[0]
+            "
+            class="twitter"
+          >
             <a :href="person.custom_fields.twitter[0]"
               ><img src="../../public/img/twitter.svg"
             /></a>
@@ -67,31 +111,37 @@
 
 <script>
 export default {
-    name: "PersonCard",
-    props: {
-        person: {
-            type: Object,
-        },
-        img: {
-            type: String
-        }
+  name: "PersonCard",
+  props: {
+    person: {
+      type: Object,
     },
-    data(){
-        return {
-            isFlipped: false
-        }
+    img: {
+      type: String,
     },
-   
+    index: {
+      type: Number,
+    },
+  },
+  data() {
+    return {
+      isFlipped: false,
+    };
+  },
+  computed: {
+    phase() {
+      return this.index*Math.PI/6
+    }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import "../assets/projects.css";
-.people-name{
+.people-name {
   font-family: "Libre Franklin";
   text-transform: capitalize;
 }
-.img-front{
-  
+.img-front {
 }
 </style>

@@ -5,9 +5,10 @@
     
     <div id="active-people w-100" v-show="activeTab === 0"><div class="grid" v-if="activePeople.length > 0" >
       <person-card
-        v-for="person in activePeople"
+        v-for="(person,index) in activePeople"
         :key="person.slug"
         :person="person"
+        :index="index"
       ></person-card>
     </div></div>
     <div  v-if="alumni.length > 0" v-show="activeTab === 1">
