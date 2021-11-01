@@ -95,4 +95,7 @@ footer{
 .grants{
   position: relative;
 }
+.email{
+  overflow: hidden !important;
+}
 </style>
