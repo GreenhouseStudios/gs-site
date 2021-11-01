@@ -9,9 +9,10 @@
         id="menu-btn"
         @click="showMenu = true"
       />
-      <label class="menu-icon" for="menu-btn"
-        ><span class="navicon"></span
-      ></label>
+      <label class="menu-icon" for="menu-btn">
+        <p class="menu-title" style="margin: 0 15px;">{{currentPage()}}</p>
+        <span class="navicon"></span>
+      </label>
       <ul class="menu">
         <li><router-link class="shimmer" to="/">HOME</router-link></li>
         <li><router-link class="shimmer" to="/people">PEOPLE</router-link></li>
@@ -47,10 +48,39 @@ export default {
       return require("../../public/img/watercolor-nav.png");
     },
   },
+  methods: {
+    currentPage(){
+      var title = "";
+      var expr = this.$router.history.current["path"];
+      switch (expr) {
+        case '/': 
+          title = "Home";
+          break;
+        case '/people': 
+          title = "People";
+          break;
+        case '/projects': 
+          title = "Projects";
+          break;
+        case '/page/join-us': 
+          title = "Join Us";
+          break;
+        case '/blog': 
+          title = "Blog";
+          break;
+      }
+      return title;
+    }
+  }
 };
 </script>
 
 <style scoped>
+.menu-title {
+  font-family: Samo;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
 
 .fade-enter-active, .fade-leave-active {
   transition: opacity .5s;
@@ -102,7 +132,7 @@ li:hover {
   padding: 20px 20px;
   text-decoration: none;
   color: #161616;
-  font-size: 2rem;
+  font-size: 1.75rem;
 }
 
 .header .logo {
@@ -129,6 +159,8 @@ li:hover {
   padding: 28px 20px;
   position: relative;
   user-select: none;
+  display: flex; 
+  align-items: center;
 }
 
 .header .menu-icon .navicon {
@@ -203,6 +235,9 @@ li:hover {
   -webkit-animation-iteration-count: infinite;
   -webkit-background-size: 4rem 100%; /*50px*/
   
+}
+.router-link-exact-active{
+  text-decoration: wavy underline;
 }
 
 @-webkit-keyframes shimmer {
