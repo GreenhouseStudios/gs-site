@@ -13,7 +13,7 @@
             back
           "
           :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${(Math.sin(phase)+1)/2 * 100}% ${(Math.cos(phase)+1)/2 * 100}%;
-           filter: hue-rotate(${Math.sin(phase) * 20 + 10}deg)`"
+           filter: hue-rotate(${Math.sin(phase) * 20 + 40}deg) saturate(${Math.sin(phase) * 20 + 30}deg)`"
           alt="watercolor card background image"
         ></div>
         <div
