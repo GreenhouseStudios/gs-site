@@ -131,7 +131,9 @@ export default {
   padding: 0;
   position: relative;
   list-style-type: none;
-
-
+}
+#tab-btn-container{
+  display: flex;
+  flex-direction: row;
 }
 </style>

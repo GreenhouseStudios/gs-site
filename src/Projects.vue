@@ -1,7 +1,7 @@
 <template>
   <div v-if="!$store.getters.loading">
     <div class=" w-60-l w-90 bb bw1 center mb3">
-      <div class="flex flex-row justify-between w-80-l center"><span v-for="(cat,index) in categories" class="ma2" :key="cat"><button @click="activeTab = index" class="br3 f3-l f5 pa2 bg-transparent grow" :class="{active: activeTab === index, inactive: activeTab !== index}" >{{cat}}</button></span></div>
+      <div class="flex flex-row justify-between w-80-l center" id="tab-btn-container"><span v-for="(cat,index) in categories" class="ma2" :key="cat"><button @click="activeTab = index" class="br3 f3-l f5 pa2 bg-transparent grow" :class="{active: activeTab === index, inactive: activeTab !== index}" >{{cat}}</button></span></div>
     </div>
     <div class="grid" v-if="projects">
       <card v-for="project in projects" :key="project.id" :project="project"></card>
@@ -38,5 +38,9 @@ export default {
 }
 .inactive{
   border: 1px dashed rgba(0, 0, 0, 0.3)
+}
+#tab-btn-container{
+  display: flex;
+  flex-direction: row;
 }
 </style>
