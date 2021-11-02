@@ -2,7 +2,7 @@
   <div>
     <header class="header">
       <img :src="require('../../public/img/watercolor-nav.png')" alt="gs-watercolor-background" class="absolute" id="watercolor-bg">
-      <home-button></home-button>
+      <home-button class="o-0"></home-button>
       <input
         class="menu-btn"
         type="checkbox"
@@ -200,7 +200,9 @@ li:hover {
 #mobile-menu{
   font-size: 10rem !important;
 }
-
+.menu{
+  font-family: "Libre Franklin" !important;
+}
 /* 48em = 768px */
 
 @media (min-width: 60em) {
