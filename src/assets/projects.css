@@ -309,7 +309,9 @@ footer {
   bottom: 35px;
 }
 
-
+.btn-blog {
+  bottom: 25px;
+}
 
 .btn-bol:hover {
   background-color: white;

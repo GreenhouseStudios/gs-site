@@ -3,6 +3,7 @@
         <blog-card
             v-for="post in posts"
             :key="post.slug"
+            :post="post"
             :title="post.title"
             :content="post.content"
             :date="post.date"

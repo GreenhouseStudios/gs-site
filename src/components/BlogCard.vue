@@ -11,7 +11,7 @@
           <h1 class="title">{{removeTags(title.rendered)}}</h1>
           <p class="text">{{removeTags(content.rendered)}}<br><br>
           <router-link class="link" :to="`/blog/${slug}`">
-            <button id="button" class="btn-bol">READ MORE</button>
+            <button id="button" class="btn-bol btn-blog">READ MORE</button>
           </router-link>
           </p>
         </div>
@@ -23,6 +23,9 @@
 export default {
     name: "BlogCard",
     props: {
+        post: {
+          type: Object,
+        },
         title: {
             type: Object,
         },
@@ -71,13 +74,18 @@ export default {
         return newdate;
       },
       getImg(str){
-        var regex = /<img.*?src="(.*?)"/;
-        var src = regex.exec(str);
-        if(src == null){
-          // Placeholder Image
-          src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+        if(this.post.image){
+          console.log(this.post.image);
+          src = this.post.image;
         }else{
-          src = src[1];
+          var regex = /<img.*?src="(.*?)"/;
+          var src = regex.exec(str);
+          if(src == null){
+            // Placeholder Image
+            src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+          }else{
+            src = src[1];
+          }
         }
         return src;
       }

@@ -13,6 +13,17 @@ const actions = {
           "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/posts?per_page=100"
         )
         .then((res) => {
+          var posts = []
+          res.data.forEach((post) => {
+            if (post._links['wp:featuredmedia']) {
+              axios
+                .get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/media/" + post.featured_media)
+                .then((imgSrc) => {
+                  post["image"] = imgSrc.data.guid.rendered;
+                  posts.push(post);
+                });
+            }
+          });
           commit("setPosts",res.data)
         });
     },
