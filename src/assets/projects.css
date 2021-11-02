@@ -17,8 +17,6 @@ body {
 }
 
 
-
-
 /* 48em = 768px */
 
 @media (min-width: 62em) {
@@ -197,6 +195,7 @@ footer {
   transform: rotatey(-180deg);
 }
 
+
 .tile-back {
   z-index: -5;
   backface-visibility: hidden;
@@ -215,6 +214,11 @@ footer {
   align-items: center;
   justify-content: center;
   justify-content: space-between;
+  }
+
+
+.img-front {
+  border-radius: 10px;
 }
 
 .people-img {
@@ -274,23 +278,16 @@ footer {
   width: 250px;
   height: 80px;
   object-fit: contain;
-  padding-top: 35px;
 }
 
-.title-new-1 {
-  width: 250px;
-  height: 80px;
-  object-fit: contain;
-  padding-top: 35px;
-}
 
 .desc {
   margin: 0px;
-  padding-left: 30px;
-  padding-right: 30px;
   font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
   font-size: 15px;
   text-align: center;
+  display: flex;
+  justify-content: center;
 }
 
 #button {
@@ -305,11 +302,14 @@ footer {
   color: white;
   background-color: #246481;
   border: 2px solid #246481;
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translate(-50%, 0);
 }
+
+.link {
+  position: absolute;
+  bottom: 35px;
+}
+
+
 
 .btn-bol:hover {
   background-color: white;
@@ -473,6 +473,7 @@ footer {
   justify-content: center;
   gap: 5px;
 }
+
 
 @media (max-width: 660px) {
   .grid {

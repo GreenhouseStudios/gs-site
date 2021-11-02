@@ -17,7 +17,7 @@
         :style="
           'background-image: url(' + project.custom_fields.project_card_back + '); background-repeat: no-repeat;'
         "
-        class="side back flex"
+        class="side back flex-container"
         :alt="'Back side of flippable card for the project' + project.title.rendered " 
       >
         <img
@@ -25,10 +25,12 @@
           :src="project.custom_fields.project_title_img"
           alt="by our love"
         />
-        <p class="desc" v-if="project.custom_fields.about">
-          {{project.custom_fields.about[0]}}
+        <div class="desc" v-if="project.custom_fields.about">
+        <p>
+          {{project.custom_fields.about[0]}} 
         </p>
-        <a :href="project.custom_fields.website_url" target="_blank"
+        </div>
+        <a class="link" :href="project.custom_fields.website_url" target="_blank"
           ><button id="button" class="btn-bol">WEBSITE</button></a
         >
       </div>
@@ -60,5 +62,15 @@ export default {
 }
 .flipCard .card.flipped {
   transform: rotatey(-180deg);
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.back {
+  padding: 35px;
 }
 </style>

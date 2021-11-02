@@ -11,8 +11,8 @@
         :index="index"
       ></person-card>
     </div></div>
-    <div  v-if="alumni.length > 0" v-show="activeTab === 1">
-      <ul><li v-for="a in alumni" :key="a.title.rendered">{{a.title.rendered}}</li></ul>
+    <div v-if="alumni.length > 0" v-show="activeTab === 1">
+      <ul class="alumni-list w-50-ns w-90 center"><li v-for="a in alumni" :key="a.title.rendered">{{a.title.rendered}}</li></ul>
     </div>
     <div v-show="activeTab === 2">
       <div class="grid partner">
@@ -87,5 +87,16 @@ export default {
 }
 .partner{
   grid-template-rows: repeat(4, 200px) !important;
+}
+
+.alumni-list {
+  font-family: "Libre-Franklin", Arial, Helvetica, sans-serif;
+  font-size: 25px;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  list-style-type: none;
+
+
 }
 </style>
