@@ -1,35 +1,73 @@
 <template>
   <div>
-    <header class="header">
-      <img :src="require('../../public/img/watercolor-nav.png')" alt="gs-watercolor-background" class="absolute" id="watercolor-bg">
+    <header class="header relative">
+      <img
+        :src="require('../../public/img/watercolor-nav.png')"
+        alt="gs-watercolor-background"
+        class="absolute"
+        id="watercolor-bg"
+      />
       <home-button class="o-0"></home-button>
+      <div class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1 o-90 db-l dn" id="page-indicator"><h1 class="mv1">{{currentPage}}</h1></div>
       <input
         class="menu-btn"
         type="checkbox"
         id="menu-btn"
         @click="showMenu = true"
       />
-      <label class="menu-icon" for="menu-btn">
-        <p class="menu-title" style="margin: 0 15px;">{{currentPage()}}</p>
+      <label
+        class="absolute-l top-0 left-0 pa3 f1-ns f3 menu-icon"
+        for="menu-btn"
+      >
+        <p class="menu-title" style="margin: 0 15px">{{ currentPage }}</p>
         <span class="navicon"></span>
       </label>
-      <ul class="menu">
-        <li><router-link class="shimmer" to="/">HOME</router-link></li>
-        <li><router-link class="shimmer" to="/people">PEOPLE</router-link></li>
-        <li><router-link class="shimmer" to="/projects">PROJECTS</router-link></li>
-        <li><router-link class="shimmer" to="/page/join-us">JOIN US</router-link></li>
-        <li><router-link class="shimmer" to="/blog">BLOG</router-link></li>
-      </ul><transition name="slide-fade">
-      <div class="mobile-menu absolute top-0 bottom-0 left-0 right-0 w-100 bg-white z-5" v-if="showMenu" id="mobile-menu">
-        <button @click="showMenu = false" class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3" style="color: #161616"><i class="dib fa fa-xs fa-times"></i></button>
-        <ul @click="showMenu = false" class="flex flex-column items-center justify-center h-100">
-          <li><router-link to="/">HOME</router-link></li>
-          <li><router-link to="/people">PEOPLE</router-link></li>
-          <li><router-link to="/projects">PROJECTS</router-link></li>
-          <li><router-link to="/page/join-us">JOIN US</router-link></li>
-          <li><router-link to="/blog">BLOG</router-link></li>
-        </ul>
-      </div></transition>
+      <ul class="menu ttc">
+        <li><router-link class="shimmer" to="/">home</router-link></li>
+        <li><router-link class="shimmer" to="/people">people</router-link></li>
+        <li>
+          <router-link class="shimmer" to="/projects">projects</router-link>
+        </li>
+        <li>
+          <router-link class="shimmer" to="/page/join-us">join us</router-link>
+        </li>
+        <li><router-link class="shimmer" to="/blog">blog</router-link></li>
+      </ul>
+      <transition name="slide-fade">
+        <div
+          class="
+            mobile-menu
+            absolute
+            top-0
+            bottom-0
+            left-0
+            right-0
+            w-100
+            bg-white
+            z-5
+          "
+          v-if="showMenu"
+          id="mobile-menu"
+        >
+          <button
+            @click="showMenu = false"
+            class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
+            style="color: #161616"
+          >
+            <i class="dib fa fa-xs fa-times"></i>
+          </button>
+          <ul
+            @click="showMenu = false"
+            class="flex flex-column items-center justify-center h-100"
+          >
+            <li><router-link to="/">HOME</router-link></li>
+            <li><router-link to="/people">PEOPLE</router-link></li>
+            <li><router-link to="/projects">PROJECTS</router-link></li>
+            <li><router-link to="/page/join-us">JOIN US</router-link></li>
+            <li><router-link to="/blog">BLOG</router-link></li>
+          </ul>
+        </div></transition
+      >
     </header>
   </div>
 </template>
@@ -47,72 +85,72 @@ export default {
     navImg() {
       return require("../../public/img/watercolor-nav.png");
     },
-  },
-  methods: {
-    currentPage(){
+    currentPage() {
       var title = "";
-      var expr = this.$router.history.current["path"];
+      var expr = this.$route.path;
       switch (expr) {
-        case '/': 
+        case "/":
           title = "Home";
           break;
-        case '/people': 
+        case "/people":
           title = "People";
           break;
-        case '/projects': 
+        case "/projects":
           title = "Projects";
           break;
-        case '/page/join-us': 
+        case "/page/join-us":
           title = "Join Us";
           break;
-        case '/blog': 
+        case "/blog":
           title = "Blog";
           break;
       }
       return title;
-    }
-  }
+    },
+  },
+  methods: {},
 };
 </script>
 
 <style scoped>
+#page-indicator{
+  font-family: SAMO;
+}
 .menu-title {
   font-family: Samo;
-  font-size: 1.2rem;
-  text-transform: uppercase;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity .5s;
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
 }
 .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
   opacity: 0;
 }
 
 .slide-fade-enter-active {
-  transition: all .3s ease;
+  transition: all 0.3s ease;
 }
 .slide-fade-leave-active {
-  transition: all .3s ease-in;
+  transition: all 0.3s ease-in;
 }
 .slide-fade-enter, .slide-fade-leave-to
 /* .slide-fade-leave-active below version 2.1.8 */ {
   transform: translateY(1000px);
 }
 
-#watercolor-bg{
+#watercolor-bg {
   z-index: -1;
 }
-a {
-  font-family: Samo;
-}
+
 li {
   font-size: 1.2rem;
 }
 li:hover {
-
 }
-
+router-link {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
+}
 .header {
   width: 100%;
   background-size: 100%;
@@ -127,7 +165,7 @@ li:hover {
   list-style: none;
   overflow: hidden;
 }
- li a {
+li a {
   display: block;
   padding: 20px 20px;
   text-decoration: none;
@@ -149,6 +187,8 @@ li:hover {
   margin: 0;
   padding: 0;
   max-height: 0;
+  font-family: "Libre Franklin";
+  font-weight:500;
 }
 
 /* menu icon */
@@ -159,7 +199,7 @@ li:hover {
   padding: 28px 20px;
   position: relative;
   user-select: none;
-  display: flex; 
+  display: flex;
   align-items: center;
 }
 
@@ -197,10 +237,10 @@ li:hover {
   display: none;
 }
 
-#mobile-menu{
+#mobile-menu {
   font-size: 10rem !important;
 }
-.menu{
+.menu {
   font-family: "Libre Franklin" !important;
 }
 /* 48em = 768px */
@@ -224,10 +264,10 @@ li:hover {
 
 .shimmer:hover {
   display: inline-block;
-  color:white;
-  
-  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #AAA), to(#444));
-  
+  color: white;
+
+  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #aaa), to(#444));
+
   background-position: -4rem top; /*50px*/
   background-repeat: no-repeat;
   -webkit-background-clip: text;
@@ -236,23 +276,22 @@ li:hover {
   -webkit-animation-duration: 2.2s;
   -webkit-animation-iteration-count: infinite;
   -webkit-background-size: 4rem 100%; /*50px*/
-  
 }
-.router-link-exact-active{
-  text-decoration: wavy underline;
+.router-link-exact-active {
+  text-decoration: underline;
 }
 
 @-webkit-keyframes shimmer {
-    0% {
-        background-position: -4rem top; /*50px*/
-    }
+  0% {
+    background-position: -4rem top; /*50px*/
+  }
 
-    70% {
-        background-position: 12.5rem top; /*200px*/
-    }
+  70% {
+    background-position: 12.5rem top; /*200px*/
+  }
 
-    100% {
-        background-position: 12.5rem top; /*200px*/
-    }
+  100% {
+    background-position: 12.5rem top; /*200px*/
+  }
 }
 </style>
