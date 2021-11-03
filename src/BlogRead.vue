@@ -2,7 +2,7 @@
     <div id="blogmain" v-if="!$store.state.loading">
       <div id="blogcontent" v-if="post">
         <img v-if="isMobile()" id="mainimg" class="img alignleft" v-bind:src="(`${getImg(post.content.rendered)}`)" />
-        <h1>{{post.title.rendered}}</h1>
+        <h1>{{removeTags(post.title.rendered)}}</h1>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
           <span v-if="!isMobile()" v-html="post.content.rendered"></span>

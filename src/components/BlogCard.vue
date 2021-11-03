@@ -9,8 +9,8 @@
               <span class="year">{{getDate(date).year}}</span>
           </div>
           <h1 class="title">{{removeTags(title.rendered)}}</h1>
-          <p class="text">{{removeTags(content.rendered)}}<br><br>
-          <router-link class="link" :to="`/blog/${slug}`">
+          <p class="text">{{trimString(removeTags(content.rendered))}}<br><br>
+          <router-link class="" :to="`/blog/${slug}`">
             <button id="button" class="btn-bol btn-blog">READ MORE</button>
           </router-link>
           </p>
@@ -55,7 +55,7 @@ export default {
           str = str.replace(/&amp;/g, "&");
           str = str.replace(/&nbsp;/g, " ");
         }
-        return this.trimString(str)
+        return str
       },
       trimString(str){
         var maxLength = 115 // maximum number of characters to extract
