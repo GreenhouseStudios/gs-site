@@ -1,6 +1,6 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="w-50-ns w-90 center f3-ns f4 pv5-ns pv3 fw4 i">
+    <div class="w-third-l w-90 center f3-ns f4 pv5-ns pv3 fw4 i">
       {{ tabIntros[activeTab] }}
     </div>
     <div

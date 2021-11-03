@@ -8,7 +8,7 @@
         id="watercolor-bg"
       />
       <home-button class="o-0"></home-button>
-      <div class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1 o-90 db-l dn" id="page-indicator"><h1 class="mv1">{{currentPage}}</h1></div>
+      <div class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1-l f3 o-90 db-l dn" id="page-indicator"><h1 class="mv1">{{currentPage}}</h1></div>
       <input
         class="menu-btn"
         type="checkbox"
@@ -141,6 +141,9 @@ export default {
 
 #watercolor-bg {
   z-index: -1;
+  max-width: 60vw;
+  position: absolute;
+  right: 0;
 }
 
 li {
