@@ -9,7 +9,8 @@
     >
       <button
         @click="activeTab = index"
-        class="ma3 pa3-ns pa2 br2 grow ma1 bg-transparent"
+        class="ma3 pa3-ns pa2 br2 ma1 bg-transparent w5"
+        id="subnav-btn"
         :class="{ active: activeTab === index, inactive: activeTab !== index }"
         v-for="(tab, index) in tabs"
         :key="tab"
@@ -27,16 +28,35 @@
         ></person-card>
       </div>
     </div>
-    <div v-if="alumni.length > 0" v-show="activeTab === 1" class="relative center w-50-ns w-90 pa3">
-      <ul class="relative top-0 dib alumni-list w-50 tc" style="vertical-align: top">
-        <li class="pa2" v-for="a in alumni.slice(0,alumni.length/2)" :key="a.title.rendered">
+    <div
+      v-if="alumni.length > 0"
+      v-show="activeTab === 1"
+      class="relative center w-50-ns w-90 pa3"
+    >
+      <ul
+        class="relative top-0 dib alumni-list w-50 tc"
+        style="vertical-align: top"
+      >
+        <li
+          class="pa2"
+          v-for="a in alumni.slice(0, alumni.length / 2)"
+          :key="a.title.rendered"
+        >
           {{ a.title.rendered }}
         </li>
-        </ul><ul class="relative top-0 dib alumni-list w-50 tc" style="vertical-align: top">
-        <li class="pa2" v-for="b in alumni.slice(alumni.length/2)" :key="b.title.rendered">
+      </ul>
+      <ul
+        class="relative top-0 dib alumni-list w-50 tc"
+        style="vertical-align: top"
+      >
+        <li
+          class="pa2"
+          v-for="b in alumni.slice(alumni.length / 2)"
+          :key="b.title.rendered"
+        >
           {{ b.title.rendered }}
-        </li></ul>
-      
+        </li>
+      </ul>
     </div>
     <div v-show="activeTab === 2">
       <div class="grid partner">
@@ -84,9 +104,12 @@ export default {
     },
     alumni() {
       if (this.people.length > 0) {
-        return _.sortBy(this.people.filter((p) => p.categories.indexOf(86) >= 0),function (o) {
-          return o.custom_fields.last_name[0];
-        });
+        return _.sortBy(
+          this.people.filter((p) => p.categories.indexOf(86) >= 0),
+          function (o) {
+            return o.custom_fields.last_name[0];
+          }
+        );
       } else return [];
     },
     activePeople() {
@@ -111,11 +134,12 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
 .active {
   border: 2px solid black;
+  background-color: #8cc947;
 }
 .inactive {
   border: 2px dashed rgba(128, 128, 128, 0.4);
@@ -132,8 +156,16 @@ export default {
   position: relative;
   list-style-type: none;
 }
-#tab-btn-container{
+#tab-btn-container {
   display: flex;
   flex-direction: row;
+}
+#subnav-btn {
+  color: #8cc947;
+  border: 2px solid #8cc947;
+}
+#subnav-btn:hover {
+  background-color: white;
+  color: white;
 }
 </style>
