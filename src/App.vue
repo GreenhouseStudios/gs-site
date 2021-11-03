@@ -50,20 +50,18 @@
         </div>
       </div>
     </div>
-
-    <!-- <Nav :style="'background-image:url(' + require('../public/img/watercolor-nav.png') + '); background-size: 100%; background-position: top; background-repeat: no-repeat; overflow: visible'"></Nav> -->
     <Nav></Nav>
     <loading v-if="$store.getters.loading"></loading>
+    <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
     <img
       :src="bgImages[i % bgImages.length]"
       class="absolute o-30"
       style="height: 500px"
-      :style="`top: ${spacing * i}px; left:${randomXOffset()}px; transform: rotate(${Math.random() * 46}deg)`"
+      :style="`top: ${spacing * i}px; left:${randomXinMargin(i)}px; transform: rotate(${Math.random() * 46}deg)`"
       v-for="i in numBgImages"
       :key="i"
-    />
-    <router-view></router-view>
-    <!-- <home></home> -->
+    /></div>
+    <router-view v-on:subnav-change="childUpdate"></router-view>
     <hr />
     <Footer></Footer>
   </div>
@@ -85,6 +83,7 @@ export default {
       height: null,
       width: null,
       spacing: 800,
+      showBgImages: true,
       bgImages: [
         require("../public/bgImg/gs_center-table_line-art.png"),
         require("../public/bgImg/gs_lightbulb_line-art.png"),
@@ -104,9 +103,18 @@ export default {
     randomXOffset() {
       return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
     },
+    randomXinMargin(i){
+      return i%2 === 0 ? -50 : this.width - this.width/4;
+    },
     scale(number, inMin, inMax, outMin, outMax) {
       return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
     },
+    childUpdate(){
+      this.showBgImages= false;
+      this.height = document.body.scrollHeight;
+      this.width = document.body.scrollWidth;
+      this.showBgImages = true
+    }
   },
   computed: {
     numBgImages() {

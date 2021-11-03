@@ -8,7 +8,7 @@
       class="w-50-ns center flex flex-row justify-center bb"
     >
       <button
-        @click="activeTab = index"
+        @click="changeActiveTab(index)"
         class="ma3 pa3-ns pa2 br2 ma1 bg-transparent w5"
         id="subnav-btn"
         :class="{ active: activeTab === index, inactive: activeTab !== index }"
@@ -93,6 +93,12 @@ export default {
       ],
       activeTab: 0,
     };
+  },
+  methods: {
+    changeActiveTab(i) {
+      this.activeTab = i;
+      this.$emit('subnav-change')
+    }
   },
   computed: {
     peopleByLastName() {
