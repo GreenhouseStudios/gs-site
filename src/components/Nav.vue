@@ -8,7 +8,12 @@
         id="watercolor-bg"
       />
       <home-button class="o-0"></home-button>
-      <div class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1-l f3 o-90 db-l dn" id="page-indicator"><h1 class="mv1">{{currentPage}}</h1></div>
+      <div
+        class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1-l f3 o-90 db-l dn"
+        id="page-indicator"
+      >
+        <h1 class="mv1">{{ currentPage }}</h1>
+      </div>
       <input
         class="menu-btn"
         type="checkbox"
@@ -23,15 +28,15 @@
         <span class="navicon"></span>
       </label>
       <ul class="menu ttc">
-        <li><router-link class="shimmer" to="/">home</router-link></li>
-        <li><router-link class="shimmer" to="/people">people</router-link></li>
+        <li><router-link class="shimmer relative" to="/">home <img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
+        <li><router-link class="shimmer relative" to="/people">people<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
         <li>
-          <router-link class="shimmer" to="/projects">projects</router-link>
+          <router-link class="shimmer relative" to="/projects">projects<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link>
         </li>
         <li>
-          <router-link class="shimmer" to="/page/join-us">join us</router-link>
+          <router-link class="shimmer relative" to="/page/join-us">join us<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link>
         </li>
-        <li><router-link class="shimmer" to="/blog">blog</router-link></li>
+        <li><router-link class="shimmer relative" to="/blog">blog<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
       </ul>
       <transition name="slide-fade">
         <div
@@ -112,8 +117,8 @@ export default {
 };
 </script>
 
-<style scoped>
-#page-indicator{
+<style scoped lang="scss">
+#page-indicator {
   font-family: SAMO;
 }
 .menu-title {
@@ -191,7 +196,7 @@ li a {
   padding: 0;
   max-height: 0;
   font-family: "Libre Franklin";
-  font-weight:500;
+  font-weight: 500;
 }
 
 /* menu icon */
@@ -281,7 +286,9 @@ li a {
   -webkit-background-size: 4rem 100%; /*50px*/
 }
 .router-link-exact-active {
-  text-decoration: underline;
+  > img{
+    display: block;
+  }
 }
 
 @-webkit-keyframes shimmer {
