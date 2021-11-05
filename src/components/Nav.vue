@@ -12,7 +12,7 @@
         class="absolute top-0 left-0 ttu ph3 mh3 mv0 f1-l f3 o-90 db-l dn"
         id="page-indicator"
       >
-        <h1 class="mv1">{{ currentPage }}</h1>
+        <h1 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h1>
       </div>
       <input
         class="menu-btn"
@@ -28,15 +28,15 @@
         <span class="navicon"></span>
       </label>
       <ul class="menu ttc">
-        <li><router-link class="shimmer relative" to="/">home <img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
-        <li><router-link class="shimmer relative" to="/people">people<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
+        <li><router-link class="shimmer relative" to="/">home <img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn" :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"/></router-link></li>
+        <li><router-link class="shimmer relative" to="/people">people<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link></li>
         <li>
-          <router-link class="shimmer relative" to="/projects">projects<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link>
+          <router-link class="shimmer relative" to="/projects">projects<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link>
         </li>
         <li>
-          <router-link class="shimmer relative" to="/page/join-us">join us<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link>
+          <router-link class="shimmer relative" to="/page/join-us">join us<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link>
         </li>
-        <li><router-link class="shimmer relative" to="/blog">blog<img :src="require('../../public/img/Line.png')" class="w-70 absolute bottom-1 left-1 dn"/></router-link></li>
+        <li><router-link class="shimmer relative" to="/blog">blog<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link></li>
       </ul>
       <transition name="slide-fade">
         <div
@@ -288,6 +288,7 @@ li a {
 .router-link-exact-active {
   > img{
     display: block;
+    bottom: 5%;
   }
 }
 
