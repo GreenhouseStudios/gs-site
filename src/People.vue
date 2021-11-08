@@ -104,7 +104,7 @@ export default {
     peopleByLastName() {
       return _.sortBy(this.people, [
         function (o) {
-          return o.custom_fields.last_name[0];
+          return o.custom_fields.last_name[0].toLowerCase();
         },
       ]);
     },
@@ -113,7 +113,7 @@ export default {
         return _.sortBy(
           this.people.filter((p) => p.categories.indexOf(86) >= 0),
           function (o) {
-            return o.custom_fields.last_name[0];
+            return o.custom_fields.last_name[0].toLowerCase();
           }
         );
       } else return [];
