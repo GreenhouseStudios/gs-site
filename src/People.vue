@@ -171,7 +171,7 @@ export default {
   border: 2px solid #8cc947;
 }
 #subnav-btn:hover {
-  background-color: white;
+  background-color: #bde491;
   color: white;
 }
 </style>
