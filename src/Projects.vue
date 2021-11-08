@@ -1,7 +1,10 @@
 <template>
   <div v-if="!$store.getters.loading">
+    <div class="w-third-l w-90 center f3-ns f4 pv5-ns pv3 fw4 i">
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
+    </div>
     <div class=" w-60-l w-90 bb bw1 center mb3">
-      <div class="flex flex-row justify-between w-80-l center" id="tab-btn-container"><span v-for="(cat,index) in categories" class="ma2" :key="cat"><button @click="activeTab = index" class="br3 f3-l f5 pa2 bg-transparent grow" :class="{active: activeTab === index, inactive: activeTab !== index}" >{{cat}}</button></span></div>
+      <!-- <div class="flex flex-row justify-between w-80-l center" id="tab-btn-container"><span v-for="(cat,index) in categories" class="ma2" :key="cat"><button @click="activeTab = index" class="br3 f3-l f5 pa2 bg-transparent grow" :class="{active: activeTab === index, inactive: activeTab !== index}" >{{cat}}</button></span></div> -->
     </div>
     <div class="grid" v-if="projects">
       <card v-for="project in projects" :key="project.id" :project="project"></card>
