@@ -3,7 +3,6 @@
     <div class="container">
       <div class="contents">
         <img src="../../public/img/GS_G_logo.png" alt="" />
-        <h1>Loading...</h1>
       </div>
     </div>
   </div>
@@ -39,5 +38,20 @@ export default {};
 }
 h1 {
   text-align: center;
+}
+
+img {
+  animation: breathing 1.4s infinite alternate-reverse;
+}
+@keyframes breathing {
+  0%{
+    opacity: 0.6;
+    transform: scale(1);
+  }
+
+  100%{
+    opacity: 1;
+    transform: scale(1.2);
+  }
 }
 </style>
