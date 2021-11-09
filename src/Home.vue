@@ -1,6 +1,6 @@
 <template>
   <div class="body">
-    <div class="gs-intro">
+    <div class="gs-intro w-80">
       <h1 class="title">
         Facilitating humanities research through collaboration, digital technology and design.
       </h1>
