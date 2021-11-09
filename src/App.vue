@@ -83,7 +83,6 @@ export default {
       height: null,
       width: null,
       spacing: 800,
-      showBgImages: true,
       bgImages: [
         require("../public/bgImg/gs_center-table_line-art.png"),
         require("../public/bgImg/gs_lightbulb_line-art.png"),
@@ -120,6 +119,9 @@ export default {
     numBgImages() {
       return Math.abs(Math.floor(this.height / this.spacing) - 1);
     },
+    showBgImages(){
+      return this.$route.path !== '/'
+    }
   },
   mounted() {
     this.height = document.body.scrollHeight;
@@ -166,5 +168,14 @@ footer {
 }
 #university-of-connecticut {
   color: #000e2f !important;
+}
+.off-black{
+  color: #191919;
+}
+.off-black-2{
+  color: #404040;
+}
+.dark-gray{
+  color: #808080;
 }
 </style>
