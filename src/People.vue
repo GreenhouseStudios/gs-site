@@ -1,6 +1,6 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="w-third-l w-90 center f3-ns f4 pv5-ns pv3 fw4 i">
+    <div class="w-70-l w-90 center f3-ns f4 pv6-ns pv3 fw4 i">
       {{ tabIntros[activeTab] }}
     </div>
     <div
@@ -60,7 +60,7 @@
     </div>
     <div v-show="activeTab === 2">
       <div class="grid partner">
-        <img v-for="p in partners" :key="p" class="" :src="p" />
+        <img v-for="p in partners" :key="p" class="partner-img" :src="p" />
       </div>
     </div>
   </div>
@@ -78,9 +78,6 @@ export default {
       posts: null,
       imgs: null,
       partners: [
-        require("../public/img/UConn_Library_Logo.png"),
-        require("../public/img/UConn_Humanities_Institute.png"),
-        require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
         require("../public/img/UConn_Library_Logo.png"),
         require("../public/img/UConn_Humanities_Institute.png"),
         require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
@@ -152,6 +149,9 @@ export default {
 }
 .partner {
   grid-template-rows: repeat(4, 200px) !important;
+}
+.partner-img {
+  margin: auto;
 }
 
 .alumni-list {
