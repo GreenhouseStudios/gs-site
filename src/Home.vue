@@ -10,6 +10,17 @@
       <!-- <img src="../public/img/Animation_Fill.png" /> -->
       <iframe width="100vw" src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview" title="GS Process Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
+
+    <div class="text-1">
+      <div class="fprojects-text">
+        <h2 class="title-2" style="padding: 0px !important;"> Featured Projects </h2>
+        <router-link to="/projects"> view all projects &#8594; </router-link>
+      </div>
+      <div class="grid sidescroll" v-if="projects">
+        <card v-for="(project,index) in projects" :key="project.id" :project="project" :index="index"></card>
+      </div>
+    </div>
+    
     <div class="text-1">
         <h2 class="title-2">Collaborative Culture</h2>
         <p>Greenhouse Studios implements a “collaboration first” approach that brings a wide variety of people together to create original works of research from start to finish. </p>
@@ -31,15 +42,28 @@
     <blog></blog>
   </div> -->
 
-
   </div>
 </template>
 
 <script>
+import Card from "./components/Card.vue";
 // import Blog from ".//Blog.vue";
 export default {
     name: "Home",
+    components: { Card },
     // components: { Blog },
+    data() {
+    return {
+      projects: null,
+      }
+    },
+    updated() {
+      this.projects = this.$store.getters.allProjects
+    },
+    mounted () {
+      this.projects = this.$store.getters.allProjects;
+    },
+
 };
 </script>
 
@@ -560,5 +584,20 @@ p a {
 .body {
   margin: 0 auto;
   max-width: fit-content;
+}
+
+.sidescroll {
+  display: flex;
+  justify-content: flex-start;
+  width: 100vw;
+  height: 450px;
+  overflow: auto;
+  // white-space: nowrap;
+}
+
+.fprojects-text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 </style>
