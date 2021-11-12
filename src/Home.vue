@@ -37,6 +37,16 @@
       <p>As an interdisciplinary research unit, the Greenhouse Studios team comprises a wide variety of scholars, designers, developers, library professionals, editors, and more. We are a joint effort of the University of Connecticut’s College of Liberal Arts and Sciences, Library, and School of Fine Arts; our team members come from both within and beyond the university.</p>
   </div>
 
+  <div class="text-1">
+      <div class="fprojects-text">
+        <h3 class="title-2 f2" style="padding: 0px !important;"> Featured Blog Posts </h3>
+        <router-link to="/blog"> view blog &#8594; </router-link>
+      </div>
+      <div class="grid sidescroll" v-if="blog">
+        <card v-for="(blog,index) in blog" :key="blog.id" :project="blog" :index="index"></card>
+      </div>
+    </div>
+
   <!-- <div class="text-1">
     <h2 class="title-2">Blog</h2> 
     <blog></blog>
