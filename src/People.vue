@@ -15,7 +15,7 @@
         v-for="(tab, index) in tabs"
         :key="tab"
       >
-        <h1 class="ma0 f4-ns f6">{{ tab }}</h1>
+        <h3 class="ma0 f1 f4-ns f6" style="color: #333333;">{{ tab }}</h3>
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">

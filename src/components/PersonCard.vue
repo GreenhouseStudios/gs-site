@@ -28,16 +28,16 @@
               : '101%; background-position:center'
           }`"
         ></div>
-        <h1
+        <h4
           class="people-name"
-          style="width: 80%; text-overflow: wrap; margin: 0 auto"
+          style="width: 80%; text-overflow: wrap; margin: 0 auto; font-weight: normal;"
         >
           {{
             person.custom_fields.first_name[0] +
             " " +
             person.custom_fields.last_name[0]
           }}
-        </h1>
+        </h4>
         <!-- <h1 class="people-name">{{person.custom_fields.last_name[0].toUpperCase()}}</h1> -->
         <!-- <p class="people-title" v-html="person.custom_fields.title[0]"></p> -->
       </div>

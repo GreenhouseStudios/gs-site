@@ -2,11 +2,11 @@
     <div id="blogmain" v-if="!$store.state.loading">
       <div id="blogcontent" v-if="post">
         <img v-if="isMobile()" id="mainimg" class="img alignleft" v-bind:src="(`${getImg(post.content.rendered)}`)" />
-        <h1>{{removeTags(post.title.rendered)}}</h1>
+        <h2 class="f1">{{removeTags(post.title.rendered)}}</h2>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
           <span v-if="!isMobile()" v-html="post.content.rendered"></span>
-          <span else>{{removeTags(post.content.rendered)}}</span> 
+          <span v-else>{{removeTags(post.content.rendered)}}</span> 
         </div>
         <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
         <!-- <div class="nav-links row">

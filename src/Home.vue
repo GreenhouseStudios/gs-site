@@ -1,9 +1,9 @@
 <template>
   <div class="body">
     <div class="gs-intro w-80">
-      <h1 class="title">
+      <h2 class="title">
         Facilitating humanities research through collaboration, digital technology and design.
-      </h1>
+      </h2>
     </div>
 
     <div class = "video-container">
@@ -13,7 +13,7 @@
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h2 class="title-2" style="padding: 0px !important;"> Featured Projects </h2>
+        <h3 class="title-2 f2" style="padding: 0px !important;"> Featured Projects </h3>
         <router-link to="/projects"> view all projects &#8594; </router-link>
       </div>
       <div class="grid sidescroll" v-if="projects">
@@ -22,18 +22,18 @@
     </div>
     
     <div class="text-1">
-        <h2 class="title-2">Collaborative Culture</h2>
+        <h3 class="title-2 f2">Collaborative Culture</h3>
         <p>Greenhouse Studios implements a “collaboration first” approach that brings a wide variety of people together to create original works of research from start to finish. </p>
         <p>We are dedicated to addressing the persistent, intertwined problems of workflow and hierarchy with a mission that equally values all stakeholders involved in producing scholarship. Everyone has a seat at the table and a voice in the conversation.</p>
         <p>As a scholarly research lab, we have created a unique workspace—a scholarly communications design studio—which….</p>
     </div>
     <div class="text-1">
-      <h2 class="title-2">What We Do</h2>  
+      <h3 class="title-2 f2">What We Do</h3>  
       <p>We lead an inquiry-driven, collaboration-first scholarly design process together with an interdisciplinary team. Based on collective interests, backgrounds, skills, and aspirations, we conceive and implement a multimodal response to a challenge posed by a prompt.</p>
       <p>Depending on audiences and aims, projects may take shape in diverse media outputs ranging from interactive websites and immersive virtual reality to exhibitions and documentary films.</p>
     </div>
     <div class="text-1">
-      <h2 class="title-2">Who We Are</h2>  
+      <h3 class="title-2 f2">Who We Are</h3>  
       <p>As an interdisciplinary research unit, the Greenhouse Studios team comprises a wide variety of scholars, designers, developers, library professionals, editors, and more. We are a joint effort of the University of Connecticut’s College of Liberal Arts and Sciences, Library, and School of Fine Arts; our team members come from both within and beyond the university.</p>
   </div>
 
@@ -112,7 +112,7 @@ body {
   overflow: hidden;
 }
 
-.gs-intro h1 {
+.gs-intro h2 {
   font-family: "Libre Franklin";
   font-weight: 600;
   font-size: 50px;
@@ -125,7 +125,7 @@ body {
 }
 
 @media (max-width: 660px) {
-  .gs-intro h1 {
+  .gs-intro h2 {
     font-size: 35px;
   }
 }

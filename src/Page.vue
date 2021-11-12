@@ -1,6 +1,6 @@
 <template>
   <div v-if="page" id="container" class="ph5-ns">
-    <h1>{{page.title.rendered}}</h1>
+    <h2 class="f1">{{page.title.rendered}}</h2>
     <div v-html="page.content.rendered"></div>
   </div>
 </template>

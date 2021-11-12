@@ -8,7 +8,7 @@
               <span class="day">{{getDate(date).day}}, </span>
               <span class="year">{{getDate(date).year}}</span>
           </div>
-          <h1 class="title">{{removeTags(title.rendered)}}</h1>
+          <h3 class="title">{{removeTags(title.rendered)}}</h3>
           <p class="text">{{trimString(removeTags(content.rendered))}}<br><br>
           <router-link class="" :to="`/blog/${slug}`">
             <button id="button" class="btn-bol btn-blog">READ MORE</button>
