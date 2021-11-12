@@ -1,7 +1,9 @@
 <template>
     <div id="blogmain" v-if="!$store.state.loading">
       <div id="blogcontent" v-if="post">
-        <img v-if="isMobile()" id="mainimg" class="img alignleft" v-bind:src="(`${getImg(post.content.rendered)}`)" />
+        <img v-if="isMobile()" id="mainimg" class="img alignleft" 
+          v-bind:src="(`${getImg(post.content.rendered)}`)" 
+          v-bind:alt="(`${getAlt(post.content.rendered)}`)"/>
         <h2 class="f1">{{removeTags(post.title.rendered)}}</h2>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
@@ -64,6 +66,17 @@ export default {
         src = src[1];
       }
       return src;
+    },
+    getAlt(str){
+      var regex = /<img.*?src="(.*?)" alt="(.*?)"/;
+      var alt = regex.exec(str);
+      if(alt == null){
+        // Placeholder Image
+        alt = "A blog image"
+      }else{
+        alt = alt[2];
+      }
+      return alt;
     },
     isMobile() {
       if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
