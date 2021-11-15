@@ -9,6 +9,7 @@ Vue.use(Vuex)
 export const store = new Vuex.Store({
     state: {
       posts: [],
+      postCount: 0,
       people: [],
       projects: [],
       loading: true,

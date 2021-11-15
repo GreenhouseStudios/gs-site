@@ -1,5 +1,5 @@
 <template>
-  <div class="flipCard" @click="isFlipped = !isFlipped">
+  <div class="flipCard" @click="isFlipped = !isFlipped" v-lazy-container="{selector: 'div'}">
     <div class="card" :class="{ flipped: isFlipped }">
       <div class="side front" style="overflow: hidden">
         <div
@@ -115,9 +115,6 @@ export default {
   props: {
     person: {
       type: Object,
-    },
-    img: {
-      type: String,
     },
     index: {
       type: Number,

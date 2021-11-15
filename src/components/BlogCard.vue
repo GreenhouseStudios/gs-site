@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + ')'" alt="Blog Card Image">
+    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + ')'" alt="Blog Card Image" >
       <div class="data">
         <div class="content">
           <hr>
@@ -75,7 +75,6 @@ export default {
       },
       getImg(str){
         if(this.post.image){
-          console.log(this.post.image);
           src = this.post.image;
         }else{
           var regex = /<img.*?src="(.*?)"/;
