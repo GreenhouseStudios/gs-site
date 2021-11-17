@@ -55,9 +55,9 @@
     <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
     <img
       :src="bgImages[i % bgImages.length]"
-      class="absolute o-30"
+      class="absolute o-10"
       style="height: 500px"
-      :style="`top: ${spacing * i}px; left:${randomXinMargin(i)}px; transform: rotate(${Math.random() * 46}deg)`"
+      :style="`top: ${spacing * i}px; left:${randomXinMargin(i)}px; transform: scale(2.5)`"
       v-for="i in numBgImages"
       :key="i"
     /></div>
@@ -82,16 +82,9 @@ export default {
     return {
       height: null,
       width: null,
-      spacing: 800,
+      spacing: 1500,
       bgImages: [
-        require("../public/bgImg/gs_center-table_line-art.png"),
-        require("../public/bgImg/gs_lightbulb_line-art.png"),
-        require("../public/bgImg/gs_scissors_line-art.png"),
-        require("../public/bgImg/gs_shovel_line-art.png"),
         require("../public/bgImg/gs_spider-plant-fully-grown_bw.png"),
-        require("../public/bgImg/gs_cloud_line-art.png"),
-        require("../public/bgImg/gs_hand-seed-drop-hand-only_line-art.png"),
-        require("../public/bgImg/gs_hand-sticker_line-art.png"),
       ],
     };
   },
@@ -103,7 +96,7 @@ export default {
       return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
     },
     randomXinMargin(i){
-      return i%2 === 0 ? -50 : this.width - this.width/4;
+      return i%2 === 0 ? -600  - Math.random() * 100: this.width - 100 - Math.random() * 100;
     },
     scale(number, inMin, inMax, outMin, outMax) {
       return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
