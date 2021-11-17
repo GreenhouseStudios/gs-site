@@ -9,11 +9,13 @@
               <span class="year">{{getDate(date).year}}</span>
           </div>
           <h3 class="title">{{removeTags(title.rendered)}}</h3>
-          <p class="text">{{trimString(removeTags(content.rendered))}}<br><br>
-          <router-link class="" :to="`/blog/${slug}`">
+          <div class="text">
+            <p class="blogcardtext">{{removeTags(content.rendered)}}</p>
+            <br><br>
+            <router-link class="" :to="`/blog/${slug}`">
             <button id="button" class="btn-bol btn-blog">READ MORE</button>
-          </router-link>
-          </p>
+            </router-link>
+          </div>
         </div>
       </div>
     </div>
@@ -57,14 +59,6 @@ export default {
         }
         return str
       },
-      trimString(str){
-        var maxLength = 115 // maximum number of characters to extract
-        //trim the string to the maximum length
-        var trimmedString = str.substr(0, maxLength);
-        //re-trim if we are in the middle of a word
-        trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
-        return trimmedString + "..."
-      },
       getDate(str){
         const date = new Date(str);  // 2009-11-10
         const month = date.toLocaleString('default', { month: 'short' });
@@ -94,4 +88,13 @@ export default {
 
 <style lang="scss" scoped>
 @import "../assets/projects.css";
+
+.blogcardtext {
+  overflow: hidden;
+   text-overflow: ellipsis;
+   display: -webkit-box;
+   -webkit-line-clamp: 3; /* number of lines to show */
+           line-clamp: 3; 
+   -webkit-box-orient: vertical;
+}
 </style>
