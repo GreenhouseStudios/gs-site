@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header bg-white z-5">
+    <header class="header relative bg-white z-5">
       <img
         :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
