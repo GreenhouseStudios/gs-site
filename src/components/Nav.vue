@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header relative">
+    <header class="header bg-white z-5">
       <img
         :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
@@ -9,7 +9,21 @@
       />
       <home-button class="o-0"></home-button>
       <div
-        class="absolute top-0 left-0 ttu ph3 mh3 mv0 f2-l f3 o-90 db-l dn off-black"
+        class="
+          absolute
+          top-0
+          left-0
+          ttu
+          ph3
+          mh3
+          mv0
+          f2-l
+          f3
+          o-90
+          db-l
+          dn
+          off-black
+        "
         id="page-indicator"
       >
         <!-- <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2> -->
@@ -24,36 +38,49 @@
         class="absolute-l top-0 left-0 pa3 f1-ns f3 menu-icon"
         for="menu-btn"
       >
-        <p class="menu-title" style="margin: 0 15px">{{ currentPage }}</p>
         <span class="navicon"></span>
       </label>
       <ul class="menu ttc">
-        <li><router-link class="shimmer relative" to="/">home <img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn" :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"/></router-link></li>
-        <li><router-link class="shimmer relative" to="/people">people<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link></li>
         <li>
-          <router-link class="shimmer relative" to="/projects">projects<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link>
+          <router-link class="shimmer relative" to="/"
+            >home
+            <img
+              :src="require('../../public/img/Line2.svg')"
+              class="w-70 absolute bottom-0 left-1 dn"
+              :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
+          /></router-link>
         </li>
         <li>
-          <router-link class="shimmer relative" to="/page/join-us">join us<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link>
+          <router-link class="shimmer relative" to="/people"
+            >people<img
+              :src="require('../../public/img/Line2.svg')"
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
         </li>
-        <li><router-link class="shimmer relative" to="/blog">blog<img :src="require('../../public/img/Line2.svg')" class="w-70 absolute bottom-0 left-1 dn"/></router-link></li>
+        <li>
+          <router-link class="shimmer relative" to="/projects"
+            >projects<img
+              :src="require('../../public/img/Line2.svg')"
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/page/join-us"
+            >join us<img
+              :src="require('../../public/img/Line2.svg')"
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/blog"
+            >blog<img
+              :src="require('../../public/img/Line2.svg')"
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
       </ul>
-      <transition name="slide-fade">
-        <div
-          class="
-            mobile-menu
-            absolute
-            top-0
-            bottom-0
-            left-0
-            right-0
-            w-100
-            bg-white
-            z-5
-          "
-          v-if="showMenu"
-          id="mobile-menu"
-        >
+      <transition name="slide-fade" >
+        <div class="w-100 bg-white z-5 absolute top-0" v-if="showMenu" id="mobile-menu">
           <button
             @click="showMenu = false"
             class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
@@ -64,6 +91,7 @@
           <ul
             @click="showMenu = false"
             class="flex flex-column items-center justify-center h-100"
+            id="mobile-menu-list"
           >
             <li><router-link to="/">HOME</router-link></li>
             <li><router-link to="/people">PEOPLE</router-link></li>
@@ -161,7 +189,6 @@ router-link {
 }
 .header {
   width: 100%;
-  background-size: 100%;
 }
 
 .header ul {
@@ -247,6 +274,8 @@ li a {
 
 #mobile-menu {
   font-size: 10rem !important;
+  background-color: white;
+  height: 100vh;
 }
 .menu {
   font-family: "Libre Franklin" !important;
@@ -286,7 +315,7 @@ li a {
   -webkit-background-size: 4rem 100%; /*50px*/
 }
 .router-link-exact-active {
-  > img{
+  > img {
     display: block;
     bottom: 5%;
   }
