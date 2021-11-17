@@ -12,7 +12,7 @@
         class="absolute top-0 left-0 ttu ph3 mh3 mv0 f2-l f3 o-90 db-l dn off-black"
         id="page-indicator"
       >
-        <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2>
+        <!-- <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2> -->
       </div>
       <input
         class="menu-btn"

@@ -1,4 +1,9 @@
 <template>
+<div>
+  <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+      <h2 class="page-title f1">Blog</h2>
+      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
+    </div>
   <div
     class="grid"
     v-if="!$store.getters.loading && posts"
@@ -15,6 +20,7 @@
     <infinite-loading @infinite="loadMore" :distance="1" v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
     <div style="margin-bottom: 5%"></div>
   </div>
+</div>
 </template>
 
 <script>

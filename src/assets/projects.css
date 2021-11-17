@@ -537,3 +537,11 @@ form {
   width: 50%;
   margin: auto;
 }
+
+.page-title {
+  font-family: samo;
+  text-transform: uppercase;
+  padding-bottom: 16px;
+  margin-top: 0;
+  font-weight: normal;
+}

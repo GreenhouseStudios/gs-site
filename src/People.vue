@@ -1,6 +1,7 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="w-70-l w-90 center f3-ns f4 ma5 pv6-ns pv3 fw4 i">
+    <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+      <h2 class="page-title f1">People</h2>
       {{ tabIntros[activeTab] }}
     </div>
     <div
@@ -19,7 +20,7 @@
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">
-      <div class="grid" v-if="activePeople.length > 0">
+      <div class="grid pa4" v-if="activePeople.length > 0">
         <person-card
           v-for="(person, index) in activePeople"
           :key="person.slug"
@@ -165,6 +166,7 @@ export default {
 #tab-btn-container {
   display: flex;
   flex-direction: row;
+  padding: 16px 0px;
 }
 #subnav-btn {
   color: #8cc947;
