@@ -12,28 +12,28 @@
 
         <div class="social-media">
           <div class="email">
-            <a href="mailto:greenhousestudios@uconn.edu"
-              ><img src="../../public/img/email.svg"
+            <a href="mailto:greenhousestudios@uconn.edu" 
+              ><img src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div class="instagram">
             <a href="https://www.instagram.com/greenhousestudiosuconn/?hl=en"
-              ><img src="../../public/img/instagram.svg"
+              ><img src="../../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
           <div class="youtube">
             <a href="https://www.youtube.com/channel/UCuDO0yPZYSaXBE3G7ArmQjw"
-              ><img src="../../public/img/youtube.svg"
+              ><img src="../../public/img/youtube.svg" alt="youtube"
             /></a>
           </div>
           <div class="facebook">
             <a href="https://www.facebook.com/GreenhouseStudiosUConn/"
-              ><img src="../../public/img/facebook.svg"
+              ><img src="../../public/img/facebook.svg" alt="facebook"
             /></a>
           </div>
           <div class="twitter">
             <a href="https://twitter.com/greenhouseuconn?lang=en"
-              ><img src="../../public/img/twitter.svg"
+              ><img src="../../public/img/twitter.svg" alt="twitter"
             /></a>
           </div>
         </div>
@@ -59,15 +59,15 @@
         <div class="grants">
           <img
             class="uconn-library"
-            src="../../public/img/UConn_Library_Logo.png"
+            src="../../public/img/UConn_Library_Logo.png" alt="uconn library logo"
           />
           <img
             class="uconn-humanities"
-            src="../../public/img/UConn_Humanities_Institute.png"
+            src="../../public/img/UConn_Humanities_Institute.png" alt="uconn humanities institute logo"
           />
           <img
             class="mellon"
-            src="../../public/img/Andrew_W_Mellon_Foundation_Logo.png"
+            src="../../public/img/Andrew_W_Mellon_Foundation_Logo.png" alt="andrew w mellon foundation logo"
           />
         </div>
       </section>
