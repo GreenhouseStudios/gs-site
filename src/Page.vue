@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page" id="container" class="ph5-ns">
+  <div v-if="page" id="container" class="w-two-thirds-ns center pa3">
     <h2 class="f1">{{page.title.rendered}}</h2>
     <div v-html="page.content.rendered"></div>
   </div>
