@@ -1,5 +1,9 @@
 <template>
-  <div class="flipCard" @click="isFlipped = !isFlipped" v-lazy-container="{selector: 'div'}">
+  <div
+    class="flipCard"
+    @click="isFlipped = !isFlipped"
+    v-lazy-container="{ selector: 'div' }"
+  >
     <div class="card" :class="{ flipped: isFlipped }">
       <div class="side front" style="overflow: hidden">
         <div
@@ -12,11 +16,16 @@
             background-size: 150%;
             back
           "
-          :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${(Math.sin(phase)+1)/2 * 100}% ${(Math.cos(phase)+1)/2 * 100}%;
-           filter: hue-rotate(${Math.sin(phase) * 20 + 40}deg) saturate(${Math.sin(phase) * 20 + 30}deg)`"
+          :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${
+            ((Math.sin(phase) + 1) / 2) * 100
+          }% ${((Math.cos(phase) + 1) / 2) * 100}%;
+           filter: hue-rotate(${Math.sin(phase) * 20 + 40}deg) saturate(${
+            Math.sin(phase) * 20 + 30
+          }deg)`"
           alt="watercolor card background image"
         ></div>
         <div
+          v-if="person.image"
           class="people-img"
           :style="` filter: hue-rotate(${
             Math.random() * 0
@@ -30,7 +39,15 @@
         ></div>
         <h4
           class="people-name"
-          style="width: 80%; text-overflow: wrap; margin: 0 auto; font-weight: normal;"
+          style="
+            width: 80%;
+            text-overflow: wrap;
+            margin: 0 auto;
+            font-weight: normal;
+          "
+          v-if="
+            person.custom_fields.first_name && person.custom_fields.first_name[0] && person.custom_fields.last_name  && person.custom_fields.last_name[0]
+          "
         >
           {{
             person.custom_fields.first_name[0] +
@@ -46,11 +63,12 @@
           class="people-desc"
           v-html="person.custom_fields.about[0]"
           style="overflow: hidden"
+          v-if="person.custom_fields.about && person.custom_fields.about[0]"
         ></p>
         <div class="social-media">
-          <div v-if="person.custom_fields.email[0]" class="email">
+          <div v-if="person.custom_fields.email && person.custom_fields.email[0]" class="email">
             <a :href="'mailto:' + person.custom_fields.email[0]"
-              ><img src="../../public/img/email.svg"
+              ><img src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div
@@ -58,7 +76,7 @@
             class="site"
           >
             <a :href="person.custom_fields.site[0]"
-              ><img src="../../public/img/site.png"
+              ><img src="../../public/img/site.png" alt="website"
             /></a>
           </div>
           <div
@@ -69,7 +87,7 @@
             class="instagram"
           >
             <a :href="person.custom_fields.instagram[0]"
-              ><img src="../../public/img/instagram.svg"
+              ><img src="../../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
           <div
@@ -79,7 +97,7 @@
             class="facebook"
           >
             <a :href="person.custom_fields.linkedin[0]"
-              ><img src="../../public/img/linkedin.png"
+              ><img src="../../public/img/linkedin.png" alt="linkedin"
             /></a>
           </div>
           <div
@@ -89,7 +107,7 @@
             class="twitter"
           >
             <a :href="person.custom_fields.twitter[0]"
-              ><img src="../../public/img/twitter.svg"
+              ><img src="../../public/img/twitter.svg" alt="twitter"
             /></a>
           </div>
         </div>
@@ -127,8 +145,8 @@ export default {
   },
   computed: {
     phase() {
-      return this.index*Math.PI/6
-    }
+      return (this.index * Math.PI) / 6;
+    },
   },
 };
 </script>
