@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header class="header relative bg-white z-5">
+    <header class="header bg-transparent z-5">
       <img
         :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
@@ -32,7 +32,7 @@
         class="menu-btn"
         type="checkbox"
         id="menu-btn"
-        @click="showMenu = true"
+        @click="toggleMenu()"
       />
       <label
         class="absolute-l top-0 left-0 pa3 f1-ns f3 menu-icon"
@@ -82,14 +82,14 @@
       <transition name="slide-fade" >
         <div class="w-100 bg-white z-5 absolute top-0" v-if="showMenu" id="mobile-menu">
           <button
-            @click="showMenu = false"
+            @click="toggleMenu()"
             class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
             style="color: #161616"
           >
             <i class="dib fa fa-xs fa-times"></i>
           </button>
           <ul
-            @click="showMenu = false"
+            @click="toggleMenu()"
             class="flex flex-column items-center justify-center h-100"
             id="mobile-menu-list"
           >
@@ -141,7 +141,12 @@ export default {
       return title;
     },
   },
-  methods: {},
+  methods: {
+    toggleMenu(){
+      this.showMenu = !this.showMenu;
+      this.$emit("toggle")
+    }
+  },
 };
 </script>
 

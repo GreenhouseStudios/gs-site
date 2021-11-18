@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="app" :style="`${menuOn ? 'overflow: hidden; height: 100vh' : ''}`">
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <Nav></Nav>
+    <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <loading v-if="$store.getters.loading"></loading>
     <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
     <img
@@ -80,6 +80,7 @@ export default {
   },
   data() {
     return {
+      menuOn: false,
       height: null,
       width: null,
       spacing: 1500,
