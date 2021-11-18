@@ -84,6 +84,7 @@ export default {
       height: null,
       width: null,
       spacing: 1500,
+      showBgImages: true,
       bgImages: [
         require("../public/bgImg/gs_spider-plant-fully-grown_bw.png"),
       ],
@@ -113,9 +114,6 @@ export default {
     numBgImages() {
       return Math.abs(Math.floor(this.height / this.spacing) - 1);
     },
-    showBgImages(){
-      return this.$route.path !== '/'
-    }
   },
   mounted() {
     this.height = document.body.scrollHeight;

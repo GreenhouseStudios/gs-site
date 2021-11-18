@@ -40,7 +40,7 @@
           class="link"
           :href="project.custom_fields.website_url"
           target="_blank"
-          ><button id="button" class="btn-bol">WEBSITE</button></a
+          ><button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button></a
         >
       </div>
     </div>
@@ -68,6 +68,9 @@ export default {
     phase() {
       return (this.index * Math.PI) / 2;
     },
+    btnColor(){
+      return this.project.custom_fields.btn_color ? this.project.custom_fields.btn_color : '#8CC947';
+    }
   },
 };
 </script>
