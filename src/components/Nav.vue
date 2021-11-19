@@ -179,9 +179,14 @@ export default {
 
 #watercolor-bg {
   z-index: -1;
-  max-width: 60vw;
   position: absolute;
   right: 0;
+  @media screen and (min-width: 1440px){
+    width: 75vw;
+  }
+   @media screen and (max-width: 1440px){
+    width: 130vw;
+  }
 }
 
 li {
