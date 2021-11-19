@@ -10,13 +10,14 @@
     <div class=" w-60-l w-90 bb bw1 center mb3">
     </div>
     <div class="grid" v-if="projects">
-      <card v-for="(project,index) in projects" :key="project.id" :project="project" :index="index"></card>
+      <card v-for="(project,index) in projectsByName" :key="project.slug" :project="project" :index="index"></card>
     </div>
   </div>
 </template>
 
 <script>
 import Card from "./components/Card.vue";
+import _ from 'lodash'
 export default {
   name: "Projects",
   components: { Card },
@@ -32,6 +33,20 @@ export default {
   },
   mounted () {
     this.projects = this.$store.getters.allProjects;
+  },
+  computed: {
+    projectsByName() {
+     if (!this.$store.getters.loading && this.projects.length > 0) {
+        return _.sortBy(
+          this.projects,
+          [
+            function (o) {
+              return o.slug ? o.slug.toLowerCase() : "";
+            },
+          ]
+        );
+      } else return [];
+    }
   },
 };
 </script>
