@@ -44,8 +44,8 @@
           >
           <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button>
         </a>
-        <router-link v-else class="" :to="`/projects/${slug}`">
-          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button>
+        <router-link v-else class="link" :to="`/projects/${slug}`">
+          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">READ MORE</button>
         </router-link>
       </div>
     </div>
