@@ -37,11 +37,16 @@
           </p>
         </div>
         <a
+          v-if="hasSite()"
           class="link"
           :href="project.custom_fields.website_url"
           target="_blank"
-          ><button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button></a
-        >
+          >
+          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button>
+        </a>
+        <router-link v-else class="" :to="`/projects/${slug}`">
+          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button>
+        </router-link>
       </div>
     </div>
   </div>
@@ -58,6 +63,9 @@ export default {
     index: {
       type: Number,
     },
+    slug: {
+      type: String,
+    }
   },
   data() {
     return {
@@ -72,6 +80,15 @@ export default {
       return this.project.custom_fields.btn_color ? this.project.custom_fields.btn_color : '#8CC947';
     }
   },
+  methods: {
+    hasSite(){
+      if(this.project.custom_fields.website_url[0] == ""){
+        return false
+      }else{
+        return true
+      }
+    }
+  }
 };
 </script>
 

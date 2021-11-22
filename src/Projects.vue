@@ -10,7 +10,11 @@
     <div class=" w-60-l w-90 bb bw1 center mb3">
     </div>
     <div class="grid" v-if="projects">
-      <card v-for="(project,index) in projectsByName" :key="project.slug" :project="project" :index="index"></card>
+      <card v-for="(project,index) in projectsByName" 
+      :key="project.slug" 
+      :project="project" 
+      :index="index"
+      :slug="project.slug"></card>
     </div>
   </div>
 </template>
