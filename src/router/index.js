@@ -11,13 +11,13 @@ Vue.use(
     VueRouter
 )
 const routes = [
-    { path: '/projects', component: Projects },
-    { path: '/people', component: People },
-    { path: '/blog', component: Blog },
-    { path: '/blog/:slug', component: BlogRead },
-    { path: '/projects/:slug', component: ProjectPage },
-    { path: '/page/:slug', component: Page},
-    { path: '/', component: Home },
+    {name: "Projects", path: '/projects', component: Projects },
+    {name: "People", path: '/people', component: People },
+    {name: "Blog", path: '/blog', component: Blog },
+    {name: "BlogRead", path: '/blog/:slug', component: BlogRead },
+    {name: "ProjectPage", path: '/projects/:slug', component: ProjectPage },
+    {name: "Page", path: '/page/:slug', component: Page},
+    {name: "Home", path: '/', component: Home },
 ]
 
 const router = new VueRouter({

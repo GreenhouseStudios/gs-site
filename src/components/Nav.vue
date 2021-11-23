@@ -35,7 +35,7 @@
         @click="toggleMenu()"
       />
       <label
-        class="absolute-l top-0 left-0 pa3 f1-ns f3 menu-icon"
+        class="absolute-l top-0 left-0 pa3 f1-ns f5 menu-icon"
         for="menu-btn"
       >
         <span class="navicon"></span>
@@ -79,8 +79,12 @@
           /></router-link>
         </li>
       </ul>
-      <transition name="slide-fade" >
-        <div class="w-100 bg-white z-5 absolute top-0" v-if="showMenu" id="mobile-menu">
+      <transition name="slide-fade">
+        <div
+          class="w-100 bg-white z-5 absolute top-0"
+          v-if="showMenu"
+          id="mobile-menu"
+        >
           <button
             @click="toggleMenu()"
             class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
@@ -119,33 +123,14 @@ export default {
       return require("../../public/img/watercolor-nav.png");
     },
     currentPage() {
-      var title = "";
-      var expr = this.$route.path;
-      switch (expr) {
-        case "/":
-          title = "Home";
-          break;
-        case "/people":
-          title = "People";
-          break;
-        case "/projects":
-          title = "Projects";
-          break;
-        case "/page/join-us":
-          title = "Join Us";
-          break;
-        case "/blog":
-          title = "Blog";
-          break;
-      }
-      return title;
+      return this.$route.name;
     },
   },
   methods: {
-    toggleMenu(){
+    toggleMenu() {
       this.showMenu = !this.showMenu;
-      this.$emit("toggle")
-    }
+      this.$emit("toggle");
+    },
   },
 };
 </script>
@@ -181,10 +166,10 @@ export default {
   z-index: -1;
   position: absolute;
   right: 0;
-  @media screen and (min-width: 1440px){
+  @media screen and (min-width: 1440px) {
     width: 75vw;
   }
-   @media screen and (max-width: 1440px){
+  @media screen and (max-width: 1440px) {
     width: 130vw;
   }
 }
@@ -241,11 +226,11 @@ li a {
 .header .menu-icon {
   cursor: pointer;
   float: right;
-  padding: 28px 20px;
+  padding: 35px 30px;
   position: relative;
   user-select: none;
   display: flex;
-  align-items: center;
+  align-items: stretch;
 }
 
 .header .menu-icon .navicon {
@@ -255,6 +240,7 @@ li a {
   position: relative;
   transition: background 0.2s ease-out;
   width: 18px;
+  transform: scale(2);
 }
 
 .header .menu-icon .navicon:before,
