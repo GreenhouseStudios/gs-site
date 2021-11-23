@@ -58,7 +58,7 @@
         <!-- <h1 class="people-name">{{person.custom_fields.last_name[0].toUpperCase()}}</h1> -->
         <!-- <p class="people-title" v-html="person.custom_fields.title[0]"></p> -->
       </div>
-      <div class="side back flex" alt="" style="text-overflow: ellipsis">
+      <div class="side back gs-card-flex" alt="" style="text-overflow: ellipsis">
         <p
           class="people-desc"
           v-html="person.custom_fields.about[0]"
