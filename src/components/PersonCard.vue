@@ -66,9 +66,10 @@
           v-if="person.custom_fields.about && person.custom_fields.about[0]"
         ></p>
         <div class="social-media">
-          <div v-if="person.custom_fields.email && person.custom_fields.email[0]" class="email">
+          <div v-if="person.custom_fields.email && person.custom_fields.email[0]" 
+          class="email">
             <a :href="'mailto:' + person.custom_fields.email[0]"
-              ><img src="../../public/img/email.svg" alt="email"
+              ><img class="shadow" src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div
@@ -76,7 +77,7 @@
             class="site"
           >
             <a :href="person.custom_fields.site[0]"
-              ><img src="../../public/img/site.png" alt="website"
+              ><img class="shadow" src="../../public/img/site.png" alt="website"
             /></a>
           </div>
           <div
@@ -87,7 +88,7 @@
             class="instagram"
           >
             <a :href="person.custom_fields.instagram[0]"
-              ><img src="../../public/img/instagram.svg" alt="instagram"
+              ><img class="shadow" src="../../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
           <div
@@ -97,7 +98,7 @@
             class="facebook"
           >
             <a :href="person.custom_fields.linkedin[0]"
-              ><img src="../../public/img/linkedin.png" alt="linkedin"
+              ><img class="shadow" src="../../public/img/linkedin.png" alt="linkedin"
             /></a>
           </div>
           <div
@@ -107,7 +108,7 @@
             class="twitter"
           >
             <a :href="person.custom_fields.twitter[0]"
-              ><img src="../../public/img/twitter.svg" alt="twitter"
+              ><img class="shadow" src="../../public/img/twitter.svg" alt="twitter"
             /></a>
           </div>
         </div>
@@ -157,6 +158,9 @@ export default {
   font-family: "Libre Franklin";
   text-transform: capitalize;
 }
-.img-front {
+.shadow:hover {
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+  drop-shadow(0px 1px 1px black);
+  filter: invert(100%) drop-shadow(0px 1px 3px black);
 }
 </style>

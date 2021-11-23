@@ -13,27 +13,27 @@
         <div class="social-media">
           <div class="email">
             <a href="mailto:greenhousestudios@uconn.edu" 
-              ><img src="../../public/img/email.svg" alt="email"
+              ><img class="shadow" src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div class="instagram">
             <a href="https://www.instagram.com/greenhousestudiosuconn/?hl=en"
-              ><img src="../../public/img/instagram.svg" alt="instagram"
+              ><img class="shadow" src="../../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
           <div class="youtube">
             <a href="https://www.youtube.com/channel/UCuDO0yPZYSaXBE3G7ArmQjw"
-              ><img src="../../public/img/youtube.svg" alt="youtube"
+              ><img class="shadow" src="../../public/img/youtube.svg" alt="youtube"
             /></a>
           </div>
           <div class="facebook">
             <a href="https://www.facebook.com/GreenhouseStudiosUConn/"
-              ><img src="../../public/img/facebook.svg" alt="facebook"
+              ><img class="shadow" src="../../public/img/facebook.svg" alt="facebook"
             /></a>
           </div>
           <div class="twitter">
             <a href="https://twitter.com/greenhouseuconn?lang=en"
-              ><img src="../../public/img/twitter.svg" alt="twitter"
+              ><img class="shadow" src="../../public/img/twitter.svg" alt="twitter"
             /></a>
           </div>
         </div>
@@ -77,6 +77,11 @@ footer{
 }
 .grants{
   position: relative;
+}
+.shadow:hover {
+  -webkit-filter: drop-shadow(1px 1px 0 black)
+  drop-shadow(0px 1px 1px black);
+  filter: invert(100%) drop-shadow(0px 1px 3px black);
 }
 
 </style>
