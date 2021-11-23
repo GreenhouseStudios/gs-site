@@ -11,33 +11,26 @@
       <iframe width="100vw" src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview" title="GS Process Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 
-    <div class="tabs">
-      <input type="radio" name="tabs" id="tabone" checked="checked">
-      <label for="tabone">Collaborative Culture</label>
+   <div class="tabs">
+    <input type="radio" name="tabs" id="tabone" checked="checked">
+    <label for="tabone">Collaborative Culture</label>
       <div class="tab">
-    <div class="text-1">
-        <h3 class="title-2 f2">Collaborative Culture</h3>
-        <p>Greenhouse Studios implements a “collaboration first” approach that brings a wide variety of people together to create original works of research from start to finish. </p>
-          <p>We are dedicated to addressing the persistent, intertwined problems of workflow and hierarchy with a mission that equally values all stakeholders involved in producing scholarship. Everyone has a seat at the table and a voice in the conversation.</p>
-          <p>As a scholarly research lab, we have created a unique workspace—a scholarly communications design studio—which….</p>
-          
+        <p>As a scholarly research lab, we have created a unique workspace—a scholarly communications design studio—which establishes a “collaboration first” approach that brings a diverse team of people together to create original works of research. </p>
+        <p>We are dedicated to addressing the persistent, intertwined problems of workflow and hierarchy with a mission that equally values all stakeholders involved in producing scholarship. Everyone has a seat at the table and a voice in the conversation.</p>
       </div>
-    
-      <input type="radio" name="tabs" id="tabtwo">
-      <label for="tabtwo">What We Do</label>
-      <div class="tab">
-        <p>We lead an inquiry-driven, collaboration-first scholarly design process together with an interdisciplinary team. Based on collective interests, backgrounds, skills, and aspirations, we conceive and implement a multimodal response to a challenge posed by a prompt.</p>
-        <p>Depending on audiences and aims, projects may take shape in diverse media outputs ranging from interactive websites and immersive virtual reality to exhibitions and documentary films.</p>
-      </div>
-    
-      <input type="radio" name="tabs" id="tabthree">
-      <label for="tabthree">Who We Are</label>
+
+    <input type="radio" name="tabs" id="tabtwo">
+    <label for="tabtwo">Who We Are</label>
       <div class="tab">
         <p>As an interdisciplinary research unit, the Greenhouse Studios team comprises a wide variety of scholars, designers, developers, library professionals, editors, and more. We are a joint effort of the University of Connecticut’s College of Liberal Arts and Sciences, Library, and School of Fine Arts; our team members come from both within and beyond the university.</p>
       </div>
-        <p>We are dedicated to addressing the persistent, intertwined problems of workflow and hierarchy with a mission that equally values all stakeholders involved in producing scholarship. Everyone has a seat at the table and a voice in the conversation.</p>
-        <p>As a scholarly research lab, we have created a unique workspace—a scholarly communications design studio—which….</p>
-    </div>
+
+    <input type="radio" name="tabs" id="tabthree">
+    <label for="tabthree">What We Do</label>
+      <div class="tab">
+        <p>We lead an inquiry-driven, collaboration-first scholarly design process together with an interdisciplinary team. Based on collective interests, backgrounds, skills, and aspirations, we conceive and implement a multimodal response to a challenge posed by a prompt. Depending on audiences and aims, projects may take shape in diverse media outputs ranging from interactive websites and immersive virtual reality to exhibitions and documentary films.</p>
+      </div>
+  </div>
 
 
   <div class="text-1">
@@ -49,14 +42,8 @@
         <card v-for="(blog,index) in blog" :key="blog.id" :project="blog" :index="index"></card>
       </div>
     </div>
-     </div>
-
-  <!-- <div class="text-1">
-    <h2 class="title-2">Blog</h2> 
-    <blog></blog>
-  </div> -->
-
   </div>
+
 </template>
 
 <script>
@@ -93,6 +80,7 @@ export default {
   box-shadow: 5px 5px 5px 5px lightgray;
   font-family: 'Libre Franklin';
   font-weight: 100;
+  margin: 75px;
   
 }
  

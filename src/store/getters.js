@@ -5,6 +5,9 @@ const getters = {
   postBySlug: (state) => (slug) => {
     return state.posts.find((p) => p.slug === slug);
   },
+  projectBySlug: (state) => (slug) => {
+    return state.projects.find((p) => p.slug === slug);
+  },
   allPosts: (state) => {
     return state.posts;
   },

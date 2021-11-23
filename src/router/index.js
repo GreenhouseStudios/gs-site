@@ -6,6 +6,7 @@ import BlogRead from '../BlogRead'
 import Projects from '../Projects'
 import Page from '../Page'
 import VueRouter from 'vue-router'
+import ProjectPage from '../ProjectPage'
 Vue.use(
     VueRouter
 )
@@ -14,6 +15,7 @@ const routes = [
     { path: '/people', component: People },
     { path: '/blog', component: Blog },
     { path: '/blog/:slug', component: BlogRead },
+    { path: '/projects/:slug', component: ProjectPage },
     { path: '/page/:slug', component: Page},
     { path: '/', component: Home },
 ]
