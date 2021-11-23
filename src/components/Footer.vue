@@ -38,38 +38,12 @@
           </div>
         </div>
 
-        <div class="footer-pages">
-          <div class="footer-people">
-            <router-link to="/people">People</router-link>
-          </div>
-          <div class="footer-projects">
-            <router-link to="/projects">Projects</router-link>
-          </div>
-          <div class="footer-joinus">
-            <router-link to="/page/join-us">Join Us</router-link>
-          </div>
-        </div>
-
         <div class="copyright">
           <p>© University of Connecticut</p>
           <p>Disclaimers, Privacy & Copyright</p>
           <p>Accessbility</p>
         </div>
 
-        <div class="grants">
-          <img
-            class="uconn-library"
-            src="../../public/img/UConn_Library_Logo.png" alt="uconn library logo"
-          />
-          <img
-            class="uconn-humanities"
-            src="../../public/img/UConn_Humanities_Institute.png" alt="uconn humanities institute logo"
-          />
-          <img
-            class="mellon"
-            src="../../public/img/Andrew_W_Mellon_Foundation_Logo.png" alt="andrew w mellon foundation logo"
-          />
-        </div>
       </section>
     </footer>
     </div>
@@ -82,6 +56,15 @@
 </script>
 
 <style lang="scss" scoped>
+.footer-information{
+ display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.contact-info, .social-media, .copyright{
+  padding: 20px;
+}
 section{
 padding-bottom: 30px;
 }
@@ -95,4 +78,5 @@ footer{
 .grants{
   position: relative;
 }
+
 </style>
