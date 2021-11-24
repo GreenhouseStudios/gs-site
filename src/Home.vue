@@ -17,6 +17,17 @@
         allowfullscreen
       ></iframe>
     </div>
+    <div class="text-1">
+      <div class="fprojects-text">
+        <h3 class="title-2 f2" style="padding: 0px !important;"> Featured Projects </h3>
+        <router-link to="/projects"> view all projects &#8594; </router-link>
+      </div>
+      <div class="grid sidescroll" v-if="projects">
+        <div v-for="(project,index) in projects" :key="project.id" :index="index">
+        <card v-if="index < 5" :project="project" ></card>
+        </div>
+      </div>
+    </div>
     <body>
       <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked" />
@@ -78,39 +89,46 @@
         <router-link to="/blog"> view blog &#8594; </router-link>
       </div>
       <div class="grid sidescroll" v-if="!$store.getters.loading">
-        <blog-card
-          v-for="post in posts"
+        <div
+          v-for="(post, i) in posts"
           :key="post.slug"
+          :index="i"
+        >
+        <blog-card 
+          v-if="i < 6"
+          :post="post"
           :title="post.title"
           :content="post.content"
           :date="post.date"
-          :slug="post.slug"
-        ></blog-card>
+          :slug="post.slug">
+        </blog-card>
+        </div>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import Card from "./components/Card.vue";
+import Card from "./components/Card.vue";
 import BlogCard from "./components/BlogCard.vue";
 //import Blog from ".//Blog.vue";
 export default {
   name: "Home",
-  components: { BlogCard },
+  components: { BlogCard, Card },
   //components: { Blog },
   data() {
     return {
       projects: null,
+      posts: null,
     };
   },
   updated() {
     this.projects = this.$store.getters.allProjects;
-    this.projects = this.$store.getters.allPosts;
+    this.posts = this.$store.getters.allPosts;
   },
   mounted() {
     this.projects = this.$store.getters.allProjects;
-    this.projects = this.$store.getters.allPosts;
+    this.posts = this.$store.getters.allPosts;
   },
 };
 </script>
