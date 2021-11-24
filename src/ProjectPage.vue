@@ -1,5 +1,5 @@
 <template>
-    <div id="blogmain" v-if="!$store.state.loading">
+    <div id="blogmain" v-if="!$store.state.loading" class="mt6-ns w-70-ns w-90 center">
       <div id="blogcontent" v-if="project">
         <div class="textbox">
           <span v-html="project.content.rendered"></span>
@@ -69,7 +69,7 @@ h1{
 }
 #blogmain{
   overflow: hidden;
-  background: white;
+  background: transparent;
 }
 #blogcontent{
   margin: 2em 20%;
