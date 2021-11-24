@@ -11,27 +11,27 @@
         </div>
 
         <div class="social-media">
-          <div class="email">
+          <div class="email social-icon">
             <a href="mailto:greenhousestudios@uconn.edu" 
               ><img class="shadow" src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
-          <div class="instagram">
+          <div class="instagram social-icon">
             <a href="https://www.instagram.com/greenhousestudiosuconn/?hl=en"
               ><img class="shadow" src="../../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
-          <div class="youtube">
+          <div class="youtube social-icon">
             <a href="https://www.youtube.com/channel/UCuDO0yPZYSaXBE3G7ArmQjw"
               ><img class="shadow" src="../../public/img/youtube.svg" alt="youtube"
             /></a>
           </div>
-          <div class="facebook">
+          <div class="facebook social-icon">
             <a href="https://www.facebook.com/GreenhouseStudiosUConn/"
               ><img class="shadow" src="../../public/img/facebook.svg" alt="facebook"
             /></a>
           </div>
-          <div class="twitter">
+          <div class="twitter social-icon">
             <a href="https://twitter.com/greenhouseuconn?lang=en"
               ><img class="shadow" src="../../public/img/twitter.svg" alt="twitter"
             /></a>
@@ -57,9 +57,14 @@
 
 <style lang="scss" scoped>
 .footer-information{
- display: flex;
-align-items: center;
-justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+@media (max-width: 45em) {
+  .footer-information{
+    flex-direction: column;
+}
 }
 
 .contact-info, .social-media, .copyright{
@@ -82,6 +87,9 @@ footer{
   -webkit-filter: drop-shadow(1px 1px 0 black)
   drop-shadow(0px 1px 1px black);
   filter: invert(100%) drop-shadow(0px 1px 3px black);
+}
+.social-icon {
+  padding: 5px;
 }
 
 </style>
