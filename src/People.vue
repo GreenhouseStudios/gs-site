@@ -2,7 +2,12 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      {{ tabIntros[activeTab] }}
+      Greenhouse Studios is a joint effort of the Department of Digital Media &
+      Design (DMD) in the School of Fine Arts (SFA), the University Library and
+      its Digital Scholarship and Data Curation Unit (DSDC), and the UConn
+      Humanities Institute (UCHI) in the College of Liberal Arts and Sciences
+      (CLAS). Each has made significant, permanent financial or (in the case of
+      the UCHI) programmatic commitments to the project.
     </div>
     <div
       id="tab-btn-container"
@@ -16,7 +21,7 @@
         v-for="(tab, index) in tabs"
         :key="tab"
       >
-        <h3 class="ma0 f1 f4-ns f6" style="color: #333333;">{{ tab }}</h3>
+        <h3 class="ma0 f1 f4-ns f6" style="color: #333333">{{ tab }}</h3>
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">
@@ -64,6 +69,60 @@
         <img v-for="p in partners" :key="p" class="partner-img" :src="p" />
       </div>
     </div>
+    <div v-show="activeTab === 3">
+      <div class="relative center w-50-ns w-90">
+        <div class="ma2 mb4">
+          <h3 class="f3">Greenhouse Studios Leadership</h3>
+          <p class="f4">Director, Tom Scheinfeldt</p>
+          <p class="f4">Associate Director (Research), Clarissa Ceglio</p>
+          <p class="f4">Associate Director (Coordinator), Sara Sikes</p>
+        </div>
+
+        <div class="ma2 mb4">
+          <h3 class="f3">Steering Committee</h3>
+          <p class="f4">CLAS: Alexis Boylan, Anke Finger, Brendan Kane,</p>
+          <p class="f4">
+            SFA: Clarissa Ceglio, Cora Lynn Deibler, Tom Scheinfeldt
+          </p>
+          <p class="f4">
+            University Library: Greg Colati, Sara Harrington, Sara Sikes
+          </p>
+        </div>
+
+        <div class="ma2 mb4">
+          <h3 class="f3">Advisory Board</h3>
+          <p class="f4">
+            Matthew Battles, Associate Director, metaLAB, Harvard University
+          </p>
+          <p class="f4">
+            Michael Edson, Associate Director/Head of Digital at United Nations
+            Live Museum for Humanity, Copenhagen, Denmark
+          </p>
+          <p class="f4">
+            Kathleen Fitzpatrick, PhD, Director of Scholarly Communication,
+            Modern Language Association
+          </p>
+          <p class="f4">
+            Matthew K. Gold, PhD, Director, GC Digital Scholarship Lab, City
+            University of New York
+          </p>
+          <p class="f4">
+            Ian Gonsher, MFA, Associate Director, Brown Creative Mind Initiative
+          </p>
+          <p class="f4">Tara McPherson, PhD, Founding Editor, Vectors</p>
+
+          <p class="f4">
+            Amy Papaelias, MFA Intermedia Design, Assistant Professor of Graphic
+            Design/Foundations, Fine Art Department, State University of New
+            York at New Paltz
+          </p>
+          <p class="f4">
+            Barbara Rockenbach, MSLIS, Director, Humanities & History Libraries,
+            Columbia University Libraries/Information Services
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -83,26 +142,23 @@ export default {
         require("../public/img/UConn_Humanities_Institute.png"),
         require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
       ],
-      tabs: ["Active", "Alumni", "Partners"],
-      tabIntros: [
-        "Active: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!",
-        "Alumni: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!",
-        "Partners: Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit reiciendis vel dolores minus quis asperiores illum rem in, nihil sapiente ex sint quo accusamus nulla tempora vero eaque facere libero saepe aspernatur ut distinctio consequatur. Nostrum cupiditate iusto dignissimos eius quos corporis illo expedita. Ullam blanditiis cum atque esse nulla!",
-      ],
+      tabs: ["Active", "Alumni", "Partners", "Governance"],
       activeTab: 0,
     };
   },
   methods: {
     changeActiveTab(i) {
       this.activeTab = i;
-      this.$emit('subnav-change')
-    }
+      this.$emit("subnav-change");
+    },
   },
   computed: {
     peopleByLastName() {
       return _.sortBy(this.people, [
         function (o) {
-          return o.custom_fields.last_name ? o.custom_fields.last_name[0].toLowerCase() : "";
+          return o.custom_fields.last_name
+            ? o.custom_fields.last_name[0].toLowerCase()
+            : "";
         },
       ]);
     },
@@ -111,7 +167,9 @@ export default {
         return _.sortBy(
           this.people.filter((p) => p.categories.indexOf(86) >= 0),
           function (o) {
-            return o.custom_fields.last_name ? o.custom_fields.last_name[0].toLowerCase() : "";
+            return o.custom_fields.last_name
+              ? o.custom_fields.last_name[0].toLowerCase()
+              : "";
           }
         );
       } else return [];
@@ -122,7 +180,9 @@ export default {
           this.people.filter((p) => p.categories.indexOf(86) < 0),
           [
             function (o) {
-              return o.custom_fields.last_name ? o.custom_fields.last_name[0].toLowerCase() : "";
+              return o.custom_fields.last_name
+                ? o.custom_fields.last_name[0].toLowerCase()
+                : "";
             },
           ]
         );
