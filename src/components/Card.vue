@@ -1,7 +1,7 @@
 <template>
-  <div class="flipCard" @click="isFlipped = !isFlipped">
+  <div class="flipCard" @click="flipCard">
     <div class="card" :class="{ flipped: isFlipped }">
-      <div class="side front">
+      <div class="side front" v-show="!isFlipped || flipping">
         <div
           class="img-front"
           style="height: 100%; width: 100%; object-fit: cover"
@@ -12,15 +12,13 @@
           }deg) `"
           alt="Front side of flippable card for the project 'By Our Love'"
         >
-          <img :src="project.custom_fields.project_card_front" alt="" />
+          <img
+            :src="project.custom_fields.project_card_front"
+            alt="project title"
+          />
         </div>
       </div>
       <div
-        :style="
-          'background-image: url(' +
-          project.custom_fields.project_card_back +
-          '); background-repeat: no-repeat;'
-        "
         class="side back flex-container"
         :alt="
           'Back side of flippable card for the project' + project.title.rendered
@@ -36,17 +34,36 @@
             {{ project.custom_fields.about[0] }}
           </p>
         </div>
+
         <a
           v-if="hasSite()"
-          class="link"
+          id="button"
+          :style="`border: 2px solid ${btnColor}; background-color:${
+            hover ? 'white' : btnColor
+          }; border-color:${btnColor} !important; color: ${
+            hover ? btnColor : '#000'
+          }`"
+          @mouseleave="hover = false"
+          @mouseenter="hover = true"
           :href="project.custom_fields.website_url"
-          target="_blank"
-          >
-          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">WEBSITE</button>
+        >
+          WEBSITE
         </a>
-        <router-link v-else class="link" :to="`/projects/${slug}`">
-          <button id="button" class="btn-bol" :style="`background-color:${btnColor}; border-color:${btnColor}`">READ MORE</button>
-        </router-link>
+
+        <a
+          v-else
+          id="button"
+          @mouseenter="hover = true"
+          @mouseleave="hover = false"
+          @click="$router.push(`/projects/${project.slug}`)"
+
+          :style="`border: 2px solid ${btnColor}; background-color:${
+            hover ? 'white' : btnColor
+          }; border-color:${btnColor} !important; color: ${
+            hover ? btnColor : '#000'
+          }`"
+          >READ MORE</a
+        >
       </div>
     </div>
   </div>
@@ -65,30 +82,42 @@ export default {
     },
     slug: {
       type: String,
-    }
+    },
   },
   data() {
     return {
       isFlipped: false,
+      flipping: false,
+      hover: false,
     };
   },
   computed: {
     phase() {
       return (this.index * Math.PI) / 2;
     },
-    btnColor(){
-      return this.project.custom_fields.btn_color ? this.project.custom_fields.btn_color : '#8CC947';
-    }
+    btnColor() {
+      return this.project.custom_fields.btn_color
+        ? this.project.custom_fields.btn_color
+        : "#8CC947";
+    },
   },
   methods: {
-    hasSite(){
-      if(this.project.custom_fields.website_url[0] == ""){
-        return false
-      }else{
-        return true
+    flipCard() {
+      var t = this;
+      this.isFlipped = !this.isFlipped;
+      this.flipping = true;
+      setTimeout(() => {
+        t.flipping = false;
+      }, 600);
+    },
+    hasSite() {
+      if (this.project.custom_fields.website_url[0] == "") {
+        return false;
+      } else {
+        return true;
       }
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -109,5 +138,9 @@ export default {
 
 .back {
   padding: 35px;
+}
+#button {
+  position: absolute;
+  bottom: 35px;
 }
 </style>
