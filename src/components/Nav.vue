@@ -81,14 +81,15 @@
       </ul>
       <transition name="slide-fade">
         <div
-          class="w-100 bg-white z-5 absolute top-0"
+          class="z-5 fixed top-0"
           v-if="showMenu"
           id="mobile-menu"
+          style="width: 100vw"
         >
           <button
             @click="toggleMenu()"
             class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
-            style="color: #161616"
+            style="color: white; background: var(--main-bg-color)"
           >
             <i class="dib fa fa-xs fa-times"></i>
           </button>
@@ -179,9 +180,7 @@ li {
 }
 li:hover {
 }
-router-link {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif !important;
-}
+
 .header {
   width: 100%;
 }
@@ -195,11 +194,17 @@ router-link {
   list-style: none;
   overflow: hidden;
 }
-li a {
+.menu > li a {
   display: block;
   padding: 20px 20px;
   text-decoration: none;
   color: #161616;
+  font-size: 1.75rem;
+}
+#mobile-menu-list > li a {
+  display: block;
+  padding: 20px 20px;
+  color: white;
   font-size: 1.75rem;
 }
 
@@ -270,8 +275,16 @@ li a {
 
 #mobile-menu {
   font-size: 10rem !important;
-  background-color: white;
+  background-color: var(--main-bg-color);
   height: 100vh;
+}
+#mobile-menu-list {
+  font-weight: 800;
+  
+  > li {
+    font-family: "Libre Franklin" !important;
+    color: white !important;
+  }
 }
 .menu {
   font-family: "Libre Franklin" !important;

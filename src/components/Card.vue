@@ -103,9 +103,9 @@ export default {
         : "#8CC947";
     },
     btnTextColor(){
-      return convert.hex.hsl(this.project.custom_fields.btn_color)[2] > 50
-        ? "black"
-        : "white";
+      return this.project.custom_fields.btn_color && convert.hex.hsl(this.project.custom_fields.btn_color)[2] <= 50
+        ? "white"
+        : "black";
     }
   },
   methods: {
@@ -124,9 +124,6 @@ export default {
         return true;
       }
     },
-  },
-  mounted () {
-    console.log(convert.hex.hsl(this.project.custom_fields.btn_color)[2]);
   },
 };
 </script>
