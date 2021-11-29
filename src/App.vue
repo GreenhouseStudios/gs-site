@@ -170,4 +170,7 @@ footer {
 .dark-gray{
   color: #808080;
 }
+:root {
+  --main-bg-color: #8CC947;
+}
 </style>
