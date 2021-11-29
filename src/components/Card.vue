@@ -46,6 +46,7 @@
           @mouseleave="hover = false"
           @mouseenter="hover = true"
           :href="project.custom_fields.website_url"
+          @click.stop=""
         >
           WEBSITE
         </a>
@@ -55,7 +56,7 @@
           id="button"
           @mouseenter="hover = true"
           @mouseleave="hover = false"
-          @click="$router.push(`/projects/${project.slug}`)"
+          @click.prevent="$router.push(`/projects/${project.slug}`)"
 
           :style="`border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
