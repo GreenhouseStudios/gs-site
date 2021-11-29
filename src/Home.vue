@@ -144,7 +144,7 @@ export default {
   box-shadow: 5px 5px 5px 5px lightgray;
   font-family: "Libre Franklin";
   font-weight: 100;
-  margin: 75px;
+  margin: 20px;
 }
 
 .tabs label {
@@ -162,7 +162,7 @@ export default {
   flex-grow: 1;
   width: 100%;
   display: none;
-  padding: 30px;
+  padding: px;
   background: #fff;
 }
 
