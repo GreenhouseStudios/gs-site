@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="`${menuOn ? 'overflow: hidden; height: 100vh; position: fixed' : ''}`">
+  <div id="app" style="width:100vw; overflow-x: hidden; " :style="`${menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''}`">
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -55,10 +55,9 @@
     <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
     <img
       :src="bgImages[i % bgImages.length]"
-      class="absolute o-10"
-      style="height: 500px"
-      :style="`top: ${spacing * i}px; left:${randomXinMargin(i)}px; transform: scale(2.5)`"
-      v-for="i in numBgImages"
+      class="absolute o-10 z--1"
+      :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(i)}px; transform:scale(${width > 600 ? 1 : 2})`"
+      v-for="i in Array.from(Array(numBgImages).keys())"
       :key="i"
     /></div>
     <router-view v-on:subnav-change="childUpdate"></router-view>
@@ -82,8 +81,7 @@ export default {
     return {
       menuOn: false,
       height: null,
-      width: null,
-      spacing: 1500,
+      width: 900,
       showBgImages: true,
       bgImages: [
         require("../public/bgImg/gs_spider-plant-fully-grown_bw.png"),
@@ -98,7 +96,7 @@ export default {
       return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
     },
     randomXinMargin(i){
-      return i%2 === 0 ? -600  - Math.random() * 100: this.width - 100 - Math.random() * 100;
+      return i%2 === 1 ? 0 - this.width/2: this.width - 800;
     },
     scale(number, inMin, inMax, outMin, outMax) {
       return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
@@ -114,6 +112,9 @@ export default {
     numBgImages() {
       return Math.abs(Math.floor(this.height / this.spacing) - 1);
     },
+    spacing(){
+      return 1000;
+    }
   },
   mounted() {
     this.height = document.body.scrollHeight;
@@ -130,7 +131,7 @@ export default {
 Nav {
   overflow: visible !important;
 }
-body {
+body,html {
   overflow-x: hidden;
 }
 footer {
