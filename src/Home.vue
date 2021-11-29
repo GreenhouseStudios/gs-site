@@ -162,7 +162,6 @@ export default {
   flex-grow: 1;
   width: 100%;
   display: none;
-  padding: px;
   background: #fff;
 }
 
