@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="`${menuOn ? 'overflow: hidden; height: 100vh' : ''}`">
+  <div id="app" :style="`${menuOn ? 'overflow: hidden; height: 100vh; position: fixed' : ''}`">
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>

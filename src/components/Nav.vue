@@ -81,7 +81,7 @@
       </ul>
       <transition name="slide-fade">
         <div
-          class="z-5 fixed top-0"
+          class="z-5 absolute top-0"
           v-if="showMenu"
           id="mobile-menu"
           style="width: 100vw"
