@@ -41,7 +41,7 @@
           :style="`border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
           }; border-color:${btnColor} !important; color: ${
-            hover ? btnColor : '#000'
+            hover ? btnColor : btnTextColor
           }`"
           @mouseleave="hover = false"
           @mouseenter="hover = true"
@@ -60,7 +60,7 @@
           :style="`border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
           }; border-color:${btnColor} !important; color: ${
-            hover ? btnColor : '#000'
+            hover ? btnColor : btnTextColor
           }`"
           >READ MORE</a
         >
@@ -70,6 +70,7 @@
 </template>
 
 <script>
+import convert from 'color-convert'
 export default {
   name: "Card",
   props: {
@@ -100,6 +101,11 @@ export default {
         ? this.project.custom_fields.btn_color
         : "#8CC947";
     },
+    btnTextColor(){
+      return convert.hex.hsl(this.project.custom_fields.btn_color)[2] > 50
+        ? "black"
+        : "white";
+    }
   },
   methods: {
     flipCard() {
@@ -117,6 +123,9 @@ export default {
         return true;
       }
     },
+  },
+  mounted () {
+    console.log(convert.hex.hsl(this.project.custom_fields.btn_color)[2]);
   },
 };
 </script>
