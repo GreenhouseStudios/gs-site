@@ -19,12 +19,18 @@
     </div>
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 f2" style="padding: 0px !important;"> Featured Projects </h3>
+        <h3 class="title-2 f2" style="padding: 0px !important">
+          Featured Projects
+        </h3>
         <router-link to="/projects"> view all projects &#8594; </router-link>
       </div>
       <div class="grid sidescroll" v-if="projects">
-        <div v-for="(project,index) in projects" :key="project.id" :index="index">
-        <card v-if="index < 5" :project="project" ></card>
+        <div
+          v-for="(project, index) in projects"
+          :key="project.id"
+          :index="index"
+        >
+          <card v-if="index < 5" :project="project"></card>
         </div>
       </div>
     </div>
@@ -34,9 +40,10 @@
         <label for="tabone">Collaborative Culture</label>
         <div class="tab">
           <p>
-            Greenhouse Studios implements a “collaboration first” approach that
-            brings a wide variety of people together to create original works of
-            research from start to finish.
+            As a scholarly research lab, we have created a unique workspace—a
+            scholarly communications design studio—which establishes a
+            “collaboration first” approach that brings a diverse team of people
+            together to create original works of research.
           </p>
           <p>
             We are dedicated to addressing the persistent, intertwined problems
@@ -44,30 +51,10 @@
             stakeholders involved in producing scholarship. Everyone has a seat
             at the table and a voice in the conversation.
           </p>
-          <p>
-            As a scholarly research lab, we have created a unique workspace—a
-            scholarly communications design studio—which….
-          </p>
         </div>
 
         <input type="radio" name="tabs" id="tabtwo" />
         <label for="tabtwo">What We Do</label>
-        <div class="tab">
-          <p>
-            We lead an inquiry-driven, collaboration-first scholarly design
-            process together with an interdisciplinary team. Based on collective
-            interests, backgrounds, skills, and aspirations, we conceive and
-            implement a multimodal response to a challenge posed by a prompt.
-          </p>
-          <p>
-            Depending on audiences and aims, projects may take shape in diverse
-            media outputs ranging from interactive websites and immersive
-            virtual reality to exhibitions and documentary films.
-          </p>
-        </div>
-
-        <input type="radio" name="tabs" id="tabthree" />
-        <label for="tabthree">Who We Are</label>
         <div class="tab">
           <p>
             As an interdisciplinary research unit, the Greenhouse Studios team
@@ -76,6 +63,20 @@
             University of Connecticut’s College of Liberal Arts and Sciences,
             Library, and School of Fine Arts; our team members come from both
             within and beyond the university.
+          </p>
+        </div>
+
+        <input type="radio" name="tabs" id="tabthree" />
+        <label for="tabthree"> Who We Are</label>
+        <div class="tab">
+          <p>
+            We lead an inquiry-driven, collaboration-first scholarly design
+            process together with an interdisciplinary team. Based on collective
+            interests, backgrounds, skills, and aspirations, we conceive and
+            implement a multimodal response to a challenge posed by a prompt.
+            Depending on audiences and aims, projects may take shape in diverse
+            media outputs ranging from interactive websites and immersive
+            virtual reality to exhibitions and documentary films.
           </p>
         </div>
       </div>
@@ -89,19 +90,16 @@
         <router-link to="/blog"> view blog &#8594; </router-link>
       </div>
       <div class="grid sidescroll" v-if="!$store.getters.loading">
-        <div
-          v-for="(post, i) in posts"
-          :key="post.slug"
-          :index="i"
-        >
-        <blog-card 
-          v-if="i < 6"
-          :post="post"
-          :title="post.title"
-          :content="post.content"
-          :date="post.date"
-          :slug="post.slug">
-        </blog-card>
+        <div v-for="(post, i) in posts" :key="post.slug" :index="i">
+          <blog-card
+            v-if="i < 6"
+            :post="post"
+            :title="post.title"
+            :content="post.content"
+            :date="post.date"
+            :slug="post.slug"
+          >
+          </blog-card>
         </div>
       </div>
     </div>
@@ -136,86 +134,6 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-/* Mobile Home */
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  box-shadow: 5px 5px 5px 5px lightgray;
-  font-family: "Libre Franklin";
-  font-weight: 100;
-  margin: 20px;
-}
-
-.tabs label {
-  font-family: "Libre Franklin";
-  display: block;
-  padding: 1rem 2rem;
-  margin-right: 0.2rem;
-  cursor: pointer;
-  background: #8dc63f;
-  font-weight: 400;
-}
-
-.tabs .tab {
-  order: 99;
-  flex-grow: 1;
-  width: 100%;
-  display: none;
-  background: #fff;
-}
-
-.tabs input[type="radio"] {
-  display: none;
-}
-
-.tabs input[type="radio"]:checked + label {
-  background: #fff;
-  color: #8dc63f;
-  font-weight: 600;
-  font-size: 20px;
-}
-
-.tabs input[type="radio"]:checked + label + .tab {
-  display: block;
-}
-
-@media (max-width: 45em) {
-  .tabs .tab,
-  .tabs label {
-    order: initial;
-  }
-
-  .tabs label {
-    width: 100%;
-    margin-right: 0;
-    margin-top: 0.2rem;
-  }
-}
-
-body {
-  font-family: "Libre Franklin";
-  min-height: 100vh;
-  padding-top: 100px;
-  line-height: 1.5;
-  margin: 0 auto;
-  font-size: 17px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding: 60px;
-}
-
-body {
-  font-family: "Libre Franklin";
-  min-height: 100vh;
-  padding-top: 100px;
-  line-height: 1.5;
-  margin: 0 auto;
-  font-size: 17px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding: 60px;
-}
 
 .video-container {
   position: relative;
@@ -247,6 +165,8 @@ body {
   height: auto;
   z-index: -1;
 }
+
+/* Collaborative Culture / What We Do / Who We Are Tabs */
 
 .tabs {
   display: flex;
