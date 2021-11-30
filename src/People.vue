@@ -3,7 +3,6 @@
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
      We are an interdisciplinary team with diverse backgrounds who bring their individual interests and passions into the Greenhouse Studios community.
-
     </div>
     <div
       id="tab-btn-container"

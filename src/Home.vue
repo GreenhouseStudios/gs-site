@@ -18,7 +18,7 @@
     </div>
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 f2" style="padding: 0px !important">
+        <h3 class="title-2 f2 p9 " style="padding: 0px !important">
           Featured Projects
         </h3>
         <router-link to="/projects"> view all projects &#8594; </router-link>
@@ -138,6 +138,10 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
+.title{
+  margin: 60px;
+}
+
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -152,12 +156,16 @@ export default {
 .video-container object,
 .video-container embed {
   position: absolute;
+margin-left: auto;
+margin-right: auto;
+left: 0;
+right: 0;
+  align: center;
   padding: 20;
+  margin: 0 auto;
   top: 0;
-  right: -20;
-  left: 40;
-  width: 100%;
-  height: 100%;
+  width: 70%;
+  height: 70%;
 }
 
 .nav-img {
