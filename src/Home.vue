@@ -169,7 +169,7 @@ export default {
 .tabs {
   display: flex;
   flex-wrap: wrap;
-  height: 700px;
+  height: 900px;
   box-shadow: 5px 5px 5px 5px lightgray;
   font-family: "Libre Franklin";
   font-weight: 200;
@@ -286,12 +286,11 @@ body {
 }
 
 .footer-information {
-  padding-top: 280px;
   text-align: center;
 }
 
 .copyright {
-  padding-top: 15px;
+  padding-top:5px;
 }
 
 .grants img {
