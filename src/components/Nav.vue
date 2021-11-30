@@ -137,6 +137,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
 #page-indicator {
   font-family: SAMO;
 }
