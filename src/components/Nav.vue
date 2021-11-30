@@ -45,7 +45,6 @@
           <router-link class="shimmer relative" to="/"
             >home
             <img
-              :src="require('../../public/img/Line3.svg')"
               class="w-70 absolute bottom-0 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
           /></router-link>
@@ -53,28 +52,24 @@
         <li>
           <router-link class="shimmer relative" to="/people"
             >people<img
-              :src="require('../../public/img/Line3.svg')"
               class="w-70 absolute bottom-0 left-1 dn"
           /></router-link>
         </li>
         <li>
           <router-link class="shimmer relative" to="/projects"
             >projects<img
-              :src="require('../../public/img/Line3.svg')"
               class="w-70 absolute bottom-0 left-1 dn"
           /></router-link>
         </li>
         <li>
           <router-link class="shimmer relative" to="/page/join-us"
             >join us<img
-              :src="require('../../public/img/Line3.svg')"
               class="w-70 absolute bottom-0 left-1 dn"
           /></router-link>
         </li>
         <li>
           <router-link class="shimmer relative" to="/blog"
             >blog<img
-              :src="require('../../public/img/Line3.svg')"
               class="w-70 absolute bottom-0 left-1 dn"
           /></router-link>
         </li>

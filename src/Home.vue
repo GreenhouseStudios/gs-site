@@ -15,6 +15,7 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
+    <img class ="video-watercolor" src='img/watercolor-blurb.png'>
     </div>
     <div class="text-1">
       <div class="fprojects-text">
@@ -38,7 +39,6 @@
         <input type="radio" name="tabs" id="tabone" checked="checked" />
         <label for="tabone">Collaborative Culture</label>
         <div class="tab">
-          <img src="img/line3.svg">
           <p>
             As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
@@ -56,8 +56,6 @@
         <input type="radio" name="tabs" id="tabtwo" />
         <label for="tabtwo">What We Do</label>
         <div class="tab">
-          <img src="img/line3.svg">
-
           <p>
             As an interdisciplinary research unit, the Greenhouse Studios team
             comprises a wide variety of scholars, designers, developers, library
@@ -71,9 +69,7 @@
         <input type="radio" name="tabs" id="tabthree" />
         <label for="tabthree"> Who We Are</label>
         <div class="tab">
-          <img src="img/line3.svg">
-
-          <p>
+         <p>
             We lead an inquiry-driven, collaboration-first scholarly design
             process together with an interdisciplinary team. Based on collective
             interests, backgrounds, skills, and aspirations, we conceive and
@@ -140,6 +136,18 @@ export default {
 
 .title{
   margin: 60px;
+}
+
+.video-container img{
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 50px;
+  transform: rotate(100deg);
+  position: absolute;
+  right: 300px;
+  bottom: -130px;
+  z-index:-1;
+
 }
 
 .video-container {
