@@ -15,16 +15,14 @@
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
         allowfullscreen
       ></iframe>
-    <img class ="video-watercolor" src='img/watercolor-blurb.png'>
+      <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 f2 p9 " style="padding: 0px !important">
-          Featured Projects
-        </h3>
+        <h3 class="title-2 f2 pl4">Featured Projects</h3>
         <router-link to="/projects"> view all projects &#8594; </router-link>
       </div>
-      <div class="grid sidescroll" v-if="projects">
+      <div class="grid sidescroll pl5" v-if="projects">
         <div
           v-for="(project, index) in projects"
           :key="project.id"
@@ -43,13 +41,11 @@
             As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
             “collaboration first” approach that brings a diverse team of people
-            together to create original works of research.
-          </p>
-          <p>
-            We are dedicated to addressing the persistent, intertwined problems
-            of workflow and hierarchy with a mission that equally values all
-            stakeholders involved in producing scholarship. Everyone has a seat
-            at the table and a voice in the conversation.
+            together to create original works of research.We are dedicated to
+            addressing the persistent, intertwined problems of workflow and
+            hierarchy with a mission that equally values all stakeholders
+            involved in producing scholarship. Everyone has a seat at the table
+            and a voice in the conversation.
           </p>
         </div>
 
@@ -69,7 +65,7 @@
         <input type="radio" name="tabs" id="tabthree" />
         <label for="tabthree"> Who We Are</label>
         <div class="tab">
-         <p>
+          <p>
             We lead an inquiry-driven, collaboration-first scholarly design
             process together with an interdisciplinary team. Based on collective
             interests, backgrounds, skills, and aspirations, we conceive and
@@ -84,12 +80,10 @@
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 f2" style="padding: 0px !important">
-          Featured Blog Posts
-        </h3>
+        <h3 class="title-2 f2 pl4">Featured Blog Posts</h3>
         <router-link to="/blog"> view blog &#8594; </router-link>
       </div>
-      <div class="grid sidescroll" v-if="!$store.getters.loading">
+      <div class="grid sidescroll pl5" v-if="!$store.getters.loading">
         <div v-for="(post, i) in posts" :key="post.slug" :index="i">
           <blog-card
             v-if="i < 6"
@@ -134,7 +128,7 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.video-container img{
+.video-container img {
   width: 100%;
   margin: 0 auto;
   padding-right: 50px;
@@ -142,8 +136,7 @@ export default {
   position: absolute;
   right: 300px;
   bottom: -130px;
-  z-index:-1;
-
+  z-index: -1;
 }
 
 .video-container {
@@ -160,10 +153,10 @@ export default {
 .video-container object,
 .video-container embed {
   position: absolute;
-margin-left: auto;
-margin-right: auto;
-left: 0;
-right: 0;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
   align: center;
   padding: 20;
   margin: 0 auto;
@@ -190,26 +183,23 @@ right: 0;
   box-shadow: 5px 5px 5px 5px lightgray;
   font-family: "Libre Franklin";
   font-weight: 200;
-  margin-top:100px;
+  margin-top: 50px;
 }
 
-.tab img{
-  height:10px;
- 
-}
-
-.tabs p{
+.tabs p {
   font-size: 22px;
   cursor: pointer;
-
 }
 
 .tabs label {
   font-family: "Libre Franklin";
+  text-align: center;
+  width: 29%;
   height: 50px;
+  font-size: 28px;
   display: block;
-  padding: 1rem 2rem;
-  margin-right: 0.2rem;
+  padding: 20px;
+  margin-right: 8px;
   cursor: pointer;
   background: #8dc63f;
   font-weight: 400;
@@ -220,7 +210,8 @@ right: 0;
   flex-grow: 1;
   width: 100%;
   display: none;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
   background: #fff;
 }
 
@@ -232,7 +223,6 @@ right: 0;
   background: #fff;
   color: #8dc63f;
   font-weight: 600;
-  font-size: 30px;
 }
 
 .tabs input[type="radio"]:checked + label + .tab {
@@ -251,22 +241,18 @@ right: 0;
   }
 }
 
-@media (min-width: 720px){
-  .tabs{
+@media (min-width: 720px) {
+  .tabs {
     height: 500px;
   }
 }
 
 body {
   font-family: "Libre Franklin";
-  min-height: 100vh;
-  padding-top: 100px;
   line-height: 1.5;
   margin: 0 auto;
   font-size: 17px;
-  padding-left: 40px;
-  padding-right: 40px;
-  padding: 60px;
+  padding:100px;
 }
 
 .gs-intro {
@@ -313,7 +299,7 @@ body {
 }
 
 .copyright {
-  padding-top:5px;
+  padding-top: 5px;
 }
 
 .grants img {
