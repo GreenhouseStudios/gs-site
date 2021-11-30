@@ -10,7 +10,6 @@
     <div class="video-container">
       <!-- <img src="../public/img/Animation_Fill.png" /> -->
       <iframe
-        width="100vw"
         src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
         title="GS Process Video"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -134,7 +133,6 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
@@ -171,13 +169,20 @@ export default {
 .tabs {
   display: flex;
   flex-wrap: wrap;
+  height: 700px;
   box-shadow: 5px 5px 5px 5px lightgray;
   font-family: "Libre Franklin";
-  font-weight: 100;
+  font-weight: 200;
+  margin-top:100px;
+}
+
+.tabs p{
+  font-size: 22px;
 }
 
 .tabs label {
   font-family: "Libre Franklin";
+  height: 50px;
   display: block;
   padding: 1rem 2rem;
   margin-right: 0.2rem;
@@ -187,6 +192,7 @@ export default {
 }
 
 .tabs .tab {
+  font-size: 60px;
   order: 99;
   flex-grow: 1;
   width: 100%;
@@ -210,7 +216,7 @@ export default {
   display: block;
 }
 
-@media (max-width: 45em) {
+@media (max-width: 720px) {
   .tabs .tab,
   .tabs label {
     order: initial;
@@ -218,8 +224,13 @@ export default {
 
   .tabs label {
     width: 100%;
-    margin-right: 0;
     margin-top: 0.2rem;
+  }
+}
+
+@media (min-width: 720px){
+  .tabs{
+    height: 500px;
   }
 }
 
