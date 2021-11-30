@@ -41,10 +41,10 @@
 
       <div class="row-container" id="site-header">
         <div class="row-fluid">
-          <div>
+          <div class="pb3">
             <p id="super-title"></p>
             <h1 id="site-title">
-              <a href="/" style="color: #000e2f">Greenhouse Studios</a>
+              <a href="/" style="color: #FFF" >Greenhouse Studios</a>
             </h1>
           </div>
         </div>
@@ -96,7 +96,7 @@ export default {
       return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
     },
     randomXinMargin(i){
-      return i%2 === 1 ? 0 - this.width/2: this.width - 800;
+      return i%2 === 1 ? 0 - this.width/2 - 250: this.width - 600;
     },
     scale(number, inMin, inMax, outMin, outMax) {
       return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
@@ -146,21 +146,21 @@ footer {
   color: rgba(255, 255, 255, 0.7);
 }
 #site-header {
-  background: white !important;
+  background: #000e2f  !important;
   padding: 0 15px !important;
 }
 #uconn-header-container {
-  background-color: #fff !important;
-  color: #000;
+  background-color: #000e2f  !important;
+  color: #FFF;
 }
 #uconn-banner {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) !important;
 }
 #wordmark {
-  color: #000e2f !important;
+  color: #FFF !important;
 }
 #university-of-connecticut {
-  color: #000e2f !important;
+  color: #FFF !important;
 }
 .off-black{
   color: #191919;
