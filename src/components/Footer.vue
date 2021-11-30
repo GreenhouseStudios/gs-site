@@ -3,7 +3,7 @@
     <footer>
       <img class="footer-img" src="../../public/img/watercolor-footer.png" />
       <section class="footer-information">
-        <div class="contact-info">
+        <div class="contact-info f4-ns f5">
           <p>Greenhouse Studios</p>
           <p>Homer Babbidge Library, Level One</p>
           <p>369 Fairfield Way, Unit 1005</p>
@@ -38,10 +38,10 @@
           </div>
         </div>
 
-        <div class="copyright">
+        <div class="copyright f4-ns f5">
           <p>© University of Connecticut</p>
           <p>Disclaimers, Privacy & Copyright</p>
-          <p>Accessbility</p>
+          <p>Accessibility</p>
         </div>
 
       </section>
@@ -91,5 +91,7 @@ footer{
 .social-icon {
   padding: 5px;
 }
-
+a >img{
+  height: 40px;
+}
 </style>
