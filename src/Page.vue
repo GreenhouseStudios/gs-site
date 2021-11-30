@@ -1,6 +1,6 @@
 <template>
   <div v-if="page" id="container" class="w-two-thirds-ns center pa3">
-    <h2 class="f1">{{page.title.rendered}}</h2>
+    <h2 class="f1 title ttu">{{page.title.rendered}}</h2>
     <div v-html="page.content.rendered"></div>
   </div>
 </template>
@@ -27,4 +27,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title{
+  font-family: "Samo";
+}
 </style>

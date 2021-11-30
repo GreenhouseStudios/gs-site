@@ -59,9 +59,9 @@
       :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(i)}px; transform:scale(${width > 600 ? 1 : 2})`"
       v-for="i in Array.from(Array(numBgImages).keys())"
       :key="i"
+      id="bg-image"
     /></div>
     <router-view v-on:subnav-change="childUpdate"></router-view>
-    <hr />
     <Footer></Footer>
   </div>
 </template>
@@ -170,6 +170,9 @@ footer {
 }
 .dark-gray{
   color: #808080;
+}
+#bg-image{
+  pointer-events: none;
 }
 :root {
   --main-bg-color: #8CC947;
