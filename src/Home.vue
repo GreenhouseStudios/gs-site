@@ -1,7 +1,7 @@
 <template>
   <div class="body">
     <div class="gs-intro w-80">
-      <h2 class="title">
+      <h2 class="title p6">
         Facilitating humanities research through collaboration, digital
         technology and design.
       </h2>
@@ -134,10 +134,6 @@ export default {
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-.title{
-  margin: 60px;
-}
-
 .video-container img{
   width: 100%;
   margin: 0 auto;
@@ -153,7 +149,7 @@ export default {
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 30px;
+  padding-top: 50px;
   // padding-left: 50px;
   // padding-right: 50px;
   height: 0;
