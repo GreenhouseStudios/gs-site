@@ -5,8 +5,7 @@
     </div> -->
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">Projects</h2>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
-    </div>
+Each project is a test drive for our model of scholarly production. This allows us to continually assess our vision of what scholarly communications in the digital age look like.     </div>
     <div class=" w-60-l w-90 bb bw1 center mb3">
     </div>
     <div class="grid" v-if="projects">

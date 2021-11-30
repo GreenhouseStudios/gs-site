@@ -188,6 +188,8 @@ export default {
 
 .tabs p{
   font-size: 22px;
+  cursor: pointer;
+
 }
 
 .tabs label {
