@@ -184,6 +184,7 @@ export default {
   font-family: "Libre Franklin";
   font-weight: 200;
   margin-top: 50px;
+  border-radius: 5px;
 }
 
 .tabs p {
