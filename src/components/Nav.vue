@@ -2,7 +2,7 @@
   <div>
     <header class="header bg-transparent z-5">
       <img
-        :src="require('../../public/img/gs-website-watercolor-3.png')"
+        :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
         class="absolute"
         id="watercolor-bg"
