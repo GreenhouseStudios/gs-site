@@ -39,9 +39,10 @@
         </div>
 
         <div class="copyright f4-ns f5">
-          <p>© University of Connecticut</p>
-          <p>Disclaimers, Privacy & Copyright</p>
-          <p>Accessibility</p>
+          <p>© <a style="color:#1A1A1A" href="www.uconn.edu">University of Connecticut</a></p>
+          <p><a href="https://uconn.edu/disclaimers-privacy-copyright/">Disclaimers, Privacy & Copyright</a></p>
+          <p><a href="https://accessibility.uconn.edu/">Accessibility</a></p>
+          <p><a href="https://dev-greenhouse-studios.pantheonsite.io/wp-admin/">Editor Login</a></p>
         </div>
 
       </section>
