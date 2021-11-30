@@ -2,12 +2,8 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      Greenhouse Studios is a joint effort of the Department of Digital Media &
-      Design (DMD) in the School of Fine Arts (SFA), the University Library and
-      its Digital Scholarship and Data Curation Unit (DSDC), and the UConn
-      Humanities Institute (UCHI) in the College of Liberal Arts and Sciences
-      (CLAS). Each has made significant, permanent financial or (in the case of
-      the UCHI) programmatic commitments to the project.
+     We are an interdisciplinary team with diverse backgrounds who bring their individual interests and passions into the Greenhouse Studios community.
+
     </div>
     <div
       id="tab-btn-container"
