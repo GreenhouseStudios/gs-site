@@ -38,7 +38,7 @@
         class="absolute-l top-0 left-0 pa3 f1-ns f5 menu-icon"
         for="menu-btn"
       >
-        <span class="navicon"></span>
+        <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
       <ul class="menu ttc">
         <li>
