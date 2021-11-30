@@ -62,7 +62,6 @@
       id="bg-image"
     /></div>
     <router-view v-on:subnav-change="childUpdate"></router-view>
-    <hr />
     <Footer></Footer>
   </div>
 </template>
