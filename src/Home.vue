@@ -38,6 +38,7 @@
         <input type="radio" name="tabs" id="tabone" checked="checked" />
         <label for="tabone">Collaborative Culture</label>
         <div class="tab">
+          <img src="img/line3.svg">
           <p>
             As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
@@ -55,6 +56,8 @@
         <input type="radio" name="tabs" id="tabtwo" />
         <label for="tabtwo">What We Do</label>
         <div class="tab">
+          <img src="img/line3.svg">
+
           <p>
             As an interdisciplinary research unit, the Greenhouse Studios team
             comprises a wide variety of scholars, designers, developers, library
@@ -68,6 +71,8 @@
         <input type="radio" name="tabs" id="tabthree" />
         <label for="tabthree"> Who We Are</label>
         <div class="tab">
+          <img src="img/line3.svg">
+
           <p>
             We lead an inquiry-driven, collaboration-first scholarly design
             process together with an interdisciplinary team. Based on collective
@@ -176,6 +181,11 @@ export default {
   margin-top:100px;
 }
 
+.tab img{
+  height:10px;
+ 
+}
+
 .tabs p{
   font-size: 22px;
 }
@@ -192,7 +202,6 @@ export default {
 }
 
 .tabs .tab {
-  font-size: 60px;
   order: 99;
   flex-grow: 1;
   width: 100%;
@@ -209,7 +218,7 @@ export default {
   background: #fff;
   color: #8dc63f;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 30px;
 }
 
 .tabs input[type="radio"]:checked + label + .tab {
