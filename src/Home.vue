@@ -35,8 +35,7 @@
     <div class="about">
       <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked" />
-          <label :style="`background-image: url(${require('../public/img/GH-Watercolor.png')})`" for="tabone" >Collaborative Culture</label>
-        <div class="tab">
+<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`">Collaborative Culture</label>        <div class="tab">
           <p>
             As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
@@ -50,8 +49,7 @@
         </div>
 
         <input type="radio" name="tabs" id="tabtwo" />
-        <label for="tabtwo">What We Do</label>
-        <div class="tab">
+<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`">What We Do</label>         <div class="tab">
           <p>
             As an interdisciplinary research unit, the Greenhouse Studios team
             comprises a wide variety of scholars, designers, developers, library
@@ -63,8 +61,7 @@
         </div>
 
         <input type="radio" name="tabs" id="tabthree" />
-        <label for="tabthree"> Who We Are</label>
-        <div class="tab">
+<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`">Who We Are</label>         <div class="tab">
           <p>
             We lead an inquiry-driven, collaboration-first scholarly design
             process together with an interdisciplinary team. Based on collective
@@ -136,7 +133,7 @@ label{
 }
 
 .about{
-  padding: 20px;
+  margin: 60px;
 }
 
 
