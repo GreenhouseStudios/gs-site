@@ -23,6 +23,11 @@
         :alt="
           'Back side of flippable card for the project' + project.title.rendered
         "
+         :style="
+           'background-image: url(' +
+           project.custom_fields.project_card_back +
+           '); background-repeat: no-repeat;'
+         "
       >
         <img
           class="title-new"
