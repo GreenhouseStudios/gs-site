@@ -32,10 +32,10 @@
         </div>
       </div>
     </div>
-    <body>
+    <div class="about">
       <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked" />
-        <label for="tabone">Collaborative Culture</label>
+          <label :style="`background-image: url(${require('../public/img/GH-Watercolor.png')})`" for="tabone" >Collaborative Culture</label>
         <div class="tab">
           <p>
             As a scholarly research lab, we have created a unique workspace—a
@@ -75,8 +75,9 @@
             virtual reality to exhibitions and documentary films.
           </p>
         </div>
+        
       </div>
-    </body>
+    </div>
 
     <div class="text-1">
       <div class="fprojects-text">
@@ -127,6 +128,17 @@ export default {
 
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+label{
+  background-size: 2%;
+  background-position: 0% 50%;
+  background-repeat: no-repeat;
+}
+
+.about{
+  padding: 20px;
+}
+
 
 .video-container img {
   width: 100%;
@@ -193,6 +205,7 @@ export default {
 }
 
 .tabs label {
+  
   font-family: "Libre Franklin";
   text-align: center;
   width: 29%;
@@ -202,7 +215,7 @@ export default {
   padding: 20px;
   margin-right: 8px;
   cursor: pointer;
-  background: #8dc63f;
+  background: #8cc947;
   font-weight: 400;
 }
 
@@ -222,7 +235,7 @@ export default {
 
 .tabs input[type="radio"]:checked + label {
   background: #fff;
-  color: #8dc63f;
+  color: black;
   font-weight: 600;
 }
 
