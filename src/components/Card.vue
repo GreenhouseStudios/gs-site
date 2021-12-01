@@ -50,7 +50,7 @@
           }`"
           @mouseleave="hover = false"
           @mouseenter="hover = true"
-          :href="project.custom_fields.website_url"
+          :href="project.custom_fields.website_url" target="_blank"
           @click.stop=""
         >
           WEBSITE
