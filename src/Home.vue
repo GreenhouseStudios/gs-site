@@ -20,7 +20,7 @@
     <div class="text-1">
       <div class="fprojects-text">
         <h3 class="title-2 f2 pl4">Featured Projects</h3>
-        <router-link to="/projects"> view all projects &#8594; </router-link>
+        <router-link to="/projects" class="shimmer"> view all projects &#8594; </router-link>
       </div>
       <div class="grid sidescroll pl5" v-if="projects">
         <div
@@ -81,7 +81,7 @@
     <div class="text-1">
       <div class="fprojects-text">
         <h3 class="title-2 f2 pl4">Featured Blog Posts</h3>
-        <router-link to="/blog"> view blog &#8594; </router-link>
+        <router-link to="/blog" class="shimmer"> view blog &#8594; </router-link>
       </div>
       <div class="grid sidescroll pl5" v-if="!$store.getters.loading">
         <div v-for="(post, i) in posts" :key="post.slug" :index="i">
@@ -752,5 +752,34 @@ p a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.shimmer:hover {
+  display: inline-block;
+  color: white;
+
+  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #aaa), to(#444));
+
+  background-position: -4rem top; /*50px*/
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 2.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-background-size: 4rem 100%; /*50px*/
+}
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -4rem top; /*50px*/
+  }
+
+  70% {
+    background-position: 12.5rem top; /*200px*/
+  }
+
+  100% {
+    background-position: 12.5rem top; /*200px*/
+  }
 }
 </style>
