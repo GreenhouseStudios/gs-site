@@ -711,7 +711,7 @@ footer {
 
 .title-2 {
   font-weight: 600;
-  font-size: 24px;
+  font-size: 28px;
 }
 
 .line {

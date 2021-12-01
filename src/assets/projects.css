@@ -182,7 +182,7 @@ footer {
   position: absolute;
   border-radius: 5px;
   backface-visibility: hidden;
-  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 9px rgba(0, 0, 0, 0.2);
   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); */
   border: none;
   border-radius: 10px;
