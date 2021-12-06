@@ -49,7 +49,7 @@
         </div>
 
         <input type="radio" name="tabs" id="tabtwo" />
-<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`">What We Do</label>         <div class="tab">
+<label for="tabtwo" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`">What We Do</label>         <div class="tab">
           <p>
             As an interdisciplinary research unit, the Greenhouse Studios team
             comprises a wide variety of scholars, designers, developers, library
@@ -61,7 +61,7 @@
         </div>
 
         <input type="radio" name="tabs" id="tabthree" />
-<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`">Who We Are</label>         <div class="tab">
+<label for="tabthree" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`">Who We Are</label>         <div class="tab">
           <p>
             We lead an inquiry-driven, collaboration-first scholarly design
             process together with an interdisciplinary team. Based on collective

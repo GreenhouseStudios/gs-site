@@ -1,6 +1,6 @@
 <template>
     
-        <img class="home-btn-img" src="../../public/img/GS-Full-Brackets-Green:Black.png" alt="Greenhouse Studios">
+        <img class="home-btn-img" src="../../public/img/GS-Full-Brackets-Green-Black.png" alt="Greenhouse Studios">
 
 </template>
 
