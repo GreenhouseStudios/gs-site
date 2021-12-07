@@ -17,21 +17,7 @@
       ></iframe>
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
-    <div class="text-1">
-      <div class="fprojects-text">
-        <h3 class="title-2 f2 pl4">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer"> view all projects &#8594; </router-link>
-      </div>
-      <div class="grid sidescroll pl5" v-if="projects">
-        <div
-          v-for="(project, index) in projects"
-          :key="project.id"
-          :index="index"
-        >
-          <card v-if="index < 5" :project="project"></card>
-        </div>
-      </div>
-    </div>
+    
     <div class="about">
       <div class="tabs">
         <input type="radio" name="tabs" id="tabone" checked="checked" />
@@ -78,7 +64,23 @@
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 f2 pl4">Featured Blog Posts</h3>
+        <h3 class="title-2 pl4">Featured Projects</h3>
+        <router-link to="/projects" class="shimmer"> view all projects &#8594; </router-link>
+      </div>
+      <div class="grid sidescroll pl5" v-if="projects">
+        <div
+          v-for="(project, index) in projects"
+          :key="project.id"
+          :index="index"
+        >
+          <card v-if="index < 5" :project="project"></card>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-1">
+      <div class="fprojects-text">
+        <h3 class="title-2 pl4">Featured Blog Posts</h3>
         <router-link to="/blog" class="shimmer"> view blog &#8594; </router-link>
       </div>
       <div class="grid sidescroll pl5" v-if="!$store.getters.loading">
@@ -711,7 +713,7 @@ footer {
 
 .title-2 {
   font-weight: 600;
-  font-size: 28px;
+  font-size: 32px;
 }
 
 .line {
