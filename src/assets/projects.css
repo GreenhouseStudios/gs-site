@@ -545,3 +545,16 @@ form {
   margin-top: 0;
   font-weight: normal;
 }
+
+a:hover{
+  color: #8cc947;
+}
+
+.footer-information a{
+  color: #717073;
+}
+
+.footer-information a:hover{
+  text-decoration: underline;
+  color: #246481 !important;
+}

@@ -42,7 +42,7 @@
           <p>© <a style="color:#1A1A1A" href="www.uconn.edu">University of Connecticut</a></p>
           <p><a href="https://uconn.edu/disclaimers-privacy-copyright/">Disclaimers, Privacy & Copyright</a></p>
           <p><a href="https://accessibility.uconn.edu/">Accessibility</a></p>
-          <p><a href="https://dev-greenhouse-studios.pantheonsite.io/wp-admin/">Editor Login</a></p>
+          <p><a style="color: #717073;" href="https://dev-greenhouse-studios.pantheonsite.io/wp-admin/">Editor Login</a></p>
         </div>
 
       </section>
