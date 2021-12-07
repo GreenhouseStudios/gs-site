@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page" id="container" class="w-two-thirds-ns center pa3">
+  <div v-if="page" id="container" class="w-90-ns center pa3">
     <h2 class="f1 title ttu">{{page.title.rendered}}</h2>
     <div v-html="page.content.rendered"></div>
   </div>
@@ -29,5 +29,6 @@ export default {
 <style lang="scss" scoped>
 .title{
   font-family: "Samo";
+  font-size: 3rem;
 }
 </style>
