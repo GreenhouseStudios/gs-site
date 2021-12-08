@@ -64,29 +64,29 @@
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 pl4">Featured Projects</h3>
+        <h3 class="title-2">Featured Projects</h3>
         <router-link to="/projects" class="shimmer"> view all projects &#8594; </router-link>
       </div>
-      <div class="grid sidescroll pl5" v-if="projects">
+      <div class="grid sidescroll ph5" v-if="projects">
         <div
-          v-for="(project, index) in projects"
+          v-for="(project, index) in featuredProjects"
           :key="project.id"
           :index="index"
         >
-          <card v-if="index < 5" :project="project"></card>
+          <card :project="project"></card>
         </div>
       </div>
     </div>
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2 pl4">Featured Blog Posts</h3>
+        <h3 class="title-2">Featured Blog Posts</h3>
         <router-link to="/blog" class="shimmer"> view blog &#8594; </router-link>
       </div>
-      <div class="grid sidescroll pl5" v-if="!$store.getters.loading">
-        <div v-for="(post, i) in posts" :key="post.slug" :index="i">
+      <div class="grid sidescroll ph5" v-if="!$store.getters.loading">
+        <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
           <blog-card
-            v-if="i < 6"
+            class="featuredblog"
             :post="post"
             :title="post.title"
             :content="post.content"
@@ -122,6 +122,22 @@ export default {
     this.projects = this.$store.getters.allProjects;
     this.posts = this.$store.getters.allPosts;
   },
+  computed: {
+    featuredProjects: function () {
+      if(this.projects){
+        return this.projects.slice(0, 5)
+      }else{
+        return null
+      }
+    },
+    featuredPosts: function () {
+      if(this.posts){
+        return this.posts.slice(0, 6)
+      }else{
+        return null
+      }
+    },
+  }
 };
 </script>
 
@@ -714,6 +730,7 @@ footer {
 .title-2 {
   font-weight: 600;
   font-size: 32px;
+  padding-left: 40px;
 }
 
 .line {
