@@ -1,6 +1,6 @@
 <template>
-  <div class="about bg-white w-50">
-    <div class="tabs">
+  <div class="about bg-white w-50-ns overflow-hidden">
+    <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
         name="tabs"
@@ -10,24 +10,29 @@
         v-model="picked"
       />
       <label
-        class="v-mid"
+        class="flex items-center justify-center pa3-ns pa2"
         for="tabone"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
-        >Collaborative Culture</label
+        ><span>Collaborative Culture</span></label
       >
+      <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
+        <p class="ma0">
+          {{ content[picked] }}
+        </p>
+      </div>
 
-      <input
-        type="radio"
-        name="tabs"
-        id="tabtwo"
-        :value="1"
-        v-model="picked"
-      />
+      <input type="radio" name="tabs" id="tabtwo" :value="1" v-model="picked" />
       <label
+        class="flex items-center justify-center pa3-ns pa2"
         for="tabtwo"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
-        >What We Do</label
+        ><span>What We Do</span></label
       >
+      <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+        <p class="ma0">
+          {{ content[picked] }}
+        </p>
+      </div>
 
       <input
         type="radio"
@@ -37,14 +42,21 @@
         v-model="picked"
       />
       <label
+        class="flex items-center justify-center pa3-ns pa2"
         for="tabthree"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
-        >Who We Are</label
+        ><span>Who We Are</span></label
       >
+
+      <div v-if="picked === 2 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+        <p class="ma0">
+          {{ content[picked] }}
+        </p>
+      </div>
     </div>
-    <div class="tab pa3" style="height: 300px">
-      <p>
-       {{content[picked]}}
+    <div class="tab dn db-ns pa3" style="">
+      <p class="ma0">
+        {{ content[picked] }}
       </p>
     </div>
   </div>
@@ -80,14 +92,22 @@ export default {
       ],
     };
   },
+  computed: {
+      bpSmall() {
+          return window.matchMedia('(max-width: 30em)').matches
+      },
+      bpNotSmall() {
+          return window.matchMedia('(min-width: 30em)').matches
+      }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
-    width: 80%;
-    margin: 30px;
+  width: 80%;
+  margin: 30px;
   box-shadow: 5px 5px 5px 5px lightgray;
 }
 .tabs {
@@ -95,7 +115,6 @@ export default {
   font-weight: 200;
   border-radius: 5px;
   background: white;
-  display: flex;
   gap: 8px;
   justify-content: space-around;
 }
@@ -110,8 +129,6 @@ export default {
   text-align: center;
   height: 50px;
   font-size: 28px;
-  display: block;
-  padding: 20px;
   cursor: pointer;
   background: #8cc947;
   font-weight: 400;
@@ -119,9 +136,7 @@ export default {
 }
 
 .tabs .tab {
-  order: 99;
   flex-grow: 1;
-  display: none;
   padding-left: 30px;
   padding-right: 30px;
   background: #fff;
@@ -139,18 +154,6 @@ export default {
 
 .tabs input[type="radio"]:checked + label + .tab {
   display: block;
-}
-
-@media (max-width: 720px) {
-  .tabs .tab,
-  .tabs label {
-    order: initial;
-  }
-
-  .tabs label {
-    width: 100%;
-    margin-top: 0.2rem;
-  }
 }
 
 @media (min-width: 720px) {
