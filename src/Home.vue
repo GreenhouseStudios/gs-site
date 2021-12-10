@@ -18,68 +18,10 @@
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
 
-    <!-- <div class="about bg-white">
-      <div class="tabs">
-        <input type="radio" name="tabs" id="tabone" checked="checked" />
-        <label
-          for="tabone"
-          :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
-          >Collaborative Culture</label
-        >
-        <div class="tab">
-          <p>
-            As a scholarly research lab, we have created a unique workspace—a
-            scholarly communications design studio—which establishes a
-            “collaboration first” approach that brings a diverse team of people
-            together to create original works of research.We are dedicated to
-            addressing the persistent, intertwined problems of workflow and
-            hierarchy with a mission that equally values all stakeholders
-            involved in producing scholarship. Everyone has a seat at the table
-            and a voice in the conversation.
-          </p>
-        </div>
-
-        <input type="radio" name="tabs" id="tabtwo" />
-        <label
-          for="tabtwo"
-          :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
-          >What We Do</label
-        >
-        <div class="tab">
-          <p>
-            As an interdisciplinary research unit, the Greenhouse Studios team
-            comprises a wide variety of scholars, designers, developers, library
-            professionals, editors, and more. We are a joint effort of the
-            University of Connecticut’s College of Liberal Arts and Sciences,
-            Library, and School of Fine Arts; our team members come from both
-            within and beyond the university.
-          </p>
-        </div>
-
-        <input type="radio" name="tabs" id="tabthree" />
-        <label
-          for="tabthree"
-          :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
-          >Who We Are</label
-        >
-        <div class="tab">
-          <p>
-            We lead an inquiry-driven, collaboration-first scholarly design
-            process together with an interdisciplinary team. Based on collective
-            interests, backgrounds, skills, and aspirations, we conceive and
-            implement a multimodal response to a challenge posed by a prompt.
-            Depending on audiences and aims, projects may take shape in diverse
-            media outputs ranging from interactive websites and immersive
-            virtual reality to exhibitions and documentary films.
-          </p>
-        </div>
-      </div>
-    </div> -->
-
-    <div class="flex flex-row">
-      <div class="w-50 flex">
+    <div class="flex flex-row items-center">
+      <div class="w-40 flex">
         <img
-        class="center" style="margin: 0 auto;"
+        class="center" style="margin: 0 auto; height: 400px"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""
         />

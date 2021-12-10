@@ -1,46 +1,60 @@
 <template>
-    <div class="about bg-white w-50">
-      <div class="tabs">
-        <input type="radio" name="tabs" id="tabone" checked="checked" />
-        <label
+  <div class="about bg-white w-50">
+    <div class="tabs">
+      <input
+        type="radio"
+        name="tabs"
+        id="tabone"
+        checked="checked"
+        :value="0"
+        v-model="picked"
+      />
+      <label
         class="v-mid"
-          for="tabone"
-          :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
-          >Collaborative Culture</label
-        >
-       
-        <input type="radio" name="tabs" id="tabtwo" />
-        <label
-          for="tabtwo"
-          :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
-          >What We Do</label
-        >
-    
-        <input type="radio" name="tabs" id="tabthree" />
-        <label
-          for="tabthree"
-          :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
-          >Who We Are</label
-        >
-        
-      </div>
-      <div class="tab pa3">
-          <p>As a scholarly research lab, we have created a unique workspace—a
-            scholarly communications design studio—which establishes a
-            “collaboration first” approach that brings a diverse team of people
-            together to create original works of research.We are dedicated to
-            addressing the persistent, intertwined problems of workflow and
-            hierarchy with a mission that equally values all stakeholders
-            involved in producing scholarship. Everyone has a seat at the table
-            and a voice in the conversation.</p>
-        </div>
+        for="tabone"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
+        >Collaborative Culture</label
+      >
+
+      <input
+        type="radio"
+        name="tabs"
+        id="tabtwo"
+        :value="1"
+        v-model="picked"
+      />
+      <label
+        for="tabtwo"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
+        >What We Do</label
+      >
+
+      <input
+        type="radio"
+        name="tabs"
+        id="tabthree"
+        :value="2"
+        v-model="picked"
+      />
+      <label
+        for="tabthree"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
+        >Who We Are</label
+      >
     </div>
+    <div class="tab pa3" style="height: 300px">
+      <p>
+       {{content[picked]}}
+      </p>
+    </div>
+  </div>
 </template>
 
 <script>
 export default {
   data() {
     return {
+      picked: 0,
       content: [
         `As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
@@ -72,7 +86,8 @@ export default {
 <style lang="scss" scoped>
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
-  margin: 60px;
+    width: 80%;
+    margin: 30px;
   box-shadow: 5px 5px 5px 5px lightgray;
 }
 .tabs {
@@ -143,5 +158,4 @@ export default {
     // height: 500px;
   }
 }
-
 </style>
