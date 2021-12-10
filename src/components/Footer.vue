@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <footer>
       <img class="footer-img" src="../../public/img/watercolor-footer.png" />
       <section class="footer-information">
@@ -12,87 +12,115 @@
 
         <div class="social-media">
           <div class="email social-icon">
-            <a href="mailto:greenhousestudios@uconn.edu" 
+            <a href="mailto:greenhousestudios@uconn.edu"
               ><img class="shadow" src="../../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div class="instagram social-icon">
             <a href="https://www.instagram.com/greenhousestudiosuconn/?hl=en"
-              ><img class="shadow" src="../../public/img/instagram.svg" alt="instagram"
+              ><img
+                class="shadow"
+                src="../../public/img/instagram.svg"
+                alt="instagram"
             /></a>
           </div>
           <div class="youtube social-icon">
             <a href="https://www.youtube.com/channel/UCuDO0yPZYSaXBE3G7ArmQjw"
-              ><img class="shadow" src="../../public/img/youtube.svg" alt="youtube"
+              ><img
+                class="shadow"
+                src="../../public/img/youtube.svg"
+                alt="youtube"
             /></a>
           </div>
           <div class="facebook social-icon">
             <a href="https://www.facebook.com/GreenhouseStudiosUConn/"
-              ><img class="shadow" src="../../public/img/facebook.svg" alt="facebook"
+              ><img
+                class="shadow"
+                src="../../public/img/facebook.svg"
+                alt="facebook"
             /></a>
           </div>
           <div class="twitter social-icon">
             <a href="https://twitter.com/greenhouseuconn?lang=en"
-              ><img class="shadow" src="../../public/img/twitter.svg" alt="twitter"
+              ><img
+                class="shadow"
+                src="../../public/img/twitter.svg"
+                alt="twitter"
             /></a>
           </div>
         </div>
 
-        <div class="copyright f4-ns f5">
-          <p>© <a style="color:#1A1A1A" href="www.uconn.edu">University of Connecticut</a></p>
-          <p><a href="https://uconn.edu/disclaimers-privacy-copyright/">Disclaimers, Privacy & Copyright</a></p>
+        <div class="copyright f4-ns f5" id="footer-links">
+          <p>© <a href="www.uconn.edu">University of Connecticut</a></p>
+          <p>
+            <a href="https://uconn.edu/disclaimers-privacy-copyright/"
+              >Disclaimers, Privacy & Copyright</a
+            >
+          </p>
           <p><a href="https://accessibility.uconn.edu/">Accessibility</a></p>
-          <p><a style="color: #717073;" href="https://dev-greenhouse-studios.pantheonsite.io/wp-admin/">Editor Login</a></p>
+          <p>
+            <a href="https://dev-greenhouse-studios.pantheonsite.io/wp-admin/"
+              >Editor Login</a
+            >
+          </p>
         </div>
-
       </section>
     </footer>
-    </div>
+  </div>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {};
 </script>
 
 <style lang="scss" scoped>
-.footer-information{
+.footer-information {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
 @media (max-width: 45em) {
-  .footer-information{
+  .footer-information {
     flex-direction: column;
-}
+  }
 }
 
-.contact-info, .social-media, .copyright{
+.contact-info,
+.social-media,
+.copyright {
   padding: 20px;
 }
-section{
-padding-bottom: 30px;
+section {
+  padding-bottom: 30px;
 }
-footer{
+footer {
   position: relative;
 }
-.footer-img{
+.footer-img {
   position: absolute;
   bottom: 0;
 }
-.grants{
+.grants {
   position: relative;
 }
 .shadow:hover {
   -webkit-filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.6))
-  drop-shadow(0px 1px 1px black);
+    drop-shadow(0px 1px 1px black);
   filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
 }
 .social-icon {
   padding: 5px;
 }
-a >img{
+a > img {
   height: 40px;
+}
+#footer-links {
+  > p > a {
+    color: #1a1a1a;
+
+    &:hover {
+      color: white !important;
+    }
+  }
 }
 </style>

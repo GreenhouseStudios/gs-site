@@ -18,8 +18,8 @@
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
 
-    <div class="flex flex-row-ns flex-column items-center-ns justify-center">
-      <div class="flex">
+    <div class="flex flex-row-ns flex-column justify-center ">
+      <div class="flex mh5-ns">
         <img
         class="center" style="margin: 0 auto;"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"

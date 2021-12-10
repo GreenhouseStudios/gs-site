@@ -54,7 +54,7 @@
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns pa3" style="">
+    <div class="tab dn db-ns pa3 bg-white z-3" style="">
       <p class="ma0">
         {{ content[picked] }}
       </p>

@@ -55,8 +55,8 @@
     <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
     <img
       :src="bgImages[i % bgImages.length]"
-      class="absolute o-10 z--1"
-      :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(i)}px; transform:scale(${width > 600 ? 1 : 2})`"
+      class="absolute o-10"
+      :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(i)}px; transform:scale(${width > 600 ? 1 : 2}); z-index: -100`"
       v-for="i in Array.from(Array(numBgImages).keys())"
       :key="i"
       id="bg-image"
@@ -113,7 +113,7 @@ export default {
       return Math.abs(Math.floor(this.height / this.spacing) - 1);
     },
     spacing(){
-      return 1000;
+      return 700;
     }
   },
   mounted() {
