@@ -36,7 +36,7 @@
           view all projects &#8594;
         </router-link>
       </div>
-      <div class="grid sidescroll ph5" v-if="projects">
+      <div class="grid sidescroll ph5-ns" v-if="projects">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
@@ -54,7 +54,7 @@
           view blog &#8594;
         </router-link>
       </div>
-      <div class="grid sidescroll ph5" v-if="!$store.getters.loading">
+      <div class="grid sidescroll ph5-ns" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
           <blog-card
             class="featuredblog"
