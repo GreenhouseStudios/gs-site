@@ -10,10 +10,10 @@
         v-model="picked"
       />
       <label
-        class="v-mid"
+        class="flex items-center justify-center"
         for="tabone"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
-        >Collaborative Culture</label
+        ><span>Collaborative Culture</span></label
       >
 
       <input
@@ -24,6 +24,7 @@
         v-model="picked"
       />
       <label
+      class="flex items-center justify-center"
         for="tabtwo"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
         >What We Do</label
@@ -37,6 +38,7 @@
         v-model="picked"
       />
       <label
+      class="flex items-center justify-center"
         for="tabthree"
         :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
         >Who We Are</label
@@ -110,11 +112,10 @@ export default {
   text-align: center;
   height: 50px;
   font-size: 28px;
-  display: block;
-  padding: 20px;
   cursor: pointer;
   background: #8cc947;
   font-weight: 400;
+  padding: 20px;
   flex: 1;
 }
 
