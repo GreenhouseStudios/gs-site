@@ -32,27 +32,39 @@
     <div
       v-if="alumni.length > 0"
       v-show="activeTab === 1"
-      class="relative center w-50-ns w-90 pa3"
+      class="relative center w-50-ns w-90 pa3-ns f3-ns f5"
     >
       <ul
-        class="relative top-0 dib alumni-list w-50 tc"
+        class="relative top-0 dib alumni-list w-third tc"
         style="vertical-align: top"
       >
         <li
           class="pa2"
-          v-for="a in alumni.slice(0, alumni.length / 2)"
+          v-for="a in alumni.slice(0, alumni.length / 3)"
+          :key="a.title.rendered"
+        >
+          {{ a.title.rendered }}
+        </li>
+      </ul>
+       <ul
+        class="relative top-0 dib alumni-list w-third tc"
+        style="vertical-align: top"
+      >
+        <li
+          class="pa2"
+          v-for="a in alumni.slice(alumni.length/3, 2*alumni.length / 3)"
           :key="a.title.rendered"
         >
           {{ a.title.rendered }}
         </li>
       </ul>
       <ul
-        class="relative top-0 dib alumni-list w-50 tc"
+        class="relative top-0 dib alumni-list w-third tc"
         style="vertical-align: top"
       >
         <li
           class="pa2"
-          v-for="b in alumni.slice(alumni.length / 2)"
+          v-for="b in alumni.slice(2*alumni.length / 3)"
           :key="b.title.rendered"
         >
           {{ b.title.rendered }}
@@ -212,7 +224,6 @@ export default {
 
 .alumni-list {
   font-family: "Libre-Franklin", Arial, Helvetica, sans-serif;
-  font-size: 25px;
   margin: 0;
   padding: 0;
   position: relative;
