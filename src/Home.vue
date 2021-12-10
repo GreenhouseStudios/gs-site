@@ -17,55 +17,24 @@
       ></iframe>
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
-    
-    <div class="about">
-      <div class="tabs">
-        <input type="radio" name="tabs" id="tabone" checked="checked" />
-<label for="tabone" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`">Collaborative Culture</label>        <div class="tab">
-          <p>
-            As a scholarly research lab, we have created a unique workspace—a
-            scholarly communications design studio—which establishes a
-            “collaboration first” approach that brings a diverse team of people
-            together to create original works of research.We are dedicated to
-            addressing the persistent, intertwined problems of workflow and
-            hierarchy with a mission that equally values all stakeholders
-            involved in producing scholarship. Everyone has a seat at the table
-            and a voice in the conversation.
-          </p>
-        </div>
 
-        <input type="radio" name="tabs" id="tabtwo" />
-<label for="tabtwo" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`">What We Do</label>         <div class="tab">
-          <p>
-            As an interdisciplinary research unit, the Greenhouse Studios team
-            comprises a wide variety of scholars, designers, developers, library
-            professionals, editors, and more. We are a joint effort of the
-            University of Connecticut’s College of Liberal Arts and Sciences,
-            Library, and School of Fine Arts; our team members come from both
-            within and beyond the university.
-          </p>
-        </div>
-
-        <input type="radio" name="tabs" id="tabthree" />
-<label for="tabthree" :style="`background-image:url(${require('../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`">Who We Are</label>         <div class="tab">
-          <p>
-            We lead an inquiry-driven, collaboration-first scholarly design
-            process together with an interdisciplinary team. Based on collective
-            interests, backgrounds, skills, and aspirations, we conceive and
-            implement a multimodal response to a challenge posed by a prompt.
-            Depending on audiences and aims, projects may take shape in diverse
-            media outputs ranging from interactive websites and immersive
-            virtual reality to exhibitions and documentary films.
-          </p>
-        </div>
-        
+    <div class="flex flex-row items-center">
+      <div class="w-40 flex">
+        <img
+        class="center" style="margin: 0 auto; height: 400px"
+          :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
+          alt=""
+        />
       </div>
+      <multi-tab></multi-tab>
     </div>
 
     <div class="text-1">
       <div class="fprojects-text">
         <h3 class="title-2">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer"> view all projects &#8594; </router-link>
+        <router-link to="/projects" class="shimmer">
+          view all projects &#8594;
+        </router-link>
       </div>
       <div class="grid sidescroll ph5" v-if="projects">
         <div
@@ -81,7 +50,9 @@
     <div class="text-1">
       <div class="fprojects-text">
         <h3 class="title-2">Featured Blog Posts</h3>
-        <router-link to="/blog" class="shimmer"> view blog &#8594; </router-link>
+        <router-link to="/blog" class="shimmer">
+          view blog &#8594;
+        </router-link>
       </div>
       <div class="grid sidescroll ph5" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
@@ -103,10 +74,11 @@
 <script>
 import Card from "./components/Card.vue";
 import BlogCard from "./components/BlogCard.vue";
+import MultiTab from "./components/MultiTab.vue";
 //import Blog from ".//Blog.vue";
 export default {
   name: "Home",
-  components: { BlogCard, Card },
+  components: { BlogCard, Card, MultiTab },
   //components: { Blog },
   data() {
     return {
@@ -124,36 +96,31 @@ export default {
   },
   computed: {
     featuredProjects: function () {
-      if(this.projects){
-        return this.projects.slice(0, 5)
-      }else{
-        return null
+      if (this.projects) {
+        return this.projects.slice(0, 5);
+      } else {
+        return null;
       }
     },
     featuredPosts: function () {
-      if(this.posts){
-        return this.posts.slice(0, 6)
-      }else{
-        return null
+      if (this.posts) {
+        return this.posts.slice(0, 6);
+      } else {
+        return null;
       }
     },
-  }
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-label{
+label {
   background-size: 2%;
   background-position: 0% 50%;
   background-repeat: no-repeat;
 }
-
-.about{
-  margin: 60px;
-}
-
 
 .video-container img {
   width: 100%;
@@ -201,87 +168,12 @@ label{
   z-index: -1;
 }
 
-/* Collaborative Culture / What We Do / Who We Are Tabs */
-
-.tabs {
-  display: flex;
-  flex-wrap: wrap;
-  height: 900px;
-  box-shadow: 5px 5px 5px 5px lightgray;
-  font-family: "Libre Franklin";
-  font-weight: 200;
-  margin-top: 50px;
-  border-radius: 5px;
-}
-
-.tabs p {
-  font-size: 22px;
-  cursor: pointer;
-}
-
-.tabs label {
-  
-  font-family: "Libre Franklin";
-  text-align: center;
-  width: 29%;
-  height: 50px;
-  font-size: 28px;
-  display: block;
-  padding: 20px;
-  margin-right: 8px;
-  cursor: pointer;
-  background: #8cc947;
-  font-weight: 400;
-}
-
-.tabs .tab {
-  order: 99;
-  flex-grow: 1;
-  width: 100%;
-  display: none;
-  padding-left: 30px;
-  padding-right: 30px;
-  background: #fff;
-}
-
-.tabs input[type="radio"] {
-  display: none;
-}
-
-.tabs input[type="radio"]:checked + label {
-  background: #fff;
-  color: black;
-  font-weight: 600;
-}
-
-.tabs input[type="radio"]:checked + label + .tab {
-  display: block;
-}
-
-@media (max-width: 720px) {
-  .tabs .tab,
-  .tabs label {
-    order: initial;
-  }
-
-  .tabs label {
-    width: 100%;
-    margin-top: 0.2rem;
-  }
-}
-
-@media (min-width: 720px) {
-  .tabs {
-    height: 500px;
-  }
-}
-
 body {
   font-family: "Libre Franklin";
   line-height: 1.5;
   margin: 0 auto;
   font-size: 17px;
-  padding:100px;
+  padding: 100px;
 }
 
 .gs-intro {
@@ -434,14 +326,6 @@ footer {
           box-sizing: border-box;
         } */
 
-.flex {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  justify-content: space-between;
-}
-
 .people-img {
   height: 200px;
   width: 200px;
@@ -527,155 +411,6 @@ footer {
   color: white;
   background-color: #246481;
   border: 2px solid #246481;
-}
-
-.btn-bol:hover {
-  background-color: white;
-  color: #246481;
-}
-
-.btn-cvr {
-  color: white;
-  background-color: #9d8d32;
-  border: 2px solid #9d8d32;
-}
-
-.btn-cvr:hover {
-  background-color: white;
-  color: #9d8d32;
-  border: 2px solid #9d8d32;
-}
-
-.btn-c600 {
-  color: white;
-  background-color: #8cc947;
-  border: 2px solid #8cc947;
-}
-
-.btn-c600:hover {
-  background-color: white;
-  color: #8cc947;
-  border: 2px solid #8cc947;
-}
-
-.btn-eer {
-  color: white;
-  background-color: #b7c238;
-  border: 2px solid #b7c238;
-}
-
-.btn-eer:hover {
-  background-color: white;
-  color: #b7c238;
-  border: 2px solid #b7c238;
-}
-
-.btn-fino {
-  color: white;
-  background-color: #659370;
-  border: 2px solid #659370;
-}
-
-.btn-fino:hover {
-  background-color: white;
-  color: #659370;
-  border: 2px solid #659370;
-}
-
-.btn-flusser {
-  color: white;
-  background-color: #2b2d42;
-  border: 2px solid #2b2d42;
-}
-
-.btn-flusser:hover {
-  background-color: white;
-  color: #2b2d42;
-  border: 2px solid #2b2d42;
-}
-
-.btn-hartford {
-  color: white;
-  background-color: #509ec8;
-  border: 2px solid #509ec8;
-}
-
-.btn-hartford:hover {
-  background-color: white;
-  color: #509ec8;
-  border: 2px solid #509ec8;
-}
-
-.btn-husky {
-  color: white;
-  background-color: #36296b;
-  border: 2px solid #36296b;
-}
-
-.btn-husky:hover {
-  background-color: white;
-  color: #36296b;
-  border: 2px solid #36296b;
-}
-
-.btn-landgrab {
-  color: white;
-  background-color: #ae6046;
-  border: 2px solid #ae6046;
-}
-
-.btn-landgrab:hover {
-  background-color: white;
-  color: #ae6046;
-  border: 2px solid #ae6046;
-}
-
-.btn-leamh {
-  color: white;
-  background-color: #000000;
-  border: 2px solid #000000;
-}
-
-.btn-leamh:hover {
-  background-color: white;
-  color: #000000;
-  border: 2px solid #000000;
-}
-
-.btn-museums {
-  color: white;
-  background-color: #8cc947;
-  border: 2px solid #8cc947;
-}
-
-.btn-museums:hover {
-  background-color: white;
-  color: #8cc947;
-  border: 2px solid #8cc947;
-}
-
-.btn-overrated {
-  color: white;
-  background-color: #b7c238;
-  border: 2px solid #b7c238;
-}
-
-.btn-overrated:hover {
-  background-color: white;
-  color: #b7c238;
-  border: 2px solid #b7c238;
-}
-
-.btn-sourcery {
-  color: white;
-  background-color: #6a52a5;
-  border: 2px solid #6a52a5;
-}
-
-.btn-sourcery:hover {
-  background-color: white;
-  color: #6a52a5;
-  border: 2px solid #6a52a5;
 }
 
 @font-face {
