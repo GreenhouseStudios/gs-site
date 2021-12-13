@@ -35,7 +35,7 @@
         @click="toggleMenu()"
       />
       <label
-        class="absolute-l top-0 left-0 pa3 f1-ns f5 menu-icon"
+        class="absolute-l top-0 left-0 pa3 f3-ns f5 menu-icon"
         for="menu-btn"
       >
         <span><i class="fa fa-2x fa-bars"></i></span>
