@@ -89,15 +89,15 @@
             <i class="dib fa fa-xs fa-times"></i>
           </button>
           <ul
-            @click="toggleMenu()"
+            @click="toggleMenuDelay()"
             class="flex flex-column items-center justify-center h-100"
             id="mobile-menu-list"
           >
-            <li><router-link to="/">HOME</router-link></li>
-            <li><router-link to="/people">PEOPLE</router-link></li>
-            <li><router-link to="/projects">PROJECTS</router-link></li>
-            <li><router-link to="/page/join-us">JOIN US</router-link></li>
-            <li><router-link to="/blog">BLOG</router-link></li>
+            <li><router-link class="mobilebutton ripple" to="/">HOME</router-link></li>
+            <li><router-link class="mobilebutton ripple" to="/people">PEOPLE</router-link></li>
+            <li><router-link class="mobilebutton ripple" to="/projects">PROJECTS</router-link></li>
+            <li><router-link class="mobilebutton ripple" to="/page/join-us">JOIN US</router-link></li>
+            <li><router-link class="mobilebutton ripple" to="/blog">BLOG</router-link></li>
           </ul>
         </div></transition
       >
@@ -126,6 +126,9 @@ export default {
     toggleMenu() {
       this.showMenu = !this.showMenu;
       this.$emit("toggle");
+    },
+    toggleMenuDelay() {
+      setTimeout(() => this.toggleMenu(), 500);
     },
   },
 };
@@ -338,5 +341,29 @@ li:hover {
   100% {
     background-position: 12.5rem top; /*200px*/
   }
+}
+.mobilebutton 
+  {
+  border: none;
+  border-radius: 10px;
+  margin: 5px;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  color: white;
+  outline: none;
+}
+/* Ripple effect */
+.ripple {
+  background-position: center;
+  transition: background 0.8s;
+}
+.ripple:hover {
+  background: #9fdd59 radial-gradient(circle, transparent 1%, #8CC947 1%) center/15000%;
+}
+.ripple:active {
+  background-color: #f5f5f5;
+  background-size: 100%;
+  transition: background 0s;
 }
 </style>
