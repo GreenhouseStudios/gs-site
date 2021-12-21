@@ -10,13 +10,13 @@
     >
       <button
         @click="changeActiveTab(index)"
-        class="ma3 pa3-ns pa2 br2 ma1 bg-transparent w5"
+        class="ma3 pa3 br2 ma1 bg-transparent w5"
         id="subnav-btn"
         :class="{ active: activeTab === index, inactive: activeTab !== index }"
         v-for="(tab, index) in tabs"
         :key="tab"
       >
-        <h3 class="ma0 f1 f4-ns f6" style="color: #333333">{{ tab }}</h3>
+        <h3 class="ma0 f1 f4-ns f4" style="color: #333333">{{ tab }}</h3>
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">
@@ -32,7 +32,7 @@
     <div
       v-if="alumni.length > 0"
       v-show="activeTab === 1"
-      class="relative center w-50-ns w-90 pa3-ns f3-ns f5"
+      class="relative center w-50-ns w-75-m w-90 pa3-ns f3-ns f5"
     >
       <ul
         class="relative top-0 dib alumni-list w-third tc"
@@ -233,6 +233,12 @@ export default {
   display: flex;
   flex-direction: row;
   padding: 16px 0px;
+}
+@media (max-width: 660px) {
+  #tab-btn-container{
+    flex-direction: column;
+    align-items: center;
+  }
 }
 #subnav-btn {
   color: #8cc947;
