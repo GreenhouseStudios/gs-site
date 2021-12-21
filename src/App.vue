@@ -1,5 +1,11 @@
 <template>
-  <div id="app" style="width:100vw; overflow-x: hidden; " :style="`${menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''}`">
+  <div
+    id="app"
+    style="width: 100vw; overflow-x: hidden"
+    :style="`${
+      menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
+    }`"
+  >
     <head>
       <meta charset="utf-8" />
       <title>UConn Banner</title>
@@ -44,7 +50,7 @@
           <div class="pb3">
             <p id="super-title"></p>
             <h1 id="site-title">
-              <a href="/" style="color: #FFF" >Greenhouse Studios</a>
+              <a href="/" style="color: #fff">Greenhouse Studios</a>
             </h1>
           </div>
         </div>
@@ -52,15 +58,22 @@
     </div>
     <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <loading v-if="$store.getters.loading"></loading>
-    <div :style="`height:${height}`" class="overflow-hidden" v-if="showBgImages">
-    <img
-      :src="bgImages[i % bgImages.length]"
-      class="absolute o-10"
-      :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(i)}px; transform:scale(${width > 600 ? 1 : 2}); z-index: -100`"
-      v-for="i in Array.from(Array(numBgImages).keys())"
-      :key="i"
-      id="bg-image"
-    /></div>
+    <div
+      :style="`height:${height}`"
+      class="overflow-hidden"
+      v-if="showBgImages"
+    >
+      <img
+        :src="bgImages[i % bgImages.length]"
+        class="absolute o-10"
+        :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(
+          i
+        )}px; transform:scale(${width > 600 ? 1 : 2}); z-index: -100`"
+        v-for="i in Array.from(Array(numBgImages).keys())"
+        :key="i"
+        id="bg-image"
+      />
+    </div>
     <router-view v-on:subnav-change="childUpdate"></router-view>
     <Footer></Footer>
   </div>
@@ -81,11 +94,9 @@ export default {
     return {
       menuOn: false,
       height: null,
-      width: 900,
+      width: null,
       showBgImages: true,
-      bgImages: [
-        require("../public/bgImg/gs_spider-plant-fully-grown_bw.png"),
-      ],
+      bgImages: [require("../public/bgImg/gs_spider-plant-fully-grown_bw.png")],
     };
   },
   created() {
@@ -93,36 +104,49 @@ export default {
   },
   methods: {
     randomXOffset() {
-      return this.scale(this.width * Math.random(),0,this.width,50,this.width - 50);
+      return this.scale(
+        this.width * Math.random(),
+        0,
+        this.width,
+        50,
+        this.width - 50
+      );
     },
-    randomXinMargin(i){
-      return i%2 === 1 ? 0 - this.width/2 - 250: this.width - 600;
+    randomXinMargin(i) {
+      return i % 2 === 1 ? 0-this.bgImageOffset: this.bgImageOffset;
     },
     scale(number, inMin, inMax, outMin, outMax) {
       return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
     },
-    childUpdate(){
-      this.showBgImages= false;
+    childUpdate() {
+      this.showBgImages = false;
+      this.width = document.documentElement.clientWidth;
       this.height = document.body.scrollHeight;
+      this.showBgImages = true;
+    },
+    getDimensions() {
       this.width = document.body.scrollWidth;
-      this.showBgImages = true
-    }
+      this.height = document.body.scrollHeight;
+    },
   },
   computed: {
     numBgImages() {
       return Math.abs(Math.floor(this.height / this.spacing) - 1);
     },
-    spacing(){
+    spacing() {
       return 700;
+    },
+    bgImageOffset(){
+      return this.width/(this.width > 600 ? 2:3) + (this.width > 600 ? 300:250);
     }
   },
   mounted() {
+    window.addEventListener("resize", this.getDimensions);
     this.height = document.body.scrollHeight;
     this.width = document.body.scrollWidth;
   },
-  updated() {
-    this.height = document.body.scrollHeight;
-    this.width = document.body.scrollWidth;
+  unmounted() {
+    window.removeEventListener("resize", this.getDimensions);
   },
 };
 </script>
@@ -131,7 +155,8 @@ export default {
 Nav {
   overflow: visible !important;
 }
-body,html {
+body,
+html {
   overflow-x: hidden;
 }
 footer {
@@ -146,35 +171,35 @@ footer {
   color: rgba(255, 255, 255, 0.7);
 }
 #site-header {
-  background: #000e2f  !important;
+  background: #000e2f !important;
   padding: 0 15px !important;
 }
 #uconn-header-container {
-  background-color: #000e2f  !important;
-  color: #FFF;
+  background-color: #000e2f !important;
+  color: #fff;
 }
 #uconn-banner {
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.1) !important;
 }
 #wordmark {
-  color: #FFF !important;
+  color: #fff !important;
 }
 #university-of-connecticut {
-  color: #FFF !important;
+  color: #fff !important;
 }
-.off-black{
+.off-black {
   color: #191919;
 }
-.off-black-2{
+.off-black-2 {
   color: #404040;
 }
-.dark-gray{
+.dark-gray {
   color: #808080;
 }
-#bg-image{
+#bg-image {
   pointer-events: none;
 }
 :root {
-  --main-bg-color: #8CC947;
+  --main-bg-color: #8cc947;
 }
 </style>
