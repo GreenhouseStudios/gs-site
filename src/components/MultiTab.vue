@@ -1,5 +1,5 @@
 <template>
-  <div class="about bg-white w-50-ns overflow-hidden">
+  <div class="about bg-white w-50-ns overflow-hidden center-m ma4-ns">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -107,7 +107,6 @@ export default {
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
   width: 80%;
-  margin: 30px;
   box-shadow: 5px 5px 5px 5px lightgray;
 }
 .tabs {
