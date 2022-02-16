@@ -1,5 +1,5 @@
 <template>
-  <div class="about bg-white w-50-ns overflow-hidden">
+  <div class="about bg-white w-50-ns overflow-hidden center-m ma4-ns">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -12,7 +12,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabone"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 190% 900%; background-repeat: no-repeat`"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
         ><span>Collaborative Culture</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
@@ -25,7 +25,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabtwo"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 300% 400%; background-repeat: no-repeat`"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
         ><span>What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -44,7 +44,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabthree"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 500% 800%; background-repeat: no-repeat`"
+        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
         ><span>Who We Are</span></label
       >
 
@@ -107,7 +107,6 @@ export default {
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
   width: 80%;
-  margin: 30px;
   box-shadow: 5px 5px 5px 5px lightgray;
 }
 .tabs {

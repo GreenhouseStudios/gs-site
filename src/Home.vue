@@ -18,10 +18,10 @@
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
 
-    <div class="flex flex-row-ns flex-column justify-center ">
+    <div class="flex flex-row-ns flex-column flex-column-m justify-center">
       <div class="flex mh5-ns">
         <img
-        class="center" style="margin: 0 auto;"
+        id="gs-logo" class="center" style="margin: auto;"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""
         />
@@ -545,5 +545,12 @@ p a {
   100% {
     background-position: 12.5rem top; /*200px*/
   }
+}
+#gs-logo{
+  display: block;
+  max-width:300px;
+  max-height:300px;
+  width: auto;
+  height: auto;
 }
 </style>
