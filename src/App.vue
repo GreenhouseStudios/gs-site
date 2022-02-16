@@ -57,7 +57,7 @@
       </div>
     </div>
     <Nav v-on:toggle="menuOn = !menuOn"></Nav>
-    <loading v-if="$store.getters.loading"></loading>
+    <!-- <loading v-if="$store.getters.loading"></loading> -->
     <div
       :style="`height:${height}`"
       class="overflow-hidden"
@@ -81,14 +81,14 @@
 
 <script>
 import Footer from "./components/Footer.vue";
-import Loading from "./components/Loading.vue";
+// import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
 export default {
   name: "App",
   components: {
     Nav,
     Footer,
-    Loading,
+    // Loading,
   },
   data() {
     return {
