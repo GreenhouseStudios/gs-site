@@ -1,5 +1,5 @@
 <template>
-  <div class="about bg-white w-50-ns overflow-hidden center-m ma4-ns">
+  <div class="about bg-white w-30-ns overflow-hidden center-m ma4-ns">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -12,7 +12,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabone"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
+        :style="picked === 0 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat;`"
         ><span>Collaborative Culture</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
@@ -25,7 +25,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabtwo"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
+        :style="picked === 1 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat; border-right: 2px white solid;border-left: 2px white solid`"
         ><span>What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -44,7 +44,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2"
         for="tabthree"
-        :style="`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 100%; background-repeat: no-repeat`"
+        :style="picked === 2 ? `background: #F7F7F7`:`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat`"
         ><span>Who We Are</span></label
       >
 
@@ -54,7 +54,7 @@
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns pa3 bg-white z-3" style="">
+    <div class="tab dn db-ns pa4 z-3 f5 h-100" style="background: #F7F7F7">
       <p class="ma0">
         {{ content[picked] }}
       </p>
@@ -106,7 +106,7 @@ export default {
 <style lang="scss" scoped>
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
-  width: 80%;
+  width: 60%;
   box-shadow: 5px 5px 5px 5px lightgray;
 }
 .tabs {
@@ -114,12 +114,12 @@ export default {
   font-weight: 200;
   border-radius: 5px;
   background: white;
-  gap: 8px;
+
   justify-content: space-around;
 }
 
 .about p {
-  font-size: 22px;
+  // font-size: 22px;
   cursor: pointer;
 }
 

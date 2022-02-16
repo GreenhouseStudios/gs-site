@@ -18,7 +18,7 @@
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
     </div>
 
-    <div class="flex flex-row-ns flex-column flex-column-m justify-center">
+    <div class="flex flex-row-ns flex-column flex-column-m" style="justify-content:space-evenly">
       <div class="flex mh5-ns">
         <img
         id="gs-logo" class="center" style="margin: auto;"
