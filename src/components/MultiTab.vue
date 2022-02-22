@@ -1,5 +1,5 @@
 <template>
-  <div class="about bg-white w-30-ns overflow-hidden center-m ma4-ns">
+  <div class="about w-30-ns overflow-hidden center-m ma4-ns br2">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -10,7 +10,7 @@
         v-model="picked"
       />
       <label
-        class="flex items-center justify-center pa3-ns pa2"
+        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom"
         for="tabone"
         :style="picked === 0 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat;`"
         ><span>Collaborative Culture</span></label
@@ -23,9 +23,9 @@
 
       <input type="radio" name="tabs" id="tabtwo" :value="1" v-model="picked" />
       <label
-        class="flex items-center justify-center pa3-ns pa2"
+        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom ml1 mr1"
         for="tabtwo"
-        :style="picked === 1 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat; border-right: 2px white solid;border-left: 2px white solid`"
+        :style="picked === 1 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat;`"
         ><span>What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -42,7 +42,7 @@
         v-model="picked"
       />
       <label
-        class="flex items-center justify-center pa3-ns pa2"
+        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom"
         for="tabthree"
         :style="picked === 2 ? `background: #F7F7F7`:`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat`"
         ><span>Who We Are</span></label
@@ -107,13 +107,14 @@ export default {
 /* Collaborative Culture / What We Do / Who We Are Tabs */
 .about {
   width: 60%;
-  box-shadow: 5px 5px 5px 5px lightgray;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  background: #F7F7F7;
+  
 }
 .tabs {
   font-family: "Libre Franklin";
   font-weight: 200;
   border-radius: 5px;
-  background: white;
 
   justify-content: space-around;
 }
@@ -138,7 +139,6 @@ export default {
   flex-grow: 1;
   padding-left: 30px;
   padding-right: 30px;
-  background: #fff;
 }
 
 .tabs input[type="radio"] {
@@ -146,7 +146,6 @@ export default {
 }
 
 .tabs input[type="radio"]:checked + label {
-  background: #fff;
   color: black;
   font-weight: 600;
 }
