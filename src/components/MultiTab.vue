@@ -159,4 +159,11 @@ export default {
     // height: 500px;
   }
 }
+
+@media (max-width: 800px){
+  .about{
+    width: 80%;
+    margin: auto;
+  }
+}
 </style>
