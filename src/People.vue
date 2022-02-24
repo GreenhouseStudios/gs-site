@@ -6,7 +6,7 @@
     </div>
     <div
       id="tab-btn-container"
-      class="w-50-ns center flex flex-row justify-center bb"
+      class="w-50-ns center flex flex-row justify-around bb"
     >
       <button
         @click="changeActiveTab(index)"
@@ -71,12 +71,12 @@
         </li>
       </ul>
     </div>
-    <div v-show="activeTab === 2">
+    <!-- <div v-show="activeTab === 2">
       <div class="grid partner">
         <img v-for="p in partners" :key="p" class="partner-img" :src="p" />
       </div>
-    </div>
-    <div v-show="activeTab === 3">
+    </div> -->
+    <!-- <div v-show="activeTab === 3">
       <div class="relative center w-50-ns w-90">
         <div class="ma2 mb4">
           <h3 class="f3">Greenhouse Studios Leadership</h3>
@@ -129,7 +129,7 @@
           </p>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -149,7 +149,9 @@ export default {
         require("../public/img/UConn_Humanities_Institute.png"),
         require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
       ],
-      tabs: ["Active", "Alumni", "Partners", "Governance"],
+      tabs: ["Active", "Alumni", 
+      // "Partners", "Governance"
+      ],
       activeTab: 0,
     };
   },
