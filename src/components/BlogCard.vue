@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + ')'" alt="Blog Card Image" >
+    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + '), url(' + backupImg + ')'" alt="Blog Card Image" >
       <div class="data">
         <div class="content">
           <hr>
@@ -43,7 +43,8 @@ export default {
     },
     data(){
         return {
-            isFlipped: false
+            isFlipped: false,
+            backupImg: "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
         }
     },
     methods: {
@@ -75,7 +76,7 @@ export default {
           var src = regex.exec(str);
           if(src == null){
             // Placeholder Image
-            src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+            src = this.backupImg;
           }else{
             src = src[1];
           }
