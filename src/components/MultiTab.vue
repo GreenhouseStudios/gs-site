@@ -23,8 +23,9 @@
 
       <input type="radio" name="tabs" id="tabtwo" :value="1" v-model="picked" />
       <label
-        class="flex items-center justify-center pa3-ns pa2 br2 br--bottom ml1 mr1"
+        class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabtwo"
+        id="tab-two-label"
         :style="picked === 1 ? `background: #F7F7F7;font-size: 20pt`: `background: #a4d171 ;`"
         ><span>What We Do</span></label
       >
@@ -111,6 +112,7 @@ export default {
   background: #F7F7F7;
   
 }
+
 .tabs {
   font-family: "Libre Franklin";
   font-weight: 200;
@@ -162,12 +164,18 @@ export default {
   .tabs {
     // height: 500px;
   }
+   #tab-two-label{
+    margin: 0 4px;
+  }
 }
 
 @media (max-width: 800px){
   .about{
     width: 80%;
     margin: auto;
+  }
+  #tab-two-label{
+    margin: 0;
   }
 }
 </style>
