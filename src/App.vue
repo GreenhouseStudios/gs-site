@@ -160,7 +160,7 @@ html {
   overflow-x: hidden;
 }
 body{
-
+  width: 100vw;
 }
 footer {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
