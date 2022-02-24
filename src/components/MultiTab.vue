@@ -10,9 +10,9 @@
         v-model="picked"
       />
       <label
-        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom"
+        class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
-        :style="picked === 0 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat;`"
+        :style="picked === 0 ? `background: #F7F7F7; font-size: 20pt`: `background: #a4d171 ;`"
         ><span>Collaborative Culture</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
@@ -23,9 +23,9 @@
 
       <input type="radio" name="tabs" id="tabtwo" :value="1" v-model="picked" />
       <label
-        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom ml1 mr1"
+        class="flex items-center justify-center pa3-ns pa2 br2 br--bottom ml1 mr1"
         for="tabtwo"
-        :style="picked === 1 ? `background: #F7F7F7`: `background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat;`"
+        :style="picked === 1 ? `background: #F7F7F7;font-size: 20pt`: `background: #a4d171 ;`"
         ><span>What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -42,9 +42,9 @@
         v-model="picked"
       />
       <label
-        class="flex items-center justify-center pa3-ns pa2 br4 br--bottom"
+        class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabthree"
-        :style="picked === 2 ? `background: #F7F7F7`:`background-image:url(${require('../../public/img/GH-Watercolor.png')}); background-size: 100% 150%; background-repeat: no-repeat`"
+        :style="picked === 2 ? `background: #F7F7F7; font-size: 20pt`:`background: #a4d171 ;`"
         ><span>Who We Are</span></label
       >
 
@@ -128,11 +128,15 @@ export default {
   font-family: "Libre Franklin";
   text-align: center;
   height: 50px;
-  font-size: 28px;
   cursor: pointer;
-  background: #8cc947;
   font-weight: 400;
   flex: 1;
+  font-size: 14pt;
+  &:hover{
+    transition: 0.4s;
+    font-size: 18pt;
+    background: #8cc947 !important;
+  }
 }
 
 .tabs .tab {
