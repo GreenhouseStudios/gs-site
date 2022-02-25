@@ -59,7 +59,7 @@
     <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
     <div
-      :style="`height:${height}`"
+      :style="`height:${height}; width:${width}`"
       class="overflow-hidden"
       v-if="showBgImages"
     >
@@ -161,6 +161,7 @@ html {
 }
 body{
   width: 100vw;
+  position: relative;
 }
 footer {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

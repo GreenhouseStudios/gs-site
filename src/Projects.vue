@@ -3,53 +3,56 @@
     <!-- <div class="w-50-l w-90 center f3-ns f4 ma5 pv6-ns pv3 fw4 i">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
     </div> -->
-    <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+    <div class="w-50-ns f3-ns f4 ml5-ns ml3 mr3 mv6 pv3-ns pv3 fw4">
       <h2 class="page-title f1">Projects</h2>
-Each project is a test drive for our model of scholarly production. This allows us to continually assess our vision of what scholarly communications in the digital age looks like.     </div>
-    <div class=" w-60-l w-90 bb bw1 center mb3">
+      <p>
+        Each project is a test drive for our model of scholarly production. This
+        allows us to continually assess our vision of what scholarly
+        communications in the digital age looks like.
+      </p>
     </div>
+    <div class="w-60-l w-90 bb bw1 center mb3"></div>
     <div class="grid" v-if="projects">
-      <card v-for="(project,index) in projectsByName" 
-      :key="project.slug" 
-      :project="project" 
-      :index="index"
-      :slug="project.slug"></card>
+      <card
+        v-for="(project, index) in projectsByName"
+        :key="project.slug"
+        :project="project"
+        :index="index"
+        :slug="project.slug"
+      ></card>
     </div>
   </div>
 </template>
 
 <script>
 import Card from "./components/Card.vue";
-import _ from 'lodash'
+import _ from "lodash";
 export default {
   name: "Projects",
   components: { Card },
   data() {
     return {
       projects: null,
-      categories: ["Research","Storytelling","Teaching", "All Projects"],
+      categories: ["Research", "Storytelling", "Teaching", "All Projects"],
       activeTab: 0,
     };
   },
   updated() {
-    this.projects = this.$store.getters.allProjects
+    this.projects = this.$store.getters.allProjects;
   },
-  mounted () {
+  mounted() {
     this.projects = this.$store.getters.allProjects;
   },
   computed: {
     projectsByName() {
-     if (!this.$store.getters.loading && this.projects.length > 0) {
-        return _.sortBy(
-          this.projects,
-          [
-            function (o) {
-              return o.slug ? o.slug.toLowerCase() : "";
-            },
-          ]
-        );
+      if (!this.$store.getters.loading && this.projects.length > 0) {
+        return _.sortBy(this.projects, [
+          function (o) {
+            return o.slug ? o.slug.toLowerCase() : "";
+          },
+        ]);
       } else return [];
-    }
+    },
   },
 };
 </script>
@@ -57,13 +60,13 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
-.active{
+.active {
   border: 1px solid black;
 }
-.inactive{
-  border: 1px dashed rgba(0, 0, 0, 0.3)
+.inactive {
+  border: 1px dashed rgba(0, 0, 0, 0.3);
 }
-#tab-btn-container{
+#tab-btn-container {
   display: flex;
   flex-direction: row;
 }

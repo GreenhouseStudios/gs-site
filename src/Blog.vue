@@ -1,8 +1,8 @@
 <template>
 <div>
-  <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+  <div class="w-50-ns f3-ns f4 ml5-ns ml3 mr3 mv6 pv3-ns pv3 fw4">
       <h2 class="page-title f1">Blog</h2>
-      Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
+      <p>The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives</p>
     </div>
   <div
     class="grid"
