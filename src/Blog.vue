@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div class="w-50-ns f3-ns f4 ml5-ns ml3 mr3 mv6 pv3-ns pv3 fw4">
+  <div class="w-80 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">Blog</h2>
       <p>The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives</p>
     </div>
