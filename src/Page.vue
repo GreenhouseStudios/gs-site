@@ -1,5 +1,5 @@
 <template>
-  <div v-if="page" id="container" class="w-90-ns center pa3">
+  <div v-if="page" id="container" class="w-80 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
     <h2 class="f1 title ttu">{{page.title.rendered}}</h2>
     <div v-html="page.content.rendered"></div>
   </div>
@@ -7,7 +7,7 @@
 
 <script>
 import axios from "axios";
-export default {
+export default { 
   data() {
     return {
       page: null,
@@ -31,4 +31,5 @@ export default {
   font-family: "Samo";
   font-size: 3rem;
 }
+
 </style>
