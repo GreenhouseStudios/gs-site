@@ -58,22 +58,16 @@
     </div>
     <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
-    <div
+    <!-- <div
       :style="`height:${height}; width:${width}`"
       class="overflow-hidden"
       v-if="showBgImages"
     >
       <img
-        :src="bgImages[i % bgImages.length]"
-        class="absolute o-10"
-        :style="`top: ${spacing * i + 500}px; left:${randomXinMargin(
-          i
-        )}px; transform:scale(${width > 600 ? 1 : 2}); z-index: -100`"
-        v-for="i in Array.from(Array(numBgImages).keys())"
-        :key="i"
-        id="bg-image"
+        :src="bgImages[0]"
+        class="absolute o-10 right-0"
       />
-    </div>
+    </div> -->
     <router-view v-on:subnav-change="childUpdate"></router-view>
     <Footer></Footer>
   </div>
@@ -96,7 +90,7 @@ export default {
       height: null,
       width: null,
       showBgImages: true,
-      bgImages: [require("../public/bgImg/gs_spider-plant-fully-grown_bw.png")],
+      bgImages: [require("../public/bgImg/spiderplant-BG.png")],
     };
   },
   created() {
@@ -162,6 +156,9 @@ html {
 body{
   width: 100vw;
   position: relative;
+  background-image: url('~@/../public/bgImg/spiderplant-BG.png');
+  background-repeat: repeat-y;
+  background-size: 100%;
 }
 footer {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
