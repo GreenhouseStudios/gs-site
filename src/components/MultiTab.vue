@@ -134,17 +134,20 @@ export default {
   font-weight: 400;
   flex: 1;
   font-size: 14pt;
-  &:hover{
-    transition: 0.4s;
-    font-size: 18pt;
-    background: #8cc947 !important;
-  }
 }
 
 .tabs .tab {
   flex-grow: 1;
   padding-left: 30px;
   padding-right: 30px;
+}
+
+.tabs input[type="radio"]:not(:checked) + label{
+   &:hover{
+    transition: 0.4s;
+    font-size: 18pt;
+    background: #8cc947 !important;
+  }
 }
 
 .tabs input[type="radio"] {
