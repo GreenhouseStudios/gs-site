@@ -4,7 +4,7 @@
         <img v-if="isMobile()" id="mainimg" class="img alignleft" 
           v-bind:src="(`${getImg(post.content.rendered)}`)" 
           v-bind:alt="(`${getAlt(post.content.rendered)}`)"/>
-        <h2 class="f1">{{removeTags(post.title.rendered)}}</h2>
+        <h2 class="f1 blogtitle">{{removeTags(post.title.rendered)}}</h2>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
           <span v-if="!isMobile()" v-html="post.content.rendered"></span>
@@ -116,6 +116,9 @@ h1{
 #blogcontent{
   margin: 2em 20%;
 }
+.blogtitle{
+  padding-top: 200px;
+}
 #mainimg{
   width: 100%;
   height: auto;
@@ -149,12 +152,11 @@ img{
   height: auto;
   max-width: 100%;
 }
-a{
+#blogmain a{
   color: #717073;
-  text-decoration: none;
+  font-weight: bold !important;
 }
 #blogmain a:hover {
-  text-decoration: none;
   color: #8cc947;
 }
 </style>

@@ -109,10 +109,8 @@ img{
 }
 a{
   color: #717073;
-  text-decoration: none;
 }
 #blogmain a:hover {
-  text-decoration: none;
   color: #8cc947;
 }
 </style>
