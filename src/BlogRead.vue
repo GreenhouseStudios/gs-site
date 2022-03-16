@@ -94,7 +94,7 @@ export default {
 @import "./assets/blog.css";
 body{
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
 }
@@ -118,10 +118,6 @@ h1{
 }
 .blogtitle{
   padding-top: 200px;
-}
-#mainimg{
-  width: 100%;
-  height: auto;
 }
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent{
@@ -152,11 +148,25 @@ img{
   height: auto;
   max-width: 100%;
 }
+#blogmain img{
+  display: flex;
+  padding: 15px;
+  margin: auto !important;
+}
+#blogmain #mainimg{
+  width: 100%;
+  padding: 0;
+  height: auto;
+}
 #blogmain a{
   color: #717073;
   font-weight: bold !important;
 }
 #blogmain a:hover {
   color: #8cc947;
+}
+iframe {
+  width: 100%;
+  margin: auto;
 }
 </style>
