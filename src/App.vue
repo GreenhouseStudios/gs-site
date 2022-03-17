@@ -68,7 +68,7 @@
         class="absolute o-10 right-0"
       />
     </div> -->
-    <router-view v-on:subnav-change="childUpdate"></router-view>
+    <router-view></router-view>
     <Footer></Footer>
   </div>
 </template>
@@ -95,52 +95,6 @@ export default {
   },
   created() {
     this.$store.dispatch("getSiteData");
-  },
-  methods: {
-    randomXOffset() {
-      return this.scale(
-        this.width * Math.random(),
-        0,
-        this.width,
-        50,
-        this.width - 50
-      );
-    },
-    randomXinMargin(i) {
-      return i % 2 === 1 ? 0-this.bgImageOffset: this.bgImageOffset;
-    },
-    scale(number, inMin, inMax, outMin, outMax) {
-      return ((number - inMin) * (outMax - outMin)) / (inMax - inMin) + outMin;
-    },
-    childUpdate() {
-      this.showBgImages = false;
-      this.width = document.documentElement.clientWidth;
-      this.height = document.body.scrollHeight;
-      this.showBgImages = true;
-    },
-    getDimensions() {
-      this.width = document.body.scrollWidth;
-      this.height = document.body.scrollHeight;
-    },
-  },
-  computed: {
-    numBgImages() {
-      return Math.abs(Math.floor(this.height / this.spacing) - 1);
-    },
-    spacing() {
-      return 700;
-    },
-    bgImageOffset(){
-      return this.width/(this.width > 600 ? 2:3) + (this.width > 600 ? 300:250);
-    }
-  },
-  mounted() {
-    window.addEventListener("resize", this.getDimensions);
-    this.height = document.body.scrollHeight;
-    this.width = document.body.scrollWidth;
-  },
-  unmounted() {
-    window.removeEventListener("resize", this.getDimensions);
   },
 };
 </script>
