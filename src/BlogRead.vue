@@ -67,7 +67,7 @@ export default {
       var src = regex.exec(str);
       if(src == null){
         // Placeholder Image
-        src = "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+        src = "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg"
       }else{
         src = src[1];
       }

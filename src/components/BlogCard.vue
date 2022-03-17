@@ -44,7 +44,7 @@ export default {
     data(){
         return {
             isFlipped: false,
-            backupImg: "http://greenhousestudios.uconn.edu/wp-content/uploads/sites/1957/2016/10/Greenhouse-Studios-Logos-STACKED-TWO-COLOR.png"
+            backupImg: "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg"
         }
     },
     methods: {
