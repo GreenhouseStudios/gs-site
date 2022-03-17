@@ -205,6 +205,7 @@ li:hover {
   padding: 20px 20px;
   color: white;
   font-size: 1.75rem;
+  text-decoration: none;
 }
 
 .header .logo {
