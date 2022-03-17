@@ -7,8 +7,8 @@
         <h2 class="f1 blogtitle">{{removeTags(post.title.rendered)}}</h2>
         <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
         <div class="textbox">
-          <span v-if="!isMobile()" v-html="post.content.rendered"></span>
-          <span v-else>{{removeTags(post.content.rendered)}}</span> 
+          <span v-html="post.content.rendered"></span>
+          <!-- <span v-else>{{removeTags(post.content.rendered)}}</span>  -->
         </div>
         <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
         <!-- <div class="nav-links row">
