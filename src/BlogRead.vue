@@ -16,6 +16,9 @@
           <a style="float: right" href="#">Next →</a>
         </div> -->
       </div>
+      <div v-else>
+        <h2>There was a problem fetching this blog post.</h2>
+      </div>
     </div>
 </template>
 
@@ -34,8 +37,8 @@ export default {
       return this.$route.params.slug
     },
     post(){
-      if(this.$route.params.slug) return this.$store.getters.postBySlug(this.$route.params.slug);
-      else return this.$store.posts[0];
+      if(this.slug) return this.$store.getters.postBySlug(this.slug);
+      else return null;
     }
   },
   methods: {
