@@ -169,4 +169,11 @@ iframe {
   width: 100%;
   margin: auto;
 }
+.wp-caption{
+  margin: auto;
+
+}
+.wp-caption-text{
+  font-size: 14px;
+}
 </style>
