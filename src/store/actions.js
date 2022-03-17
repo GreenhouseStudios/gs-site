@@ -17,7 +17,7 @@ const actions = {
     });
   },
   async getPosts({ commit }) {
-    return axios.get("posts?per_page=12&page=1").then((res) => {
+    return axios.get("posts?per_page=100&page=1").then((res) => {
       var posts = [];
       res.data.forEach((post) => {
         if (post._links["wp:featuredmedia"]) {
