@@ -153,6 +153,13 @@ img{
   padding: 15px;
   margin: auto !important;
 }
+@media (max-width: 38em) {
+  #blogmain img{
+    width: 100%;
+    padding: 0;
+    height: auto;
+  }
+}
 #blogmain #mainimg{
   width: 100%;
   padding: 0;
@@ -171,9 +178,10 @@ iframe {
 }
 .wp-caption{
   margin: auto;
-
+  width: 100% !important;
 }
 .wp-caption-text{
   font-size: 14px;
+  text-align: center;
 }
 </style>
