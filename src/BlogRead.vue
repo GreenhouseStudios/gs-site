@@ -1,5 +1,5 @@
 <template>
-    <div id="blogmain" v-if="!$store.state.loading">
+    <div id="blogmain">
       <div id="blogcontent" v-if="post">
         <img v-if="isMobile()" id="mainimg" class="img alignleft" 
           v-bind:src="(`${getImg(post.content.rendered)}`)" 
@@ -25,15 +25,18 @@ export default {
   data() {
     return {
       date: "",
-      post: null,
-      slug: this.$route.params.slug
+      // post: this.$store.state.posts[0],
     };
   },
-  mounted() {
-    this.post = this.$store.getters.postBySlug(this.slug);
-  },
-  updated () {
-    this.post = this.$store.getters.postBySlug(this.slug);
+ 
+  computed: {
+    slug() {
+      return this.$route.params.slug
+    },
+    post(){
+      if(this.$route.params.slug) return this.$store.getters.postBySlug(this.$route.params.slug);
+      else return this.$store.posts[0];
+    }
   },
   methods: {
     getDate(str){
