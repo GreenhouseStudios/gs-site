@@ -4,17 +4,11 @@
         <img v-if="isMobile()" id="mainimg" class="img alignleft" 
           v-bind:src="(`${getImg(post.content.rendered)}`)" 
           v-bind:alt="(`${getAlt(post.content.rendered)}`)"/>
-        <h2 class="f1 blogtitle">{{removeTags(post.title.rendered)}}</h2>
-        <div class="credits"> Posted on {{getDate(post.date).month}} {{date.day}}, {{date.year}}</div>
+        <h2 class="f1 blogtitle">{{post.title.rendered}}</h2>
+        <div class="credits"> Posted on {{new Date(post.date).toLocaleDateString('en-us')}}</div>
         <div class="textbox">
           <span v-html="post.content.rendered"></span>
-          <!-- <span v-else>{{removeTags(post.content.rendered)}}</span>  -->
         </div>
-        <!-- <p>This entry was posted in [Category] and tagged [tags]</p> -->
-        <!-- <div class="nav-links row">
-          <a style="float: left" href="#">← Previous</a>
-          <a style="float: right" href="#">Next →</a>
-        </div> -->
       </div>
       <div v-else>
         <h2>There was a problem fetching this blog post.</h2>
@@ -28,28 +22,22 @@ export default {
   data() {
     return {
       date: "",
-      // post: this.$store.state.posts[0],
+      post: null,
     };
   },
- 
-  computed: {
-    slug() {
-      return this.$route.params.slug
-    },
-    post(){
-      if(this.slug) return this.$store.getters.postBySlug(this.slug);
-      else return null;
-    }
+  mounted () {
+    this.post = this.$store.getters.postBySlug(this.$route.params.slug);
+  },
+  created() {
+    this.$watch(
+      () => this.$route.params,
+      (toParams, previousParams) => {
+        console.log(previousParams)
+        this.post = this.$store.getters.postBySlug(toParams.slug)
+      }
+    );
   },
   methods: {
-    getDate(str){
-      const date = new Date(str);  // 2009-11-10
-      const month = date.toLocaleString('default', { month: 'long' });
-      const day = date.getDate();
-      const year = date.getFullYear();
-      this.date = {month: month, day: day, year: year}
-      return this.date;
-    },
     removeTags(str) {
       if ((str===null) || (str===''))
       return false;

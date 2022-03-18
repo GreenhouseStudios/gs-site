@@ -68,7 +68,9 @@
         class="absolute o-10 right-0"
       />
     </div> -->
-    <router-view></router-view>
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
     <Footer></Footer>
   </div>
 </template>
@@ -107,10 +109,10 @@ body,
 html {
   overflow-x: hidden;
 }
-body{
+body {
   width: 100vw;
   position: relative;
-  background-image: url('~@/../public/bgImg/spiderplant-BG.png');
+  background-image: url("~@/../public/bgImg/spiderplant-BG.png");
   background-repeat: repeat-y;
   background-size: 100%;
 }
