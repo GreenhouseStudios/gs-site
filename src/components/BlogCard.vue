@@ -1,6 +1,6 @@
 <template>
     <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + '), url(' + backupImg + ')'" alt="Blog Card Image" >
-      <div class="data">
+      <div class="data" onclick="">
         <div class="content">
           <hr>
           <div class="date">
