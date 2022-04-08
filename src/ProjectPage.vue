@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 export default {
   name: "ProjectPage",
   data() {
@@ -22,18 +23,28 @@ export default {
     };
   },
   mounted() {
-    this.project = this.$store.getters.projectBySlug(this.slug);
+    this.project = this.projectBySlug(this.$route.params.slug);
+  },
+  beforeUpdate(){
+    this.project = this.projectBySlug(this.$route.params.slug);
   },
   created() {
     this.$watch(
       () => this.$route.params,
       (toParams, previousParams) => {
-        console.log(previousParams)
-        this.project = this.$store.getters.projectBySlug(toParams.slug)
+        console.log(previousParams);
+        console.log(toParams);
+        this.project = this.project
+          ? this.project
+          : this.projectBySlug(toParams.slug);
       }
     );
+    
   },
   computed: {
+    ...mapGetters({
+      projectBySlug: "projectBySlug",
+    }),
     slug() {
       return this.$route.params.slug;
     },

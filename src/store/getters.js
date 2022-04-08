@@ -6,7 +6,10 @@ const getters = {
     return state.posts.find((p) => p.slug === slug);
   },
   projectBySlug: (state) => (slug) => {
-    return state.projects.find((p) => p.slug === slug);
+    console.log(state.projects)
+    var result = state.projects.find((p) => p.slug === slug);
+    if(!result) console.log("no project called " + slug)
+    else return result;
   },
   allPosts: (state) => {
     return state.posts;
