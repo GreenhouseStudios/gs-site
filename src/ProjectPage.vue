@@ -2,9 +2,9 @@
   <div
     id="blogmain"
     v-if="!$store.state.loading"
-    class="mt6-ns w-70-ns w-90 center"
+    class="mt6-ns w-two-thirds-ns w-90 center"
   >
-    <div id="blogcontent" v-if="project">
+    <div v-if="project">
       <div class="textbox">
         <span v-html="project.content.rendered"></span>
       </div>
@@ -85,6 +85,9 @@ body {
   line-height: 1.428571429;
   color: #333333;
 }
+figure{
+  margin: 4em auto !important;
+}
 h1 {
   font-family: inherit;
   font-weight: 500;
@@ -100,22 +103,16 @@ h1 {
   overflow: hidden;
   background: transparent;
 }
-#blogcontent {
-  margin: 2em 20%;
-}
+
 #mainimg {
   width: 100%;
   height: auto;
 }
 @media (min-width: 38em) and (max-width: 52em) {
-  #blogcontent {
-    margin: 2em 10%;
-  }
+
 }
 @media (max-width: 38em) {
-  #blogcontent {
-    margin: 2em;
-  }
+  
 }
 .textbox {
   height: 100%;
