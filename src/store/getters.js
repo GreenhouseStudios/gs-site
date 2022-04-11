@@ -7,6 +7,10 @@ const getters = {
   },
   projectBySlug: (state) => (slug) => {
     console.log(state.projects)
+    console.log("slug: " + slug)
+    if(!state.projects.length){ 
+      console.log("no projects yet");
+      return;}
     var result = state.projects.find((p) => p.slug === slug);
     if(!result) console.log("no project called " + slug)
     else return result;

@@ -20,23 +20,26 @@ export default {
     return {
       date: "",
       project: null,
+      slug: null,
     };
   },
-  mounted() {
-    this.project = this.projectBySlug(this.$route.params.slug);
-  },
-  beforeUpdate(){
-    this.project = this.projectBySlug(this.$route.params.slug);
-  },
+  // mounted() {
+  //   this.project = this.projectBySlug(this.slug);
+  // },
+  // beforeUpdate(){
+  //   this.project = this.projectBySlug(this.slug);
+  // },
   created() {
+    console.log("created")
+    this.slug = this.$route.params.slug;
+    this.project = this.projectBySlug(this.slug);
     this.$watch(
       () => this.$route.params,
       (toParams, previousParams) => {
         console.log(previousParams);
         console.log(toParams);
-        this.project = this.project
-          ? this.project
-          : this.projectBySlug(toParams.slug);
+        this.slug = toParams.slug? toParams.slug : this.$route.params.slug;
+        this.project = this.projectBySlug(this.slug);
       }
     );
     
@@ -45,9 +48,6 @@ export default {
     ...mapGetters({
       projectBySlug: "projectBySlug",
     }),
-    slug() {
-      return this.$route.params.slug;
-    },
   },
   methods: {
     getAlt(str) {
