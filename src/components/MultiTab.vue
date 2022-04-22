@@ -13,7 +13,7 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
         :style="picked === 0 ? `background: #F7F7F7; font-size: 20pt`: `background: #a4d171 ;`"
-        ><span>Collaborative Culture</span></label
+        ><span>Who We Are</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
         <p class="ma0">
@@ -46,7 +46,7 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabthree"
         :style="picked === 2 ? `background: #F7F7F7; font-size: 20pt`:`background: #a4d171 ;`"
-        ><span>Who We Are</span></label
+        ><span>Collaborative Culture</span></label
       >
 
       <div v-if="picked === 2 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -69,7 +69,21 @@ export default {
     return {
       picked: 0,
       content: [
-        `As a scholarly research lab, we have created a unique workspace—a
+        ` As an interdisciplinary research unit, the Greenhouse Studios team
+            comprises a wide variety of scholars, designers, developers, library
+            professionals, editors, and more. We are a joint effort of the
+            University of Connecticut’s College of Liberal Arts and Sciences,
+            Library, and School of Fine Arts; our team members come from both
+            within and beyond the university.`,
+        `   Our aim is to challenge the ways in which scholarship is created and shared. 
+            Our “hypothesis” is an inquiry-driven, collaboration-first scholarly design process, 
+            through which we guide interdisciplinary teams to create original works of scholarship 
+            as our means of experimentation. Based on collective interests, backgrounds, skills, 
+            and aspirations, we conceive and implement a multimodal response to a challenge posed 
+            by a prompt. Depending on audiences and aims, projects may take shape in diverse media 
+            outputs ranging from interactive websites and immersive virtual reality to exhibitions 
+            and documentary films.`,
+            `As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
             “collaboration first” approach that brings a diverse team of people
             together to create original works of research.We are dedicated to
@@ -77,19 +91,6 @@ export default {
             hierarchy with a mission that equally values all stakeholders
             involved in producing scholarship. Everyone has a seat at the table
             and a voice in the conversation.`,
-        ` As an interdisciplinary research unit, the Greenhouse Studios team
-            comprises a wide variety of scholars, designers, developers, library
-            professionals, editors, and more. We are a joint effort of the
-            University of Connecticut’s College of Liberal Arts and Sciences,
-            Library, and School of Fine Arts; our team members come from both
-            within and beyond the university.`,
-        `   We lead an inquiry-driven, collaboration-first scholarly design
-            process together with an interdisciplinary team. Based on collective
-            interests, backgrounds, skills, and aspirations, we conceive and
-            implement a multimodal response to a challenge posed by a prompt.
-            Depending on audiences and aims, projects may take shape in diverse
-            media outputs ranging from interactive websites and immersive
-            virtual reality to exhibitions and documentary films.`,
       ],
     };
   },

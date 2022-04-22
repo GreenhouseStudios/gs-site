@@ -7,17 +7,6 @@
       </h2>
     </div>
 
-    <div class="video-container">
-      <!-- <img src="../public/img/Animation_Fill.png" /> -->
-      <iframe
-        src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
-        title="GS Process Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
-      <img class="video-watercolor" src="img/watercolor-blurb.png" />
-    </div>
-
     <div class="flex flex-row-ns flex-column flex-column-m" style="justify-content:space-evenly">
       <div class="flex mh5-ns">
         <img
@@ -28,6 +17,30 @@
       </div>
       <multi-tab></multi-tab>
     </div>
+    <div class="spacer"> </div>
+
+    <h3 class="title-2 design-title">Design Process</h3>
+    <div class="video-container">
+      <!-- <img src="../public/img/Animation_Fill.png" /> -->
+      <iframe
+        src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
+        title="GS Process Video"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <img class="video-watercolor" src="img/watercolor-blurb.png" />
+      <!-- <div class="design-text">
+        <p>Our design process is present in all the projects we make. Lorem ipsum dolor sit amet, 
+          consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
+          aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
+          ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
+          sunt in culpa qui officia deserunt mollit anim id est laborum. 
+          <a>Read more about our design process.</a> 
+        </p>
+      </div> -->
+    </div>
+
 
     <div class="text-1">
       <div class="fprojects-text">
@@ -49,7 +62,7 @@
 
     <div class="text-1">
       <div class="fprojects-text">
-        <h3 class="title-2">Featured Blog Posts</h3>
+        <h3 class="title-2">Recent Blog Posts</h3>
         <router-link to="/blog" class="shimmer">
           view blog &#8594;
         </router-link>
@@ -552,5 +565,19 @@ p a {
   max-height:300px;
   width: auto;
   height: auto;
+}
+
+.design-title{
+  text-align: center;
+}
+.design-text{
+  position: absolute;
+  text-align: center;
+  padding: 10px 150px;
+  bottom: 10px;
+}
+
+.spacer{
+  height: 130px;
 }
 </style>
