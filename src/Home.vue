@@ -20,25 +20,29 @@
     <div class="spacer"> </div>
 
     <h3 class="title-2 design-title">Design Process</h3>
-    <div class="video-container">
-      <!-- <img src="../public/img/Animation_Fill.png" /> -->
-      <iframe
-        src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
-        title="GS Process Video"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-      ></iframe>
+    <div class="design-process-container">
+      <div class="video-container">
+        <!-- <img src="../public/img/Animation_Fill.png" /> -->
+        <iframe
+          src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
+          title="GS Process Video"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
-      <!-- <div class="design-text">
-        <p>Our design process is present in all the projects we make. Lorem ipsum dolor sit amet, 
+      <div class="design-text">
+        <p style="max-width: 100%">Our design process is present in all the projects we make. Lorem ipsum dolor sit amet, 
           consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna 
           aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip 
           ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse 
           cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, 
           sunt in culpa qui officia deserunt mollit anim id est laborum. 
-          <a>Read more about our design process.</a> 
         </p>
-      </div> -->
+        <router-link to="/blog/greenhouse-studios-design-process" class="shimmer">
+          Read more about our design process.
+        </router-link>
+      </div>
     </div>
 
 
@@ -149,10 +153,10 @@ label {
 .video-container {
   position: relative;
   padding-bottom: 56.25%;
-  padding-top: 50px;
+  // padding-top: 50px;
   // padding-left: 50px;
   // padding-right: 50px;
-  height: 0;
+  height: 0px;
   overflow: hidden;
 }
 
@@ -168,8 +172,8 @@ label {
   padding: 20;
   margin: 0 auto;
   top: 0;
-  width: 70%;
-  height: 70%;
+  width: 100%;
+  height: 100%;
 }
 
 .nav-img {
@@ -571,10 +575,22 @@ p a {
   text-align: center;
 }
 .design-text{
+  width: 100%;
+}
+.design-process-container{
+  position: relative;
+  width: 70%;
+  margin: auto;
+}
+.video-watercolor{
+  width: 100%;
+  margin: 0 auto;
+  padding-right: 50px;
+  transform: rotate(100deg);
   position: absolute;
-  text-align: center;
-  padding: 10px 150px;
-  bottom: 10px;
+  right: 300px;
+  top: -130px;
+  z-index: -1;
 }
 
 .spacer{
