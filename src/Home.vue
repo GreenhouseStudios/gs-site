@@ -590,7 +590,7 @@ p a {
   transform: rotate(100deg);
   position: absolute;
   right: 300px;
-  top: -130px;
+  top: -170px;
   z-index: -1;
 }
 
