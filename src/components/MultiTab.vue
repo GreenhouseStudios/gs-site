@@ -12,8 +12,8 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
-        :style="picked === 0 ? `background: #F7F7F7; font-size: 20pt`: `background: #a4d171 ;`"
-        ><span>Who We Are</span></label
+        :style="picked === 0 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        ><span class="shimmer">Who We Are</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
         <p class="ma0">
@@ -26,8 +26,8 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabtwo"
         id="tab-two-label"
-        :style="picked === 1 ? `background: #F7F7F7;font-size: 20pt`: `background: #a4d171 ;`"
-        ><span>What We Do</span></label
+        :style="picked === 1 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        ><span class="shimmer">What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
         <p class="ma0">
@@ -45,8 +45,8 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabthree"
-        :style="picked === 2 ? `background: #F7F7F7; font-size: 20pt`:`background: #a4d171 ;`"
-        ><span>Collaborative Culture</span></label
+        :style="picked === 2 ? `background: #F7F7F7;`:`background: #a4d171 ;`"
+        ><span class="shimmer">Collaborative Culture</span></label
       >
 
       <div v-if="picked === 2 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -55,8 +55,8 @@
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns pa4 z-3 f5 h-100" style="background: #F7F7F7">
-      <p class="ma0">
+    <div class="tab dn db-ns pa4 z-3 f5" style="background: #F7F7F7; height: 300px; display: table;">
+      <p class="ma0 centertext">
         {{ content[picked] }}
       </p>
     </div>
@@ -146,7 +146,7 @@ export default {
 .tabs input[type="radio"]:not(:checked) + label{
    &:hover{
     transition: 0.4s;
-    font-size: 18pt;
+    font-size: 14pt;
     background: #8cc947 !important;
   }
 }
@@ -180,6 +180,40 @@ export default {
   }
   #tab-two-label{
     margin: 0;
+  }
+}
+
+.centertext{
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.shimmer:hover {
+  display: inline-block;
+  color: white;
+
+  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #aaa), to(#444));
+
+  background-position: -4rem top; /*50px*/
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-animation-name: shimmer;
+  -webkit-animation-duration: 2.2s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-background-size: 4rem 100%; /*50px*/
+}
+@-webkit-keyframes shimmer {
+  0% {
+    background-position: -4rem top; /*50px*/
+  }
+
+  70% {
+    background-position: 12.5rem top; /*200px*/
+  }
+
+  100% {
+    background-position: 12.5rem top; /*200px*/
   }
 }
 </style>
