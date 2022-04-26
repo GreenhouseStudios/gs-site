@@ -32,17 +32,17 @@
       </div>
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
       <div class="design-text">
-        <p style="max-width: 100%">Our design process is integral to every project we make. 
+        <p style="max-width: 100%; padding-top:5%">Our design process is integral to every project we make. 
           A team of collaborators responds to an inquiry-focused prompt and undertakes a five-phase 
           design-thinking process over the course of two years. The understand, identify, build, review, 
           and disseminate stages each result in a stepping stone (e.g., a project brief, media manuscript) 
           that will lead to the next phase of the design process. Though the process will ultimately lead 
           to a publication, the process is meant to be highly iterative and cyclical, and the “product” 
           of the process is intentionally left completely open-ended from the start.
-        </p>
-        <router-link to="/blog/greenhouse-studios-design-process" class="shimmer">
+          <router-link to="/blog/greenhouse-studios-design-process" class="shimmer">
           Read more about our design process.
         </router-link>
+        </p>
       </div>
     </div>
 
