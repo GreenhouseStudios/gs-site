@@ -55,7 +55,7 @@
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns pa4 z-3 f5" style="background: #F7F7F7; height: 300px; display: table;">
+    <div class="tab dn db-ns z-3 f5" style="background: #F7F7F7; height: 300px; display: table; padding: 32px 50px;">
       <p class="ma0 centertext">
         {{ content[picked] }}
       </p>
