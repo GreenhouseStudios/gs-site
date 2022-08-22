@@ -13,6 +13,7 @@ Vue.use(VueRouter);
 const routes = [
   { name: "Projects", path: "/projects", component: Projects },
   { name: "People", path: "/people", component: People },
+  { name: "People", path: "/person/:name/", component: People },
   { name: "Blog", path: "/blog", component: Blog },
   { path: "/blog/:slug", component: BlogRead },
   { path: "/projects/:slug", component: ProjectPage },
@@ -25,9 +26,12 @@ const routes = [
 const router = new VueRouter({
   routes, // short for `routes: routes`
   scrollBehavior(to, from, savedPosition) {
-    if (savedPosition) {
+    // console.log(to);
+    // console.log(from);
+    if (savedPosition && !to.params.name) {
       return savedPosition;
-    } else {
+    } 
+    else {
       return { x: 0, y: 0 };
     }
   },

@@ -2,7 +2,8 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-     We are an interdisciplinary team with diverse backgrounds who bring their individual interests and passions into the Greenhouse Studios community.
+      We are an interdisciplinary team with diverse backgrounds who bring their
+      individual interests and passions into the Greenhouse Studios community.
     </div>
     <div
       id="tab-btn-container"
@@ -46,13 +47,13 @@
           {{ a.title.rendered }}
         </li>
       </ul>
-       <ul
+      <ul
         class="relative top-0 dib alumni-list w-third tc"
         style="vertical-align: top"
       >
         <li
           class="pa2"
-          v-for="a in alumni.slice(alumni.length/3, 2*alumni.length / 3)"
+          v-for="a in alumni.slice(alumni.length / 3, (2 * alumni.length) / 3)"
           :key="a.title.rendered"
         >
           {{ a.title.rendered }}
@@ -64,7 +65,7 @@
       >
         <li
           class="pa2"
-          v-for="b in alumni.slice(2*alumni.length / 3)"
+          v-for="b in alumni.slice((2 * alumni.length) / 3)"
           :key="b.title.rendered"
         >
           {{ b.title.rendered }}
@@ -149,8 +150,10 @@ export default {
         require("../public/img/UConn_Humanities_Institute.png"),
         require("../public/img/Andrew_W_Mellon_Foundation_Logo.png"),
       ],
-      tabs: ["Active", "Alumni", 
-      // "Partners", "Governance"
+      tabs: [
+        "Active",
+        "Alumni",
+        // "Partners", "Governance"
       ],
       activeTab: 0,
     };
@@ -160,6 +163,10 @@ export default {
       this.activeTab = i;
       this.$emit("subnav-change");
     },
+    findPersonYOffset(slug){
+      let cardIndex = this.activePeople.findIndex( x => x.slug === slug);
+      return ((cardIndex+1)/3)*420 + 780;
+    }
   },
   computed: {
     peopleByLastName() {
@@ -203,6 +210,16 @@ export default {
   },
   mounted() {
     this.people = this.$store.getters.allPeople;
+    if (this.$route.params.name) {
+      setTimeout(() => {
+        let offset = this.findPersonYOffset(this.$route.params.name);
+        window.scrollTo({
+          top: offset,
+          left: 0,
+          behavior: "smooth",
+        });
+      },100);
+    }
   },
 };
 </script>
@@ -237,7 +254,7 @@ export default {
   padding: 16px 0px;
 }
 @media (max-width: 660px) {
-  #tab-btn-container{
+  #tab-btn-container {
     flex-direction: column;
     align-items: center;
   }
