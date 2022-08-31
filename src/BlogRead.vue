@@ -4,7 +4,7 @@
         <img v-if="isMobile()" id="mainimg" class="img alignleft" 
           v-bind:src="(`${getImg(post.content.rendered)}`)" 
           v-bind:alt="(`${getAlt(post.content.rendered)}`)"/>
-        <h2 class="f1 blogtitle">{{post.title.rendered}}</h2>
+        <h2 class="f1 blogtitle" v-html="post.title.rendered"></h2>
         <div class="credits"> Posted on {{new Date(post.date).toLocaleDateString('en-us')}}</div>
         <div class="textbox">
           <span v-html="post.content.rendered"></span>
