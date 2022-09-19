@@ -14,7 +14,9 @@
             object-fit: cover;
             border-radius: 5px 5px 0px 0px;
             background-size: 150%;
-            back
+            
+     
+
           "
           :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${
             ((Math.sin(phase) + 1) / 2) * 100
@@ -22,7 +24,7 @@
            filter: hue-rotate(${Math.sin(phase) * 20 + 40}deg) saturate(${
             Math.sin(phase) * 20 + 30
           }deg)`"
-          alt="watercolor card background image"
+          alt="watercolor card background image" 
         ></div>
         <div
           v-if="person.image"
@@ -42,7 +44,7 @@
           style="
             width: 80%;
             text-overflow: wrap;
-            margin: 0 auto;
+            margin: -250px auto;
             font-weight: normal;
           "
           v-if="
@@ -163,4 +165,11 @@ export default {
   drop-shadow(0px 1px 1px black);
   filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
 }
+
+.people-img {
+  margin: 20px 50px;
+}
+
+
+
 </style>
