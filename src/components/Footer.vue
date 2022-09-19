@@ -82,6 +82,8 @@ export default {};
 @media (max-width: 45em) {
   .footer-information {
     flex-direction: column;
+    padding-top: 100px;
+
   }
 }
 

@@ -2,6 +2,7 @@ import Vue from "vue";
 import Home from "../Home";
 import People from "../People";
 import Blog from "../Blog";
+import About from "../About";
 import BlogRead from "../BlogRead";
 import Projects from "../Projects";
 import Page from "../Page";
@@ -13,7 +14,7 @@ Vue.use(VueRouter);
 const routes = [
   { name: "Projects", path: "/projects", component: Projects },
   { name: "People", path: "/people", component: People },
-  { name: "People", path: "/person/:name/", component: People },
+  { name: "People", path: "/person/:name/", component: About },
   { name: "Blog", path: "/blog", component: Blog },
   { path: "/blog/:slug", component: BlogRead },
   { path: "/projects/:slug", component: ProjectPage },
