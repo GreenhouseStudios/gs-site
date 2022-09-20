@@ -5,7 +5,7 @@
         </div>
         <div class="nest">
             <div class="image">
-                <img v-if="person.image"
+                <img 
           class="people-img"
           :style="` filter: hue-rotate(${
             Math.random() * 0
@@ -16,6 +16,11 @@
               ? '80%;  background-position: center'
               : '101%; background-position:center'
           }`">
+                 <!-- <img v-else
+          class="people-img"
+          :style="` filter: hue-rotate(${
+            Math.random() * 0
+          }deg); background-image:url(https://via.placeholder.com/150); background-repeat: no-repeat; background-size: `"> -->
             </div>
             <h1 class="name"><strong>{{person.custom_fields.first_name[0] + " " + person.custom_fields.last_name[0]}}</strong> </h1>
             <br>
@@ -78,8 +83,18 @@
 export default {
 data() {
     return {
-        person: this.$store.state.people.find(x => x.slug === this.$route.params.name)
+
     }
+},
+mounted () {
+},
+computed: {
+  name() {
+    return this.$route.params.name 
+  },
+  person(){
+    return this.$store.state.people.find(x => x.slug === this.name)
+  }
 },
 }
 </script>
