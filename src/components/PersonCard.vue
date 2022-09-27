@@ -149,6 +149,11 @@ export default {
       return (this.index * Math.PI) / 6;
     },
   },
+  methods: {
+    reset() {
+      this.isFlipped = false;
+    }
+  },
 };
 </script>
 

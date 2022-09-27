@@ -129,6 +129,9 @@ export default {
         return true;
       }
     },
+    reset(){
+      this.isFlipped = false;
+    }
   },
 };
 </script>

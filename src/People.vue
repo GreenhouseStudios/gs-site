@@ -27,6 +27,7 @@
           :key="person.slug"
           :person="person"
           :index="index"
+          ref="cards"
         ></person-card>
       </div>
     </div>
@@ -204,6 +205,7 @@ export default {
         );
       } else return [];
     },
+
   },
   updated() {
     this.people = this.$store.getters.allPeople;
@@ -221,6 +223,12 @@ export default {
       },100);
     }
   },
+  beforeRouteLeave(to, from, next){
+    console.log(to)
+    console.log(from);
+    this.$refs.cards.map(x => x.reset())
+    next();
+  }
 };
 </script>
 

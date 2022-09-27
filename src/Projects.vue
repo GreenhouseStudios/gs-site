@@ -19,6 +19,7 @@
         :project="project"
         :index="index"
         :slug="project.slug"
+        ref="projects"
       ></card>
     </div>
   </div>
@@ -54,6 +55,12 @@ export default {
       } else return [];
     },
   },
+  beforeRouteLeave(to, from, next){
+    console.log(to);
+    console.log(from);
+    this.$refs.projects.map(x => x.reset());
+    next();
+  }
 };
 </script>
 
