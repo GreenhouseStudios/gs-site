@@ -4,8 +4,12 @@
         <img v-if="isMobile()" id="mainimg" class="img alignleft" 
           v-bind:src="(`${getImg(post.content.rendered)}`)" 
           v-bind:alt="(`${getAlt(post.content.rendered)}`)"/>
+          <div class="titledatecontainer">
+          <div class="blogtitle">
         <h2 class="f1 blogtitle" v-html="post.title.rendered"></h2>
-        <div class="credits"> Posted on {{new Date(post.date).toLocaleDateString('en-us')}}</div>
+      </div>
+        <div class="credits"> Posted <br> <span class="date">{{new Date(post.date).toLocaleDateString('en-us')}}</span></div>
+      </div>
         <div class="textbox">
           <span v-html="post.content.rendered"></span>
         </div>
@@ -83,7 +87,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
 body{
@@ -92,6 +96,12 @@ body{
   line-height: 1.428571429;
   color: #333333;
 }
+h2{
+  margin:0px;
+  border:0px;
+  padding-right:10px;
+}
+
 h1{
   font-family: inherit;
     font-weight: 500;
@@ -100,9 +110,30 @@ h1{
     margin-top: 20px;
     margin-bottom: 10px;
 }
-.credits{
-  margin-bottom: 1.5em;
+.date{
+  border: 3px solid #333333;
+  padding: 3px;
+  color: #333333;
+  font-weight: 700;
 }
+.credits{
+ text-align: center;
+ font-weight: 700;
+ font-size: 18px;
+ color: #333333;
+ padding-top: 5px;
+}
+
+.titledatecontainer {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin: 2em, 20%;
+}
+#mainimg {
+  float: left; 
+}
+
 #blogmain{
   overflow: hidden;
   background: white;
@@ -110,9 +141,7 @@ h1{
 #blogcontent{
   margin: 2em 20%;
 }
-.blogtitle{
-  padding-top: 200px;
-}
+
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent{
     margin: 2em 10%;
@@ -123,6 +152,7 @@ h1{
     margin: 2em;
   }
 }
+
 .textbox{
   height: 100%;
 }
@@ -130,7 +160,6 @@ h1{
   display: inline;
   float: left;
   margin-right: 1.5em;
-  margin-bottom: 1.5em;
 }
 hr{
   margin-top: 20px;
@@ -144,8 +173,8 @@ img{
 }
 #blogmain img{
   display: flex;
-  padding: 15px;
-  margin: auto !important;
+  margin-right: 15px;
+  float: left;
 }
 @media (max-width: 38em) {
   #blogmain img{
@@ -178,4 +207,5 @@ iframe {
   font-size: 14px;
   text-align: center;
 }
+
 </style>

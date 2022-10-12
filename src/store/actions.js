@@ -21,9 +21,12 @@ const actions = {
       var posts = [];
       res.data.forEach((post) => {
         if (post._links["wp:featuredmedia"]) {
-          axios.get("media/" + post.featured_media).then((imgSrc) => {
-            post["image"] = imgSrc.data.guid.rendered;
-          });
+          axios
+            .get("media/" + post.featured_media)
+            .then((imgSrc) => {
+              post["image"] = imgSrc.data.guid.rendered;
+            })
+            .catch((err) => console.log(err));
         }
         posts.push(post);
       });
@@ -75,7 +78,21 @@ const actions = {
           person._links["wp:featuredmedia"]
         ) {
           axios.get("media/" + person.featured_media).then((imgSrc) => {
-            person["image"] = imgSrc.data.guid.rendered;
+            let img = imgSrc.data.media_details.sizes;
+            if (img) {
+              if (img.full && img.full.height < 300)
+                person["image"] =
+                  img.full.source_url;
+              else if (img.medium)
+                person["image"] =
+                  img.medium;
+              else if (img.thumbnail.source_url) {
+                person["image"] =
+                  img.thumbnail.source_url;
+              } else
+                person["image"] =
+                  "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
+            } else console.log("no image for: " + person.slug);
           });
         }
         people.push(person);

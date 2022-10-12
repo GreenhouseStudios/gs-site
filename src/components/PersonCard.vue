@@ -2,7 +2,7 @@
   <div
     class="flipCard"
     @click="isFlipped = !isFlipped"
-    v-lazy-container="{ selector: 'div' }"
+    v-lazy-container="{ selector: '.people-img' }"
   >
     <div class="card" :class="{ flipped: isFlipped }">
       <div class="side front" style="overflow: hidden">
@@ -14,9 +14,8 @@
             object-fit: cover;
             border-radius: 5px 5px 0px 0px;
             background-size: 150%;
-            back
           "
-          :style="`background-image: url(${require('../../public/img/GH-Watercolor.png')}); background-position: ${
+          :style="`background-image: url(${require('../../public/img/GH-Watercolor-small.png')}); background-position: ${
             ((Math.sin(phase) + 1) / 2) * 100
           }% ${((Math.cos(phase) + 1) / 2) * 100}%;
            filter: hue-rotate(${Math.sin(phase) * 20 + 40}deg) saturate(${
@@ -25,14 +24,14 @@
           alt="watercolor card background image"
         ></div>
         <div
-          v-if="person.image"
+          v-if="this.image"
           class="people-img"
           :style="` filter: hue-rotate(${
             Math.random() * 0
           }deg); background-image:url( ${
-            person.image
+            this.image
           } ); background-repeat: no-repeat; background-size:  ${
-            person.image.includes('placeholder')
+            this.image.includes('placeholder')
               ? '80%;  background-position: center'
               : '101%; background-position:center'
           }`"
@@ -120,7 +119,7 @@
             padding-top: 300px;
             object-fit: cover;
           "
-          src="img/GH-Watercolor.png"
+          src="img/GH-Watercolor-small.png"
           alt="watercolor card background image"
         />
       </div>
@@ -148,6 +147,10 @@ export default {
     phase() {
       return (this.index * Math.PI) / 6;
     },
+    image(){
+      // return this.person._links['wp:featuredmedia'][0].href
+      return this.person.image;
+    }
   },
   methods: {
     reset() {
