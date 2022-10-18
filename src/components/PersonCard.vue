@@ -17,18 +17,9 @@
            filter: hue-rotate(${textureHueShift}deg) saturate(${textureSaturationShift}deg)`"
           alt="watercolor card background image"
         ></div>
-        <div
-          v-if="this.image"
-          class="people-img"
-          :style="`background-image:url( ${
-            this.image
-          } ); background-repeat: no-repeat; 
-          background-size:  ${
-            this.image.includes('placeholder')
-              ? '80%;  background-position: center'
-              : '101%; background-position:center'
-          }`"
-        ></div>
+        <div v-if="this.image" class="people-img">
+          <img :src="this.image" loading="lazy" :style="usesPlaceholder ? 'width: 80%' : 'width:100%'"/>
+        </div>
         <h4
           class="people-name"
           style="
@@ -96,6 +87,7 @@
                 class="shadow"
                 src="../../public/img/instagram.svg"
                 alt="instagram"
+                loading="lazy" 
             /></a>
           </div>
           <div
@@ -109,6 +101,7 @@
                 class="shadow"
                 src="../../public/img/linkedin.png"
                 alt="linkedin"
+                loading="lazy" 
             /></a>
           </div>
           <div
@@ -122,6 +115,7 @@
                 class="shadow"
                 src="../../public/img/twitter.svg"
                 alt="twitter"
+                loading="lazy" 
             /></a>
           </div>
         </div>
@@ -135,6 +129,7 @@
           "
           src="img/GH-Watercolor-small.png"
           alt="watercolor card background image"
+          loading="lazy" 
         />
       </div>
     </div>
@@ -174,6 +169,9 @@ export default {
       if (this.person.image.source_url) return this.person.image.source_url;
       else return this.person.image;
     },
+    usesPlaceholder(){
+      return this.image.includes('placeholder')
+    }
   },
   methods: {
     reset() {
@@ -193,5 +191,11 @@ export default {
   -webkit-filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.6))
     drop-shadow(0px 1px 1px black);
   filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
+}
+.people-img{
+  overflow: hidden;
+  display: grid;
+  place-items: center;
+
 }
 </style>
