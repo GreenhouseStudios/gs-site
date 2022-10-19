@@ -17,7 +17,7 @@
       </div>
       <div id="img_and_byline">
         <img v-if="post.fimg_url" :src="post.fimg_url" alt=""/>
-        <h3 class="i font-weight-500 f5 fw5">{{post.custom_fields.byline[0]}}</h3>
+        <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">{{post.custom_fields.byline[0]}}</h3>
       </div>
       <div class="textbox">
         <span v-html="post.content.rendered"></span>
