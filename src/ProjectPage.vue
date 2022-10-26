@@ -1,53 +1,44 @@
 <template>
-  <div
-    id="blogmain"
-    v-if="!$store.state.loading"
-    class="mt6-ns w-two-thirds-ns w-90 center"
-  >
-    <div v-if="project">
-      <div class="textbox">
-        <span v-html="project.content.rendered"></span>
+  <div>
+    <div
+      id="blogmain"
+      v-if="!$store.state.loading && project"
+      class="mt6-ns w-two-thirds-ns w-90 center"
+    >
+      <div v-if="project">
+        <div class="textbox">
+          <span v-html="project.content.rendered"></span>
+        </div>
       </div>
+    </div>
+    <div v-else>
+      <not-found></not-found>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
+import NotFound from "./NotFound.vue";
 export default {
+  components: { NotFound },
   name: "ProjectPage",
   data() {
     return {
       date: "",
-      project: null,
-      slug: null,
     };
   },
-  // mounted() {
-  //   this.project = this.projectBySlug(this.slug);
-  // },
-  // beforeUpdate(){
-  //   this.project = this.projectBySlug(this.slug);
-  // },
-  created() {
-    console.log("created")
-    this.slug = this.$route.params.slug;
-    this.project = this.projectBySlug(this.slug);
-    this.$watch(
-      () => this.$route.params,
-      (toParams, previousParams) => {
-        console.log(previousParams);
-        console.log(toParams);
-        this.slug = toParams.slug? toParams.slug : this.$route.params.slug;
-        this.project = this.projectBySlug(this.slug);
-      }
-    );
-    
-  },
   computed: {
+    project(){
+      return this.projectBySlug(this.slug);
+    },
+    slug(){
+      return this.$route.params.slug;
+    },
     ...mapGetters({
       projectBySlug: "projectBySlug",
     }),
+    
   },
   methods: {
     getAlt(str) {
@@ -85,7 +76,7 @@ body {
   line-height: 1.428571429;
   color: #333333;
 }
-figure{
+figure {
   margin: 4em auto !important;
 }
 h1 {
@@ -109,10 +100,8 @@ h1 {
   height: auto;
 }
 @media (min-width: 38em) and (max-width: 52em) {
-
 }
 @media (max-width: 38em) {
-  
 }
 .textbox {
   height: 100%;

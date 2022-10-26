@@ -10,6 +10,7 @@
     <div class="flex flex-row-ns flex-column flex-column-m" style="justify-content:space-evenly">
       <div class="flex mh5-ns">
         <img
+        loading="lazy"
         id="gs-logo" class="center" style="margin: auto;"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""

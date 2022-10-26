@@ -27,7 +27,8 @@ const mutations = {
     state.people = state.people.concat(payload);
   },
   addPerson(state,payload){
-    state.people.push(payload);
+    if(state.people.filter(p => p.slug === payload.slug) > 0) return;
+    else state.people.push(payload);
   }
 };
 

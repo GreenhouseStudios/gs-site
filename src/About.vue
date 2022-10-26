@@ -10,9 +10,9 @@
           :style="` filter: hue-rotate(${
             Math.random() * 0
           }deg); background-image:url( ${
-            person.image
+            person.image.source_url
           } ); background-repeat: no-repeat; background-size:  ${
-            person.image.includes('placeholder')
+            person.image.source_url.includes('placeholder')
               ? '80%;  background-position: center'
               : '101%; background-position:center'
           }`">
@@ -33,7 +33,7 @@
           <div v-if="person.custom_fields.email && person.custom_fields.email[0]" 
           class="email">
             <a :href="'mailto:' + person.custom_fields.email[0]"
-              ><img class="shadow" src="../public/img/email.svg" alt="email"
+              ><img loading="lazy" class="shadow" src="../public/img/email.svg" alt="email"
             /></a>
           </div>
           <div
@@ -41,7 +41,7 @@
             class="site"
           >
             <a :href="person.custom_fields.site[0]"
-              ><img class="shadow" src="../public/img/site.png" alt="website"
+              ><img loading="lazy" class="shadow" src="../public/img/site.png" alt="website"
             /></a>
           </div>
           <div
@@ -52,7 +52,7 @@
             class="instagram"
           >
             <a :href="person.custom_fields.instagram[0]"
-              ><img class="shadow" src="../public/img/instagram.svg" alt="instagram"
+              ><img loading="lazy" class="shadow" src="../public/img/instagram.svg" alt="instagram"
             /></a>
           </div>
           <div
@@ -62,7 +62,7 @@
             class="facebook"
           >
             <a :href="person.custom_fields.linkedin[0]"
-              ><img class="shadow" src="../public/img/linkedin.png" alt="linkedin"
+              ><img loading="lazy" class="shadow" src="../public/img/linkedin.png" alt="linkedin"
             /></a>
           </div>
           <div
@@ -72,7 +72,7 @@
             class="twitter"
           >
             <a :href="person.custom_fields.twitter[0]"
-              ><img class="shadow" src="../public/img/twitter.svg" alt="twitter"
+              ><img loading="lazy" class="shadow" src="../public/img/twitter.svg" alt="twitter"
             /></a>
           </div>
         </div>

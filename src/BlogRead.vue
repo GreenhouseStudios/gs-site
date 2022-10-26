@@ -1,9 +1,6 @@
 <template>
   <div id="blogmain">
-    <div id="blogcontent" v-if="post">
-      <!-- <img v-if="isMobile()" id="mainimg" class="img alignleft" 
-          v-bind:src="(`${getImg(post.content.rendered)}`)" 
-          v-bind:alt="(`${getAlt(post.content.rendered)}`)"/> -->
+    <div id="blogcontent" v-if="!$store.getters.loading && post">
       <div class="titledatecontainer">
         <div class="blogtitle">
           <h2 class="f1 blogtitle" v-html="post.title.rendered"></h2>
@@ -16,7 +13,7 @@
         </div>
       </div>
       <div id="img_and_byline">
-        <img v-if="post.fimg_url" :src="post.fimg_url" alt=""/>
+        <img v-if="post.fimg_url" :src="post.fimg_url" class="w5" alt=""/>
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">{{post.custom_fields.byline[0]}}</h3>
       </div>
       <div class="textbox">
@@ -24,79 +21,81 @@
       </div>
     </div>
     <div v-else>
-      <h2>There was a problem fetching this blog post.</h2>
+      <NotFound></NotFound>
     </div>
   </div>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+import NotFound from './NotFound.vue';
 export default {
-  name: "BlogRead",
-  data() {
-    return {
-      date: "",
-      post: null,
-    };
-  },
-  mounted() {
-    this.post = this.$store.getters.postBySlug(this.$route.params.slug);
-  },
-  created() {
-    this.$watch(
-      () => this.$route.params,
-      (toParams, previousParams) => {
-        console.log(previousParams);
-        this.post = this.$store.getters.postBySlug(toParams.slug);
-      }
-    );
-  },
-  methods: {
-    removeTags(str) {
-      if (str === null || str === "") return false;
-      else {
-        str = str.toString();
-        str = str.replace(/&#8217;/g, "'");
-        str = str.replace(/(<([^>]+)>)/gi, "");
-        str = str.replace(/&amp;/g, "&");
-        str = str.replace(/&nbsp;/g, " ");
-      }
-      return str;
+    name: "BlogRead",
+    data() {
+        return {
+            date: "",
+        };
     },
-    getImg(str) {
-      var regex = /<img.*?src="(.*?)"/;
-      var src = regex.exec(str);
-      if (src == null) {
-        // Placeholder Image
-        src =
-          "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
-      } else {
-        src = src[1];
-      }
-      return src;
+    // async created() {
+    //     this.post = await this.$store.getters.postBySlug(this.$route.params.slug);
+    // },
+  
+    computed: {
+        ...mapGetters({
+            postBySlug: "postBySlug"
+        }),
+        post(){
+          return this.postBySlug(this.$route.params.slug)
+        }
     },
-    getAlt(str) {
-      var regex = /<img.*?src="(.*?)" alt="(.*?)"/;
-      var alt = regex.exec(str);
-      if (alt == null) {
-        // Placeholder Image
-        alt = "A blog image";
-      } else {
-        alt = alt[2];
-      }
-      return alt;
+    methods: {
+        removeTags(str) {
+            if (str === null || str === "")
+                return false;
+            else {
+                str = str.toString();
+                str = str.replace(/&#8217;/g, "'");
+                str = str.replace(/(<([^>]+)>)/gi, "");
+                str = str.replace(/&amp;/g, "&");
+                str = str.replace(/&nbsp;/g, " ");
+            }
+            return str;
+        },
+        getImg(str) {
+            var regex = /<img.*?src="(.*?)"/;
+            var src = regex.exec(str);
+            if (src == null) {
+                // Placeholder Image
+                src =
+                    "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
+            }
+            else {
+                src = src[1];
+            }
+            return src;
+        },
+        getAlt(str) {
+            var regex = /<img.*?src="(.*?)" alt="(.*?)"/;
+            var alt = regex.exec(str);
+            if (alt == null) {
+                // Placeholder Image
+                alt = "A blog image";
+            }
+            else {
+                alt = alt[2];
+            }
+            return alt;
+        },
+        isMobile() {
+            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        },
     },
-    isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
-        return true;
-      } else {
-        return false;
-      }
-    },
-  },
+    components: { NotFound }
 };
 </script>
 
@@ -149,7 +148,7 @@ h1 {
 
 #blogmain {
   overflow: hidden;
-  background: white;
+
 }
 #blogcontent {
   margin: 2em 20%;

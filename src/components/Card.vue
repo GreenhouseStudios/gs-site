@@ -15,6 +15,7 @@
           <img
             :src="project.custom_fields.project_card_front"
             alt="project title"
+            loading="lazy"
           />
         </div>
       </div>
@@ -33,6 +34,7 @@
           class="title-new"
           :src="project.custom_fields.project_title_img"
           alt="by our love"
+          loading="lazy"
         />
         <div class="desc" v-if="project.custom_fields.about">
           <p>

@@ -17,8 +17,12 @@
            filter: hue-rotate(${textureHueShift}deg) saturate(${textureSaturationShift}deg)`"
           alt="watercolor card background image"
         ></div>
-        <div v-if="this.image" class="people-img">
-          <img :src="this.image" loading="lazy" :style="usesPlaceholder ? 'width: 80%' : 'width:100%'"/>
+        <div v-if="image" class="people-img">
+          <img
+            :src="image"
+            loading="lazy"
+            :style="usesPlaceholder ? 'width: 80%' : 'width:100%'"
+          />
         </div>
         <h4
           class="people-name"
@@ -61,7 +65,11 @@
             class="email"
           >
             <a :href="'mailto:' + person.custom_fields.email[0]"
-              ><img class="shadow" src="../../public/img/email.svg" alt="email"
+              ><img
+                loading="lazy"
+                class="shadow"
+                src="../../public/img/email.svg"
+                alt="email"
             /></a>
           </div>
           <div
@@ -70,6 +78,7 @@
           >
             <a :href="person.custom_fields.site[0]"
               ><img
+                loading="lazy"
                 class="shadow"
                 src="../../public/img/site.png"
                 alt="website"
@@ -87,7 +96,7 @@
                 class="shadow"
                 src="../../public/img/instagram.svg"
                 alt="instagram"
-                loading="lazy" 
+                loading="lazy"
             /></a>
           </div>
           <div
@@ -101,7 +110,7 @@
                 class="shadow"
                 src="../../public/img/linkedin.png"
                 alt="linkedin"
-                loading="lazy" 
+                loading="lazy"
             /></a>
           </div>
           <div
@@ -115,7 +124,7 @@
                 class="shadow"
                 src="../../public/img/twitter.svg"
                 alt="twitter"
-                loading="lazy" 
+                loading="lazy"
             /></a>
           </div>
         </div>
@@ -129,7 +138,7 @@
           "
           src="img/GH-Watercolor-small.png"
           alt="watercolor card background image"
-          loading="lazy" 
+          loading="lazy"
         />
       </div>
     </div>
@@ -169,14 +178,14 @@ export default {
       if (this.person.image.source_url) return this.person.image.source_url;
       else return this.person.image;
     },
-    usesPlaceholder(){
-      return this.image.includes('placeholder')
-    }
+    usesPlaceholder() {
+      return this.image.includes("placeholder");
+    },
   },
   methods: {
     reset() {
       this.isFlipped = false;
-    }
+    },
   },
 };
 </script>
@@ -192,10 +201,9 @@ export default {
     drop-shadow(0px 1px 1px black);
   filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
 }
-.people-img{
+.people-img {
   overflow: hidden;
   display: grid;
   place-items: center;
-
 }
 </style>
