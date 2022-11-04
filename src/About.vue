@@ -1,9 +1,9 @@
 <template>
-  <div v-if="person">
+  <div v-if="person" class="pv7">
     <!-- <h1 class="about">ABOUT ME</h1> -->
     <div class="nest">
       <div class="image">
-        <div v-if="image" class="people-img mt6" :style="`background-image: url(${image}); background-size: ${imageSize}%;`">
+        <div v-if="image" class="people-img" :style="`background-image: url(${image}); background-size: ${imageSize}%;`">
           <!-- <img :src="image" alt="" :style="`width: ${imageSize}%`" /> -->
         </div>
       </div>
