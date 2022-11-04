@@ -1,87 +1,92 @@
 <template>
-  <div v-if="person" class="pv7">
+  <div v-if="person" class="flex-ns center w-50-ns w-90 justify-around" style="padding-top: 200px">
     <!-- <h1 class="about">ABOUT ME</h1> -->
-    <div class="nest">
-      <div class="image">
-        <div v-if="image" class="people-img" :style="`background-image: url(${image}); background-size: ${imageSize}%;`">
+    <div class="ph4 flex-col">
+      <div class="image flex">
+        <div
+          v-if="image"
+          class="people-img"
+          :style="`background-image: url(${image}); background-size: ${imageSize}%;`"
+        >
           <!-- <img :src="image" alt="" :style="`width: ${imageSize}%`" /> -->
         </div>
       </div>
-      <h1 class="name">
+      <h1 class="name tc">
         <strong>{{
           person.custom_fields.first_name[0] +
           " " +
           person.custom_fields.last_name[0]
         }}</strong>
       </h1>
-      <br />
-      <div v-html="person.custom_fields.about[0]" class="bio"></div>
     </div>
-    <br />
-    <br />
-    <div class="social-media">
-      <div
-        v-if="person.custom_fields.email && person.custom_fields.email[0]"
-        class="email"
-      >
-        <a :href="'mailto:' + person.custom_fields.email[0]"
-          ><img
-            loading="lazy"
-            class="shadow"
-            src="../public/img/email.svg"
-            alt="email"
-        /></a>
+    <div class="w-50-ns w-100 tl-ns tc relative-ns top--1 center">
+      <div class="social-media justify-start-ns relative-ns left--1 pt0">
+        <div
+          v-if="person.custom_fields.email && person.custom_fields.email[0]"
+          class="email"
+        >
+          <a :href="'mailto:' + person.custom_fields.email[0]"
+            ><img
+              loading="lazy"
+              class="shadow"
+              src="../public/img/email.svg"
+              alt="email"
+          /></a>
+        </div>
+        <div
+          v-if="person.custom_fields.site && person.custom_fields.site[0]"
+          class="site"
+        >
+          <a :href="person.custom_fields.site[0]"
+            ><img
+              loading="lazy"
+              class="shadow"
+              src="../public/img/site.png"
+              alt="website"
+          /></a>
+        </div>
+        <div
+          v-if="
+            person.custom_fields.instagram && person.custom_fields.instagram[0]
+          "
+          class="instagram"
+        >
+          <a :href="person.custom_fields.instagram[0]"
+            ><img
+              loading="lazy"
+              class="shadow"
+              src="../public/img/instagram.svg"
+              alt="instagram"
+          /></a>
+        </div>
+        <div
+          v-if="
+            person.custom_fields.linkedin && person.custom_fields.linkedin[0]
+          "
+          class="facebook"
+        >
+          <a :href="person.custom_fields.linkedin[0]"
+            ><img
+              loading="lazy"
+              class="shadow"
+              src="../public/img/linkedin.png"
+              alt="linkedin"
+          /></a>
+        </div>
+        <div
+          v-if="person.custom_fields.twitter && person.custom_fields.twitter[0]"
+          class="twitter"
+        >
+          <a :href="person.custom_fields.twitter[0]"
+            ><img
+              loading="lazy"
+              class="shadow"
+              src="../public/img/twitter.svg"
+              alt="twitter"
+          /></a>
+        </div>
       </div>
-      <div
-        v-if="person.custom_fields.site && person.custom_fields.site[0]"
-        class="site"
-      >
-        <a :href="person.custom_fields.site[0]"
-          ><img
-            loading="lazy"
-            class="shadow"
-            src="../public/img/site.png"
-            alt="website"
-        /></a>
-      </div>
-      <div
-        v-if="
-          person.custom_fields.instagram && person.custom_fields.instagram[0]
-        "
-        class="instagram"
-      >
-        <a :href="person.custom_fields.instagram[0]"
-          ><img
-            loading="lazy"
-            class="shadow"
-            src="../public/img/instagram.svg"
-            alt="instagram"
-        /></a>
-      </div>
-      <div
-        v-if="person.custom_fields.linkedin && person.custom_fields.linkedin[0]"
-        class="facebook"
-      >
-        <a :href="person.custom_fields.linkedin[0]"
-          ><img
-            loading="lazy"
-            class="shadow"
-            src="../public/img/linkedin.png"
-            alt="linkedin"
-        /></a>
-      </div>
-      <div
-        v-if="person.custom_fields.twitter && person.custom_fields.twitter[0]"
-        class="twitter"
-      >
-        <a :href="person.custom_fields.twitter[0]"
-          ><img
-            loading="lazy"
-            class="shadow"
-            src="../public/img/twitter.svg"
-            alt="twitter"
-        /></a>
-      </div>
+      <div v-html="person.custom_fields.about[0]" class="bio"></div>
     </div>
   </div>
 </template>
@@ -154,7 +159,7 @@ br {
 }
 
 .name {
-  text-align: center;
+  // text-align: center;
 }
 
 .bio {
@@ -163,9 +168,9 @@ br {
 }
 
 .image {
-  display: grid;
+  // display: grid;
   // justify-content: center
-  place-content: center;
+  // place-content: center;
 }
 
 .greenbg {
@@ -220,5 +225,10 @@ img {
 .circle:hover {
   background: white;
   box-shadow: rgba(100, 100, 100, 0.5) 0px 7px 20px 0px;
+}
+.shadow:hover {
+  -webkit-filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.6))
+    drop-shadow(0px 1px 1px black);
+  filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
 }
 </style>

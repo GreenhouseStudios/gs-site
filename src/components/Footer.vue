@@ -1,6 +1,6 @@
 <template>
   <div>
-    <footer>
+    <footer class="overflow-hidden">
       <img
         class="footer-img"
         loading="lazy"
@@ -111,7 +111,7 @@ footer {
 }
 .footer-img {
   position: absolute;
-  bottom: 0;
+  bottom: -180px;
 }
 .grants {
   position: relative;

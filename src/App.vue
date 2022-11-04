@@ -114,7 +114,8 @@ body {
   position: relative;
   background-image: url("~@/../public/bgImg/spiderplant-BG.png");
   background-repeat: repeat-y;
-  background-size: 100%;
+  background-size: 100vw;
+  background-position-x: center;
 }
 footer {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;

@@ -167,7 +167,8 @@ export default {
   position: absolute;
   right: 0;
   @media screen and (min-width: 1440px) {
-    width: 75vw;
+    width: 65vw;
+    top: 100px;
   }
   @media screen and (max-width: 1440px) {
     width: 130vw;

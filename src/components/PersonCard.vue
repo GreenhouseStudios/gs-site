@@ -1,15 +1,16 @@
 <template>
   <div class="flipCard" @click="isFlipped = !isFlipped">
     <div class="card" :class="{ flipped: isFlipped }">
-      <div class="side front" style="overflow: hidden">
+      <div class="side front" style="overflow: hidden; z-index: 0;">
         <div
-          class="img-front"
+          class="img-front absolute"
           style="
             height: 35%;
             width: 100%;
             object-fit: cover;
             border-radius: 5px 5px 0px 0px;
             background-size: 150%;
+            z-index: -1;
           "
           :style="`background-image: url(${require('../../public/img/GH-Watercolor-small.png')}); background-position: ${
             this.positionShift
@@ -17,7 +18,7 @@
            filter: hue-rotate(${textureHueShift}deg) saturate(${textureSaturationShift}deg)`"
           alt="watercolor card background image"
         ></div>
-        <div v-if="image" class="people-img">
+        <div v-if="image" class="people-img z-1" style="margin-top: 47px">
           <img
             :src="image"
             loading="lazy"
