@@ -15,6 +15,9 @@ const getters = {
     if(!result) console.log("no project called " + slug)
     else return result;
   },
+  personByName: (state) => (name) => {
+    return state.people.find((p) => p.slug === name);
+  },
   allPosts: (state) => {
     return state.posts;
   },
