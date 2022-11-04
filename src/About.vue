@@ -127,6 +127,20 @@ export default {
   }
 }
 
+.people-img {
+  box-shadow: 0 5px 8px rgba(0, 0, 0, 0.2);
+  width: 200px;
+  height: 200px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 50%;
+  border: 5px solid white;
+  background-color: white;
+  border-radius: 100%;
+  display: inline-block;
+}
+
 .about {
   font-family: "Samo";
   font-size: 50px;
