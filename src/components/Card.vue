@@ -125,11 +125,7 @@ export default {
       }, 600);
     },
     hasSite() {
-      if (this.project.custom_fields.website_url[0] == "") {
-        return false;
-      } else {
-        return true;
-      }
+     return this.project.custom_fields?.website_url[0] === "";
     },
     reset(){
       this.isFlipped = false;
