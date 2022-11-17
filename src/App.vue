@@ -6,56 +6,7 @@
       menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
     }`"
   >
-    <head>
-      <meta charset="utf-8" />
-      <title>UConn Banner</title>
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <meta name="description" content="" />
-      <meta name="author" content="" />
-      <link :href="require('./assets/banner.css')" rel="stylesheet" />
-    </head>
-    <div id="uconn-banner">
-      <div id="uconn-header-container">
-        <div class="row-container">
-          <div class="row-fluid">
-            <div id="home-link-container">
-              <a id="home-link" href="http://uconn.edu/">
-                <span id="wordmark">UCONN</span>
-                <span id="university-of-connecticut"
-                  >UNIVERSITY OF CONNECTICUT</span
-                >
-              </a>
-            </div>
-            <div id="button-container">
-              <span>
-                <a class="btn" href="http://uconn.edu/search.php" title="Search"
-                  ><i class="icon-search"></i>
-                </a>
-              </span>
-              <span>
-                <a
-                  class="btn"
-                  href="http://uconn.edu/azindex.php"
-                  title="AZ Index"
-                  ><i class="icon-a-z"></i
-                ></a>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="row-container" id="site-header">
-        <div class="row-fluid">
-          <div class="pb3">
-            <p id="super-title"></p>
-            <h1 id="site-title">
-              <a href="/" style="color: #fff">Greenhouse Studios</a>
-            </h1>
-          </div>
-        </div>
-      </div>
-    </div>
+    <Header></Header>
     <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
     <!-- <div
@@ -77,6 +28,7 @@
 
 <script>
 import Footer from "./components/Footer.vue";
+import Header from './components/Header.vue';
 // import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
 export default {
@@ -84,6 +36,7 @@ export default {
   components: {
     Nav,
     Footer,
+    Header,
     // Loading,
   },
   data() {
@@ -101,7 +54,7 @@ export default {
 };
 </script>
 
-<style>
+<style >
 Nav {
   overflow: visible !important;
 }
@@ -115,12 +68,13 @@ body {
   background-image: url("~@/../public/bgImg/spiderplant-BG.png");
   background-repeat: repeat-y;
   background-size: 100vw;
+  line-height: 1.428571429;
   background-position-x: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 footer {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
-  line-height: 1.428571429;
+  
   color: #333333;
   display: block;
 }
