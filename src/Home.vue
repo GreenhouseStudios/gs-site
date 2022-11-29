@@ -7,46 +7,56 @@
       </h2>
     </div>
 
-    <div class="flex flex-row-ns flex-column flex-column-m" style="justify-content:space-evenly">
+    <div
+      class="flex flex-row-ns flex-column flex-column-m"
+      style="justify-content: space-evenly"
+    >
       <div class="flex mh5-ns">
         <img
-        loading="lazy"
-        id="gs-logo" class="center" style="margin: auto;"
+          loading="lazy"
+          id="gs-logo"
+          class="center"
+          style="margin: auto"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""
         />
       </div>
       <multi-tab></multi-tab>
     </div>
-    <div class="spacer"> </div>
+    <div class="spacer"></div>
 
     <h3 class="title-2 design-title">Design Process</h3>
     <div class="design-process-container">
       <div class="video-container">
-        <!-- <img src="../public/img/Animation_Fill.png" /> -->
         <iframe
-          src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
-          title="GS Process Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/Bxw2Gsm0ee8"
+          modestbranding
+        >
+        </iframe>
       </div>
       <img class="video-watercolor" src="img/watercolor-blurb.png" />
       <div class="design-text">
-        <p style="max-width: 100%; padding-top:5%">Our design process is integral to every project we make. 
-          A team of collaborators responds to an inquiry-focused prompt and undertakes a five-phase 
-          design-thinking process over the course of two years. The understand, identify, build, review, 
-          and disseminate stages each result in a stepping stone (e.g., a project brief, media manuscript) 
-          that will lead to the next phase of the design process. Though the process will ultimately lead 
-          to a publication, the process is meant to be highly iterative and cyclical, and the “product” 
-          of the process is intentionally left completely open-ended from the start.
-          <router-link to="/blog/greenhouse-studios-design-process" class="shimmer">
-          Read more about our design process.
-        </router-link>
+        <p style="max-width: 100%; padding-top: 5%">
+          Our design process is integral to every project we make. A team of
+          collaborators responds to an inquiry-focused prompt and undertakes a
+          five-phase design-thinking process over the course of two years. The
+          understand, identify, build, review, and disseminate stages each
+          result in a stepping stone (e.g., a project brief, media manuscript)
+          that will lead to the next phase of the design process. Though the
+          process will ultimately lead to a publication, the process is meant to
+          be highly iterative and cyclical, and the “product” of the process is
+          intentionally left completely open-ended from the start.
+          <router-link
+            to="/blog/greenhouse-studios-design-process"
+            class="shimmer"
+          >
+            Read more about our design process.
+          </router-link>
         </p>
       </div>
     </div>
-
 
     <div class="text-1">
       <div class="fprojects-text">
@@ -565,26 +575,26 @@ p a {
     background-position: 12.5rem top; /*200px*/
   }
 }
-#gs-logo{
+#gs-logo {
   display: block;
-  max-width:300px;
-  max-height:300px;
+  max-width: 300px;
+  max-height: 300px;
   width: auto;
   height: auto;
 }
 
-.design-title{
+.design-title {
   text-align: center;
 }
-.design-text{
+.design-text {
   width: 100%;
 }
-.design-process-container{
+.design-process-container {
   position: relative;
   width: 70%;
   margin: auto;
 }
-.video-watercolor{
+.video-watercolor {
   width: 100%;
   margin: 0 auto;
   padding-right: 50px;
@@ -595,7 +605,7 @@ p a {
   z-index: -1;
 }
 
-.spacer{
+.spacer {
   height: 130px;
 }
 </style>
