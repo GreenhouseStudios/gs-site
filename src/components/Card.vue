@@ -43,7 +43,7 @@
         </div>
 
         <a
-          v-if="hasSite()"
+          v-if="hasSite"
           id="button"
           :style="`border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
@@ -113,7 +113,10 @@ export default {
       return this.project.custom_fields.btn_color && convert.hex.hsl(this.project.custom_fields.btn_color)[2] <= 50
         ? "white"
         : "black";
-    }
+    },
+    hasSite() {
+      return this.project.custom_fields?.website_url && this.project.custom_fields?.website_url[0] !== "";
+    },
   },
   methods: {
     flipCard() {
@@ -124,9 +127,7 @@ export default {
         t.flipping = false;
       }, 600);
     },
-    hasSite() {
-     return this.project.custom_fields?.website_url[0] === "";
-    },
+  
     reset(){
       this.isFlipped = false;
     }
