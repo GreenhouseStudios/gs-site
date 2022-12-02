@@ -167,7 +167,7 @@ h1 {
 
 .textbox {
   height: 100%;
-  margin-top: 5em;
+  margin-top: -5px;
 }
 .alignleft {
   display: inline;
@@ -219,5 +219,8 @@ iframe {
 .wp-caption-text {
   font-size: 14px;
   text-align: center;
+}
+#img_and_byline{
+  margin-top: 2em;
 }
 </style>
