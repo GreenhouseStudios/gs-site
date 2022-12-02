@@ -221,6 +221,10 @@ iframe {
   text-align: center;
 }
 #img_and_byline{
-  margin-top: 2em;
+  margin-top: 5em;
 }
+a{
+  color: #161616;
+}
+
 </style>

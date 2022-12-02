@@ -114,4 +114,7 @@ footer {
 :root {
   --main-bg-color: #8cc947;
 }
+a, a:link, a:visited, a:focus, a:hover, a:active{
+  color: #161616;
+}
 </style>
