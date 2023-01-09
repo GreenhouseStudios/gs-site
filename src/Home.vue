@@ -18,7 +18,7 @@
       <multi-tab></multi-tab>
     </div>
 
-    <div class="text-1">
+    <div class="text-1 mv3">
       <div class="fprojects-text">
         <h3 class="title-2">Featured Projects</h3>
         <router-link to="/projects" class="shimmer">
