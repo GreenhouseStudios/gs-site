@@ -12,7 +12,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
-        :style="picked === 0 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        :style="picked === 0 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">Who We Are</span></label
       >
       <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
@@ -26,7 +26,7 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabtwo"
         id="tab-two-label"
-        :style="picked === 1 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        :style="picked === 1 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">What We Do</span></label
       >
       <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
@@ -45,7 +45,7 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabthree"
-        :style="picked === 2 ? `background: #F7F7F7;`:`background: #a4d171 ;`"
+        :style="picked === 2 ? `background: #F7F7F7;`:`background: #D7DAD7 ;`"
         ><span class="shimmer">Collaborative Culture</span></label
       >
 

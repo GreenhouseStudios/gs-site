@@ -1,9 +1,9 @@
 <template>
-  <div class="body">
+  <div class="body ph4">
 
     <div
-      class="flex flex-row-ns flex-column flex-column-m mt6"
-      style="justify-content: space-evenly"
+      class="flex flex-row-ns flex-column flex-column-m mt4"
+      style="justify-content: space-evenly;"
     >
       <div class="flex mh5-ns">
         <img
@@ -17,7 +17,6 @@
       </div>
       <multi-tab></multi-tab>
     </div>
-    <div class="spacer"></div>
 
     <div class="text-1">
       <div class="fprojects-text">
@@ -37,7 +36,7 @@
       </div>
     </div>
 
-    <h3 class="title-2 design-title mt6">Design Process</h3>
+    <h3 class="title-2 design-title mt5">Design Process</h3>
     <div class="design-process-container">
       <div class="video-container">
         <iframe
@@ -517,10 +516,6 @@ p a {
   color: #161616;
 }
 
-.text-1,
-.text-2 {
-  padding: 30px;
-}
 
 .text-1 h2,
 .text-2 h2 {
@@ -583,9 +578,6 @@ p a {
   height: auto;
 }
 
-.design-title {
-  text-align: center;
-}
 .design-text {
   width: 100%;
 }

@@ -199,7 +199,7 @@ li:hover {
   padding: 20px 20px;
   text-decoration: none;
   color: #161616;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
 }
 #mobile-menu-list > li a {
   display: block;
