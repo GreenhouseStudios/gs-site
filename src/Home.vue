@@ -31,7 +31,8 @@
           :key="project.id"
           :index="index"
         >
-          <card :project="project"></card>
+          <card :project="project" :index="index"
+        :slug="project.slug"></card>
         </div>
       </div>
     </div>
