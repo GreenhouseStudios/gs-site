@@ -1,14 +1,8 @@
 <template>
   <div class="body">
-    <div class="gs-intro w-80">
-      <h2 class="title p6">
-        Facilitating humanities research through collaboration, digital
-        technology and design.
-      </h2>
-    </div>
 
     <div
-      class="flex flex-row-ns flex-column flex-column-m"
+      class="flex flex-row-ns flex-column flex-column-m mt6"
       style="justify-content: space-evenly"
     >
       <div class="flex mh5-ns">
@@ -25,7 +19,25 @@
     </div>
     <div class="spacer"></div>
 
-    <h3 class="title-2 design-title">Design Process</h3>
+    <div class="text-1">
+      <div class="fprojects-text">
+        <h3 class="title-2">Featured Projects</h3>
+        <router-link to="/projects" class="shimmer">
+          view all projects &#8594;
+        </router-link>
+      </div>
+      <div class="grid sidescroll ph5-ns" v-if="projects">
+        <div
+          v-for="(project, index) in featuredProjects"
+          :key="project.id"
+          :index="index"
+        >
+          <card :project="project"></card>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="title-2 design-title mt6">Design Process</h3>
     <div class="design-process-container">
       <div class="video-container">
         <iframe
@@ -58,23 +70,11 @@
       </div>
     </div>
 
-    <div class="text-1">
-      <div class="fprojects-text">
-        <h3 class="title-2">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer">
-          view all projects &#8594;
-        </router-link>
-      </div>
-      <div class="grid sidescroll ph5-ns" v-if="projects">
-        <div
-          v-for="(project, index) in featuredProjects"
-          :key="project.id"
-          :index="index"
-        >
-          <card :project="project"></card>
-        </div>
-      </div>
+    <div class="w-70 center mv6">
+      <img :src="require('../public/img/greenhouseProcessModel_Oct2017.jpg')" alt="">
     </div>
+
+    
 
     <div class="text-1">
       <div class="fprojects-text">
