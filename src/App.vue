@@ -19,9 +19,10 @@
         class="absolute o-10 right-0"
       />
     </div> -->
-    <keep-alive>
+    
+    <div class="route-container"><keep-alive>
       <router-view></router-view>
-    </keep-alive>
+    </keep-alive></div >
     <Footer></Footer>
   </div>
 </template>
@@ -55,6 +56,22 @@ export default {
 </script>
 
 <style >
+@media screen and (min-width: 1440px) and ( max-width: 2560px) {
+  .route-container{
+    padding: 0 250px;
+  }
+}
+@media screen and (min-width: 2561px) {
+  .route-container{
+    padding: 0 550px;
+  }
+}
+@media screen and (max-width: 1920px){
+  .route-container{
+    padding: 0;
+  }
+}
+
 Nav {
   overflow: visible !important;
 }

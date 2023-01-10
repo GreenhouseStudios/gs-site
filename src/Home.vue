@@ -1,9 +1,8 @@
 <template>
-  <div class="body ph4">
-
+  <div class="body ph4 flex-column items-center">
     <div
       class="flex flex-row-ns flex-column flex-column-m mt4"
-      style="justify-content: space-evenly;"
+      style="justify-content: space-evenly"
     >
       <div class="flex mh5-ns">
         <img
@@ -18,21 +17,20 @@
       <multi-tab></multi-tab>
     </div>
 
-    <div class="text-1 mv3">
+    <div class="text-1 mv3 center">
       <div class="fprojects-text">
         <h3 class="title-2">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer">
+        <router-link to="/projects" class="shimmer relative top-2 right-2">
           view all projects &#8594;
         </router-link>
       </div>
-      <div class="grid sidescroll ph5-ns" v-if="projects">
+      <div class="card-row sidescroll ph5-ns center" v-if="projects">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
           :index="index"
         >
-          <card :project="project" :index="index"
-        :slug="project.slug"></card>
+          <card :project="project" :index="index" :slug="project.slug"></card>
         </div>
       </div>
     </div>
@@ -71,19 +69,20 @@
     </div>
 
     <div class="w-70 center mv6">
-      <img :src="require('../public/img/greenhouseProcessModel_Oct2017.jpg')" alt="">
+      <img
+        :src="require('../public/img/greenhouseProcessModel_Oct2017.jpg')"
+        alt=""
+      />
     </div>
-
-    
 
     <div class="text-1">
       <div class="fprojects-text">
         <h3 class="title-2">Recent Blog Posts</h3>
-        <router-link to="/blog" class="shimmer">
+        <router-link to="/blog" class="shimmer relative top-2 right-0">
           view blog &#8594;
         </router-link>
       </div>
-      <div class="grid sidescroll ph5-ns" v-if="!$store.getters.loading">
+      <div class="card-row sidescroll ph5-ns" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
           <blog-card
             class="featuredblog"
@@ -95,6 +94,7 @@
           >
           </blog-card>
         </div>
+        
       </div>
     </div>
   </div>
@@ -447,7 +447,7 @@ footer {
   src: url("./assets/SAMO-Regular.ttf");
 }
 
-.grid {
+.card-row {
   display: grid;
   grid-gap: 3rem;
   grid-template-rows: repeat(4, 350px);
@@ -457,21 +457,21 @@ footer {
 }
 
 @media (max-width: 660px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(1, 300px);
   }
 }
 
 @media (min-width: 661px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(2, 300px);
   }
 }
 
 @media (min-width: 1010px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(3, 300px);
   }
@@ -517,7 +517,6 @@ p a {
   color: #161616;
 }
 
-
 .text-1 h2,
 .text-2 h2 {
   padding-bottom: 20px;
@@ -530,10 +529,8 @@ p a {
 
 .sidescroll {
   display: flex;
-  justify-content: flex-start;
-  width: 100vw;
   height: 450px;
-  overflow: auto;
+  // overflow: auto;
   // white-space: nowrap;
 }
 
