@@ -250,7 +250,7 @@ export default {
 }
 
 .alumni-list {
-  font-family: "Libre-Franklin", Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
