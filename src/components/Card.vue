@@ -55,7 +55,7 @@
           :href="project.custom_fields.website_url" target="_blank"
           @click.stop=""
         >
-          WEBSITE
+          Website
         </a>
 
         <a
@@ -70,7 +70,7 @@
           }; border-color:${btnColor} !important; color: ${
             hover ? btnColor : btnTextColor
           }`"
-          >READ MORE</a
+          >Read More</a
         >
       </div>
     </div>
@@ -92,10 +92,13 @@ export default {
     slug: {
       type: String,
     },
+    startsFlipped: {
+      type: Boolean,
+    }
   },
   data() {
     return {
-      isFlipped: false,
+      isFlipped: this.startsFlipped ? true : false,
       flipping: false,
       hover: false,
     };

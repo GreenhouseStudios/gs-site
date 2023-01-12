@@ -237,7 +237,7 @@ footer {
 }
 
 .people-name {
-  font-family: "Samo";
+  font-family: "Libre Franklin";
   text-align: center;
   line-height: 35px;
   font-size: 25px;
@@ -294,7 +294,7 @@ footer {
   border-radius: 5px;
   letter-spacing: 2px;
   padding: 10px;
-  font-family: samo, Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
 }
 
 .btn-bol {

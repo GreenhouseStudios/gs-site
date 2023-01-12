@@ -13,7 +13,7 @@
             <p class="blogcardtext">{{removeTags(content.rendered)}}</p>
             <br><br>
             <router-link class="" :to="`/blog/${slug}`">
-            <button id="button" class="btn-bol btn-blog">READ MORE</button>
+            <button id="button" class="btn-bol btn-blog">Read More</button>
             </router-link>
           </div>
         </div>

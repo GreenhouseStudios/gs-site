@@ -24,13 +24,13 @@
           view all projects &#8594;
         </router-link>
       </div>
-      <div class="card-row sidescroll ph5-ns center" v-if="projects">
+      <div class="card-row sidescroll ph5-ns center w-90" v-if="projects">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
           :index="index"
         >
-          <card :project="project" :index="index" :slug="project.slug"></card>
+          <card :project="project" :index="index" :slug="project.slug" :startsFlipped="index === 0"></card>
         </div>
       </div>
     </div>
@@ -530,7 +530,9 @@ p a {
 .sidescroll {
   display: flex;
   height: 450px;
-  // overflow: auto;
+  overflow: auto;
+  width: 100vw;
+  justify-content: flex-start;
   // white-space: nowrap;
 }
 
