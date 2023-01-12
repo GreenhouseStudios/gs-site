@@ -126,7 +126,11 @@ export default {
   computed: {
     featuredProjects: function () {
       if (this.projects) {
-        return this.projects.slice(0, 5);
+        var result = [...this.projects].filter(p => p.custom_fields.featured_priority).sort((a,b) => {
+          return a.custom_fields?.featured_priority[0] < b.custom_fields?.featured_priority[0] ? -1 : 1;
+        
+        });
+        return result;
       } else {
         return null;
       }
