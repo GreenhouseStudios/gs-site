@@ -1,5 +1,5 @@
 <template>
-  <div class="body ph4 flex-column items-center">
+  <div class="body ph4-ns flex-column items-center">
     <div
       class="flex flex-row-ns flex-column flex-column-m mt4"
       style="justify-content: space-evenly"
@@ -18,11 +18,13 @@
     </div>
 
     <div class="text-1 mv3 center">
-      <div class="fprojects-text">
-        <h3 class="title-2">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer relative top-2 right-2">
-          view all projects &#8594;
+      <div>
+        <h3 class="title-2 pl5" style="font-size: 32px">Featured Projects
+          <router-link to="/projects" class="shimmer pl5-ns db di-ns ">
+          View All Projects &#8594;
         </router-link>
+        </h3>
+        
       </div>
       <div class="card-row sidescroll ph5-ns center w-90" v-if="projects">
         <div
@@ -35,7 +37,7 @@
       </div>
     </div>
 
-    <h3 class="title-2 design-title mt5">Design Process</h3>
+    <h3 class="title-2 design-title pl5 mt5" style="font-size: 32px;">Design Process</h3>
     <div class="design-process-container">
       <div class="video-container">
         <iframe
@@ -68,19 +70,20 @@
       </div>
     </div>
 
-    <div class="w-70 center mv6">
+    <div class=" w-60-ns w-80 mv4 center">
       <img
-        :src="require('../public/img/greenhouseProcessModel_Oct2017.jpg')"
+      class="w-90-ns"
+        :src="require('../public/img/gs-processmodel-feb2021.jpg')"
         alt=""
       />
     </div>
 
     <div class="text-1">
-      <div class="fprojects-text">
-        <h3 class="title-2">Recent Blog Posts</h3>
-        <router-link to="/blog" class="shimmer relative top-2 right-0">
-          view blog &#8594;
-        </router-link>
+      <div>
+        <h3 class="title-2 pl5" style="font-size: 32px">Recent Blog Posts  <router-link to="/blog" class="shimmer pl5-ns db di-ns">
+          View Blog &#8594;
+        </router-link></h3>
+       
       </div>
       <div class="card-row sidescroll ph5-ns" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
@@ -495,12 +498,6 @@ footer {
   font-family: "Samo";
 }
 
-.title-2 {
-  font-weight: 600;
-  font-size: 32px;
-  padding-left: 40px;
-}
-
 .line {
   position: relative;
   bottom: 35px;
@@ -538,12 +535,6 @@ p a {
   width: 100vw;
   justify-content: flex-start;
   // white-space: nowrap;
-}
-
-.fprojects-text {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .shimmer:hover {
@@ -603,5 +594,8 @@ p a {
 
 .spacer {
   height: 130px;
+}
+p, h1, h2, h3, h4 ,h5, h6{
+  font-family: "Libre Franklin";
 }
 </style>

@@ -2,8 +2,8 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv3 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      We are an interdisciplinary team with diverse backgrounds who bring their
-      individual interests and passions into the Greenhouse Studios community.
+      <p>We are an interdisciplinary team with diverse backgrounds who bring their
+      individual interests and passions into the Greenhouse Studios community.</p>
     </div>
     <div
       id="tab-btn-container"
@@ -273,5 +273,8 @@ export default {
 #subnav-btn:hover {
   background-color: #bde491;
   color: white;
+}
+p{
+  font-family: "Libre Franklin";
 }
 </style>
