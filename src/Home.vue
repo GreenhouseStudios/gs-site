@@ -4,7 +4,7 @@
       class="flex flex-row-ns flex-column flex-column-m mt4"
       style="justify-content: space-evenly"
     >
-      <div class="flex mh5-ns">
+      <div class="flex mh5-ns mb5">
         <img
           loading="lazy"
           id="gs-logo"
@@ -41,6 +41,7 @@
     <div class="design-process-container">
       <div class="video-container">
         <iframe
+          class="bn"
           width="420"
           height="315"
           src="https://www.youtube.com/embed/Bxw2Gsm0ee8"

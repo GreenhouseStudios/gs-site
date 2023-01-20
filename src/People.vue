@@ -2,12 +2,12 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv3 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      <p>We are an interdisciplinary team with diverse backgrounds who bring their
+      <p class="f4">We are an interdisciplinary team with diverse backgrounds who bring their
       individual interests and passions into the Greenhouse Studios community.</p>
     </div>
     <div
       id="tab-btn-container"
-      class="w-50-ns center flex flex-row justify-around bb"
+      class="w-50-ns center flex flex-row justify-around"
     >
       <button
         @click="changeActiveTab(index)"
@@ -41,7 +41,7 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
+          class="pa2 f4"
           v-for="a in alumni.slice(0, alumni.length / 3)"
           :key="a.title.rendered"
         >
@@ -53,7 +53,7 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
+          class="pa2 f4"
           v-for="a in alumni.slice(alumni.length / 3, (2 * alumni.length) / 3)"
           :key="a.title.rendered"
         >
@@ -65,7 +65,7 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
+          class="pa2 f4"
           v-for="b in alumni.slice((2 * alumni.length) / 3)"
           :key="b.title.rendered"
         >
@@ -248,7 +248,9 @@ export default {
 .partner-img {
   margin: auto;
 }
-
+button{
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+}
 .alumni-list {
   font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
   margin: 0;

@@ -83,7 +83,7 @@
         >
           <button
             @click="toggleMenu()"
-            class="absolute h2 w2 top-0 right-0 bn bg-white f2 ma3"
+            class="absolute h2 w2 top-1 right-1 bn bg-white f2 ma3"
             style="color: white; background: var(--main-bg-color)"
           >
             <i class="dib fa fa-xs fa-times"></i>
@@ -93,11 +93,11 @@
             class="flex flex-column items-center justify-center h-100"
             id="mobile-menu-list"
           >
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/">HOME</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/people">PEOPLE</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/projects">PROJECTS</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/page/join-us">JOIN US</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/blog">BLOG</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/">Home</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/people">People</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/projects">Projects</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/page/join-us">Join Us</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/blog">Blog</router-link></li>
           </ul>
         </div></transition
       >
@@ -348,7 +348,6 @@ li:hover {
   {
   border: none;
   font-size: 16px;
-  text-transform: uppercase;
   cursor: pointer;
   color: white;
   outline: none;

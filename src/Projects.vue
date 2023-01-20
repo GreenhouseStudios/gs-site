@@ -5,13 +5,13 @@
     </div> -->
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">Projects</h2>
-      <p>
+      <p class="f4">
         Each project is a test drive for our model of scholarly production. This
         allows us to continually assess our vision of what scholarly
         communications in the digital age looks like.
       </p>
     </div>
-    <div class="w-60-l w-90 bb bw1 center mb3"></div>
+    <div class="w-60-l w-90 bw1 center mb3"></div>
     <div class="grid" v-if="projects">
       <card
         v-for="(project, index) in projectsByName"
