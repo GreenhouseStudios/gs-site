@@ -15,7 +15,7 @@
         :style="picked === 0 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">Who We Are</span></label
       >
-      <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
+      <div v-if="picked === 0" class="tab pa3 dn" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -29,7 +29,7 @@
         :style="picked === 1 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">What We Do</span></label
       >
-      <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+      <div v-if="picked === 1" class="tab  pa3 dn" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -49,13 +49,13 @@
         ><span class="shimmer">Collaborative Culture</span></label
       >
 
-      <div v-if="picked === 2 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+      <div v-if="picked === 2" class="tab pa3 dn" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns z-3 f5" style="background: #F7F7F7; height: 250px; display: table; padding: 32px 50px;">
+    <div class="tab dn db-ns z-3 f5" style="background: #F7F7F7; height: 250px; padding: 32px 50px;">
       <p class="ma0 centertext">
         {{ content[picked] }}
       </p>
@@ -95,12 +95,6 @@ export default {
     };
   },
   computed: {
-      bpSmall() {
-          return window.matchMedia('(max-width: 30em)').matches
-      },
-      bpNotSmall() {
-          return window.matchMedia('(min-width: 30em)').matches
-      }
   },
 };
 </script>
@@ -160,9 +154,7 @@ export default {
   font-weight: 600;
 }
 
-.tabs input[type="radio"]:checked + label + .tab {
-  display: block;
-}
+
 
 @media (min-width: 720px) {
   .tabs {
@@ -181,6 +173,9 @@ export default {
   #tab-two-label{
     margin: 0;
   }
+  .tabs input[type="radio"]:checked + label + .tab {
+  display: block;
+}
 }
 
 .centertext{
