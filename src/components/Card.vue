@@ -45,7 +45,7 @@
         <a
           v-if="hasSite"
           id="button"
-          :style="`border: 2px solid ${btnColor}; background-color:${
+          :style="`text-decoration: none; border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
           }; border-color:${btnColor} !important; color: ${
             hover ? btnColor : btnTextColor

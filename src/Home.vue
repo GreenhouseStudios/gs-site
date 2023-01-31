@@ -17,7 +17,7 @@
       <multi-tab></multi-tab>
     </div>
 
-    <div class="text-1 mv3 center">
+    <div class="text-1 mv4 center">
       <div>
         <h3 class="title-2 pl5" style="font-size: 32px">Featured Projects
           <router-link to="/projects" class="shimmer pl5-ns db di-ns ">
@@ -37,7 +37,7 @@
       </div>
     </div>
 
-    <h3 class="title-2 design-title pl5 mt5" style="font-size: 32px;">Design Process</h3>
+    <h3 class="title-2 design-title pl5 mt5" style="font-size: 32px;">Our Design Process</h3>
     <div class="design-process-container">
       <div class="video-container">
         <iframe

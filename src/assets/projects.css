@@ -538,11 +538,10 @@ form {
 }
 
 .page-title {
-  font-family: samo;
-  text-transform: uppercase;
+  font-family: "Libre Franklin", Helvetica, Arial, san-serif;
   padding-bottom: 16px;
   margin-top: 0;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 a:hover{
