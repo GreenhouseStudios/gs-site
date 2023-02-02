@@ -71,17 +71,18 @@ hr {
     transform: translateY(0);
 }
 
-.link {
+a{
     color: #1a1a1a;
-}
-
-.link:hover {
-    color: #8cc947;
 }
 
 a:visited {
-    color: #1a1a1a;
+    color: #5c1c5c;
 }
+ 
+a:hover {
+    color: #8cc947;
+}
+
 
 .grid {
     display: grid;
