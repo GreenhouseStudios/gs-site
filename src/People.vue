@@ -45,7 +45,9 @@
           v-for="a in alumni.slice(0, alumni.length / 3)"
           :key="a.title.rendered"
         >
-          {{ a.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0]}}
         </li>
       </ul>
       <ul
@@ -57,7 +59,9 @@
           v-for="a in alumni.slice(alumni.length / 3, (2 * alumni.length) / 3)"
           :key="a.title.rendered"
         >
-          {{ a.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0] }}
         </li>
       </ul>
       <ul
@@ -66,10 +70,12 @@
       >
         <li
           class="pa2 f4"
-          v-for="b in alumni.slice((2 * alumni.length) / 3)"
-          :key="b.title.rendered"
+          v-for="a in alumni.slice((2 * alumni.length) / 3)"
+          :key="a.title.rendered"
         >
-          {{ b.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0] }}
         </li>
       </ul>
     </div>
