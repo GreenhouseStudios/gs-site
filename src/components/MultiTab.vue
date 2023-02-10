@@ -1,5 +1,5 @@
 <template>
-  <div class="about w-30-ns overflow-hidden center-m ma4-ns br2">
+  <div class="about w-30-ns mw7-l overflow-hidden center-m ma4-ns br2">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -15,7 +15,7 @@
         :style="picked === 0 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">Who We Are</span></label
       >
-      <div v-if="picked === 0" class="tab pa3 dn" style="">
+      <div v-if="picked === 0" class="tab pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -29,7 +29,7 @@
         :style="picked === 1 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">What We Do</span></label
       >
-      <div v-if="picked === 1" class="tab  pa3 dn" style="">
+      <div v-if="picked === 1" class="tab  pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -49,13 +49,13 @@
         ><span class="shimmer">Collaborative Culture</span></label
       >
 
-      <div v-if="picked === 2" class="tab pa3 dn" style="">
+      <div v-if="picked === 2" class="tab pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns z-3 f5" style="background: #F7F7F7; height: 250px; padding: 32px 50px;">
+    <div class="tab dn db-ns z-3 f5 ph3 pv2 ph4-m ph4-l pv4-l" style="background: #F7F7F7; height: 250px;">
       <p class="ma0 centertext">
         {{ content[picked] }}
       </p>
@@ -165,7 +165,7 @@ export default {
   }
 }
 
-@media (max-width: 800px){
+@media (max-width: 779px){
   .about{
     width: 80%;
     margin: auto;
@@ -173,9 +173,6 @@ export default {
   #tab-two-label{
     margin: 0;
   }
-  .tabs input[type="radio"]:checked + label + .tab {
-  display: block;
-}
 }
 
 .centertext{
