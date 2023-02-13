@@ -5,12 +5,15 @@
       <p>The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives
       </p>
       <select v-model="selectedValue" class="filtering" id="filteredCategory">
+        <option value="" selected disabled hidden>Select</option>
         <option v-for="cat in allCategories" :key="cat" v-bind:value="cat.id">
           {{ cat.name }}
         </option>
       </select>
     </div>
-    <div class="grid" v-if="!$store.getters.loading && posts && selectedValue === ''">
+
+    <div class="grid"
+      v-if="!$store.getters.loading && posts && selectedValue === '' && filterByRoute.length == 0 && filtered.length == 0">
       <blog-card v-for="post in posts" :key="post.slug" :post="post" :title="post.title" :content="post.content"
         :date="post.date" :slug="post.slug"></blog-card>
       <infinite-loading @infinite="loadMore" :distance="1"
@@ -18,13 +21,22 @@
       <div style="margin-bottom: 5%"></div>
     </div>
 
-    <div class="grid" v-if="!$store.getters.loading && posts && selectedValue !== ''">
+    <div class="grid" v-if="!$store.getters.loading && posts && filterByRoute.length != 0">
+      <blog-card v-for="post in filterByRoute" :key="post.slug" :post="post" :title="post.title" :content="post.content"
+        :date="post.date" :slug="post.slug"></blog-card>
+      <infinite-loading @infinite="loadMore" :distance="1"
+        v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
+      <div style="margin-bottom: 5%"></div>
+    </div>
+
+    <div class="grid" v-else-if="!$store.getters.loading && posts && selectedValue !== ''">
       <blog-card v-for="post in filtered" :key="post.slug" :post="post" :title="post.title" :content="post.content"
         :date="post.date" :slug="post.slug"></blog-card>
       <infinite-loading @infinite="loadMore" :distance="1"
         v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
       <div style="margin-bottom: 5%"></div>
     </div>
+
   </div>
 </template>
 
@@ -45,6 +57,20 @@ export default {
   mounted() {
     this.posts = this.$store.getters.allPosts;
   },
+  updated() {
+    if (this.$route.params.id != undefined) {
+      this.selectedValue = this.$route.params.id;
+    }
+  },
+  /*updated() {
+    console.log(this.$route);
+    if (this.$route != '/blog/category/') {
+      let id = this.$route.params.id;
+      alert(id);
+      //let element = document.getElementById(el);
+      this.selectedValue = id;
+    }
+  },*/
   methods: {
     async loadMore($state) {
       this.posts = this.$store.getters.allPosts;
@@ -76,10 +102,35 @@ export default {
   computed: {
     ...mapGetters({
       postBySlug: "postBySlug",
-      allCategories: "allCategories"
+      allCategories: "allCategories",
+      allTags: "allTags",
+      //getCategoryById: "categoryById",
     }),
     allCategories() {
       return this.$store.getters.allCategories;
+    },
+    allTags() {
+      return this.$store.getters.allTags;
+    },
+    /*category() {
+      return this.categoryById(this.$route.params.id)
+    },*/
+    filterByRoute() {
+      let id;
+      let filteredPosts = [];
+      let posts = this.$store.getters.allPosts;
+      if (this.$route != '/blog') {
+        id = this.$route.params.id;
+        posts.forEach(function (post) {
+          let categories = post.categories;
+          categories.forEach(function (cat) {
+            if (cat == id) {
+              filteredPosts.push(post);
+            }
+          })
+        })
+      }
+      return filteredPosts;
     },
     filtered() {
       let filteredPosts = [];
@@ -93,7 +144,6 @@ export default {
           }
         })
       })
-      console.log(filteredPosts);
       return filteredPosts;
     }
   },

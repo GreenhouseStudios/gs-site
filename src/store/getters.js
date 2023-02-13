@@ -40,6 +40,12 @@ const getters = {
   allCategories: (state) => {
     return state.categories;
   },
+  allTags: (state) => {
+    return state.tags;
+  },
+  /*categoryByID: (state) => (id) => {
+    return state.categories.find((c) => c.id === id);
+  },*/
 };
 
 export default getters;

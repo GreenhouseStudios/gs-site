@@ -18,6 +18,7 @@ const routes = [
   { name: "People", path: "/person/:name/", component: About },
   { name: "Blog", path: "/blog", component: Blog },
   { path: "/blog/:slug", component: BlogRead },
+  { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
   { path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
   { name: "Home", path: "/", component: Home },
@@ -25,23 +26,22 @@ const routes = [
   // { path: "*", redirect: "/404" },
 ];
 
-const router =  new VueRouter({
-  mode: 'history',
+const router = new VueRouter({
+  mode: "history",
   routes, // short for `routes: routes`
   scrollBehavior(to, from, savedPosition) {
     // console.log(to);
     // console.log(from);
     if (savedPosition && !to.params.name) {
       return savedPosition;
-    } 
-    else {
+    } else {
       return { x: 0, y: 0 };
     }
   },
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.fullPath.substring(0,2) === "/#") {
+  if (to.fullPath.substring(0, 2) === "/#") {
     const path = to.fullPath.substring(2);
     next(path);
     return;

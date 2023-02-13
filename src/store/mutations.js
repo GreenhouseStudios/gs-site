@@ -36,6 +36,9 @@ const mutations = {
   setCategories(state, payload) {
     state.categories = payload;
   },
+  setTags(state, payload) {
+    state.tags = payload;
+  },
 };
 
 export default mutations;

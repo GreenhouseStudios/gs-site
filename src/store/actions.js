@@ -12,6 +12,7 @@ const actions = {
     await dispatch("getPeople", 1);
     await dispatch("getProjects");
     await dispatch("getCategories");
+    await dispatch("getTags");
     commit("setLoadingState", false);
   },
   async getPostCount({ commit }) {
@@ -114,6 +115,11 @@ const actions = {
   async getCategories({ commit }) {
     return axios.get("categories?per_page=100&page=1").then((res) => {
       commit("setCategories", res.data);
+    });
+  },
+  async getTags({ commit }) {
+    return axios.get("tags?per_page=100&page=1").then((res) => {
+      commit("setTags", res.data);
     });
   },
 };

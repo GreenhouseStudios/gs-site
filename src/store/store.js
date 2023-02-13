@@ -19,6 +19,7 @@ export const store = new Vuex.Store({
     peopleCount: 0,
     projects: [],
     category: [],
+    tags: [],
     categoryCount: 0,
     loading: true,
   },

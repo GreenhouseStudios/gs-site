@@ -22,7 +22,7 @@
       <div>
         <ul class="categorylist">
           <li v-for="cat in post.categories" :key="cat">
-            {{ getCategoryById(cat) }}
+            <router-link :to="'/blog/category/' + cat">{{ getCategoryById(cat) }}</router-link>
           </li>
         </ul>
       </div>
@@ -51,14 +51,14 @@ export default {
   computed: {
     ...mapGetters({
       postBySlug: "postBySlug",
-      allCategories: "allCategories"
+      allCategories: "allCategories",
     }),
     post() {
       return this.postBySlug(this.$route.params.slug)
     },
     allCategories() {
       return this.$store.getters.allCategories
-    }
+    },
   },
   methods: {
     getCategoryById(id) {
