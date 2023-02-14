@@ -523,9 +523,7 @@ p a {
 
 .sidescroll {
   display: flex;
-  justify-content: flex-start;
-  width: 100vw;
-  height: 450px;
+  height: 475px;
   overflow: auto;
   // white-space: nowrap;
 }

@@ -70,4 +70,5 @@ export default {
   display: flex;
   flex-direction: row;
 }
+
 </style>
