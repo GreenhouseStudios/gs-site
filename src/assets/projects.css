@@ -226,7 +226,7 @@ footer {
   width: 200px;
   height: 200px;
   display: block;
-  margin-top: -90px;
+  /* margin-top: -90px; */
   margin-left: auto;
   margin-right: auto;
   border-radius: 50%;
@@ -234,11 +234,10 @@ footer {
   background-color: white;
   border-radius: 100%;
   display: inline-block;
-  margin-left: 15%;
 }
 
 .people-name {
-  font-family: "Samo";
+  font-family: "Libre Franklin";
   text-align: center;
   line-height: 35px;
   font-size: 25px;
@@ -295,7 +294,7 @@ footer {
   border-radius: 5px;
   letter-spacing: 2px;
   padding: 10px;
-  font-family: samo, Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
 }
 
 .btn-bol {
@@ -539,11 +538,10 @@ form {
 }
 
 .page-title {
-  font-family: samo;
-  text-transform: uppercase;
+  font-family: "Libre Franklin", Helvetica, Arial, san-serif;
   padding-bottom: 16px;
   margin-top: 0;
-  font-weight: normal;
+  font-weight: bold;
 }
 
 a:hover{

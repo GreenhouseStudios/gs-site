@@ -15,6 +15,7 @@
           <img
             :src="project.custom_fields.project_card_front"
             alt="project title"
+            loading="lazy"
           />
         </div>
       </div>
@@ -33,6 +34,7 @@
           class="title-new"
           :src="project.custom_fields.project_title_img"
           alt="by our love"
+          loading="lazy"
         />
         <div class="desc" v-if="project.custom_fields.about">
           <p>
@@ -41,9 +43,9 @@
         </div>
 
         <a
-          v-if="hasSite()"
+          v-if="hasSite"
           id="button"
-          :style="`border: 2px solid ${btnColor}; background-color:${
+          :style="`text-decoration: none; border: 2px solid ${btnColor}; background-color:${
             hover ? 'white' : btnColor
           }; border-color:${btnColor} !important; color: ${
             hover ? btnColor : btnTextColor
@@ -53,7 +55,7 @@
           :href="project.custom_fields.website_url" target="_blank"
           @click.stop=""
         >
-          WEBSITE
+          Website
         </a>
 
         <a
@@ -68,7 +70,7 @@
           }; border-color:${btnColor} !important; color: ${
             hover ? btnColor : btnTextColor
           }`"
-          >READ MORE</a
+          >Read More</a
         >
       </div>
     </div>
@@ -90,10 +92,13 @@ export default {
     slug: {
       type: String,
     },
+    startsFlipped: {
+      type: Boolean,
+    }
   },
   data() {
     return {
-      isFlipped: false,
+      isFlipped: this.startsFlipped ? true : false,
       flipping: false,
       hover: false,
     };
@@ -111,7 +116,10 @@ export default {
       return this.project.custom_fields.btn_color && convert.hex.hsl(this.project.custom_fields.btn_color)[2] <= 50
         ? "white"
         : "black";
-    }
+    },
+    hasSite() {
+      return this.project.custom_fields?.website_url && this.project.custom_fields?.website_url[0] !== "";
+    },
   },
   methods: {
     flipCard() {
@@ -122,13 +130,10 @@ export default {
         t.flipping = false;
       }, 600);
     },
-    hasSite() {
-      if (this.project.custom_fields.website_url[0] == "") {
-        return false;
-      } else {
-        return true;
-      }
-    },
+  
+    reset(){
+      this.isFlipped = false;
+    }
   },
 };
 </script>

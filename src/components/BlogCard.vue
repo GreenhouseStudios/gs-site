@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + getImg(content.rendered) + '), url(' + backupImg + ')'" alt="Blog Card Image" >
+    <div class="wrapper" :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" alt="Blog Card Image" >
       <div class="data" onclick="">
         <div class="content">
           <hr>
@@ -13,7 +13,7 @@
             <p class="blogcardtext">{{removeTags(content.rendered)}}</p>
             <br><br>
             <router-link class="" :to="`/blog/${slug}`">
-            <button id="button" class="btn-bol btn-blog">READ MORE</button>
+            <button id="button" class="btn-bol btn-blog">Read More</button>
             </router-link>
           </div>
         </div>

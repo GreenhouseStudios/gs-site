@@ -1,78 +1,92 @@
 <template>
-  <div class="body">
-    <div class="gs-intro w-80">
-      <h2 class="title p6">
-        Facilitating humanities research through collaboration, digital
-        technology and design.
-      </h2>
-    </div>
-
-    <div class="flex flex-row-ns flex-column flex-column-m" style="justify-content:space-evenly">
-      <div class="flex mh5-ns">
+  <div class="body ph4-ns flex-column items-center">
+    <div
+      class="flex flex-row-ns flex-column flex-column-m mt4"
+      style="justify-content: space-evenly"
+    >
+      <div class="flex mh5-ns mb5">
         <img
-        id="gs-logo" class="center" style="margin: auto;"
+          loading="lazy"
+          id="gs-logo"
+          class="center"
+          style="margin: auto"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""
         />
       </div>
       <multi-tab></multi-tab>
     </div>
-    <div class="spacer"> </div>
 
-    <h3 class="title-2 design-title">Design Process</h3>
-    <div class="design-process-container">
-      <div class="video-container">
-        <!-- <img src="../public/img/Animation_Fill.png" /> -->
-        <iframe
-          src="https://drive.google.com/file/d/1xmwf5NpIzoi13lGrfhETzn7WFpFWVn1v/preview"
-          title="GS Process Video"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-      </div>
-      <img class="video-watercolor" src="img/watercolor-blurb.png" />
-      <div class="design-text">
-        <p style="max-width: 100%; padding-top:5%">Our design process is integral to every project we make. 
-          A team of collaborators responds to an inquiry-focused prompt and undertakes a five-phase 
-          design-thinking process over the course of two years. The understand, identify, build, review, 
-          and disseminate stages each result in a stepping stone (e.g., a project brief, media manuscript) 
-          that will lead to the next phase of the design process. Though the process will ultimately lead 
-          to a publication, the process is meant to be highly iterative and cyclical, and the “product” 
-          of the process is intentionally left completely open-ended from the start.
-          <router-link to="/blog/greenhouse-studios-design-process" class="shimmer">
-          Read more about our design process.
+    <div class="text-1 mv4 center">
+      <div>
+        <h3 class="title-2 pl5" style="font-size: 32px">Featured Projects
+          <router-link to="/projects" class="shimmer pl5-ns db di-ns ">
+          View All Projects &#8594;
         </router-link>
-        </p>
+        </h3>
+        
       </div>
-    </div>
-
-
-    <div class="text-1">
-      <div class="fprojects-text">
-        <h3 class="title-2">Featured Projects</h3>
-        <router-link to="/projects" class="shimmer">
-          view all projects &#8594;
-        </router-link>
-      </div>
-      <div class="grid sidescroll ph5-ns" v-if="projects">
+      <div class="card-row sidescroll ph5-ns center w-90" v-if="projects">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
           :index="index"
         >
-          <card :project="project"></card>
+          <card :project="project" :index="index" :slug="project.slug" :startsFlipped="index === 0"></card>
         </div>
       </div>
     </div>
 
-    <div class="text-1">
-      <div class="fprojects-text">
-        <h3 class="title-2">Recent Blog Posts</h3>
-        <router-link to="/blog" class="shimmer">
-          view blog &#8594;
-        </router-link>
+    <h3 class="title-2 design-title pl5 mt5" style="font-size: 32px;">Our Design Process</h3>
+    <div class="design-process-container">
+      <div class="video-container">
+        <iframe
+          class="bn"
+          width="420"
+          height="315"
+          src="https://www.youtube.com/embed/Bxw2Gsm0ee8"
+          modestbranding
+        >
+        </iframe>
       </div>
-      <div class="grid sidescroll ph5-ns" v-if="!$store.getters.loading">
+      <img class="video-watercolor" src="img/watercolor-blurb.png" />
+      <div class="design-text">
+        <p style="max-width: 100%; padding-top: 5%">
+          Our design process is integral to every project we make. A team of
+          collaborators responds to an inquiry-focused prompt and undertakes a
+          five-phase design-thinking process over the course of two years. The
+          understand, identify, build, review, and disseminate stages each
+          result in a stepping stone (e.g., a project brief, media manuscript)
+          that will lead to the next phase of the design process. Though the
+          process will ultimately lead to a publication, the process is meant to
+          be highly iterative and cyclical, and the “product” of the process is
+          intentionally left completely open-ended from the start.
+          <router-link
+            to="/blog/greenhouse-studios-design-process"
+            class="shimmer"
+          >
+            Read more about our design process.
+          </router-link>
+        </p>
+      </div>
+    </div>
+
+    <div class=" w-60-ns w-80 mv4 center">
+      <img
+      class="w-90-ns"
+        :src="require('../public/img/gs-processmodel-feb2021.jpg')"
+        alt=""
+      />
+    </div>
+
+    <div class="text-1">
+      <div>
+        <h3 class="title-2 pl5" style="font-size: 32px">Recent Blog Posts  <router-link to="/blog" class="shimmer pl5-ns db di-ns">
+          View Blog &#8594;
+        </router-link></h3>
+       
+      </div>
+      <div class="card-row sidescroll ph5-ns" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
           <blog-card
             class="featuredblog"
@@ -84,6 +98,7 @@
           >
           </blog-card>
         </div>
+        
       </div>
     </div>
   </div>
@@ -115,7 +130,11 @@ export default {
   computed: {
     featuredProjects: function () {
       if (this.projects) {
-        return this.projects.slice(0, 5);
+        var result = [...this.projects].filter(p => p.custom_fields.featured_priority).sort((a,b) => {
+          return a.custom_fields?.featured_priority[0] < b.custom_fields?.featured_priority[0] ? -1 : 1;
+        
+        });
+        return result;
       } else {
         return null;
       }
@@ -436,7 +455,7 @@ footer {
   src: url("./assets/SAMO-Regular.ttf");
 }
 
-.grid {
+.card-row {
   display: grid;
   grid-gap: 3rem;
   grid-template-rows: repeat(4, 350px);
@@ -446,21 +465,21 @@ footer {
 }
 
 @media (max-width: 660px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(1, 300px);
   }
 }
 
 @media (min-width: 661px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(2, 300px);
   }
 }
 
 @media (min-width: 1010px) {
-  .grid {
+  .card-row {
     display: grid;
     grid-template-columns: repeat(3, 300px);
   }
@@ -478,12 +497,6 @@ footer {
   font-size: 38px;
   margin: 0px;
   font-family: "Samo";
-}
-
-.title-2 {
-  font-weight: 600;
-  font-size: 32px;
-  padding-left: 40px;
 }
 
 .line {
@@ -506,11 +519,6 @@ p a {
   color: #161616;
 }
 
-.text-1,
-.text-2 {
-  padding: 30px;
-}
-
 .text-1 h2,
 .text-2 h2 {
   padding-bottom: 20px;
@@ -523,17 +531,11 @@ p a {
 
 .sidescroll {
   display: flex;
-  justify-content: flex-start;
-  width: 100vw;
   height: 450px;
   overflow: auto;
+  width: 100vw;
+  justify-content: flex-start;
   // white-space: nowrap;
-}
-
-.fprojects-text {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .shimmer:hover {
@@ -564,26 +566,23 @@ p a {
     background-position: 12.5rem top; /*200px*/
   }
 }
-#gs-logo{
+#gs-logo {
   display: block;
-  max-width:300px;
-  max-height:300px;
+  max-width: 300px;
+  max-height: 300px;
   width: auto;
   height: auto;
 }
 
-.design-title{
-  text-align: center;
-}
-.design-text{
+.design-text {
   width: 100%;
 }
-.design-process-container{
+.design-process-container {
   position: relative;
   width: 70%;
   margin: auto;
 }
-.video-watercolor{
+.video-watercolor {
   width: 100%;
   margin: 0 auto;
   padding-right: 50px;
@@ -594,7 +593,10 @@ p a {
   z-index: -1;
 }
 
-.spacer{
+.spacer {
   height: 130px;
+}
+p, h1, h2, h3, h4 ,h5, h6{
+  font-family: "Libre Franklin";
 }
 </style>

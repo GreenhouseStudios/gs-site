@@ -3,15 +3,15 @@
     <!-- <div class="w-50-l w-90 center f3-ns f4 ma5 pv6-ns pv3 fw4 i">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Unde deleniti, delectus repellat officia, nobis error esse laboriosam qui distinctio ullam, quos dolores autem. Repudiandae aliquid facilis laborum nesciunt ab ipsa amet rem quae velit quos atque iste assumenda at deserunt pariatur voluptas earum, voluptatibus itaque dignissimos cumque sit voluptatum! Quae!
     </div> -->
-    <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+    <div class="w-50 f3-ns f4 mh5 mv6 mh6-l mv3-l pv3 pv3 fw4">
       <h2 class="page-title f1">Projects</h2>
-      <p>
+      <p class="f4">
         Each project is a test drive for our model of scholarly production. This
         allows us to continually assess our vision of what scholarly
         communications in the digital age looks like.
       </p>
     </div>
-    <div class="w-60-l w-90 bb bw1 center mb3"></div>
+    <div class="w-60-l w-90 bw1 center mb3"></div>
     <div class="grid" v-if="projects">
       <card
         v-for="(project, index) in projectsByName"
@@ -19,6 +19,8 @@
         :project="project"
         :index="index"
         :slug="project.slug"
+        :startsFlipped="index === 0"
+        ref="projects"
       ></card>
     </div>
   </div>
@@ -54,6 +56,12 @@ export default {
       } else return [];
     },
   },
+  beforeRouteLeave(to, from, next){
+    console.log(to);
+    console.log(from);
+    this.$refs.projects.map(x => x.reset());
+    next();
+  }
 };
 </script>
 
