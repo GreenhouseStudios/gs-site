@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" alt="Blog Card Image" >
+    <div class="wrapper" :style="`background-image: url(  ${post.fimg_url ? post.fimg_url : backupImg} )`" alt="Blog Card Image" >
       <div class="data" onclick="">
         <div class="content">
           <hr>
@@ -8,7 +8,7 @@
               <span class="day">{{getDate(date).day}}, </span>
               <span class="year">{{getDate(date).year}}</span>
           </div>
-          <h3 class="title">{{removeTags(title.rendered)}}</h3>
+          <h3 class="title ">{{removeTags(title.rendered)}}</h3>
           <div class="text">
             <p class="blogcardtext">{{removeTags(content.rendered)}}</p>
             <br><br>

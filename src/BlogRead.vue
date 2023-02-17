@@ -2,22 +2,28 @@
   <div id="blogmain">
     <div id="blogcontent" v-if="!$store.getters.loading && post">
       <div class="titledatecontainer">
-        <div class="blogtitle">
-          <h2 class="f1 blogtitle" v-html="post.title.rendered"></h2>
-        </div>
-        <div class="credits">
-          Posted <br />
-          <span class="date">{{
-            new Date(post.date).toLocaleDateString("en-us")
-          }}</span>
+        <div class="blogtitle lh-title">
+          <h2 class="f1" v-html="post.title.rendered"></h2>
         </div>
       </div>
+      <div class="credits db">
+        <div class="pv2 mb3">By {{ post._embedded.author[0].name }}</div>
+        <span class="date">{{
+          new Date(post.date).toLocaleDateString("en-us")
+        }}</span>
+      </div>
       <div id="img_and_byline">
-        <img v-if="post.fimg_url" :src="post.fimg_url" class="w5" alt=""/>
-        <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">{{post.custom_fields.byline[0]}}</h3>
+        <img v-if="post.fimg_url" :src="post.fimg_url" class="w5" alt="" />
+        <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
+          {{ post.custom_fields.byline[0] }}
+        </h3>
       </div>
       <div class="textbox">
         <span v-html="post.content.rendered"></span>
+      </div>
+      <div class="flex w-100 mt5 black h4 justify-between underline">
+        <router-link v-if="prev" class="shimmer relative" :to="'/blog/'+prev.slug">&#x2190; Previous</router-link>
+        <router-link v-if="next" class="shimmer relative" :to="'/blog/' + next.slug">Next &#x2192;</router-link>
       </div>
     </div>
     <div v-else>
@@ -27,75 +33,83 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import NotFound from './NotFound.vue';
+import { mapGetters } from "vuex";
+import NotFound from "./NotFound.vue";
 export default {
-    name: "BlogRead",
-    data() {
-        return {
-            date: "",
-        };
+  name: "BlogRead",
+  data() {
+    return {
+      date: "",
+    };
+  },
+  // async created() {
+  //     this.post = await this.$store.getters.postBySlug(this.$route.params.slug);
+  // },
+
+  computed: {
+    ...mapGetters({
+      postBySlug: "postBySlug",
+      nextPost: "nextPost",
+      previousPost: "previousPost"
+    }),
+    post() {
+      return this.postBySlug(this.$route.params.slug);
     },
-    // async created() {
-    //     this.post = await this.$store.getters.postBySlug(this.$route.params.slug);
-    // },
-  
-    computed: {
-        ...mapGetters({
-            postBySlug: "postBySlug"
-        }),
-        post(){
-          return this.postBySlug(this.$route.params.slug)
-        }
+    next(){
+      return this.nextPost(this.post);
     },
-    methods: {
-        removeTags(str) {
-            if (str === null || str === "")
-                return false;
-            else {
-                str = str.toString();
-                str = str.replace(/&#8217;/g, "'");
-                str = str.replace(/(<([^>]+)>)/gi, "");
-                str = str.replace(/&amp;/g, "&");
-                str = str.replace(/&nbsp;/g, " ");
-            }
-            return str;
-        },
-        getImg(str) {
-            var regex = /<img.*?src="(.*?)"/;
-            var src = regex.exec(str);
-            if (src == null) {
-                // Placeholder Image
-                src =
-                    "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
-            }
-            else {
-                src = src[1];
-            }
-            return src;
-        },
-        getAlt(str) {
-            var regex = /<img.*?src="(.*?)" alt="(.*?)"/;
-            var alt = regex.exec(str);
-            if (alt == null) {
-                // Placeholder Image
-                alt = "A blog image";
-            }
-            else {
-                alt = alt[2];
-            }
-            return alt;
-        },
-        isMobile() {
-            if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-                return true;
-            }
-            else {
-                return false;
-            }
-        },
+    prev(){
+      return this.previousPost(this.post);
+    }
+  },
+  methods: {
+    removeTags(str) {
+      if (str === null || str === "") return false;
+      else {
+        str = str.toString();
+        str = str.replace(/&#8217;/g, "'");
+        str = str.replace(/(<([^>]+)>)/gi, "");
+        str = str.replace(/&amp;/g, "&");
+        str = str.replace(/&nbsp;/g, " ");
+      }
+      return str;
     },
-    components: { NotFound }
+    getImg(str) {
+      var regex = /<img.*?src="(.*?)"/;
+      var src = regex.exec(str);
+      if (src == null) {
+        // Placeholder Image
+        src =
+          "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
+      } else {
+        src = src[1];
+      }
+      return src;
+    },
+    getAlt(str) {
+      var regex = /<img.*?src="(.*?)" alt="(.*?)"/;
+      var alt = regex.exec(str);
+      if (alt == null) {
+        // Placeholder Image
+        alt = "A blog image";
+      } else {
+        alt = alt[2];
+      }
+      return alt;
+    },
+    isMobile() {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
+        return true;
+      } else {
+        return false;
+      }
+    },
+  },
+  components: { NotFound },
 };
 </script>
 
@@ -123,13 +137,14 @@ h1 {
   margin-bottom: 10px;
 }
 .date {
-  border: 3px solid #333333;
-  padding: 3px;
-  color: #333333;
+  background: #8cc947;
+  padding: 5px 10px;
+  color: #FFF;
   font-weight: 700;
+  border-radius: 20px;
+  font-size: 18px;
 }
 .credits {
-  text-align: center;
   font-weight: 700;
   font-size: 18px;
   color: #333333;
@@ -148,7 +163,6 @@ h1 {
 
 #blogmain {
   overflow: hidden;
-
 }
 #blogcontent {
   margin: 2em 20%;
@@ -220,11 +234,10 @@ iframe {
   font-size: 14px;
   text-align: center;
 }
-#img_and_byline{
+#img_and_byline {
   margin-top: 5em;
 }
-a{
+a {
   color: #161616;
 }
-
 </style>

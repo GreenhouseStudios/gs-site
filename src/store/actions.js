@@ -23,7 +23,7 @@ const actions = {
     });
   },
   async getPosts({ commit, dispatch }, page) {
-    return axios.get("posts?per_page=100&page=" + page).then((res) => {
+    return axios.get("posts?_embed&per_page=100&page=" + page).then((res) => {
       let pageTotal = parseInt(res.headers["x-wp-totalpages"]);
       var posts = [];
       res.data.forEach((post) => {
