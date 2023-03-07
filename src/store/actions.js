@@ -13,6 +13,8 @@ const actions = {
     await dispatch("getProjects");
     await dispatch("getCategories");
     await dispatch("getTags");
+    await dispatch("getPeopleCategories");
+    await dispatch("getPageCategories");
     commit("setLoadingState", false);
   },
   async getPostCount({ commit }) {
@@ -113,8 +115,19 @@ const actions = {
     });
   },
   async getCategories({ commit }) {
+    // return axios.get("post_category").then((res) => {
     return axios.get("categories?per_page=100&page=1").then((res) => {
       commit("setCategories", res.data);
+    });
+  },
+  async getPeopleCategories({ commit }) {
+    return axios.get("people_category").then((res) => {
+      commit("setPeopleCategories", res.data);
+    });
+  },
+  async getPageCategories({ commit }) {
+    return axios.get("page_category").then((res) => {
+      commit("setPageCategories", res.data);
     });
   },
   async getTags({ commit }) {

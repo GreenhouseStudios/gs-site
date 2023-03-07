@@ -278,5 +278,4 @@ li {
 
 .categorylist li:last-child::after {
   content: "";
-}
-</style>
+}</style>

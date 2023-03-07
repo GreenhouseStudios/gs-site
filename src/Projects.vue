@@ -5,22 +5,16 @@
     </div> -->
     <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">Projects</h2>
-      <p class="f4">
+      <p>
         Each project is a test drive for our model of scholarly production. This
         allows us to continually assess our vision of what scholarly
         communications in the digital age looks like.
       </p>
     </div>
-    <div class="w-60-l w-90 bw1 center mb3"></div>
+    <div class="w-60-l w-90 bb bw1 center mb3"></div>
     <div class="grid" v-if="projects">
-      <card
-        v-for="(project, index) in projectsByName"
-        :key="project.slug"
-        :project="project"
-        :index="index"
-        :slug="project.slug"
-        ref="projects"
-      ></card>
+      <card v-for="(project, index) in projectsByName" :key="project.slug" :project="project" :index="index"
+        :slug="project.slug" ref="projects"></card>
     </div>
   </div>
 </template>
@@ -34,15 +28,18 @@ export default {
   data() {
     return {
       projects: null,
-      categories: ["Research", "Storytelling", "Teaching", "All Projects"],
+      //categories: ["Research", "Storytelling", "Teaching", "All Projects"],
+      pageCategories: null,
       activeTab: 0,
     };
   },
   updated() {
     this.projects = this.$store.getters.allProjects;
+    this.pageCategories = this.$store.getters.allPageCategories;
   },
   mounted() {
     this.projects = this.$store.getters.allProjects;
+    this.pageCategories = this.$store.getters.allPageCategories;
   },
   computed: {
     projectsByName() {
@@ -55,7 +52,7 @@ export default {
       } else return [];
     },
   },
-  beforeRouteLeave(to, from, next){
+  beforeRouteLeave(to, from, next) {
     console.log(to);
     console.log(from);
     this.$refs.projects.map(x => x.reset());
@@ -67,12 +64,15 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
+
 .active {
   border: 1px solid black;
 }
+
 .inactive {
   border: 1px dashed rgba(0, 0, 0, 0.3);
 }
+
 #tab-btn-container {
   display: flex;
   flex-direction: row;

@@ -43,6 +43,12 @@ const getters = {
   allTags: (state) => {
     return state.tags;
   },
+  allPeopleCategories: (state) => {
+    return state.peopleCategories;
+  },
+  allPageCategories: (state) => {
+    return state.pageCategories;
+  },
   /*categoryByID: (state) => (id) => {
     return state.categories.find((c) => c.id === id);
   },*/

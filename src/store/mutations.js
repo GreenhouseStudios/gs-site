@@ -39,6 +39,12 @@ const mutations = {
   setTags(state, payload) {
     state.tags = payload;
   },
+  setPeopleCategories(state, payload) {
+    state.peopleCategories = payload;
+  },
+  setPageCategories(state, payload) {
+    state.pageCategories = payload;
+  },
 };
 
 export default mutations;
