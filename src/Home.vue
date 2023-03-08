@@ -73,8 +73,9 @@
 
     <div class=" w-60-ns w-80 mv4 center">
       <img
+      loading="lazy"
       class="w-90-ns"
-        :src="require('../public/img/gs-processmodel-feb2021.jpg')"
+        :src="require('../public/img/avif/gs-processmodel-feb2021.avif')"
         alt=""
       />
     </div>
@@ -538,34 +539,6 @@ p a {
   // white-space: nowrap;
 }
 
-.shimmer:hover {
-  display: inline-block;
-  color: white;
-
-  background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #aaa), to(#444));
-
-  background-position: -4rem top; /*50px*/
-  background-repeat: no-repeat;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  -webkit-animation-name: shimmer;
-  -webkit-animation-duration: 2.2s;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-background-size: 4rem 100%; /*50px*/
-}
-@-webkit-keyframes shimmer {
-  0% {
-    background-position: -4rem top; /*50px*/
-  }
-
-  70% {
-    background-position: 12.5rem top; /*200px*/
-  }
-
-  100% {
-    background-position: 12.5rem top; /*200px*/
-  }
-}
 #gs-logo {
   display: block;
   max-width: 300px;
