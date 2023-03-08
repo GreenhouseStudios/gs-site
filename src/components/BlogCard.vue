@@ -10,7 +10,8 @@
           </div>
           <h3 class="title ">{{removeTags(title.rendered)}}</h3>
           <div class="text">
-            <p class="blogcardtext">{{removeTags(content.rendered)}}</p>
+            <p v-if="post.custom_fields.blog_card_preview" class="blogcardtext" v-html="post.custom_fields.blog_card_preview[0]"></p>
+            <p v-else class="blogcardtext">{{removeTags(content.rendered)}}</p>
             <br><br>
             <router-link class="" :to="`/blog/${slug}`">
             <button id="button" class="btn-bol btn-blog">Read More</button>

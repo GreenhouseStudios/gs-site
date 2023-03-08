@@ -6,14 +6,15 @@
           <h2 class="f1" v-html="post.title.rendered"></h2>
         </div>
       </div>
-      <div class="credits db">
-        <div class="pv2 mb3">By {{ post._embedded.author[0].name }}</div>
-        <span class="date">{{
+      <div class="credits db w-70 pa2">
+        <span class="date fr">{{
           new Date(post.date).toLocaleDateString("en-us")
         }}</span>
+        <div class="pv2 ">By {{ post._embedded.author[0].name }}</div>
+        <div class="f5 fw2 mb3 mt2">{{ readTime }} minute read</div>
       </div>
       <div id="img_and_byline">
-        <img v-if="post.fimg_url && post.custom_fields.show_featured_img[0] !== 'false'" :src="post.fimg_url" class="w5" alt="" />
+        <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" class="w5" alt="" />
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
           {{ post.custom_fields.byline[0] }}
         </h3>
@@ -60,6 +61,21 @@ export default {
     },
     prev(){
       return this.previousPost(this.post);
+    },
+    wordCount(){
+      if(this.post.content)
+      return this.post.content.rendered.split(' ').length;
+      return 0
+    },
+    readTime(){
+      if(this.wordCount)
+      return Math.round(this.wordCount / 200);
+      else return null;
+    },
+    showFeaturedImg(){
+      if(this.post.custom_fields.show_featured_img?.length)
+      return this.post?.custom_fields?.show_featured_img[0] !== 'false';
+      else return true;
     }
   },
   methods: {
