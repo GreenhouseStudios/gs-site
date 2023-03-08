@@ -13,7 +13,7 @@
         }}</span>
       </div>
       <div id="img_and_byline">
-        <img v-if="post.fimg_url" :src="post.fimg_url" class="w5" alt="" />
+        <img v-if="post.fimg_url && post.custom_fields.show_featured_img[0] !== 'false'" :src="post.fimg_url" class="w5" alt="" />
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
           {{ post.custom_fields.byline[0] }}
         </h3>
