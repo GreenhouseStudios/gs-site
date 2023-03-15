@@ -4,23 +4,32 @@
       <h2 class="page-title f1">Blog</h2>
       <p>The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives
       </p>
-      <select v-model="selectedValue" class="filtering" id="filteredCategory"
-        @change="$router.push('/blog/category/' + $event.target.value)">
-        <option value="" selected disabled hidden>Select</option>
-        <option v-for="cat in allCategories" :key="cat" v-bind:value="cat.id">
-          {{ cat.name }}
-        </option>
-      </select>
+
+      <!-- <div>
+        <button v-for="cat in $store.state.categories" :key="cat.slug" class="bg-white ma2 f6 fw6 pa2 grow">{{ cat.name }}</button>
+      </div> -->
     </div>
 
-    <div class="grid" v-if="!$store.getters.loading && posts">
-      <blog-card v-for="post in filter" :key="post.slug" :post="post" :title="post.title" :content="post.content"
-        :date="post.date" :slug="post.slug"></blog-card>
-      <infinite-loading @infinite="loadMore" :distance="1"
-        v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
-      <div style="margin-bottom: 5%"></div>
-    </div>
+    <div class="center w-60 relative">
+      <div class="relative right-2 flex items-center justify-end">
+        <select v-model="selectedValue" id="category-select" class="f6"
+          @change="$router.push('/blog/category/' + $event.target.value)">
+          <option value="" selected disabled hidden class="pa0">Filter</option>
+          <option v-for="cat in $store.state.categories" :key="cat.slug" v-bind:value="cat.id">
+            {{ cat.name }}
+          </option>
+        </select>
+      </div>
+      <div class="blog-grid" v-if="!$store.getters.loading && posts">
 
+        <blog-card v-for="post in filter" :key="post.slug" :post="post" :title="post.title" :content="post.content"
+          :date="post.date" :slug="post.slug"></blog-card>
+        <infinite-loading @infinite="loadMore" :distance="1"
+          v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
+        <div style="margin-bottom: 5%"></div>
+      </div>
+
+    </div>
   </div>
 </template>
 
@@ -85,7 +94,7 @@ export default {
       //getCategoryById: "categoryById",
     }),
     allCategories() {
-      return this.$store.getters.allCategories;
+      return this.$store.state.categories;
     },
     allTags() {
       return this.$store.getters.allTags;
@@ -120,4 +129,8 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
+
+#category-select {
+  width: 150px;
+}
 </style>
