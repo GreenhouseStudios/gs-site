@@ -6,11 +6,11 @@
           <h2 class="f1" v-html="post.title.rendered"></h2>
         </div>
       </div>
-      <div class="credits db w-70 pa2">
+      <div class="credits db pa2">
         <span class="date fr">{{
           new Date(post.date).toLocaleDateString("en-us")
         }}</span>
-        <div class="pv2 ">By {{ post._embedded.author[0].name }}</div>
+        <div><div class="pv2 ">By {{ post._embedded.author[0].name }}</div> <img :src="post._embedded.author[0].avatar_urls" alt=""></div>
         <div class="f5 fw2 mb3 mt2">{{ readTime }} minute read</div>
       </div>
       <div id="img_and_byline">
