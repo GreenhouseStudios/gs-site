@@ -7,9 +7,19 @@
     }`"
   >
     <Header></Header>
-    <Nav v-on:toggle="menuOn = !menuOn" v-if="!$route.path.includes('blog')"></Nav>
-    <BlogNav v-else v-on:toggle="menuOn = !menuOn" ></BlogNav>
+    <Nav v-on:toggle="menuOn = !menuOn"></Nav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
+    <!-- <div
+      :style="`height:${height}; width:${width}`"
+      class="overflow-hidden"
+      v-if="showBgImages"
+    >
+      <img
+        :src="bgImages[0]"
+        class="absolute o-10 right-0"
+      />
+    </div> -->
+    
     <div class="route-container"><keep-alive>
       <router-view></router-view>
     </keep-alive></div >
@@ -20,15 +30,14 @@
 <script>
 import Footer from "./components/Footer.vue";
 import Header from './components/Header.vue';
+// import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
-import BlogNav from "./components/BlogNav.vue"
 export default {
   name: "App",
   components: {
     Nav,
     Footer,
     Header,
-    BlogNav,
     // Loading,
   },
   data() {
