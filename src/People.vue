@@ -1,13 +1,13 @@
 <template>
   <div v-if="!$store.getters.loading">
-    <div class="w-50 f3-ns f4 mh5 mv6 ma6-l pv3-ns pv3 fw4">
+    <div class="w-50 f3-ns f4 mh5 mv3 mh6-l mv3-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      We are an interdisciplinary team with diverse backgrounds who bring their
-      individual interests and passions into the Greenhouse Studios community.
+      <p class="f4">We are an interdisciplinary team with diverse backgrounds who bring their
+      individual interests and passions into the Greenhouse Studios community.</p>
     </div>
     <div
       id="tab-btn-container"
-      class="w-50-ns center flex flex-row justify-around bb"
+      class="w-50-ns center flex flex-row justify-around"
     >
       <button
         @click="changeActiveTab(index)"
@@ -27,6 +27,7 @@
           :key="person.slug"
           :person="person"
           :index="index"
+          ref="cards"
         ></person-card>
       </div>
     </div>
@@ -40,11 +41,13 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
+          class="pa2 f4"
           v-for="a in alumni.slice(0, alumni.length / 3)"
           :key="a.title.rendered"
         >
-          {{ a.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0]}}
         </li>
       </ul>
       <ul
@@ -52,11 +55,13 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
+          class="pa2 f4"
           v-for="a in alumni.slice(alumni.length / 3, (2 * alumni.length) / 3)"
           :key="a.title.rendered"
         >
-          {{ a.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0] }}
         </li>
       </ul>
       <ul
@@ -64,11 +69,13 @@
         style="vertical-align: top"
       >
         <li
-          class="pa2"
-          v-for="b in alumni.slice((2 * alumni.length) / 3)"
-          :key="b.title.rendered"
+          class="pa2 f4"
+          v-for="a in alumni.slice((2 * alumni.length) / 3)"
+          :key="a.title.rendered"
         >
-          {{ b.title.rendered }}
+          {{ a.custom_fields.first_name[0] +
+            " " +
+            a.custom_fields.last_name[0] }}
         </li>
       </ul>
     </div>
@@ -204,6 +211,7 @@ export default {
         );
       } else return [];
     },
+
   },
   updated() {
     this.people = this.$store.getters.allPeople;
@@ -221,6 +229,12 @@ export default {
       },100);
     }
   },
+  beforeRouteLeave(to, from, next){
+    console.log(to)
+    console.log(from);
+    this.$refs.cards.map(x => x.reset())
+    next();
+  }
 };
 </script>
 
@@ -240,9 +254,11 @@ export default {
 .partner-img {
   margin: auto;
 }
-
+button{
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+}
 .alumni-list {
-  font-family: "Libre-Franklin", Arial, Helvetica, sans-serif;
+  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
@@ -255,7 +271,6 @@ export default {
 }
 @media (max-width: 660px) {
   #tab-btn-container {
-    flex-direction: column;
     align-items: center;
   }
 }
@@ -266,5 +281,8 @@ export default {
 #subnav-btn:hover {
   background-color: #bde491;
   color: white;
+}
+p{
+  font-family: "Libre Franklin";
 }
 </style>

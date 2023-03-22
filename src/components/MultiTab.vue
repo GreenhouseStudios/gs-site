@@ -1,5 +1,5 @@
 <template>
-  <div class="about w-30-ns overflow-hidden center-m ma4-ns br2">
+  <div class="about w-30-ns mw7-l overflow-hidden center-m ma4-ns br2">
     <div class="tabs flex flex-row-ns flex-column">
       <input
         type="radio"
@@ -12,10 +12,10 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
-        :style="picked === 0 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        :style="picked === 0 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">Who We Are</span></label
       >
-      <div v-if="picked === 0 && bpSmall && !bpNotSmall" class="tab pa3" style="">
+      <div v-if="picked === 0" class="tab pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -26,10 +26,10 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabtwo"
         id="tab-two-label"
-        :style="picked === 1 ? `background: #F7F7F7;`: `background: #a4d171 ;`"
+        :style="picked === 1 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
         ><span class="shimmer">What We Do</span></label
       >
-      <div v-if="picked === 1 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+      <div v-if="picked === 1" class="tab  pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
@@ -45,17 +45,17 @@
       <label
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabthree"
-        :style="picked === 2 ? `background: #F7F7F7;`:`background: #a4d171 ;`"
+        :style="picked === 2 ? `background: #F7F7F7;`:`background: #D7DAD7 ;`"
         ><span class="shimmer">Collaborative Culture</span></label
       >
 
-      <div v-if="picked === 2 && bpSmall  && !bpNotSmall" class="tab  pa3" style="">
+      <div v-if="picked === 2" class="tab pa3 dn-ns" style="">
         <p class="ma0">
           {{ content[picked] }}
         </p>
       </div>
     </div>
-    <div class="tab dn db-ns z-3 f5" style="background: #F7F7F7; height: 250px; display: table; padding: 32px 50px;">
+    <div class="tab dn db-ns z-3 f5 ph3 pv2 ph4-m ph4-l pv4-l" style="background: #F7F7F7; height: 250px;">
       <p class="ma0 centertext">
         {{ content[picked] }}
       </p>
@@ -95,12 +95,6 @@ export default {
     };
   },
   computed: {
-      bpSmall() {
-          return window.matchMedia('(max-width: 30em)').matches
-      },
-      bpNotSmall() {
-          return window.matchMedia('(min-width: 30em)').matches
-      }
   },
 };
 </script>
@@ -160,9 +154,7 @@ export default {
   font-weight: 600;
 }
 
-.tabs input[type="radio"]:checked + label + .tab {
-  display: block;
-}
+
 
 @media (min-width: 720px) {
   .tabs {
@@ -173,7 +165,7 @@ export default {
   }
 }
 
-@media (max-width: 800px){
+@media (max-width: 779px){
   .about{
     width: 80%;
     margin: auto;

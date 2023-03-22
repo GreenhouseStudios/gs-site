@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <h1>This page does not exist!</h1>
+    <div class="ma7">
+        <h1>Page cannot be found!</h1>
     </div>
 </template>
 
