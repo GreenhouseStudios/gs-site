@@ -70,7 +70,7 @@
             /></router-link>
           </li>
         </ul>
-        <div class="center w-50 pv6 tc " id="blog-header">
+        <div class="w-100 pv7 tc" id="blog-header">
             <!-- <img src="../../public/bgImg/BlogHeaderBG.png" alt="" class="o-20 absolute"> -->
             <h1 class="center white fw7 f1 ma0">Greenhouse Studios Germination Blog</h1>
             <p class="f4 white ma0">The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives.</p>
@@ -370,7 +370,7 @@
     font-family: 'Libre Franklin';
     background-image: url('../../public/bgImg/BlogHeaderBG.png');
     background-size: 110%;
-    background-size: 100% 100%;
+    background-size: 90% 100%;
     background-repeat: none;
     
   }

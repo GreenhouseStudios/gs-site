@@ -6,9 +6,9 @@
       menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
     }`"
   >
-    <Header></Header>
-    <Nav v-on:toggle="menuOn = !menuOn" v-if="!$route.path.includes('blog')"></Nav>
-    <BlogNav v-else v-on:toggle="menuOn = !menuOn" ></BlogNav>
+    <Header ></Header>
+    <Nav v-on:toggle="menuOn = !menuOn" v-if="$route.name !== 'Blog' && $route.name !== 'BlogRead'"></Nav>
+    <BlogNav v-if="$route.name == 'Blog'" v-on:toggle="menuOn = !menuOn" ></BlogNav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
     <div class="route-container"><keep-alive>
       <router-view></router-view>

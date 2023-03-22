@@ -1,13 +1,12 @@
 <template>
-<div>
-  <div class="w-80 f3-ns f4 mh5 mv6 mh6-l mv3-l  pv3-ns pv3 fw4">
-      <h2 class="page-title f1">Blog</h2>
-      <p class="f4">The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives.</p>
-    </div>
+<div class="w-75 center">
+
+  <h1 class="ml6 mt5 ttu f3">Recent Posts</h1>
   <div
     class="grid"
     v-if="!$store.getters.loading && posts"
   >
+    
     <blog-card
       v-for="post in posts"
       :key="post.slug"

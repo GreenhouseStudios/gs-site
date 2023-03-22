@@ -1,33 +1,63 @@
 <template>
   <div id="blogmain">
-    <div id="blogcontent" v-if="!$store.getters.loading && post">
-      <div class="titledatecontainer">
-        <div class="blogtitle lh-title">
+    <div v-if="!$store.getters.loading && post">
+      <div
+        class="flex pa7 items-center justify-center white relative"
+        id="blog-read-header"
+      >
+        <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <img
+          v-if="post.fimg_url && showFeaturedImg"
+          :src="post.fimg_url"
+          id="featured-img"
+          alt=""
+          class="mr4 shadow-2"
+        />
+        <div class="blogtitle lh-solid ml4">
           <h2 class="f1" v-html="post.title.rendered"></h2>
+          <div>
+            <div class="f4 pv2">
+              <div class="fw7 pa1">{{ post._embedded.author[0].name }}</div>
+              <div class="fw2 pa1">Design Technologist</div>
+            </div>
+            <div>
+              <span class="mr5">{{
+                new Date(post.date).toLocaleDateString("en-us")
+              }}</span>
+              <span class="f5 fw2 mb3 mt2">{{ readTime }} minute read</span>
+            </div>
+          </div>
         </div>
+
+       
       </div>
-      <div class="credits db pa2">
-        <span class="date fr">{{
-          new Date(post.date).toLocaleDateString("en-us")
-        }}</span>
-        <div><div class="pv2 ">By {{ post._embedded.author[0].name }}</div> <img :src="post._embedded.author[0].avatar_urls" alt=""></div>
-        <div class="f5 fw2 mb3 mt2">{{ readTime }} minute read</div>
-      </div>
-      <div id="img_and_byline">
-        <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" class="w5" alt="" />
+
+      <div class="textbox w-50 pv5 center" style="line-height: 2.2rem">
+        <share-links></share-links>
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
-          {{ post.custom_fields.byline[0] }}
-        </h3>
-      </div>
-      <div class="textbox">
+            {{ post.custom_fields.byline[0] }}
+          </h3>
         <span v-html="post.content.rendered"></span>
       </div>
-      <div class="flex w-100 mt5 black h4 justify-between underline">
-        <router-link v-if="prev" class="shimmer relative" :to="'/blog/'+prev.slug">&#x2190; Previous</router-link>
-        <router-link v-if="next" class="shimmer relative" :to="'/blog/' + next.slug">Next &#x2192;</router-link>
-      </div>
+      <!-- <div class="flex w-100 mt5 black h4 justify-between underline">
+        <router-link
+          v-if="prev"
+          class="shimmer relative"
+          :to="'/blog/' + prev.slug"
+          >&#x2190; Previous</router-link
+        >
+        <router-link
+          v-if="next"
+          class="shimmer relative"
+          :to="'/blog/' + next.slug"
+          >Next &#x2192;</router-link
+        >
+      </div> -->
     </div>
-    <div v-else>
+    <div v-if="$store.getters.loading">
+      <Loading></Loading>
+    </div>
+    <div v-if="!$store.getters.loading && !post">
       <NotFound></NotFound>
     </div>
   </div>
@@ -36,8 +66,11 @@
 <script>
 import { mapGetters } from "vuex";
 import NotFound from "./NotFound.vue";
+import ShareLinks from './components/ShareLinks.vue';
+import Loading from "./components/Loading.vue";
 export default {
   name: "BlogRead",
+  components: { NotFound, ShareLinks, Loading },
   data() {
     return {
       date: "",
@@ -51,32 +84,31 @@ export default {
     ...mapGetters({
       postBySlug: "postBySlug",
       nextPost: "nextPost",
-      previousPost: "previousPost"
+      previousPost: "previousPost",
     }),
     post() {
       return this.postBySlug(this.$route.params.slug);
     },
-    next(){
+    next() {
       return this.nextPost(this.post);
     },
-    prev(){
+    prev() {
       return this.previousPost(this.post);
     },
-    wordCount(){
-      if(this.post.content)
-      return this.post.content.rendered.split(' ').length;
-      return 0
+    wordCount() {
+      if (this.post.content)
+        return this.post.content.rendered.split(" ").length;
+      return 0;
     },
-    readTime(){
-      if(this.wordCount)
-      return Math.round(this.wordCount / 200);
+    readTime() {
+      if (this.wordCount) return Math.round(this.wordCount / 200);
       else return null;
     },
-    showFeaturedImg(){
-      if(this.post.custom_fields.show_featured_img?.length)
-      return this.post?.custom_fields?.show_featured_img[0] !== 'false';
+    showFeaturedImg() {
+      if (this.post.custom_fields.show_featured_img?.length)
+        return this.post?.custom_fields?.show_featured_img[0] !== "false";
       else return true;
-    }
+    },
   },
   methods: {
     removeTags(str) {
@@ -125,7 +157,7 @@ export default {
       }
     },
   },
-  components: { NotFound },
+  
 };
 </script>
 
@@ -133,7 +165,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Libre Franklin","Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
@@ -155,7 +187,7 @@ h1 {
 .date {
   background: #8cc947;
   padding: 5px 10px;
-  color: #FFF;
+  color: #fff;
   font-weight: 700;
   border-radius: 20px;
   font-size: 18px;
@@ -163,7 +195,7 @@ h1 {
 .credits {
   font-weight: 700;
   font-size: 18px;
-  color: #333333;
+  color: white;
   padding-top: 5px;
 }
 
@@ -180,7 +212,7 @@ h1 {
 #blogmain {
   overflow: hidden;
 }
-#blogcontent {
+/* #blogcontent {
   margin: 2em 20%;
 }
 
@@ -193,7 +225,7 @@ h1 {
   #blogcontent {
     margin: 2em;
   }
-}
+} */
 
 .textbox {
   height: 100%;
@@ -255,5 +287,19 @@ iframe {
 }
 a {
   color: #161616;
+}
+#blog-read-header {
+  background: #de7f42;
+  padding: 100px 0;
+  background-image: url("../public/bgImg/BlogHeaderBG.png");
+  background-size: 110%;
+  background-size: 90% 100%;
+  background-repeat: none;
+}
+#featured-img {
+  width: 300px;
+}
+#back-link{
+  /* color: white !important; */
 }
 </style>
