@@ -37,7 +37,7 @@
         </div>
         <div class="copyright f4-ns f5" id="footer-links">
           <a href="https://accessibility.uconn.edu/" id="link"><p>Accessibility</p></a>
-          <a href="www.uconn.edu" id="link"><p>© University of Connecticut</p></a>
+          <a href="https://uconn.edu" id="link"><p>© University of Connecticut</p></a>
           <a href="https://uconn.edu/disclaimers-privacy-copyright/" id="link"
  ><p>Disclaimers, Privacy & Copyright</p></a>
         </div>
