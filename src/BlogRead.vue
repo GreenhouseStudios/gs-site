@@ -5,7 +5,7 @@
         class="flex pa7 items-center justify-center white relative"
         id="blog-read-header"
       >
-        <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <router-link class="absolute left-2 top-2 fw7 f4 white" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
         <img
           v-if="post.fimg_url && showFeaturedImg"
           :src="post.fimg_url"
@@ -263,10 +263,7 @@ img {
   padding: 0;
   height: auto;
 }
-#blogmain a {
-  color: #717073;
-  font-weight: bold !important;
-}
+
 #blogmain a:hover {
   color: #8cc947;
 }
@@ -285,21 +282,20 @@ iframe {
 #img_and_byline {
   margin-top: 5em;
 }
-a {
-  color: #161616;
-}
+
 #blog-read-header {
   background: #de7f42;
   padding: 100px 0;
   background-image: url("../public/bgImg/BlogHeaderBG.png");
   background-size: 110%;
-  background-size: 90% 100%;
+  background-size: 100% 100%;
   background-repeat: none;
+  min-height: 560px;
 }
 #featured-img {
   width: 300px;
 }
 #back-link{
-  /* color: white !important; */
+  color: white;
 }
 </style>
