@@ -36,10 +36,10 @@
           <p>Storrs, CT 06269-1005</p>
         </div>
         <div class="copyright f4-ns f5" id="footer-links">
+          <a href="https://accessibility.uconn.edu/" id="link"><p>Accessibility</p></a>
           <a href="www.uconn.edu" id="link"><p>© University of Connecticut</p></a>
           <a href="https://uconn.edu/disclaimers-privacy-copyright/" id="link"
  ><p>Disclaimers, Privacy & Copyright</p></a>
-          <a href="https://accessibility.uconn.edu/" id="link"><p>Accessibility</p></a>
         </div>
       </div>
     </div>
@@ -82,7 +82,7 @@ export default {};
 
 .fa {
   display: flex;
-  color: white;
+  color: #dff1cb;
   font-size: 16px;
   text-align: center;
   text-decoration: none;
@@ -107,17 +107,19 @@ router-link:hover {
 
 .footer-2 {
   display: flex;
+  margin: 20px;
 }
 
 .icons:hover {
-  background-color: #3e5820;
+  transition: transform .25s ;
+transform: scale(1.2) ;
 }
 
 .icons {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #8cc947;
+  background-color: black;
   margin: 10px;
   height: 30px;
   width: 30px;
@@ -128,7 +130,7 @@ router-link:hover {
   color: black;
   text-decoration: none;
   font-family: Libre Franklin;
-  font-weight: 500;
+  font-weight: 700;
   font-size: 14px;
 }
 
@@ -139,22 +141,24 @@ router-link:hover {
 .footer-img {
   position: absolute;
   margin: 0;
-  padding: 0;
   width: 100%;
+  padding-top: 200px;
   height: 750px;
   z-index: -1;
+  bottom: 0%
 }
 .footer-information {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   text-align:left;
+  padding-top: 200px;
 }
 .footer-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 20px;
+  margin: 25px;
 }
 
 .footer-info-container {
@@ -163,7 +167,7 @@ router-link:hover {
 }
 
 .long-wordmark {
-  padding: 10px 0px;
+  margin: 25px 0px;
 }
 
 .footer-nav-info {
@@ -176,7 +180,7 @@ max-width: 750px;
 .nav-links {
   display: flex;
   justify-content: space-between;
-padding: 10px 0px 5px 0px;
+padding: 10px 0px 15px 0px;
 }
 
 .nav-links router-link {
@@ -207,7 +211,7 @@ footer {
 }
 
 p {
-  margin: 10px 0px;
+  margin: 5px 0px;
 }
 .grants {
   position: relative;
@@ -218,9 +222,7 @@ p {
   justify-content: center;
 }
 
-.footer-information {
-  padding: 0;
-}
+
 
 .footer-img {
   width: 100%;
