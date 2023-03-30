@@ -116,7 +116,7 @@ export default {
   },
   computed: {
     navImg() {
-      return require("../../public/img/watercolor-nav.png");
+      return require("../../public/img/avif/watercolor-nav.avif");
     },
     currentPage() {
       return this.$route.name;

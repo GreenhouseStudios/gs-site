@@ -1,21 +1,26 @@
 <!-- :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" -->
 <template>
-  <div class="wrapper" 
-    alt="Blog Card Image">
-    <div :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" class="background-card-image">
-<img :src="post.fimg_url" style="visibility: hidden">
-</div>
-    <div class="content">
-      <!-- Enter blog card categories here-->
-      <h4 class="category">Place Holder</h4>
-      <h3 class="title">{{ removeTags(title.rendered) }}</h3>
-      <div class="date">
-      <span class="month">{{ getDate(date).month }} </span>
-      <span class="day">{{ getDate(date).day }}, </span>
-      <span class="year">{{ getDate(date).year }}</span>
+    <div class="wrapper" :style="`background-image: url(  ${post.fimg_url ? post.fimg_url : backupImg} )`" alt="Blog Card Image" >
+      <div class="data" onclick="">
+        <div class="content">
+          <hr>
+          <div class="date">
+              <span class="month">{{getDate(date).month}} </span>
+              <span class="day">{{getDate(date).day}}, </span>
+              <span class="year">{{getDate(date).year}}</span>
+          </div>
+          <h3 class="title ">{{removeTags(title.rendered)}}</h3>
+          <div class="text">
+            <p v-if="post.custom_fields.blog_card_preview" class="blogcardtext" v-html="post.custom_fields.blog_card_preview[0]"></p>
+            <p v-else class="blogcardtext">{{removeTags(content.rendered)}}</p>
+            <br><br>
+            <router-link class="" :to="`/blog/${slug}`">
+            <button id="button" class="btn-bol btn-blog">Read More</button>
+            </router-link>
+          </div>
+        </div>
+      </div>
     </div>
-    </div>
-  </div>
 </template>
 
 <script>

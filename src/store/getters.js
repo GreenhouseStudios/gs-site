@@ -27,6 +27,20 @@ const getters = {
   unloadedPosts: (state) => {
     return state.postCount - state.posts.length
   },
+  nextPost: (state) => (currentPost) => {
+    var currentPostIndex = state.posts.indexOf(currentPost);
+    if(currentPostIndex <= 0) return null;
+    else{
+      return state.posts[currentPostIndex - 1];
+    }
+  },
+  previousPost: (state) => (currentPost) => {
+    var currentPostIndex = state.posts.indexOf(currentPost);
+    if(currentPostIndex >= state.posts.length) return null;
+    else{
+      return state.posts[currentPostIndex + 1];
+    }
+  },
   allPeople: (state) => {
     return state.people;
   },
