@@ -81,29 +81,32 @@ const actions = {
 
         commit("addPerson", person);
       });
-    }
-    else commit("addPerson", person)
+    } else commit("addPerson", person);
   },
-  async getPeople({ dispatch }, page) {
-    return axios.get("person?per_page=100&page=" + page).then((res) => {
-      let pageTotal = parseInt(res.headers["x-wp-totalpages"]);
-      res.data.forEach((person) => {
-        dispatch("getPersonImage", person);
+  async getPeople({ dispatch, state }, page) {
+    if (state.people.length < state.peopleCount) {
+      return axios.get("person?per_page=100&page=" + page).then((res) => {
+        let pageTotal = parseInt(res.headers["x-wp-totalpages"]);
+        res.data.forEach((person) => {
+          dispatch("getPersonImage", person);
+        });
+        if (page < pageTotal) {
+          dispatch("getPeople", page + 1);
+        }
       });
-      if (page < pageTotal) {
-        dispatch("getPeople", page + 1);
-      }
-    });
+    }
   },
   // async getAlumni({commit}){
   //   return axios.get("person?per_page=100&categories[]=86&_fields[]=slug").then((res) =>{
 
   //   })
   // },
-  async getProjects({ commit }) {
-    return axios.get("pages?categories=85&per_page=100").then((res) => {
-      commit("setProjects", res.data);
-    });
+  async getProjects({ commit, state }) {
+    if (state.projects.length <= 0) {
+      return axios.get("pages?categories=85&per_page=100").then((res) => {
+        commit("setProjects", res.data);
+      });
+    }
   },
 };
 
