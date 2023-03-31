@@ -4,6 +4,7 @@
       <div
         class="flex pa7 items-center justify-center white relative"
         id="blog-read-header"
+        :style="`background-color: ${headerBgColor}`"
       >
         <router-link class="absolute left-2 top-2 fw7 f4 white" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
         <img
@@ -20,7 +21,7 @@
               <div class="fw7 pa1">{{ post._embedded.author[0].name }}</div>
               <div class="fw2 pa1">Design Technologist</div>
             </div>
-            <div>
+            <div class="pa1">
               <span class="mr5">{{
                 new Date(post.date).toLocaleDateString("en-us")
               }}</span>
@@ -109,6 +110,12 @@ export default {
         return this.post?.custom_fields?.show_featured_img[0] !== "false";
       else return true;
     },
+    headerBgColor(){
+      if(this.post.custom_fields.headerBgColor){
+        return this.post.custom_fields.headerBgColor;
+      }
+      else return '#de7f42'
+    }
   },
   methods: {
     removeTags(str) {
@@ -284,7 +291,6 @@ iframe {
 }
 
 #blog-read-header {
-  background: #de7f42;
   padding: 100px 0;
   background-image: url("../public/bgImg/BlogHeaderBG.png");
   background-size: 110%;
