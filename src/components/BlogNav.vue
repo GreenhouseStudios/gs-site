@@ -35,7 +35,7 @@
           <span><i class="fa fa-2x fa-bars"></i></span>
         </label>
         
-        <ul class="menu ttc relative top-0 right-0 white">
+        <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex" style="background: #7BB040">
           <li>
             <router-link class="shimmer relative" to="/"
               >home
