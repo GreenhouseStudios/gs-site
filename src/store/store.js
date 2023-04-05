@@ -19,6 +19,7 @@ export const store = new Vuex.Store({
       peopleCount: 0,
       projects: [],
       loading: true,
+      categories: [],
     },
     mutations,
     actions,

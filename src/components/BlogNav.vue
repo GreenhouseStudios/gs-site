@@ -1,6 +1,6 @@
 <template>
     <div>
-      <header class="header z-5 h7" style="background: #8cc947">
+      <header class="header z-5 h7" style="background: #8CC947">
         <!-- <home-button class="o-0"></home-button> -->
        
         <div
@@ -17,7 +17,6 @@
             o-90
             db-l
             dn
-            off-black
           "
           id="page-indicator"
         >
@@ -36,7 +35,7 @@
           <span><i class="fa fa-2x fa-bars"></i></span>
         </label>
         
-        <ul class="menu ttc relative top-0 right-0">
+        <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex" style="background: #7BB040">
           <li>
             <router-link class="shimmer relative" to="/"
               >home
@@ -72,7 +71,8 @@
         </ul>
         <div class="w-100 pv7 tc" id="blog-header">
             <!-- <img src="../../public/bgImg/BlogHeaderBG.png" alt="" class="o-20 absolute"> -->
-            <h1 class="center white fw7 f1 ma0">Greenhouse Studios Germination Blog</h1>
+            <h1 class="center white fw7 f3 ma0">Greenhouse Studios</h1>
+            <h1 class="center white fw7 f1 ma0">Germination Blog</h1>
             <p class="f4 white ma0">The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives.</p>
         </div>
         <transition name="slide-fade">
@@ -199,7 +199,7 @@
     display: block;
     padding: 20px 20px;
     text-decoration: none;
-    color: #161616;
+    
     font-size: 1.5rem;
   }
   #mobile-menu-list > li a {
@@ -309,7 +309,9 @@
       display: none;
     }
   }
-  
+  .shimmer{
+    color:white;
+  }
   .shimmer:hover {
     display: inline-block;
     color: white;
@@ -370,7 +372,7 @@
     font-family: 'Libre Franklin';
     background-image: url('../../public/bgImg/BlogHeaderBG.png');
     background-size: 110%;
-    background-size: 90% 100%;
+    background-size: 100% 100%;
     background-repeat: none;
     
   }

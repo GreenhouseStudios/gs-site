@@ -40,8 +40,8 @@
 <style lang="scss" scoped>
 .social-icon{
     width: 50px;
-    :hover{
-        color: white;
-    }
+}
+.social-icon:hover{
+  color:white !important;
 }
 </style>
