@@ -10,6 +10,7 @@ const actions = {
     await dispatch("getPosts", 1);
     await dispatch("getPeople", 1);
     await dispatch("getProjects");
+    await dispatch("getCategories");
     commit("setLoadingState", false);
   },
   async getPostCount({ commit }) {
@@ -105,6 +106,15 @@ const actions = {
       commit("setProjects", res.data);
     });
   },
+  async getCategories({ commit }) {
+    // return axios.get("post_category").then((res) => {
+    return axios.get("categories?per_page=100&page=1").then((res) => {
+        let result = res.data;
+        let uncategorizedIndex = result.indexOf(result.find(x => x.slug === 'uncategorized'))
+        result.splice(uncategorizedIndex, 1)
+        commit("setCategories", result);
+    });
+},
 };
 
 export default actions;

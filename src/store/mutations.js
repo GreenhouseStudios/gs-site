@@ -29,7 +29,10 @@ const mutations = {
   addPerson(state,payload){
     if(state.people.filter(p => p.slug === payload.slug) > 0) return;
     else state.people.push(payload);
-  }
+  },
+  setCategories(state, payload) {
+    state.categories = payload;
+  },
 };
 
 export default mutations;

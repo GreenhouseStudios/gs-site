@@ -13,7 +13,7 @@
         id="card-info"
       >
         <div class="ph3 pv2">
-          <span class="ph2 pv1 white f6 fw6" style="background: #8CC947">Project</span>
+          <span class="ph2 pv1 white f6 fw6" style="background: #8CC947">{{mainCategory}}</span>
           <h3 class="mv1 overflow-hidden f5">{{ removeTags(title.rendered) }}</h3>
           <div class="absolute bottom-1">
           <span class="month">{{ getDate(date).month }} </span>
@@ -89,6 +89,18 @@ export default {
       }
       return src;
     },
+  },
+  computed: {
+    mainCategory() {
+      let result;
+      if(this.post.categories[0] && this.$store.state.categories)
+      result = this.$store.state.categories.find( x => x.id === this.post.categories[0]).name
+      else result = "none"
+      console.log(result)
+      if(!result) result = "none"
+      console.log(this.post.categories[0].id)
+      return result;
+    }
   },
 };
 </script>

@@ -6,7 +6,12 @@
         id="blog-read-header"
         :style="`background-color: ${headerBgColor}`"
       >
-        <router-link class="absolute left-2 top-2 fw7 f4 white" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <router-link
+          class="absolute left-2 top-2 fw7 f4 white"
+          id="back-link"
+          to="/blog"
+          ><i>&#8592;</i> Back</router-link
+        >
         <img
           v-if="post.fimg_url && showFeaturedImg"
           :src="post.fimg_url"
@@ -18,7 +23,8 @@
           <h2 class="f1" v-html="post.title.rendered"></h2>
           <div>
             <div class="f4 pv2">
-              <div class="fw7 pa1">{{ post._embedded.author[0].name }}</div>
+              <img :src="authorImage" alt="" class="w2 h2 br-100" />
+              <div class="fw7 pa1">{{ authorName }}</div>
               <div class="fw2 pa1">Design Technologist</div>
             </div>
             <div class="pa1">
@@ -29,31 +35,20 @@
             </div>
           </div>
         </div>
-
-       
       </div>
 
       <div class="textbox w-50 pv5 center" style="line-height: 2.2rem">
         <share-links></share-links>
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
-            {{ post.custom_fields.byline[0] }}
-          </h3>
+          {{ post.custom_fields.byline[0] }}
+        </h3>
         <span v-html="post.content.rendered"></span>
+        <div class="mv3">
+        <p class="di fw7 mr3">Topics: </p>
+        <a :href="'/blog/categories/'+cat.id" class="ph2 pv1 white f6 fw6 mh2" style="background: #8CC947" v-for="cat in categoryList" :key="cat">{{ cat.name }}</a>
       </div>
-      <!-- <div class="flex w-100 mt5 black h4 justify-between underline">
-        <router-link
-          v-if="prev"
-          class="shimmer relative"
-          :to="'/blog/' + prev.slug"
-          >&#x2190; Previous</router-link
-        >
-        <router-link
-          v-if="next"
-          class="shimmer relative"
-          :to="'/blog/' + next.slug"
-          >Next &#x2192;</router-link
-        >
-      </div> -->
+      </div>
+      
     </div>
     <div v-if="$store.getters.loading">
       <Loading></Loading>
@@ -67,7 +62,7 @@
 <script>
 import { mapGetters } from "vuex";
 import NotFound from "./NotFound.vue";
-import ShareLinks from './components/ShareLinks.vue';
+import ShareLinks from "./components/ShareLinks.vue";
 import Loading from "./components/Loading.vue";
 export default {
   name: "BlogRead",
@@ -110,11 +105,27 @@ export default {
         return this.post?.custom_fields?.show_featured_img[0] !== "false";
       else return true;
     },
-    headerBgColor(){
-      if(this.post.custom_fields.headerBgColor){
+    headerBgColor() {
+      if (this.post.custom_fields.headerBgColor) {
         return this.post.custom_fields.headerBgColor;
-      }
-      else return '#de7f42'
+      } else return "#de7f42";
+    },
+    authorName() {
+      return this.post._embedded.author[0].name;
+    },
+    authorImage() {
+      let result = this.$store.state.people.find((p) => p.title.rendered === this.post._embedded.author[0].name);
+      console.log(result);
+      result = result?.image.source_url
+      console.log(result);
+      if (!result) result = "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
+      return result;
+    },
+    categoryList() {
+      let result;
+      if(this.post.categories && this.$store.state.categories)
+      result = this.$store.state.categories.filter( x => this.post.categories.includes(x.id))
+      return result;
     }
   },
   methods: {
@@ -164,7 +175,6 @@ export default {
       }
     },
   },
-  
 };
 </script>
 
@@ -172,7 +182,7 @@ export default {
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
 body {
-  font-family: "Libre Franklin","Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
@@ -301,7 +311,7 @@ iframe {
 #featured-img {
   width: 300px;
 }
-#back-link{
+#back-link {
   color: white;
 }
 </style>
