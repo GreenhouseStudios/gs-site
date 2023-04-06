@@ -2,16 +2,13 @@
   <div id="blogmain">
     <div v-if="!$store.getters.loading && post">
       <div
+      v-bind:style="this.post.custom_fields.headerBgColor ? {'backgroundColor': this.post.custom_fields.headerBgColor[0]} : {'backgroundColor':'#8cc947'}"
         class="flex pa7 items-center justify-center white relative"
         id="blog-read-header"
-        :style="`background-color: ${headerBgColor}`"
-      >
-        <router-link
-          class="absolute left-2 top-2 fw7 f4 white"
-          id="back-link"
-          to="/blog"
-          ><i>&#8592;</i> Back</router-link
         >
+        <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <div class="img-title-container">
+        <div>
         <img
           v-if="post.fimg_url && showFeaturedImg"
           :src="post.fimg_url"
@@ -19,6 +16,7 @@
           alt=""
           class="mr4 shadow-2"
         />
+      </div>
         <div class="blogtitle lh-solid ml4">
           <h2 class="f1" v-html="post.title.rendered"></h2>
           <div>
@@ -36,6 +34,7 @@
           </div>
         </div>
       </div>
+    </div>
 
       <div class="textbox w-50 pv5 center" style="line-height: 2.2rem">
         <share-links></share-links>
@@ -191,6 +190,7 @@ h2 {
   margin: 0px;
   border: 0px;
   padding-right: 10px;
+  font-size: 24px;
 }
 
 h1 {
@@ -216,6 +216,10 @@ h1 {
   padding-top: 5px;
 }
 
+.blogtitle {
+  max-width: 600px;
+}
+
 .titledatecontainer {
   display: flex;
   align-items: flex-start;
@@ -229,10 +233,21 @@ h1 {
 #blogmain {
   overflow: hidden;
 }
+
+@media (min-width: 600px) {
+  h2 {
+  margin: 0px;
+  border: 0px;
+  padding-right: 10px;
+  font-size: 32px;
+}
+}
+
 /* #blogcontent {
   margin: 2em 20%;
 }
 
+}
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent {
     margin: 2em 10%;
@@ -244,14 +259,13 @@ h1 {
   }
 } */
 
-.textbox {
-  height: 100%;
-  margin-top: -5px;
-}
-.alignleft {
-  display: inline;
-  float: left;
-  margin-right: 1.5em;
+.img-title-container{
+display: flex;
+flex-direction: column;
+gap: 10px;
+justify-content: center;
+align-items: center;
+max-width: 700px;
 }
 hr {
   margin-top: 20px;
@@ -259,21 +273,21 @@ hr {
   border: 0;
   border-top: 1px solid #eeeeee;
 }
-img {
-  height: auto;
-  max-width: 100%;
-}
+
 #blogmain img {
   display: flex;
   margin-right: 15px;
   float: left;
 }
-@media (max-width: 38em) {
-  #blogmain img {
-    width: 100%;
-    padding: 0;
-    height: auto;
-  }
+@media (min-width: 600px) {
+  .img-title-container{
+display: grid;
+justify-content: center;
+align-items: center;
+grid-template-rows: none;
+grid-template-columns: 1fr 2fr;
+max-width: 700px;
+}
 }
 #blogmain #mainimg {
   width: 100%;
@@ -287,6 +301,11 @@ img {
 iframe {
   width: 100%;
   margin: auto;
+}
+
+.author-profile-picture {
+  width: 60px;
+  border-radius: 50px;
 }
 .wp-caption {
   margin: auto;
@@ -307,11 +326,23 @@ iframe {
   background-size: 100% 100%;
   background-repeat: none;
   min-height: 560px;
+  object-fit: cover;
+  background-size: 100%;
 }
 #featured-img {
-  width: 300px;
+  width: 100%;
 }
-#back-link {
-  color: white;
+#back-link{
+  color: white !important;
+  text-decoration: none;
+}
+
+#back-link:hover{
+  color: white !important;
+  text-decoration: underline;
+}
+
+* {
+  font-family: Libre Franklin;
 }
 </style>
