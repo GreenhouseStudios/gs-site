@@ -12,20 +12,21 @@
           to="/blog"
           ><i>&#8592;</i> Back</router-link
         >
-        <img
+        <div class=" w-50 justify-around items-center flex center"><img
           v-if="post.fimg_url && showFeaturedImg"
           :src="post.fimg_url"
           id="featured-img"
           alt=""
           class="mr4 shadow-2"
         />
-        <div class="blogtitle lh-solid ml4">
+        <div class="blogtitle lh-solid ml4 w-50">
           <h2 class="f1" v-html="post.title.rendered"></h2>
           <div>
             <div class="f4 pv2">
-              <img :src="authorImage" alt="" class="w2 h2 br-100" />
-              <div class="fw7 pa1">{{ authorName }}</div>
-              <div class="fw2 pa1">Design Technologist</div>
+              <img :src="authorImage" alt="" class="w2 h2 br-100 mb2" />
+
+              <span><div class="fw7 pa1">{{ authorName }}</div>
+              <div class="fw2 pa1">Design Technologist</div></span>
             </div>
             <div class="pa1">
               <span class="mr5">{{
@@ -34,7 +35,7 @@
               <span class="f5 fw2 mb3 mt2">{{ readTime }} minute read</span>
             </div>
           </div>
-        </div>
+        </div></div>
       </div>
 
       <div class="textbox w-50 pv5 center" style="line-height: 2.2rem">
@@ -260,7 +261,6 @@ hr {
   border-top: 1px solid #eeeeee;
 }
 img {
-  height: auto;
   max-width: 100%;
 }
 #blogmain img {
