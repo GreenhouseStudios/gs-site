@@ -1,7 +1,7 @@
 <template>
 <div class="w-75 center">
 
-  <h1 class="ml6 mt5 ttu f3">Recent Posts</h1>
+  <h1 class="ml6 mt5 f3">Recent Posts</h1>
   <div
     class="grid"
     v-if="!$store.getters.loading && posts"
@@ -60,7 +60,7 @@ export default {
 <style>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
-p{
+*{
   font-family: "Libre Franklin";
 }
 </style>

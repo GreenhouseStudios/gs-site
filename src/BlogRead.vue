@@ -18,12 +18,14 @@
         />
       </div>
         <div class="blogtitle lh-solid ml4">
-          <h2 class="f1" v-html="post.title.rendered"></h2>
+          <h2 class="" v-html="post.title.rendered"></h2>
           <div>
-            <div class="f4 pv2">
-              <img :src="authorImage" alt="" class="w2 h2 br-100" />
+            <div class="f4 pv2 flex items-center">
+              <img :src="authorImage" alt="" class="author-image br-100" />
+              <div>
               <div class="fw7 pa1">{{ authorName }}</div>
               <div class="fw2 pa1">Design Technologist</div>
+            </div>
             </div>
             <div class="pa1">
               <span class="mr5">{{
@@ -44,7 +46,7 @@
         <span v-html="post.content.rendered"></span>
         <div class="mv3">
         <p class="di fw7 mr3">Topics: </p>
-        <a :href="'/blog/categories/'+cat.id" class="ph2 pv1 white f6 fw6 mh2" style="background: #8CC947" v-for="cat in categoryList" :key="cat">{{ cat.name }}</a>
+        <a :href="'/blog/categories/'+cat.id" class="ph2 pv1 f6 fw6 mh2 category" style="background: #8CC947" v-for="cat in categoryList" :key="cat">{{ cat.name }}</a>
       </div>
       </div>
       
@@ -187,10 +189,21 @@ body {
   color: #333333;
 }
 h2 {
-  margin: 0px;
+  margin: 5px;
   border: 0px;
   padding-right: 10px;
   font-size: 24px;
+  line-height: 2.5rem;
+}
+
+.category {
+  color: white;
+  text-decoration: none;
+}
+
+.category:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 h1 {
@@ -295,17 +308,12 @@ max-width: 700px;
   height: auto;
 }
 
-#blogmain a:hover {
+/* #blogmain a:hover {
   color: #8cc947;
-}
+} */
 iframe {
   width: 100%;
   margin: auto;
-}
-
-.author-profile-picture {
-  width: 60px;
-  border-radius: 50px;
 }
 .wp-caption {
   margin: auto;
@@ -332,6 +340,14 @@ iframe {
 #featured-img {
   width: 100%;
 }
+
+.author-image {
+  width:50px;
+  height: 50px;
+  object-fit: cover;
+
+}
+
 #back-link{
   color: white !important;
   text-decoration: none;

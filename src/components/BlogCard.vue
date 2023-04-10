@@ -96,9 +96,7 @@ export default {
       if(this.post.categories[0] && this.$store.state.categories)
       result = this.$store.state.categories.find( x => x.id === this.post.categories[0]).name
       else result = "none"
-      console.log(result)
       if(!result) result = "none"
-      console.log(this.post.categories[0].id)
       return result;
     }
   },
@@ -120,5 +118,9 @@ export default {
 }
 a:visited{
   color:black;
+}
+
+h3 {
+  font-size: 18px;
 }
 </style>

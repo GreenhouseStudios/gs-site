@@ -25,8 +25,7 @@
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
 
-      <ul class="menu ttc relative top-0 right-0">
-        <li>
+      <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex" style="background: #7BB040">        <li>
           <router-link class="shimmer relative" to="/">home
             <img class="w-70 absolute bottom-0 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`" /></router-link>
@@ -192,7 +191,7 @@ li:hover {}
   display: block;
   padding: 20px 20px;
   text-decoration: none;
-  color: #161616;
+  color: white;
   font-size: 1.5rem;
 }
 
