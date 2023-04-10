@@ -86,7 +86,7 @@ export default {
             `As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
             “collaboration first” approach that brings a diverse team of people
-            together to create original works of research.We are dedicated to
+            together to create original works of research. We are dedicated to
             addressing the persistent, intertwined problems of workflow and
             hierarchy with a mission that equally values all stakeholders
             involved in producing scholarship. Everyone has a seat at the table

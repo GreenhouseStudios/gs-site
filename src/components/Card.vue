@@ -3,20 +3,18 @@
     <div class="card" :class="{ flipped: isFlipped }">
       <div class="side front" v-show="!isFlipped || flipping">
         <div
-          class="img-front"
-          style="height: 100%; width: 100%; object-fit: cover"
-          :style="`background-image: url(${require('../../public/img/Watercolor_background.png')}); background-position: ${
-            ((Math.sin(phase) + 1) / 2) * 100
-          }% ${((Math.cos(phase) + 1) / 2) * 100}%; filter: hue-rotate(${
-            Math.sin(phase) * 10 + 2
-          }deg) `"
-          alt="Front side of flippable card for the project 'By Our Love'"
+          class="img-front h-100 w-100 overflow-hidden"
         >
-          <img
+           <img
             :src="project.custom_fields.project_card_front"
+            class="absolute top-0 z-1"
             alt="project title"
             loading="lazy"
           />
+        <img class="h-100" loading="lazy" :src="`${require('../../public/img/avif/Watercolor_background.avif')}`" style="object-fit: cover"  :style="`z-index: -1; ${((Math.cos(phase) + 1) / 2) * 100}%; filter: hue-rotate(${
+            Math.sin(phase) * 10 + 2
+          }deg) `" alt="Front side of flippable card for the project">
+       
         </div>
       </div>
       <div
