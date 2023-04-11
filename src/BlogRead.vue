@@ -22,10 +22,26 @@
       <div>
         <ul class="categorylist">
           <li v-for="cat in post.categories" :key="cat">
-            <router-link :to="'/blog/category/' + cat">{{ getCategoryById(cat) }}</router-link>
+            <router-link :to="'/blog/category/' + getCategorySlug(cat)">{{ getCategoryById(cat) }}</router-link>
           </li>
         </ul>
       </div>
+      <div class="text-1">
+            <div class="fprojects-text">
+              <h3 class="title-2">Suggested Blog Posts</h3>
+            </div>
+        <div class="suggestedPosts" v-if="!$store.getters.loading && posts">
+          <blog-card class="mh3"
+              v-for="p in getSuggestedPosts"
+              :key="p.slug"
+              :post="p"
+              :title="p.title"
+              :content="p.content"
+              :date="p.date"
+              :slug="p.slug"
+            ></blog-card>
+        </div>
+        </div>
     </div>
     <div v-else>
       <NotFound></NotFound>
@@ -35,13 +51,19 @@
 
 <script>
 import { mapGetters } from 'vuex';
-import NotFound from './NotFound.vue';
+import BlogCard from './components/BlogCard.vue';
+//import NotFound from './NotFound.vue';
 export default {
   name: "BlogRead",
+  components: { BlogCard },
   data() {
     return {
       date: "",
+      posts: null,
     };
+  },
+  mounted() {
+    this.posts = this.$store.getters.allPosts;
   },
 
   // async created() {
@@ -59,12 +81,41 @@ export default {
     allCategories() {
       return this.$store.getters.allCategories
     },
+    getSuggestedPosts() {
+      let allPosts = this.posts;
+      let numSuggested = 0;
+      let suggestedPosts = [];
+      let currentCategories = this.post.categories;
+      for (let i = 0; i < allPosts.length; i++) {
+        if (allPosts[i] != this.post) {
+          let postCategories = allPosts[i].categories;
+          for (let x = 0; x < currentCategories.length; x++) {
+            if (postCategories.includes(currentCategories[x])) {
+              suggestedPosts.push(allPosts[i]);
+              numSuggested += 1;
+            }
+            break;
+          }
+        }
+        if (numSuggested == 3) {
+          break;
+        }
+      }
+      return suggestedPosts;
+    },
   },
   methods: {
     getCategoryById(id) {
       for (let i = 0; i < this.allCategories.length; i++) {
         if (this.allCategories[i].id == id) {
           return this.allCategories[i].name;
+        }
+      }
+    },
+    getCategorySlug(id) {
+      for (let i = 0; i < this.allCategories.length; i++) {
+        if (this.allCategories[i].id == id) {
+          return this.allCategories[i].slug;
         }
       }
     },
@@ -114,7 +165,7 @@ export default {
       }
     },
   },
-  components: { NotFound }
+  //components: { NotFound }
 };
 </script>
 
@@ -278,4 +329,12 @@ li {
 
 .categorylist li:last-child::after {
   content: "";
-}</style>
+}
+
+.suggestedPosts {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+</style>

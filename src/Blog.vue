@@ -14,11 +14,17 @@
       <div class="relative right-2 flex items-center justify-end">
         <select v-model="selectedValue" id="category-select" class="f6"
           @change="$router.push('/blog/category/' + $event.target.value)">
-          <option value="" selected disabled hidden class="pa0">Filter</option>
-          <option v-for="cat in $store.state.categories" :key="cat.slug" v-bind:value="cat.id">
+          <option value="" class="pa0" selected disabled hidden>Filter</option>
+          <option v-for="cat in $store.state.categories" :key="cat" v-bind:value="cat.slug">
             {{ cat.name }}
           </option>
         </select>
+        <div class="reset"
+        v-if="selectedValue != null">
+          <router-link :to="'/blog'">
+            <button>Reset Filter</button>
+          </router-link>
+        </div>
       </div>
       <div class="blog-grid" v-if="!$store.getters.loading && posts">
 
@@ -53,6 +59,9 @@ export default {
   updated() {
     if (this.$route.params.id != undefined) {
       this.selectedValue = this.$route.params.id;
+    }
+    else {
+      this.selectedValue = null;
     }
   },
   methods: {
@@ -103,12 +112,18 @@ export default {
       let id = this.$route.params.id;
       let filteredPosts = [];
       let posts = this.$store.getters.allPosts;
+      let allCategories = this.$store.getters.allCategories;
       //let selectedCategory = this.selectedValue;
       //let category = (id != undefined) ? id : selectedCategory
       if (id != undefined) {
         posts.forEach(function (post) {
           let categories = post.categories;
           categories.forEach(function (cat) {
+            allCategories.forEach(function (category) {
+              if (cat == category.id){
+                cat = category.slug;
+              }
+            })
             if (cat == id) {
               filteredPosts.push(post);
             }
