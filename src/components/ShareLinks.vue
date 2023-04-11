@@ -1,6 +1,6 @@
 <template>
-   <div class="alignleft">
-          <h5>Share:</h5>
+   <div class="flex flex-column-ns absolute-ns left-2 ph4-ns ml5-ns items-center pv2" style="gap: 1rem">
+          <h5 class="mv0">Share:</h5>
           <div class="facebook social-icon">
             <a :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A//greenhousestudios.uconn.edu/blog/${$route.path}`"
               ><i class="fa fa-facebook"></i></a>
