@@ -1,5 +1,5 @@
 <template>
-   <div class="flex flex-column-ns absolute-ns left-2 ph4-ns ml5-ns items-center pv2" style="gap: 1rem">
+   <div class="flex flex-column-l absolute-l left-2 ph4-l ml5-l items-center pv2" style="gap: 1rem">
           <h5 class="mv0">Share:</h5>
           <div class="facebook social-icon">
             <a :href="`https://www.facebook.com/sharer/sharer.php?u=https%3A//greenhousestudios.uconn.edu/blog/${$route.path}`"

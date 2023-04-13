@@ -7,9 +7,10 @@
             ? { backgroundColor: this.post.custom_fields.headerBgColor[0] }
             : { backgroundColor: '#8cc947' }
         "
-        class="flex pa7 items-center justify-center white relative"
+        class="flex pa6-l pa2 items-center justify-center white relative"
         id="blog-read-header"
       >
+      <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
         <div
           class="w-two-thirds-ns w-90 justify-center items-center flex flex-row-ns flex-column center"
         >
@@ -18,7 +19,7 @@
             :src="post.fimg_url"
             id="featured-img"
             alt=""
-            class="mr4-ns shadow-2 mb3 mw6 dn di-ns"
+            class="mr4-ns shadow-2 mb3 mw6-ns w5-m dn di-ns"
           />
           <div class="blogtitle lh-solid ml4-ns ph2">
             <div>
@@ -40,7 +41,7 @@
                 />
                 <div class="">
                   <div class="fw7 pa1">{{ authorName }}</div>
-                  <div class="fw2 pa1">Design Technologist</div>
+                  <div class="fw2 pa1">{{ authorRole }}</div>
                 </div>
               </div>
               <div class="pa1 w-100 flex items-center">
@@ -55,19 +56,19 @@
       </div>
 
       <div
-        class="textbox w-50-ns w-90 pv5-ns pv1 center"
+        class="textbox w-50-l w-90 pv5-ns pv1 center"
         style="line-height: 2.2rem"
       >
-        <span class="dn di-ns"><share-links></share-links></span>
+        <span class="dn di-l"><share-links></share-links></span>
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
           {{ post.custom_fields.byline[0] }}
         </h3>
         <span v-html="post.content.rendered"></span>
         <div class="mv2">
-          <span class="dn-ns di"><share-links></share-links></span>
+          <span class="dn-l di"><share-links></share-links></span>
           <p class="di fw7 mr3">Topics:</p>
           <a
-            :href="'/blog/categories/' + cat.id"
+            :href="'/blog/categories/' + cat.name"
             class="ph2 pv1 f6 fw6 mh2 category"
             style="background: #8cc947"
             v-for="cat in categoryList"
@@ -139,6 +140,11 @@ export default {
     },
     authorName() {
       return this.post._embedded.author[0].name;
+    },
+    authorRole(){
+      let author = this.post._embedded.author[0].slug;
+      if(author === "greenhouse-studios") return "";
+      return this.$store.state.people.find( x => x.slug === this.post._embedded.author[0].slug)?.categories[0]
     },
     authorImage() {
       let result = this.$store.state.people.find(
@@ -343,12 +349,10 @@ iframe {
 }
 
 #blog-read-header {
-  padding: 100px 0;
   background-image: url("../public/bgImg/BlogHeaderBG.png");
-  background-size: 100% 100%;
-  background-repeat: none;
   min-height: 560px;
-  object-fit: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .author-image {

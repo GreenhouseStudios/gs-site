@@ -50,7 +50,7 @@
       <div class="w-100 pv7-ns pv6 tc" id="blog-header">
         <div class="blog-header-text">
           <img src="../../public/img/GH-White-Logo.png" class="logo-white w-100">
-          <h1 class="center white fw7 f1 ma0">Germination Blog</h1>
+          <h1 class="center white fw7 f1-ns f2 mb4 mb0-ns ma0">Germination Blog</h1>
           <p class="f4 white ma0">The Greenhouse Studios Blog is the best place to catch up on the latest news about our
             research and initiatives.</p>
         </div>
@@ -379,8 +379,7 @@ li:hover {}
 #blog-header {
   font-family: 'Libre Franklin';
   background-image: url('../../public/bgImg/BlogHeaderBG.png');
-  background-size: 90% 100%;
-  background-repeat: none;
-
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 </style>

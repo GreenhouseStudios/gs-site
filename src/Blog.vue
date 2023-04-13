@@ -1,7 +1,7 @@
 <template>
 <div class="w-75 center">
 
-  <h1 class="ml6 mt5 f3">Recent Posts</h1>
+  <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
   <div
     class="grid"
     v-if="!$store.getters.loading && posts"
