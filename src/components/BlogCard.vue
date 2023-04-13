@@ -20,7 +20,7 @@
           <span class="month">{{ getDate(date).month }} </span>
           <span class="day">{{ getDate(date).day }}, </span>
           <span class="year">{{ getDate(date).year }}</span>
-div          </div>
+          </div>
         </div>
         
       </div>
@@ -95,7 +95,7 @@ export default {
     mainCategory() {
       let result;
       if(this.post.categories[0] && this.$store.state.categories)
-      result = this.$store.state.categories.find( x => x.id === this.post.categories[0]).name
+      result = this.$store.state.categories.find( x => x.id === this.post.categories[0])?.name
       else result = "none"
       if(!result) result = "none"
       return result;

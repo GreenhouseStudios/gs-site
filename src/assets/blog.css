@@ -94,21 +94,21 @@ a:hover {
 }
 
 @media (max-width: 660px) {
-    .grid {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(1, 300px);
     }
 }
 
 @media (min-width: 661px) {
-    .grid {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(2, 300px);
     }
 }
 
 @media (min-width: 1010px) {
-    .grid {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(3, 300px);
     }

@@ -1,28 +1,28 @@
 <template>
-<div class="w-75 center">
-
-  <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
-  <div
-    class="grid"
-    v-if="!$store.getters.loading && posts"
-  >
-    
-    <blog-card
-      v-for="post in posts"
-      :key="post.slug"
-      :post="post"
-      :title="post.title"
-      :content="post.content"
-      :date="post.date"
-      :slug="post.slug"
-    ></blog-card>
-    <infinite-loading @infinite="loadMore" :distance="1" v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
-    <div style="margin-bottom: 5%"></div>
+  <div class="w-75 center">
+    <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
+    <div class="blog-grid" v-if="!$store.getters.loading && posts">
+      <blog-card
+        v-for="post in posts"
+        :key="post.slug"
+        :post="post"
+        :title="post.title"
+        :content="post.content"
+        :date="post.date"
+        :slug="post.slug"
+      ></blog-card>
+      <infinite-loading
+        @infinite="loadMore"
+        :distance="1"
+        v-if="!busy && posts.length < $store.state.postCount"
+      ></infinite-loading>
+      <div style="margin-bottom: 5%"></div>
+    </div>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters } from "vuex";
 import BlogCard from "./components/BlogCard.vue";
 export default {
   name: "Blog",
@@ -31,7 +31,7 @@ export default {
     return {
       posts: null,
       busy: false,
-      selectedValue: '',
+      selectedValue: "",
       page: 1,
     };
   },
@@ -41,8 +41,7 @@ export default {
   updated() {
     if (this.$route.params.id != undefined) {
       this.selectedValue = this.$route.params.id;
-    }
-    else {
+    } else {
       this.selectedValue = null;
     }
   },
@@ -102,20 +101,19 @@ export default {
           let categories = post.categories;
           categories.forEach(function (cat) {
             allCategories.forEach(function (category) {
-              if (cat == category.id){
+              if (cat == category.id) {
                 cat = category.slug;
               }
-            })
+            });
             if (cat == id) {
               filteredPosts.push(post);
             }
-          })
-        })
-      }
-      else {
+          });
+        });
+      } else {
         posts.forEach(function (post) {
           filteredPosts.push(post);
-        })
+        });
       }
       return filteredPosts;
     },
@@ -130,7 +128,8 @@ export default {
 #category-select {
   width: 150px;
   padding: 10px;
-*{
+}
+* {
   font-family: "Libre Franklin";
 }
 </style>

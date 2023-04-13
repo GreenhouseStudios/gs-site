@@ -12,7 +12,7 @@
       </p>
     </div>
     <div class="w-60-l w-90 bb bw1 center mb3"></div>
-    <div class="grid" v-if="projects">
+    <div class="blog-grid" v-if="projects">
       <card
         v-for="(project, index) in projectsByName"
         :key="project.slug"
@@ -60,8 +60,6 @@ export default {
     },
   },
   beforeRouteLeave(to, from, next) {
-    console.log(to);
-    console.log(from);
     this.$refs.projects.map(x => x.reset());
     next();
   }

@@ -146,7 +146,7 @@ export default {
       return Math.sin(this.phase) * 20 + 30;
     },
     image() {
-      if (this.person.image.source_url) return this.person.image.source_url;
+      if (this.person.image) return this.person.image;
       else return this.person.image;
     },
     usesPlaceholder() {

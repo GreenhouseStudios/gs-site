@@ -33,12 +33,14 @@ import Footer from "./components/Footer.vue";
 import Header from './components/Header.vue';
 // import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
+import BlogNav from "./components/BlogNav.vue";
 export default {
   name: "App",
   components: {
     Nav,
     Footer,
     Header,
+    BlogNav
     // Loading,
   },
   data() {

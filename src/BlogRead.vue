@@ -10,7 +10,12 @@
         class="flex pa6-l pa2 items-center justify-center white relative"
         id="blog-read-header"
       >
-      <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <router-link
+          class="absolute left-2 top-2 fw7 f4"
+          id="back-link"
+          to="/blog"
+          ><i>&#8592;</i> Back</router-link
+        >
         <div
           class="w-two-thirds-ns w-90 justify-center items-center flex flex-row-ns flex-column center"
         >
@@ -54,87 +59,71 @@
           </div>
         </div>
       </div>
-      <div class="credits db w-70 pa2">
-        <span class="date fr">{{
-          new Date(post.date).toLocaleDateString("en-us")
-        }}</span>
-        <div class="pv2 ">By {{ post._embedded.author[0].name }}</div>
-        <div class="f5 fw2 mb3 mt2">{{ readTime }} minute read</div>
-      </div>
-      <div id="img_and_byline">
-        <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" class="w5" alt="" />
-
-      <div
-        class="textbox w-50-l w-90 pv5-ns pv1 center"
-        style="line-height: 2.2rem"
-      >
-        <span class="dn di-l"><share-links></share-links></span>
-        <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
-          {{ post.custom_fields.byline[0] }}
-        </h3>
-        <span v-html="post.content.rendered"></span>
-        <div class="mv2">
-          <span class="dn-l di"><share-links></share-links></span>
-          <p class="di fw7 mr3">Topics:</p>
-          <a
-            :href="'/blog/categories/' + cat.name"
-            class="ph2 pv1 f6 fw6 mh2 category"
-            style="background: #8cc947"
-            v-for="cat in categoryList"
-            :key="cat"
-            >{{ cat.name }}</a
-          >
-        </div>
-      </div>
-      <div class="text-1">
+      <div>
+        <div
+          class="textbox w-50-l w-90 pv5-ns pv1 center"
+          style="line-height: 2.2rem"
+        >
+          <span class="dn di-l"><share-links></share-links></span>
+          <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
+            {{ post.custom_fields.byline[0] }}
+          </h3>
+          <span v-html="post.content.rendered"></span>
+          <div class="mv2">
+            <span class="dn-l di"><share-links></share-links></span>
+            <p class="di fw7 mr3">Topics:</p>
+            <a
+              :href="'/blog/categories/' + cat.name"
+              class="ph2 pv1 f6 fw6 mh2 category"
+              style="background: #8cc947"
+              v-for="cat in categoryList"
+              :key="cat.name"
+              >{{ cat.name }}</a
+            >
+          </div>
+          <div class="text-1 mv5" v-if="getSuggestedPosts.length > 0">
             <div class="fprojects-text">
               <h3 class="title-2">Suggested Blog Posts</h3>
             </div>
-        <div class="suggestedPosts" v-if="!$store.getters.loading && posts">
-          <blog-card class="mh3"
-              v-for="p in getSuggestedPosts"
-              :key="p.slug"
-              :post="p"
-              :title="p.title"
-              :content="p.content"
-              :date="p.date"
-              :slug="p.slug"
-            ></blog-card>
+            <div class="suggestedPosts">
+              <blog-card
+                class="mh3"
+                v-for="p in getSuggestedPosts"
+                :key="p.slug"
+                :post="p"
+                :title="p.title"
+                :content="p.content"
+                :date="p.date"
+                :slug="p.slug"
+              ></blog-card>
+            </div>
+          </div>
         </div>
-        </div>
-    </div>
-    <div v-if="$store.getters.loading">
-      <Loading></Loading>
-    </div>
-    <div v-if="!$store.getters.loading && !post">
-      <NotFound></NotFound>
+      </div>
+      <div v-if="$store.getters.loading">
+        <Loading></Loading>
+      </div>
+      <div v-if="!$store.getters.loading && !post">
+        <NotFound></NotFound>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import BlogCard from './components/BlogCard.vue';
+import BlogCard from "./components/BlogCard.vue";
 import NotFound from "./NotFound.vue";
 import ShareLinks from "./components/ShareLinks.vue";
 import Loading from "./components/Loading.vue";
 export default {
   name: "BlogRead",
-  components: { NotFound, ShareLinks, Loading },
+  components: { NotFound, ShareLinks, Loading, BlogCard },
   data() {
     return {
       date: "",
-      posts: null,
     };
   },
-  mounted() {
-    this.posts = this.$store.getters.allPosts;
-  },
-
-  // async created() {
-  //     this.post = await this.$store.getters.postBySlug(this.$route.params.slug);
-  // },
-
   computed: {
     ...mapGetters({
       postBySlug: "postBySlug",
@@ -143,13 +132,13 @@ export default {
       previousPost: "previousPost",
     }),
     post() {
-      return this.postBySlug(this.$route.params.slug)
+      return this.postBySlug(this.$route.params.slug);
     },
     allCategories() {
-      return this.$store.getters.allCategories
+      return this.$store.getters.allCategories;
     },
     getSuggestedPosts() {
-      let allPosts = this.posts;
+      let allPosts = this.$store.state.posts;
       let numSuggested = 0;
       let suggestedPosts = [];
       let currentCategories = this.post.categories;
@@ -186,7 +175,7 @@ export default {
       else return null;
     },
     showFeaturedImg() {
-      if (this.post.custom_fields.show_featured_img?.length)
+      if (this.post?.custom_fields?.show_featured_img?.length)
         return this.post?.custom_fields?.show_featured_img[0] !== "false";
       else return true;
     },
@@ -198,18 +187,18 @@ export default {
     authorName() {
       return this.post._embedded.author[0].name;
     },
-    authorRole(){
+    authorRole() {
       let author = this.post._embedded.author[0].slug;
-      if(author === "greenhouse-studios") return "";
-      return this.$store.state.people.find( x => x.slug === this.post._embedded.author[0].slug)?.categories[0]
+      if (author === "greenhouse-studios") return "";
+      return this.$store.state.people.find(
+        (x) => x.slug === this.post._embedded.author[0].slug
+      )?.categories[0];
     },
     authorImage() {
       let result = this.$store.state.people.find(
         (p) => p.title.rendered === this.post._embedded.author[0].name
       );
-      console.log(result);
       result = result?.image.source_url;
-      console.log(result);
       if (!result)
         result =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
@@ -240,8 +229,7 @@ export default {
       }
     },
     removeTags(str) {
-      if (str === null || str === "")
-        return false;
+      if (str === null || str === "") return false;
       else {
         str = str.toString();
         str = str.replace(/&#8217;/g, "'");
@@ -258,8 +246,7 @@ export default {
         // Placeholder Image
         src =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
-      }
-      else {
+      } else {
         src = src[1];
       }
       return src;
@@ -270,22 +257,23 @@ export default {
       if (alt == null) {
         // Placeholder Image
         alt = "A blog image";
-      }
-      else {
+      } else {
         alt = alt[2];
       }
       return alt;
     },
     isMobile() {
-      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      if (
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          navigator.userAgent
+        )
+      ) {
         return true;
-      }
-      else {
+      } else {
         return false;
       }
     },
   },
-  //components: { NotFound }
 };
 </script>
 
@@ -371,8 +359,6 @@ h1 {
   }
 }
 
-
-}
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent {
     margin: 2em 10%;
@@ -383,11 +369,9 @@ h1 {
   #blogcontent {
     margin: 2em;
   }
-} */
-
+}
 .textbox {
   height: 100%;
-  margin-top: 5em;
 }
 
 .alignleft {
@@ -442,7 +426,6 @@ li {
   display: inline;
   list-style: none;
   padding: 0px;
-
 }
 
 #blog-read-header {

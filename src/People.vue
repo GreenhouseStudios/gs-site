@@ -12,7 +12,7 @@
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">
-      <div class="grid pa4" v-if="activePeople.length > 0">
+      <div class="blog-grid pa4" v-if="activePeople.length > 0">
         <person-card v-for="(person, index) in activePeople" :key="person.slug" :person="person" :index="index"
           ref="cards"></person-card>
       </div>

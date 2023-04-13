@@ -17,7 +17,7 @@ const routes = [
   { name: "People", path: "/people", component: People },
   { name: "People", path: "/person/:name/", component: About },
   { name: "Blog", path: "/blog", component: Blog },
-  { path: "/blog/:slug", component: BlogRead },
+  { name: "BlogRead", path: "/blog/:slug", component: BlogRead },
   { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
   { path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
