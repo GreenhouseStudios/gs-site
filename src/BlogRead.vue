@@ -22,10 +22,29 @@
       <div class="textbox">
         <span v-html="post.content.rendered"></span>
       </div>
-      <div class="flex w-100 mt5 black h4 justify-between underline">
-        <router-link v-if="prev" class="shimmer relative" :to="'/blog/'+prev.slug">&#x2190; Previous</router-link>
-        <router-link v-if="next" class="shimmer relative" :to="'/blog/' + next.slug">Next &#x2192;</router-link>
+      <div>
+        <ul class="categorylist">
+          <li v-for="cat in post.categories" :key="cat">
+            <router-link :to="'/blog/category/' + getCategorySlug(cat)">{{ getCategoryById(cat) }}</router-link>
+          </li>
+        </ul>
       </div>
+      <div class="text-1">
+            <div class="fprojects-text">
+              <h3 class="title-2">Suggested Blog Posts</h3>
+            </div>
+        <div class="suggestedPosts" v-if="!$store.getters.loading && posts">
+          <blog-card class="mh3"
+              v-for="p in getSuggestedPosts"
+              :key="p.slug"
+              :post="p"
+              :title="p.title"
+              :content="p.content"
+              :date="p.date"
+              :slug="p.slug"
+            ></blog-card>
+        </div>
+        </div>
     </div>
     <div v-else>
       <NotFound></NotFound>
@@ -35,14 +54,21 @@
 
 <script>
 import { mapGetters } from "vuex";
+import BlogCard from './components/BlogCard.vue';
 import NotFound from "./NotFound.vue";
 export default {
   name: "BlogRead",
+  components: { BlogCard },
   data() {
     return {
       date: "",
+      posts: null,
     };
   },
+  mounted() {
+    this.posts = this.$store.getters.allPosts;
+  },
+
   // async created() {
   //     this.post = await this.$store.getters.postBySlug(this.$route.params.slug);
   // },
@@ -50,37 +76,55 @@ export default {
   computed: {
     ...mapGetters({
       postBySlug: "postBySlug",
-      nextPost: "nextPost",
-      previousPost: "previousPost"
+      allCategories: "allCategories",
     }),
     post() {
-      return this.postBySlug(this.$route.params.slug);
+      return this.postBySlug(this.$route.params.slug)
     },
-    next(){
-      return this.nextPost(this.post);
+    allCategories() {
+      return this.$store.getters.allCategories
     },
-    prev(){
-      return this.previousPost(this.post);
+    getSuggestedPosts() {
+      let allPosts = this.posts;
+      let numSuggested = 0;
+      let suggestedPosts = [];
+      let currentCategories = this.post.categories;
+      for (let i = 0; i < allPosts.length; i++) {
+        if (allPosts[i] != this.post) {
+          let postCategories = allPosts[i].categories;
+          for (let x = 0; x < currentCategories.length; x++) {
+            if (postCategories.includes(currentCategories[x])) {
+              suggestedPosts.push(allPosts[i]);
+              numSuggested += 1;
+            }
+            break;
+          }
+        }
+        if (numSuggested == 3) {
+          break;
+        }
+      }
+      return suggestedPosts;
     },
-    wordCount(){
-      if(this.post.content)
-      return this.post.content.rendered.split(' ').length;
-      return 0
-    },
-    readTime(){
-      if(this.wordCount)
-      return Math.round(this.wordCount / 200);
-      else return null;
-    },
-    showFeaturedImg(){
-      if(this.post.custom_fields.show_featured_img?.length)
-      return this.post?.custom_fields?.show_featured_img[0] !== 'false';
-      else return true;
-    }
   },
   methods: {
+    getCategoryById(id) {
+      for (let i = 0; i < this.allCategories.length; i++) {
+        if (this.allCategories[i].id == id) {
+          return this.allCategories[i].name;
+        }
+      }
+    },
+    getCategorySlug(id) {
+      for (let i = 0; i < this.allCategories.length; i++) {
+        if (this.allCategories[i].id == id) {
+          return this.allCategories[i].slug;
+        }
+      }
+    },
     removeTags(str) {
-      if (str === null || str === "") return false;
+      if (str === null || str === "")
+        return false;
       else {
         str = str.toString();
         str = str.replace(/&#8217;/g, "'");
@@ -97,7 +141,8 @@ export default {
         // Placeholder Image
         src =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg";
-      } else {
+      }
+      else {
         src = src[1];
       }
       return src;
@@ -108,36 +153,36 @@ export default {
       if (alt == null) {
         // Placeholder Image
         alt = "A blog image";
-      } else {
+      }
+      else {
         alt = alt[2];
       }
       return alt;
     },
     isMobile() {
-      if (
-        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-          navigator.userAgent
-        )
-      ) {
+      if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
         return true;
-      } else {
+      }
+      else {
         return false;
       }
     },
   },
-  components: { NotFound },
+  //components: { NotFound }
 };
 </script>
 
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
+
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
 }
+
 h2 {
   margin: 0px;
   border: 0px;
@@ -152,6 +197,7 @@ h1 {
   margin-top: 20px;
   margin-bottom: 10px;
 }
+
 .date {
   background: #8cc947;
   padding: 5px 10px;
@@ -160,6 +206,7 @@ h1 {
   border-radius: 20px;
   font-size: 18px;
 }
+
 .credits {
   font-weight: 700;
   font-size: 18px;
@@ -173,6 +220,7 @@ h1 {
   justify-content: space-between;
   margin: 2em, 20%;
 }
+
 #mainimg {
   float: left;
 }
@@ -180,6 +228,7 @@ h1 {
 #blogmain {
   overflow: hidden;
 }
+
 #blogcontent {
   margin: 2em 20%;
 }
@@ -189,6 +238,7 @@ h1 {
     margin: 2em 10%;
   }
 }
+
 @media (max-width: 38em) {
   #blogcontent {
     margin: 2em;
@@ -197,28 +247,33 @@ h1 {
 
 .textbox {
   height: 100%;
-  margin-top: -5px;
+  margin-top: 5em;
 }
+
 .alignleft {
   display: inline;
   float: left;
   margin-right: 1.5em;
 }
+
 hr {
   margin-top: 20px;
   margin-bottom: 20px;
   border: 0;
   border-top: 1px solid #eeeeee;
 }
+
 img {
   height: auto;
   max-width: 100%;
 }
+
 #blogmain img {
   display: flex;
   margin-right: 15px;
   float: left;
 }
+
 @media (max-width: 38em) {
   #blogmain img {
     width: 100%;
@@ -226,34 +281,62 @@ img {
     height: auto;
   }
 }
+
 #blogmain #mainimg {
   width: 100%;
   padding: 0;
   height: auto;
 }
+
 #blogmain a {
   color: #717073;
   font-weight: bold !important;
 }
+
 #blogmain a:hover {
   color: #8cc947;
 }
+
 iframe {
   width: 100%;
   margin: auto;
 }
+
 .wp-caption {
   margin: auto;
   width: 100% !important;
 }
+
 .wp-caption-text {
   font-size: 14px;
   text-align: center;
 }
-#img_and_byline {
-  margin-top: 5em;
+
+li {
+  display: inline-block;
 }
-a {
-  color: #161616;
+
+.categorylist {
+  display: inline;
+  list-style: none;
+  padding: 0px;
+}
+
+.categorylist li {
+  display: inline;
+}
+
+.categorylist li::after {
+  content: "-";
+}
+
+.categorylist li:last-child::after {
+  content: "";
+}
+
+.suggestedPosts {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
 }
 </style>

@@ -9,19 +9,24 @@ const vuexLocal = new VuexPersistence({
   storage: window.localStorage
 })
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
     state: {
-      posts: [],
-      postCount: 0,
-      people: [],
-      peopleCount: 0,
-      projects: [],
-      loading: true,
+        posts: [],
+        postCount: 0,
+        people: [],
+        peopleCount: 0,
+        projects: [],
+        categories: [],
+        tags: [],
+        peopleCategories: [],
+        pageCategories: [],
+        categoryCount: 0,
+        loading: true,
     },
     mutations,
     actions,
     getters,
-    plugins: [vuexLocal.plugin]
-})
+    // plugins: [vuexLocal.plugin]
+});

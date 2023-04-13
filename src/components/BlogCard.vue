@@ -1,6 +1,6 @@
 <!-- :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" -->
 <template>
-    <div class="wrapper" :style="`background-image: url(  ${post.fimg_url ? post.fimg_url : backupImg} )`" alt="Blog Card Image" >
+    <div class="wrapper" :style="post.image ? 'background-image: url(' + post.image + ')' : 'url(' + backupImg + ')'" alt="Blog Card Image" >
       <div class="data" onclick="">
         <div class="content">
           <hr>
@@ -25,33 +25,33 @@
 
 <script>
 export default {
-  name: "BlogCard",
-  props: {
-    post: {
-      type: Object,
+    name: "BlogCard",
+    props: {
+        post: {
+          type: Object,
+        },
+        title: {
+            type: Object,
+        },
+        content: {
+            type: Object,
+        },
+        date: {
+            type: String,
+        },
+        slug: {
+          type: String
+        }
     },
-    title: {
-      type: Object,
+    data(){
+        return {
+            isFlipped: false,
+            backupImg: "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1-300x270.jpg"
+        }
     },
-    content: {
-      type: Object,
-    },
-    date: {
-      type: String,
-    },
-    slug: {
-      type: String
-    }
-  },
-  data() {
-    return {
-      isFlipped: false,
-      backupImg: "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg"
-    }
-  },
-  methods: {
-    removeTags(str) {
-      if ((str === null) || (str === ''))
+    methods: {
+      removeTags(str) {
+        if ((str===null) || (str===''))
         return false;
       else {
         str = str.toString();

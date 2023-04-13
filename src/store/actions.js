@@ -7,9 +7,14 @@ const actions = {
   async getSiteData({ commit, dispatch }) {
     await dispatch("getPostCount");
     await dispatch("getPeopleCount");
+    await dispatch("getCategoryCount");
     await dispatch("getPosts", 1);
     await dispatch("getPeople", 1);
     await dispatch("getProjects");
+    await dispatch("getCategories");
+    await dispatch("getTags");
+    await dispatch("getPeopleCategories");
+    await dispatch("getPageCategories");
     commit("setLoadingState", false);
   },
   async getPostCount({ commit }) {
@@ -22,15 +27,19 @@ const actions = {
       commit("setPeopleCount", parseInt(res.headers["x-wp-total"]));
     });
   },
+  async getCategoryCount({ commit }) {
+    return axios.get("categories?per_page=1").then((res) => {
+      commit("setCategoryCount", parseInt(res.headers["x-wp-total"]));
+    });
+  },
   async getPosts({ commit, dispatch }, page) {
     return axios.get("posts?_embed&per_page=100&page=" + page).then((res) => {
       let pageTotal = parseInt(res.headers["x-wp-totalpages"]);
       var posts = [];
       res.data.forEach((post) => {
-        // axios.get("media/" + post.featured_media).then((imgSrc) => {
-        //   post["image"] = imgSrc.data.guid.rendered;
-
-        // })
+        axios.get("media/" + post.featured_media).then((imgSrc) => {
+          post["image"] = imgSrc.data.media_details.sizes.medium.source_url;
+        });
         posts.push(post);
         commit("setPosts", posts);
       });
@@ -107,6 +116,32 @@ const actions = {
         commit("setProjects", res.data);
       });
     }
+  },
+  async getCategories({ commit }) {
+    // return axios.get("post_category").then((res) => {
+    return axios.get("categories?per_page=100&page=1").then((res) => {
+      let result = res.data;
+      let uncategorizedIndex = result.indexOf(
+        result.find((x) => x.slug === "uncategorized")
+      );
+      result.splice(uncategorizedIndex, 1);
+      commit("setCategories", result);
+    });
+  },
+  async getPeopleCategories({ commit }) {
+    return axios.get("people_category").then((res) => {
+      commit("setPeopleCategories", res.data);
+    });
+  },
+  async getPageCategories({ commit }) {
+    return axios.get("page_category").then((res) => {
+      commit("setPageCategories", res.data);
+    });
+  },
+  async getTags({ commit }) {
+    return axios.get("tags?per_page=100&page=1").then((res) => {
+      commit("setTags", res.data);
+    });
   },
 };
 
