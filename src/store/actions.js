@@ -37,11 +37,13 @@ const actions = {
       let pageTotal = parseInt(res.headers["x-wp-totalpages"]);
       var posts = [];
       res.data.forEach((post) => {
-        axios.get("media/" + post.featured_media).then((imgSrc) => {
-          post["image"] = imgSrc.data.media_details.sizes.medium.source_url;
-        });
-        posts.push(post);
-        commit("setPosts", posts);
+        if (post.featured_media > 0) {
+          axios.get("media/" + post.featured_media).then((imgSrc) => {
+            post["image"] = imgSrc.data.media_details.sizes.medium?.source_url;
+          });
+          posts.push(post);
+          commit("setPosts", posts);
+        }
       });
       if (page < pageTotal) {
         dispatch("getPosts", page + 1);
@@ -53,7 +55,6 @@ const actions = {
       return imgSrc.data.guid.rendered;
     });
   },
-
   async getMorePosts({ state, dispatch }, page) {
     let remainingPostCount = state.postCount - state.posts.length;
     console.log(`remaining posts: ${remainingPostCount}`);
@@ -66,7 +67,9 @@ const actions = {
             page
         )
         .then((res) => {
-          dispatch("getBlogImages", res.data).then(() => {});
+          dispatch("getBlogImages", res.data).then(() => {
+            
+          });
         });
     }
   },
