@@ -6,8 +6,9 @@
       menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
     }`"
   >
-    <Header></Header>
-    <Nav v-on:toggle="menuOn = !menuOn"></Nav>
+    <Header v-if="$route.name !== 'Blog' && $route.name !== 'BlogRead'"></Header>
+    <Nav v-on:toggle="menuOn = !menuOn" v-if="$route.name !== 'Blog' && $route.name !== 'BlogRead'"></Nav>
+    <BlogNav v-if="$route.name == 'Blog'" v-on:toggle="menuOn = !menuOn" ></BlogNav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
     <!-- <div
       :style="`height:${height}; width:${width}`"

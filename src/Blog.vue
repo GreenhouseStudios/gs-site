@@ -1,41 +1,23 @@
 <template>
-<div>
-  <div class="w-80 f3-ns f4 mh5 mv6 mh6-l mv3-l  pv3-ns pv3 fw4">
-      <h2 class="page-title f1">Blog</h2>
-      <p>The Greenhouse Studios Blog is the best place to catch up on the latest news about our research and initiatives
-      </p>
+<div class="w-75 center">
 
-      <!-- <div>
-        <button v-for="cat in $store.state.categories" :key="cat.slug" class="bg-white ma2 f6 fw6 pa2 grow">{{ cat.name }}</button>
-      </div> -->
-    </div>
-
-    <div class="center w-60 relative">
-      <div class="relative flex items-center justify-end">
-        <select v-model="selectedValue" id="category-select" class="f6"
-          @change="$router.push('/blog/category/' + $event.target.value)">
-          <option value="" class="pa0" selected disabled hidden>Filter</option>
-          <option v-for="cat in $store.state.categories" :key="cat" v-bind:value="cat.slug">
-            {{ cat.name }}
-          </option>
-        </select>
-        <div class="reset"
-        v-if="selectedValue != null">
-          <router-link :to="'/blog'">
-            <button class="w2 h2 ma2 bg-white grow border-1">X</button>
-          </router-link>
-        </div>
-      </div>
-      <div class="blog-grid" v-if="!$store.getters.loading && posts">
-
-        <blog-card v-for="post in filter" :key="post.slug" :post="post" :title="post.title" :content="post.content"
-          :date="post.date" :slug="post.slug"></blog-card>
-        <infinite-loading @infinite="loadMore" :distance="1"
-          v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
-        <div style="margin-bottom: 5%"></div>
-      </div>
-
-    </div>
+  <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
+  <div
+    class="grid"
+    v-if="!$store.getters.loading && posts"
+  >
+    
+    <blog-card
+      v-for="post in posts"
+      :key="post.slug"
+      :post="post"
+      :title="post.title"
+      :content="post.content"
+      :date="post.date"
+      :slug="post.slug"
+    ></blog-card>
+    <infinite-loading @infinite="loadMore" :distance="1" v-if="!busy && posts.length < $store.state.postCount"></infinite-loading>
+    <div style="margin-bottom: 5%"></div>
   </div>
 </template>
 
@@ -148,5 +130,7 @@ export default {
 #category-select {
   width: 150px;
   padding: 10px;
+*{
+  font-family: "Libre Franklin";
 }
 </style>

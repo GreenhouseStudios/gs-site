@@ -1,9 +1,57 @@
 <template>
   <div id="blogmain">
-    <div id="blogcontent" v-if="!$store.getters.loading && post">
-      <div class="titledatecontainer">
-        <div class="blogtitle lh-title">
-          <h2 class="f1" v-html="post.title.rendered"></h2>
+    <div v-if="!$store.getters.loading && post">
+      <div
+        v-bind:style="
+          this.post.custom_fields.headerBgColor
+            ? { backgroundColor: this.post.custom_fields.headerBgColor[0] }
+            : { backgroundColor: '#8cc947' }
+        "
+        class="flex pa6-l pa2 items-center justify-center white relative"
+        id="blog-read-header"
+      >
+      <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"><i>&#8592;</i> Back</router-link>
+        <div
+          class="w-two-thirds-ns w-90 justify-center items-center flex flex-row-ns flex-column center"
+        >
+          <img
+            v-if="post.fimg_url && showFeaturedImg"
+            :src="post.fimg_url"
+            id="featured-img"
+            alt=""
+            class="mr4-ns shadow-2 mb3 mw6-ns w5-m dn di-ns"
+          />
+          <div class="blogtitle lh-solid ml4-ns ph2">
+            <div>
+              <h2 class="f1" v-html="post.title.rendered"></h2>
+              <img
+                v-if="post.fimg_url && showFeaturedImg"
+                :src="post.fimg_url"
+                id="featured-img"
+                alt=""
+                class="mr4-ns shadow-2 mv3 w6 dn-ns"
+              />
+              <div
+                class="f4 pv2 flex items-center justify-around justify-start-ns mb2"
+              >
+                <img
+                  :src="authorImage"
+                  alt=""
+                  class="author-image br-100 mr3-ns"
+                />
+                <div class="">
+                  <div class="fw7 pa1">{{ authorName }}</div>
+                  <div class="fw2 pa1">{{ authorRole }}</div>
+                </div>
+              </div>
+              <div class="pa1 w-100 flex items-center">
+                <span class="mr5">{{
+                  new Date(post.date).toLocaleDateString("en-us")
+                }}</span>
+                <span class="f5 fw2 mv3-ns">{{ readTime }} minute read</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div class="credits db w-70 pa2">
@@ -15,19 +63,28 @@
       </div>
       <div id="img_and_byline">
         <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" class="w5" alt="" />
+
+      <div
+        class="textbox w-50-l w-90 pv5-ns pv1 center"
+        style="line-height: 2.2rem"
+      >
+        <span class="dn di-l"><share-links></share-links></span>
         <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
           {{ post.custom_fields.byline[0] }}
         </h3>
-      </div>
-      <div class="textbox">
         <span v-html="post.content.rendered"></span>
-      </div>
-      <div>
-        <ul class="categorylist">
-          <li v-for="cat in post.categories" :key="cat">
-            <router-link :to="'/blog/category/' + getCategorySlug(cat)">{{ getCategoryById(cat) }}</router-link>
-          </li>
-        </ul>
+        <div class="mv2">
+          <span class="dn-l di"><share-links></share-links></span>
+          <p class="di fw7 mr3">Topics:</p>
+          <a
+            :href="'/blog/categories/' + cat.name"
+            class="ph2 pv1 f6 fw6 mh2 category"
+            style="background: #8cc947"
+            v-for="cat in categoryList"
+            :key="cat"
+            >{{ cat.name }}</a
+          >
+        </div>
       </div>
       <div class="text-1">
             <div class="fprojects-text">
@@ -46,7 +103,10 @@
         </div>
         </div>
     </div>
-    <div v-else>
+    <div v-if="$store.getters.loading">
+      <Loading></Loading>
+    </div>
+    <div v-if="!$store.getters.loading && !post">
       <NotFound></NotFound>
     </div>
   </div>
@@ -56,9 +116,11 @@
 import { mapGetters } from "vuex";
 import BlogCard from './components/BlogCard.vue';
 import NotFound from "./NotFound.vue";
+import ShareLinks from "./components/ShareLinks.vue";
+import Loading from "./components/Loading.vue";
 export default {
   name: "BlogRead",
-  components: { BlogCard },
+  components: { NotFound, ShareLinks, Loading },
   data() {
     return {
       date: "",
@@ -77,6 +139,8 @@ export default {
     ...mapGetters({
       postBySlug: "postBySlug",
       allCategories: "allCategories",
+      nextPost: "nextPost",
+      previousPost: "previousPost",
     }),
     post() {
       return this.postBySlug(this.$route.params.slug)
@@ -105,6 +169,59 @@ export default {
         }
       }
       return suggestedPosts;
+    },
+    next() {
+      return this.nextPost(this.post);
+    },
+    prev() {
+      return this.previousPost(this.post);
+    },
+    wordCount() {
+      if (this.post.content)
+        return this.post.content.rendered.split(" ").length;
+      return 0;
+    },
+    readTime() {
+      if (this.wordCount) return Math.round(this.wordCount / 200);
+      else return null;
+    },
+    showFeaturedImg() {
+      if (this.post.custom_fields.show_featured_img?.length)
+        return this.post?.custom_fields?.show_featured_img[0] !== "false";
+      else return true;
+    },
+    headerBgColor() {
+      if (this.post.custom_fields.headerBgColor) {
+        return this.post.custom_fields.headerBgColor;
+      } else return "#de7f42";
+    },
+    authorName() {
+      return this.post._embedded.author[0].name;
+    },
+    authorRole(){
+      let author = this.post._embedded.author[0].slug;
+      if(author === "greenhouse-studios") return "";
+      return this.$store.state.people.find( x => x.slug === this.post._embedded.author[0].slug)?.categories[0]
+    },
+    authorImage() {
+      let result = this.$store.state.people.find(
+        (p) => p.title.rendered === this.post._embedded.author[0].name
+      );
+      console.log(result);
+      result = result?.image.source_url;
+      console.log(result);
+      if (!result)
+        result =
+          "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
+      return result;
+    },
+    categoryList() {
+      let result;
+      if (this.post.categories && this.$store.state.categories)
+        result = this.$store.state.categories.filter((x) =>
+          this.post.categories.includes(x.id)
+        );
+      return result;
     },
   },
   methods: {
@@ -177,16 +294,28 @@ export default {
 @import "./assets/blog.css";
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-family: "Libre Franklin", "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 16px;
   line-height: 1.428571429;
   color: #333333;
 }
 
 h2 {
-  margin: 0px;
+  margin: 5px;
   border: 0px;
   padding-right: 10px;
+  font-size: 24px;
+  line-height: 2.5rem;
+}
+
+.category {
+  color: white;
+  text-decoration: none;
+}
+
+.category:hover {
+  color: white;
+  text-decoration: underline;
 }
 
 h1 {
@@ -201,7 +330,7 @@ h1 {
 .date {
   background: #8cc947;
   padding: 5px 10px;
-  color: #FFF;
+  color: #fff;
   font-weight: 700;
   border-radius: 20px;
   font-size: 18px;
@@ -210,8 +339,12 @@ h1 {
 .credits {
   font-weight: 700;
   font-size: 18px;
-  color: #333333;
+  color: white;
   padding-top: 5px;
+}
+
+.blogtitle {
+  max-width: 600px;
 }
 
 .titledatecontainer {
@@ -229,10 +362,17 @@ h1 {
   overflow: hidden;
 }
 
-#blogcontent {
-  margin: 2em 20%;
+@media (min-width: 600px) {
+  h2 {
+    margin: 0px;
+    border: 0px;
+    padding-right: 10px;
+    font-size: 32px;
+  }
 }
 
+
+}
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent {
     margin: 2em 10%;
@@ -243,7 +383,7 @@ h1 {
   #blogcontent {
     margin: 2em;
   }
-}
+} */
 
 .textbox {
   height: 100%;
@@ -263,20 +403,8 @@ hr {
   border-top: 1px solid #eeeeee;
 }
 
-img {
-  height: auto;
-  max-width: 100%;
-}
-
-#blogmain img {
-  display: flex;
-  margin-right: 15px;
-  float: left;
-}
-
 @media (max-width: 38em) {
   #blogmain img {
-    width: 100%;
     padding: 0;
     height: auto;
   }
@@ -288,15 +416,9 @@ img {
   height: auto;
 }
 
-#blogmain a {
-  color: #717073;
-  font-weight: bold !important;
-}
-
-#blogmain a:hover {
+/* #blogmain a:hover {
   color: #8cc947;
-}
-
+} */
 iframe {
   width: 100%;
   margin: auto;
@@ -320,6 +442,34 @@ li {
   display: inline;
   list-style: none;
   padding: 0px;
+
+}
+
+#blog-read-header {
+  background-image: url("../public/bgImg/BlogHeaderBG.png");
+  min-height: 560px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.author-image {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+}
+
+#back-link {
+  color: white !important;
+  text-decoration: none;
+}
+
+#back-link:hover {
+  color: white !important;
+  text-decoration: underline;
+}
+
+* {
+  font-family: Libre Franklin;
 }
 
 .categorylist li {
