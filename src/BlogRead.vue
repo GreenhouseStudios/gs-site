@@ -187,12 +187,23 @@ export default {
     authorName() {
       return this.post._embedded.author[0].name;
     },
-    authorRole() {
-      let author = this.post._embedded.author[0].slug;
-      if (author === "greenhouse-studios") return "";
+    author(){
+      return this.post._embedded.author[0]
+    },
+    authorPersonRecord(){
+      let author = this.post._embedded.author[0].name;
       return this.$store.state.people.find(
-        (x) => x.slug === this.post._embedded.author[0].slug
-      )?.categories[0];
+        (x) => x.title.rendered === author
+      );
+    },
+    authorRole() {
+      // let author = this.post._embedded.author[0].slug;
+      // if (author === "greenhouse-studios") return "";
+      // let authorRoleNumber =  this.$store.state.people.find(
+      //   (x) => x.slug === author
+      // )?.peopleCategories[0];
+      return this.$store.state.peopleCategories.find( x => x.id === this.authorPersonRecord.people_category[0])?.name;
+      // return this.$store.state.peopleCategories.find( x => x.id === authorRoleNumber)
     },
     authorImage() {
       let result = this.$store.state.people.find(
