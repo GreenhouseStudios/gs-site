@@ -1,9 +1,33 @@
 <template>
   <div class="w-75 center">
     <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
+
+    <div class="relative flex items-center justify-end">
+      <select
+        v-model="selectedValue"
+        id="category-select"
+        class="f6"
+        @change="$router.push('/blog/category/' + $event.target.value)"
+      >
+        <option value="" class="pa0" selected disabled hidden>Filter</option>
+        <option
+          v-for="cat in $store.state.categories"
+          :key="cat.slug"
+          v-bind:value="cat.slug"
+        >
+          {{ cat.name }}
+        </option>
+      </select>
+      <div class="reset" v-if="selectedValue != null">
+        <router-link :to="'/blog'">
+          <button class="w2 h2 ma2 bg-white grow border-1">X</button>
+        </router-link>
+      </div>
+    </div>
+
     <div class="blog-grid" v-if="!$store.getters.loading && posts">
       <blog-card
-        v-for="post in posts"
+        v-for="post in filter"
         :key="post.slug"
         :post="post"
         :title="post.title"
@@ -39,7 +63,7 @@ export default {
     this.posts = this.$store.getters.allPosts;
   },
   updated() {
-    if (this.$route.params.id != undefined) {
+    if (this.$route.params.id) {
       this.selectedValue = this.$route.params.id;
     } else {
       this.selectedValue = null;

@@ -19,7 +19,7 @@ const routes = [
   { name: "Blog", path: "/blog", component: Blog },
   { name: "BlogRead", path: "/blog/:slug", component: BlogRead },
   { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
-  { path: "/projects/:slug", component: ProjectPage },
+  { name: "ProjectPage", path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
   { name: "Home", path: "/", component: Home },
   // { path: "/404", component: NotFound },
