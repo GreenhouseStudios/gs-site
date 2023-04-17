@@ -11,7 +11,7 @@
         communications in the digital age looks like.
       </p>
     </div>
-    <div class="w-60-l w-90 bb bw1 center mb3"></div>
+    <div class="w-60-l w-90  bw1 center mb3"></div>
     <div class="blog-grid" v-if="projects">
       <card
         v-for="(project, index) in projectsByName"

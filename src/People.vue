@@ -5,7 +5,7 @@
       We are an interdisciplinary team with diverse backgrounds who bring their
       individual interests and passions into the Greenhouse Studios community.
     </div>
-    <div id="tab-btn-container" class="w-50-ns center flex flex-row justify-around bb">
+    <div id="tab-btn-container" class="w-50-ns center flex flex-row justify-around ">
       <button @click="changeActiveTab(index)" class="ma3 pa3 br2 ma1 bg-transparent w5" id="subnav-btn"
         :class="{ active: activeTab === index, inactive: activeTab !== index }" v-for="(tab, index) in tabs" :key="tab">
         <h3 class="ma0 f1 f4-ns f4" style="color: #333333">{{ tab }}</h3>
