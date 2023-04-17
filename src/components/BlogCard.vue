@@ -3,20 +3,20 @@
   <router-link class="grow" style="text-decoration: none" :to="`/blog/${slug}`">
     <div class="wrapper" alt="Blog Card Image">
       <img
-        class="pb0 ma0 bn w-100 absolute top-0 h5"
+        class="mb0 w-100 relative"
         style="object-fit: cover"
         :src="post.fimg_url ? post.fimg_url : backupImg"
         alt=""
       />
       <div
-        class="bg-light-gray w-100 pa0 ma0 bn absolute bottom-0"
-        style="height: 10rem"
+        class="bg-light-gray w-100 pa0 bn absolute"
+        style="height: 8rem"
         id="card-info"
       >
-        <div class="ph3 pv2">
-          <span class="ph2 pv1 white f6 fw6" style="background: #8CC947">{{mainCategory}}</span>
-          <h3 class="mv1 overflow-hidden f5">{{ removeTags(title.rendered) }}</h3>
-          <div class="absolute bottom-1">
+        <div class="ph3 pv2 mt1">
+          <span class="ph2 pv1 white f6 fw6 mt5" style="background: #8CC947">{{mainCategory}}</span>
+          <h3 class="mv1  f5 blogcardtext">{{ removeTags(title.rendered) }}</h3>
+          <div class="absolute date-text">
           <span class="month">{{ getDate(date).month }} </span>
           <span class="day">{{ getDate(date).day }}, </span>
           <span class="year">{{ getDate(date).year }}</span>
@@ -107,19 +107,26 @@ export default {
 <style lang="scss" scoped>
 @import "../assets/projects.css";
 
-
+img {
+  aspect-ratio: 1/1;
+}
 .title:hover {
   text-decoration: underline;
+}
+
+.date-text {
+  bottom: 8px;
 }
 .blogcardtext {
   overflow: hidden;
   text-overflow: ellipsis;
   display: -webkit-box;
-  -webkit-line-clamp: 3; /* number of lines to show */
-  line-clamp: 3;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
   -webkit-box-orient: vertical;
 }
 #card-info {
+  top: 300px;
 }
 a:visited{
   color:black;
@@ -127,5 +134,9 @@ a:visited{
 
 h3 {
   font-size: 18px;
+}
+
+.wrapper {
+  height: 428px;
 }
 </style>
