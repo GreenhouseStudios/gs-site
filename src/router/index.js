@@ -15,7 +15,7 @@ Vue.use(VueRouter);
 const routes = [
   { name: "Projects", path: "/projects", component: Projects },
   { name: "People", path: "/people", component: People },
-  { name: "People", path: "/person/:name/", component: About },
+  { name: "PersonAbout", path: "/person/:name/", component: About },
   { name: "Blog", path: "/blog", component: Blog },
   { name: "BlogRead", path: "/blog/:slug", component: BlogRead },
   { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
@@ -32,7 +32,7 @@ const router = new VueRouter({
   scrollBehavior(to, from, savedPosition) {
     // console.log(to);
     // console.log(from);
-    if (savedPosition && !to.params.name) {
+    if (savedPosition && !to.params.name || to.path.includes('/blog') && to.name !== 'BlogRead') {
       return savedPosition;
     } else {
       return { x: 0, y: 0 };

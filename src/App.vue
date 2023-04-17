@@ -6,7 +6,7 @@
       menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
     }`"
   >
-    <Header v-if="$route.name !== 'Blog' && $route.name !== 'BlogRead'"></Header>
+    <Header v-if="!$route.path.includes('blog')"></Header>
     <Nav v-on:toggle="menuOn = !menuOn" v-if="!$route.path.includes('blog')"></Nav>
     <BlogNav v-if="$route.path.includes('blog') && $route.name !== 'BlogRead'" v-on:toggle="menuOn = !menuOn" ></BlogNav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
