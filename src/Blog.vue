@@ -11,7 +11,7 @@
     </div>
 
     <div class="center w-60 relative">
-      <div class="relative right-2 flex items-center justify-end">
+      <div class="relative flex items-center justify-end">
         <select v-model="selectedValue" id="category-select" class="f6"
           @change="$router.push('/blog/category/' + $event.target.value)">
           <option value="" class="pa0" selected disabled hidden>Filter</option>
@@ -22,7 +22,7 @@
         <div class="reset"
         v-if="selectedValue != ''">
           <router-link :to="'/blog'">
-            <button>Reset Filter</button>
+            <button class="w2 h2 ma2 bg-white grow border-1">X</button>
           </router-link>
         </div>
       </div>
@@ -147,5 +147,6 @@ export default {
 
 #category-select {
   width: 150px;
+  padding: 10px;
 }
 </style>

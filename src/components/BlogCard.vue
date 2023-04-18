@@ -1,5 +1,5 @@
 <template>
-    <div class="wrapper" :style="'background-image: url(' + post.fimg_url + '), url(' + backupImg + ')'" alt="Blog Card Image" >
+    <div class="wrapper" :style="post.image ? 'background-image: url(' + post.image + ')' : 'url(' + backupImg + ')'" alt="Blog Card Image" >
       <div class="data" onclick="">
         <div class="content">
           <hr>
@@ -44,7 +44,7 @@ export default {
     data(){
         return {
             isFlipped: false,
-            backupImg: "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1.jpg"
+            backupImg: "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/10/Greenhouse-Studios-Logos_STACKED-WORDMARK_TWO-COLOR-1-300x270.jpg"
         }
     },
     methods: {
