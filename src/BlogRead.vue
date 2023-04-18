@@ -19,13 +19,54 @@
         <div
           class="w-two-thirds-ns w-90 justify-center items-center flex flex-row-ns flex-column center"
         >
-          <img
-            v-if="post.fimg_url && showFeaturedImg"
+        <div class="relative top-0 left-0">
+        <img
+        v-if="blueFrame"
+      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
+        style="object-fit: cover"
+        src="../public/img/thumbnail-blue.png"
+        alt=""
+        >
+        <img
+        v-if="greenFrame"
+      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
+        style="object-fit: cover"
+        src="../public/img/thumbnail-green.png"
+        alt=""
+        >
+        <img
+        v-if="mintFrame"
+      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
+        style="object-fit: cover"
+        src="../public/img/thumbnail-mint.png"
+        alt=""
+        >
+        <img
+        v-if="turquoiseFrame"
+      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
+        style="object-fit: cover"
+        src="../public/img/thumbnail-turquoise.png"
+        alt=""
+        >
+        <div v-if="blueFrame || turquoiseFrame || mintFrame || greenFrame">
+        <img
+          v-if="post.fimg_url && showFeaturedImg"
             :src="post.fimg_url"
             id="featured-img"
             alt=""
-            class="mr4-ns shadow-2 mb3 mw6-ns w5-m dn di-ns"
+            class="mr4-ns shadow-2 mb3 mw6-ns w5-m absolute top-0 left-0 w-100"
           />
+        </div>
+        <div v-if="!blueFrame && !turquoiseFrame && !mintFrame && !greenFrame">
+        <img
+          v-if="post.fimg_url && showFeaturedImg"
+            :src="post.fimg_url"
+            id="featured-img"
+            alt=""
+            class="mr4-ns shadow-2 mb3 mw6-ns w5-m"
+          />
+        </div>
+        </div>
           <div class="blogtitle lh-solid ml4-ns ph2">
             <div>
               <h2 class="f1" v-html="post.title.rendered"></h2>
@@ -182,7 +223,10 @@ export default {
     headerBgColor() {
       if (this.post.custom_fields.headerBgColor) {
         return this.post.custom_fields.headerBgColor;
-      } else return "#de7f42";
+      } else if (this.blueFrame) {
+        return "#fff"
+      }
+      else return "#de7f42";
     },
     authorName() {
       return this.post._embedded.author[0].name;
@@ -208,6 +252,18 @@ export default {
         result =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
       return result;
+    },
+    blueFrame(){
+     return this.post.custom_fields.blueFrame;
+    },
+    mintFrame(){
+     return this.post.custom_fields.mintFrame;
+    },
+    turquoiseFrame(){
+     return this.post.custom_fields.turquoiseFrame;
+    },
+    greenFrame(){
+     return this.post.custom_fields.greenFrame;
     },
     categoryList() {
       let result;
@@ -355,6 +411,7 @@ h1 {
   overflow: hidden;
 }
 
+
 @media (min-width: 600px) {
   h2 {
     margin: 0px;
@@ -464,6 +521,10 @@ li {
   display: inline;
 }
 
+.frame {
+  z-index: 10;
+  right: 0px;
+}
 .categorylist li::after {
   content: "-";
 }

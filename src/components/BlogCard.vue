@@ -2,8 +2,40 @@
 <template>
   <router-link class="grow" style="text-decoration: none" :to="`/blog/${slug}`">
     <div class="wrapper" alt="Blog Card Image">
+      <div v-if="blueFrame">
+        <img
+      class="mb0 w-100 absolute frame"
+        style="object-fit: cover"
+        src="../../public/img/thumbnail-blue.png"
+        alt=""
+        >
+      </div>
+      <div v-if="mintFrame">
+        <img
+      class="mb0 w-100 absolute frame"
+        style="object-fit: cover"
+        src="../../public/img/thumbnail-mint.png"
+        alt=""
+        >
+      </div>
+      <div v-if="turquoiseFrame">
+        <img
+      class="mb0 w-100 absolute frame"
+        style="object-fit: cover"
+        src="../../public/img/thumbnail-turquoise.png"
+        alt=""
+        >
+      </div>
+      <div v-if="greenFrame">
+        <img
+      class="mb0 w-100 absolute frame"
+        style="object-fit: cover"
+        src="../../public/img/thumbnail-green.png"
+        alt=""
+        >
+      </div>
       <img
-        class="mb0 w-100 relative"
+        class="mb0 w-100"
         style="object-fit: cover"
         :src="post.fimg_url ? post.fimg_url : backupImg"
         alt=""
@@ -99,7 +131,19 @@ export default {
       else result = "none"
       if(!result) result = "none"
       return result;
-    }
+    },
+    blueFrame(){
+     return this.post.custom_fields.blueFrame;
+    },
+    mintFrame(){
+     return this.post.custom_fields.mintFrame;
+    },
+    turquoiseFrame(){
+     return this.post.custom_fields.turquoiseFrame;
+    },
+    greenFrame(){
+     return this.post.custom_fields.greenFrame;
+    },
   },
 };
 </script>
@@ -138,5 +182,9 @@ h3 {
 
 .wrapper {
   height: 428px;
+}
+
+.frame{
+  z-index: 10;
 }
 </style>
