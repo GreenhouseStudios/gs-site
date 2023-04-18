@@ -20,7 +20,7 @@
           </option>
         </select>
         <div class="reset"
-        v-if="selectedValue != null">
+        v-if="selectedValue != ''">
           <router-link :to="'/blog'">
             <button>Reset Filter</button>
           </router-link>
@@ -61,7 +61,7 @@ export default {
       this.selectedValue = this.$route.params.id;
     }
     else {
-      this.selectedValue = null;
+      this.selectedValue = "";
     }
   },
   methods: {
