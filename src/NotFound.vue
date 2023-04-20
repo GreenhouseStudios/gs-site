@@ -1,6 +1,6 @@
 <template>
-    <div class="ma7">
-        <h1>Page cannot be found!</h1>
+    <div class="">
+        <img :src="require('../public/img/404Graphic.png')" alt="" class="w-75 center">
     </div>
 </template>
 
