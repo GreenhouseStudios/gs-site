@@ -128,7 +128,7 @@
             </div>
             <div class="suggestedPosts">
               <blog-card
-                class="mh3"
+                class="mh3 lh-copy"
                 v-for="p in getSuggestedPosts"
                 :key="p.slug"
                 :post="p"
@@ -247,7 +247,7 @@ export default {
       let result = this.$store.state.people.find(
         (p) => p.title.rendered === this.post._embedded.author[0].name
       );
-      result = result?.image.source_url;
+      result = result?.image?.source_url;
       if (!result)
         result =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
@@ -410,7 +410,6 @@ h1 {
 #blogmain {
   overflow: hidden;
 }
-
 
 @media (min-width: 600px) {
   h2 {
