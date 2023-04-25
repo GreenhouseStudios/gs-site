@@ -8,7 +8,7 @@ import BlogRead from "../BlogRead";
 import Projects from "../Projects";
 import Page from "../Page";
 import ProjectPage from "../ProjectPage";
-// import NotFound from "../NotFound";
+import NotFound from "../NotFound";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
@@ -22,8 +22,7 @@ const routes = [
   { name: "ProjectPage", path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
   { name: "Home", path: "/", component: Home },
-  // { path: "/404", component: NotFound },
-  // { path: "*", redirect: "/404" },
+  { path: "*", component: NotFound },
 ];
 
 const router = new VueRouter({

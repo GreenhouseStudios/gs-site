@@ -1,47 +1,50 @@
 <template>
   <div class="w-75 center">
-    <div class="flex justify-between items-center ma2">
-    <h1 class="f3">Recent Posts</h1>
+    <span class="flex justify-between items-center ma2">
+      <h1 class="f3">Recent Posts</h1>
 
-    <div class="relative flex items-center justify-end">
-      <select
-        v-model="selectedValue"
-        id="category-select"
-        class="f6"
-        @change="$router.push('/blog/category/' + $event.target.value)"
-      >
-        <option value="" class="pa0" selected disabled hidden>Filter</option>
-        <option
-          v-for="cat in $store.state.categories"
-          :key="cat.slug"
-          v-bind:value="cat.slug"
+      <div class="relative flex items-center">
+        <select
+          v-model="selectedValue"
+          id="category-select"
+          class="f6"
+          @change="$router.push('/blog/category/' + $event.target.value)"
         >
-          {{ cat.name }}
-        </option>
-      </select>
-      <div class="reset" v-if="selectedValue != null">
-        <router-link :to="'/blog'">
-          <button class="w2 h2 ma2 bg-white grow border-1">X</button>
-        </router-link>
+          <option value="" class="pa0" selected disabled hidden>Filter</option>
+          <option
+            v-for="cat in $store.state.categories"
+            :key="cat.slug"
+            v-bind:value="cat.slug"
+          >
+            {{ cat.name }}
+          </option>
+        </select>
+        <div class="reset" v-if="selectedValue != null">
+          <router-link :to="'/blog'">
+            <button class="w2 h2 ma2 bg-white grow border-1">X</button>
+          </router-link>
+        </div>
       </div>
-    </div>
-  </div>
-    <div class="blog-grid" v-if="!$store.getters.loading && posts">
-      <blog-card
-        v-for="post in filter"
-        :key="post.slug"
-        :post="post"
-        :title="post.title"
-        :content="post.content"
-        :date="post.date"
-        :slug="post.slug"
-      ></blog-card>
-      <infinite-loading
-        @infinite="loadMore"
-        :distance="1"
-        v-if="!busy && posts.length < $store.state.postCount"
-      ></infinite-loading>
-      <div style="margin-bottom: 5%"></div>
+    </span>
+
+    <div class="center w-60 relative">
+      <div class="blog-grid" v-if="!$store.getters.loading && posts">
+        <blog-card
+          v-for="post in filter"
+          :key="post.slug"
+          :post="post"
+          :title="post.title"
+          :content="post.content"
+          :date="post.date"
+          :slug="post.slug"
+        ></blog-card>
+        <infinite-loading
+          @infinite="loadMore"
+          :distance="1"
+          v-if="!busy && posts.length < $store.state.postCount"
+        ></infinite-loading>
+        <div style="margin-bottom: 5%"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -67,7 +70,7 @@ export default {
     if (this.$route.params.id) {
       this.selectedValue = this.$route.params.id;
     } else {
-      this.selectedValue = null;
+      this.selectedValue = "";
     }
   },
   methods: {
