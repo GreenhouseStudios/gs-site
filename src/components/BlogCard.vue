@@ -37,7 +37,7 @@
       <img
         class="mb0 w-100"
         style="object-fit: cover"
-        :src="post.fimg_url ? post.fimg_url : backupImg"
+        :src="post.image ? post.image : backupImg"
         alt=""
       />
       <div
@@ -47,7 +47,7 @@
       >
         <div class="ph3 pv2 mt1">
           <span class="ph2 pv1 white f6 fw6 mt5" style="background: #8CC947">{{mainCategory}}</span>
-          <h3 class="mv1  f5 blogcardtext">{{ removeTags(title.rendered) }}</h3>
+          <h3 class="mv1 f5 blogcardtext title">{{ removeTags(title.rendered) }}</h3>
           <div class="absolute date-text">
           <span class="month">{{ getDate(date).month }} </span>
           <span class="day">{{ getDate(date).day }}, </span>
@@ -154,9 +154,6 @@ export default {
 img {
   aspect-ratio: 1/1;
 }
-.title:hover {
-  text-decoration: underline;
-}
 
 .date-text {
   bottom: 8px;
@@ -172,7 +169,12 @@ img {
 #card-info {
   top: 300px;
 }
-a:visited{
+.title:hover{
+  color:black;
+  text-decoration: underline;
+}
+
+a:visited {
   color:black;
 }
 
@@ -184,6 +186,9 @@ h3 {
   height: 428px;
 }
 
+.wrapper:hover div h3  {
+text-decoration: underline;
+}
 .frame{
   z-index: 10;
 }
