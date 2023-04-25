@@ -1,6 +1,7 @@
 <template>
   <div class="w-75 center">
-    <h1 class="ml6-ns mt5 f3">Recent Posts</h1>
+    <div class="flex justify-between items-center ma2">
+    <h1 class="f3">Recent Posts</h1>
 
     <div class="relative flex items-center justify-end">
       <select
@@ -24,7 +25,7 @@
         </router-link>
       </div>
     </div>
-
+  </div>
     <div class="blog-grid" v-if="!$store.getters.loading && posts">
       <blog-card
         v-for="post in filter"
