@@ -4,12 +4,13 @@
       <div
         v-bind:style="
           this.post.custom_fields.headerBgColor
-            ? { backgroundColor: this.post.custom_fields.headerBgColor[0] }
-            : { backgroundColor: '#8cc947' }
+            ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
+            : { backgroundColor: '#8cc947', backgroundImage: slugLength }
         "
         class="flex pa6-l pa2 items-center justify-center white relative"
         id="blog-read-header"
       >
+      <img :src="slugLength" class="cover absolute line-art">
         <router-link
           class="absolute left-2 top-2 fw7 f4"
           id="back-link"
@@ -273,6 +274,15 @@ export default {
         );
       return result;
     },
+    slugLength(){
+      if (this.post.slug.length <= 22){ 
+        return "..//public/bgImg/GSBlogHeaderTexture_1_transparent.png"
+      } else if (this.post.slug.length > 22 && this.post.slug.length < 35) {
+        return "..//public/bgImg/GSBlogHeaderTexture_2_transparent.png"
+      } else {
+        return "..//public/bgImg/GSBlogHeaderTexture_3_transparent.png"
+      }
+    }
   },
   methods: {
     getCategoryById(id) {
@@ -394,6 +404,7 @@ h1 {
 
 .blogtitle {
   max-width: 600px;
+  z-index: 10;
 }
 
 .titledatecontainer {
@@ -490,7 +501,7 @@ li {
 }
 
 #blog-read-header {
-  background-image: url("../public/bgImg/BlogHeaderBG.png");
+  /* background-image: url("../public/bgImg/BlogHeaderBG.png"); */
   min-height: 560px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -518,6 +529,14 @@ li {
 
 .categorylist li {
   display: inline;
+}
+
+.line-art {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  z-index: 0;
+  object-fit: cover;
 }
 
 .frame {
