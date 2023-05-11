@@ -115,7 +115,7 @@
             <span class="dn-l di"><share-links></share-links></span>
             <p class="di fw7 mr3">Topics:</p>
             <a
-              :href="'/blog/categories/' + cat.name"
+              :href="'/blog/category/' + cat.name.toLowerCase()"
               class="ph2 pv1 f6 fw6 mh2 category"
               style="background: #8cc947"
               v-for="cat in categoryList"
