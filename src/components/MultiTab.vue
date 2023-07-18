@@ -13,7 +13,7 @@
         class="flex items-center justify-center pa3-ns pa2 br2 br--bottom"
         for="tabone"
         :style="picked === 0 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
-        ><span class="shimmer">Who We Are</span></label
+        ><span class="shimmer">What We Do</span></label
       >
       <div v-if="picked === 0" class="tab pa3 dn-ns" style="">
         <p class="ma0">
@@ -27,7 +27,7 @@
         for="tabtwo"
         id="tab-two-label"
         :style="picked === 1 ? `background: #F7F7F7;`: `background: #D7DAD7 ;`"
-        ><span class="shimmer">What We Do</span></label
+        ><span class="shimmer">Who We Are</span></label
       >
       <div v-if="picked === 1" class="tab  pa3 dn-ns" style="">
         <p class="ma0">
@@ -69,20 +69,13 @@ export default {
     return {
       picked: 0,
       content: [
+      `   Greenhouse Studios creates space for curious minds. Grounded in the humanities, we use art and technology to expand the boundaries of scholarship and learning. Whether making new things or facilitating new perspectives, equitable collaboration is at the core of what we do.`,
         ` As an interdisciplinary research unit, the Greenhouse Studios team
             comprises a wide variety of scholars, designers, developers, library
             professionals, editors, and more. We are a joint effort of the
             University of Connecticut’s College of Liberal Arts and Sciences,
             Library, and School of Fine Arts; our team members come from both
             within and beyond the university.`,
-        `   Our aim is to challenge the ways in which scholarship is created and shared. 
-            Our “hypothesis” is an inquiry-driven, collaboration-first scholarly design process, 
-            through which we guide interdisciplinary teams to create original works of scholarship 
-            as our means of experimentation. Based on collective interests, backgrounds, skills, 
-            and aspirations, we conceive and implement a multimodal response to a challenge posed 
-            by a prompt. Depending on audiences and aims, projects may take shape in diverse media 
-            outputs ranging from interactive websites and immersive virtual reality to exhibitions 
-            and documentary films.`,
             `As a scholarly research lab, we have created a unique workspace—a
             scholarly communications design studio—which establishes a
             “collaboration first” approach that brings a diverse team of people
