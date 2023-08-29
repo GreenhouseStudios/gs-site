@@ -1,6 +1,6 @@
 <template>
     <div class="">
-        <img :src="require('../public/img/404Graphic.png')" alt="" class="w-75 center">
+        <img :src="require('../public/img/404Graphic.png')" alt="" class="w-75 flex items-center center">
     </div>
 </template>
 
