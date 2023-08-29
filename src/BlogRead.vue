@@ -1,97 +1,46 @@
 <template>
   <div id="blogmain">
     <div v-if="!$store.getters.loading && post">
-      <div
-        v-bind:style="
-          this.post.custom_fields.headerBgColor
-            ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
-            : { backgroundColor: '#8cc947', backgroundImage: slugLength }
-        "
-        class="flex pa6-l pa2 items-center justify-center white relative"
-        id="blog-read-header"
-      >
-      <img :src="slugLength" class="cover absolute line-art">
-        <router-link
-          class="absolute left-2 top-2 fw7 f4"
-          id="back-link"
-          to="/blog"
-          ><i>&#8592;</i> Back</router-link
-        >
-        <div
-          class="w-two-thirds-ns w-90 justify-center items-center flex flex-row-ns flex-column center"
-        >
-        <div class="relative top-0 left-0">
-        <img
-        v-if="blueFrame"
-      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
-        style="object-fit: cover"
-        src="../public/img/thumbnail-blue.png"
-        alt=""
-        >
-        <img
-        v-if="greenFrame"
-      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
-        style="object-fit: cover"
-        src="../public/img/thumbnail-green.png"
-        alt=""
-        >
-        <img
-        v-if="mintFrame"
-      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
-        style="object-fit: cover"
-        src="../public/img/thumbnail-mint.png"
-        alt=""
-        >
-        <img
-        v-if="turquoiseFrame"
-      class="frame mr4-ns shadow-2 mb3 mw6-ns w5-m relative"
-        style="object-fit: cover"
-        src="../public/img/thumbnail-turquoise.png"
-        alt=""
-        >
-        <div v-if="blueFrame || turquoiseFrame || mintFrame || greenFrame">
-        <img
-          v-if="post.fimg_url && showFeaturedImg"
-            :src="post.fimg_url"
-            id="featured-img"
-            alt=""
-            class="mr4-ns shadow-2 mb3 mw6-ns w5-m absolute top-0 left-0 w-100"
-          />
-        </div>
-        <div v-if="!blueFrame && !turquoiseFrame && !mintFrame && !greenFrame">
-        <img
-          v-if="post.fimg_url && showFeaturedImg"
-            :src="post.fimg_url"
-            id="featured-img"
-            alt=""
-            class="mr4-ns shadow-2 mb3 mw6-ns w5-m"
-          />
-        </div>
-        </div>
-          <div class="blogtitle lh-solid ml4-ns ph2">
+      <div v-bind:style="this.post.custom_fields.headerBgColor
+          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
+          : { backgroundColor: '#8cc947', backgroundImage: slugLength }
+        " class="flex pa6-l pa2 items-center justify-center white relative" id="blog-read-header">
+        <img :src="slugLength" class="cover absolute line-art">
+        <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"
+         v-bind:style="this.post.custom_fields.headerBgColor
+          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
+          : { backgroundColor: '#8cc947', backgroundImage: slugLength }"><i>&#8592;</i> Back</router-link>
+        <div class="flex flex-column flex-row-l justify-center items-center ">
+          <div class="relative top-0 left-0">
+            <img v-if="blueFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+              src="../public/img/thumbnail-blue.png" alt="">
+            <img v-if="greenFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+              src="../public/img/thumbnail-green.png" alt="">
+            <img v-if="mintFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+              src="../public/img/thumbnail-mint.png" alt="">
+            <img v-if="turquoiseFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+              src="../public/img/thumbnail-turquoise.png" alt="">
+            <div v-if="blueFrame || turquoiseFrame || mintFrame || greenFrame">
+              <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" id="featured-img" alt=""
+                class="mr4-l shadow-2 mb3 ma0 mw6-ns w5-m absolute top-0 left-0 w-100"
+                style="object-fit: cover;   max-height: 250px; width: auto;" />
+            </div>
+            <div v-if="!blueFrame && !turquoiseFrame && !mintFrame && !greenFrame">
+              <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" id="featured-img" alt=""
+                class="mr4-ns shadow-2 mb3 mw6-ns w5-m photo" style="object-fit: cover;  max-height: 250px;" />
+            </div>
+          </div>
+          <div class="blogtitle lh-solid  ph2  tc tl-l">
             <div>
-              <h2 class="f1" v-html="post.title.rendered"></h2>
-              <img
-                v-if="post.fimg_url && showFeaturedImg"
-                :src="post.fimg_url"
-                id="featured-img"
-                alt=""
-                class="mr4-ns shadow-2 mv3 w6 dn-ns"
-              />
-              <div
-                class="f4 pv2 flex items-center justify-around justify-start-ns mb2"
-              >
-                <img
-                  :src="authorImage"
-                  alt=""
-                  class="author-image br-100 mr3-ns"
-                />
+              <h2 class="f3 f2-l lh-title" v-html="post.title.rendered"></h2>
+              <div class="f4 pv2 flex items-center justify-center justify-start-l tl-l tc mb2">
+                <img :src="authorImage" alt="" class="author-image br-100 mr3-ns" />
                 <div class="">
                   <div class="fw7 pa1">{{ authorName }}</div>
                   <div class="fw2 pa1">{{ authorRole }}</div>
                 </div>
               </div>
-              <div class="pa1 w-100 flex items-center">
+              <div class="pa1 w-100 flex items-center justify-center justify-start-l">
                 <span class="mr5">{{
                   new Date(post.date).toLocaleDateString("en-us")
                 }}</span>
@@ -102,10 +51,7 @@
         </div>
       </div>
       <div>
-        <div
-          class="textbox w-50-l w-90 pv5-ns pv1 center"
-          style="line-height: 2.2rem"
-        >
+        <div class="textbox w-50-l w-90 pv5-ns pv1 center" style="line-height: 2.2rem">
           <span class="dn di-l"><share-links></share-links></span>
           <h3 v-if="post.custom_fields.byline" class="i font-weight-500 f5 fw5">
             {{ post.custom_fields.byline[0] }}
@@ -114,30 +60,16 @@
           <div class="mv2">
             <span class="dn-l di"><share-links></share-links></span>
             <p class="di fw7 mr3">Topics:</p>
-            <a
-              :href="'/blog/category/' + cat.name.toLowerCase()"
-              class="ph2 pv1 f6 fw6 mh2 category"
-              style="background: #8cc947"
-              v-for="cat in categoryList"
-              :key="cat.name"
-              >{{ cat.name }}</a
-            >
+            <a :href="'/blog/category/' + cat.name.toLowerCase()" class="ph2 pv1 f6 fw6 mh2 category"
+              style="background: #8cc947" v-for="cat in categoryList" :key="cat.name">{{ cat.name }}</a>
           </div>
           <div class="text-1 mv5" v-if="getSuggestedPosts.length > 0">
             <div class="fprojects-text">
               <h3 class="title-2">Suggested Blog Posts</h3>
             </div>
             <div class="suggestedPosts">
-              <blog-card
-                class="mh3 lh-copy"
-                v-for="p in getSuggestedPosts"
-                :key="p.slug"
-                :post="p"
-                :title="p.title"
-                :content="p.content"
-                :date="p.date"
-                :slug="p.slug"
-              ></blog-card>
+              <blog-card class="mh3 lh-copy" v-for="p in getSuggestedPosts" :key="p.slug" :post="p" :title="p.title"
+                :content="p.content" :date="p.date" :slug="p.slug"></blog-card>
             </div>
           </div>
         </div>
@@ -232,17 +164,17 @@ export default {
     authorName() {
       return this.post._embedded.author[0].name;
     },
-    author(){
+    author() {
       return this.post._embedded.author[0]
     },
-    authorPersonRecord(){
+    authorPersonRecord() {
       let author = this.post._embedded.author[0].name;
       return this.$store.state.people.find(
         (x) => x.title.rendered === author
       );
     },
     authorRole() {
-      return this.$store.state.peopleCategories.find( x => x.id === this.authorPersonRecord?.people_category[0])?.name;
+      return this.$store.state.peopleCategories.find(x => x.id === this.authorPersonRecord?.people_category[0])?.name;
     },
     authorImage() {
       let result = this.$store.state.people.find(
@@ -254,17 +186,17 @@ export default {
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
       return result;
     },
-    blueFrame(){
-     return this.post.custom_fields.blueFrame;
+    blueFrame() {
+      return this.post.custom_fields.blueFrame;
     },
-    mintFrame(){
-     return this.post.custom_fields.mintFrame;
+    mintFrame() {
+      return this.post.custom_fields.mintFrame;
     },
-    turquoiseFrame(){
-     return this.post.custom_fields.turquoiseFrame;
+    turquoiseFrame() {
+      return this.post.custom_fields.turquoiseFrame;
     },
-    greenFrame(){
-     return this.post.custom_fields.greenFrame;
+    greenFrame() {
+      return this.post.custom_fields.greenFrame;
     },
     categoryList() {
       let result;
@@ -274,8 +206,8 @@ export default {
         );
       return result;
     },
-    slugLength(){
-      if (this.post.slug.length <= 22){ 
+    slugLength() {
+      if (this.post.slug.length <= 22) {
         return "..//public/bgImg/GSBlogHeaderTexture_1_transparent.png"
       } else if (this.post.slug.length > 22 && this.post.slug.length < 35) {
         return "..//public/bgImg/GSBlogHeaderTexture_2_transparent.png"
@@ -359,14 +291,6 @@ body {
   color: #333333;
 }
 
-h2 {
-  margin: 5px;
-  border: 0px;
-  padding-right: 10px;
-  font-size: 24px;
-  line-height: 2.5rem;
-}
-
 .category {
   color: white;
   text-decoration: none;
@@ -376,6 +300,8 @@ h2 {
   color: white;
   text-decoration: underline;
 }
+
+
 
 h1 {
   font-family: inherit;
@@ -393,6 +319,11 @@ h1 {
   font-weight: 700;
   border-radius: 20px;
   font-size: 18px;
+}
+
+.photo {
+  aspect-ratio: 1/1;
+  max-width: 250px;
 }
 
 .credits {
@@ -422,15 +353,6 @@ h1 {
   overflow: hidden;
 }
 
-@media (min-width: 600px) {
-  h2 {
-    margin: 0px;
-    border: 0px;
-    padding-right: 10px;
-    font-size: 32px;
-  }
-}
-
 @media (min-width: 38em) and (max-width: 52em) {
   #blogcontent {
     margin: 2em 10%;
@@ -442,6 +364,7 @@ h1 {
     margin: 2em;
   }
 }
+
 .textbox {
   height: 100%;
 }
@@ -460,10 +383,10 @@ hr {
 }
 
 @media (max-width: 38em) {
-  #blogmain img {
+  /* #blogmain img {
     padding: 0;
     height: auto;
-  }
+  } */
 }
 
 #blogmain #mainimg {
@@ -516,6 +439,7 @@ li {
 #back-link {
   color: white !important;
   text-decoration: none;
+  background-color: #8cc947;
 }
 
 #back-link:hover {
@@ -532,7 +456,7 @@ li {
 }
 
 .line-art {
-  width: 100%;
+  width: auto;
   height: 100%;
   background-size: cover;
   z-index: 0;
@@ -542,7 +466,10 @@ li {
 .frame {
   z-index: 10;
   right: 0px;
+  object-fit: cover;
+  max-height: 250px;
 }
+
 .categorylist li::after {
   content: "-";
 }
