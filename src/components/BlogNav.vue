@@ -49,8 +49,9 @@
       </ul>
       <div class="w-100 pv7-ns pv6 tc" id="blog-header">
         <div class="blog-header-text">
-          <img src="../../public/img/GH-White-Logo.png" class="logo-white w-100">
-          <h1 class="center white fw7 f1-ns f2 mb4 mb0-ns ma0">Germination Blog</h1>
+          <div class="flex items-center justify-center">
+          <h1 class="white ma2 f1"> Greenhouse Studios Blog</h1>
+        </div>
           <p class="f4 white ma0">The Greenhouse Studios Blog is the best place to catch up on the latest news about our
             research and initiatives.</p>
         </div>
@@ -131,7 +132,7 @@ export default {
 
 .logo-white {
   max-width: 400px;
-  margin: auto;
+  height: 100%;
 }
 
 .slide-fade-leave-active {
