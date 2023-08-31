@@ -2,14 +2,14 @@
   <div id="blogmain">
     <div v-if="!$store.getters.loading && post">
       <div v-bind:style="this.post.custom_fields.headerBgColor
-          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
-          : { backgroundColor: '#8cc947', backgroundImage: slugLength }
+          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: headerBgTexture }
+          : { backgroundColor: '#8cc947', backgroundImage: headerBgTexture }
         " class="flex pa6-l pa2 items-center justify-center white relative" id="blog-read-header">
-        <img :src="slugLength" class="cover absolute line-art">
+        <img :src="headerBgTexture" class="cover absolute line-art">
         <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"
          v-bind:style="this.post.custom_fields.headerBgColor
-          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
-          : { backgroundColor: '#8cc947', backgroundImage: slugLength }"><i>&#8592;</i> Back</router-link>
+          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: headerBgTexture }
+          : { backgroundColor: '#8cc947', backgroundImage: headerBgTexture }"><i>&#8592;</i> Back</router-link>
         <div class="flex flex-column flex-row-l justify-center items-center ">
           <div class="relative top-0 left-0">
             <img v-if="blueFrame" class="frame mr4-l shadow-2 mb3 mw6-ns mt5 mt0-l w5-m ma0 relative" style="object-fit: cover;"
@@ -206,13 +206,13 @@ export default {
         );
       return result;
     },
-    slugLength() {
+    headerBgTexture() {
       if (this.post.slug.length <= 22) {
-        return "..//public/bgImg/GSBlogHeaderTexture_1_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_1_transparent.png")
       } else if (this.post.slug.length > 22 && this.post.slug.length < 35) {
-        return "..//public/bgImg/GSBlogHeaderTexture_2_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_2_transparent.png")
       } else {
-        return "..//public/bgImg/GSBlogHeaderTexture_3_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_3_transparent.png")
       }
     }
   },
