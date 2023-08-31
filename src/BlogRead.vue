@@ -463,6 +463,7 @@ li {
   height: 100%;
   background-size: cover;
   z-index: 0;
+  opacity: 0.4;
   object-fit: cover;
 }
 

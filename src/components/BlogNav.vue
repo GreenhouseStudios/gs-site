@@ -25,7 +25,7 @@
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
 
-      <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex" style="background: #7BB040">        <li>
+      <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex z-5" style="background: #7BB040">        <li>
           <router-link class="shimmer relative" to="/">home
             <img class="w-70 absolute bottom-0 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`" /></router-link>
@@ -49,10 +49,9 @@
       </ul>
       <div class="w-100 pv7-ns pv6 tc" id="blog-header">
         <div class="blog-header-text">
-          <div class="flex items-center justify-center">
-          <h1 class="white ma2 f1"> Greenhouse Studios Blog</h1>
-        </div>
-          <p class="f4 white ma0">The Greenhouse Studios Blog is the best place to catch up on the latest news about our
+          <img src="../../public/img/GH-White-Logo.png" class="logo-white w-100 mb0">
+          <p class="center white f1-ns f2 mb4 mb0-ns mt0 mh3 ttu" id="blog-title">Blog</p>
+          <p class="f4 white mh0 mv1">The Greenhouse Studios Blog is the best place to catch up on the latest news about our
             research and initiatives.</p>
         </div>
       </div>
@@ -131,8 +130,8 @@ export default {
 }
 
 .logo-white {
-  max-width: 400px;
-  height: 100%;
+  max-width: 450px;
+  margin: auto;
 }
 
 .slide-fade-leave-active {
@@ -379,8 +378,34 @@ li:hover {}
 
 #blog-header {
   font-family: 'Libre Franklin';
+  position: relative;
+}
+
+#blog-header::after{
+  content: "";
   background-image: url('../../public/bgImg/BlogHeaderBG.png');
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: 100% 100%;
+  background-position: 10%;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  right: 0;
+  z-index: 2;
+  opacity: 0.4;
+}
+
+#blog-title{
+  // font-family: 'Samo';
+  // text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
+  font-weight: 800;
+  font-size: 100px;
+  background: url("../../public/img/Watercolor_background.webp") 10% 0% / cover;
+  background-size: 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: hue-rotate(-50deg) brightness(140%) saturate(180%);
+  
 }
 </style>

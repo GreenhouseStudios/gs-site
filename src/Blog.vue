@@ -3,7 +3,7 @@
     <span class="flex justify-between items-center ma2">
       <h1 class="f3">Recent Posts</h1>
 
-      <div class="relative flex items-center">
+      <div class="relative flex items-right">
         <select
           v-model="selectedValue"
           id="category-select"
@@ -19,9 +19,9 @@
             {{ cat.name }}
           </option>
         </select>
-        <div class="reset" v-if="selectedValue != null">
+        <div class="reset relative" v-if="selectedValue">
           <router-link :to="'/blog'">
-            <button class="w2 h2 ma2 bg-white grow border-1">X</button>
+            <button class="ma2 bg-white grow bn" style=""><i class="fa fa-2x fa-times-circle" style="color:#8cc947"></i></button>
           </router-link>
         </div>
       </div>
@@ -159,5 +159,8 @@ export default {
 }
 * {
   font-family: "Libre Franklin";
+}
+select{
+  border: 1px solid #8cc947;
 }
 </style>
