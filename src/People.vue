@@ -181,20 +181,11 @@ export default {
           }
         }
       }
-      return alumniList;
-    },
-    /*alumni() {
-      if (this.people.length > 0) {
-        return _.sortBy(
-          this.people.filter((p) => p.categories.indexOf(86) >= 0),
-          function (o) {
+      return _.sortBy(alumniList, function (o) {
             return o.custom_fields.last_name
               ? o.custom_fields.last_name[0].toLowerCase()
-              : "";
-          }
-        );
-      } else return [];
-    },*/
+              : "";});
+    },
     activePeople() {
       if (!this.$store.getters.loading && this.people.length > 0) {
         return _.sortBy(
