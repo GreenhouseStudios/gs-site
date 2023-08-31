@@ -12,25 +12,25 @@
           : { backgroundColor: '#8cc947', backgroundImage: slugLength }"><i>&#8592;</i> Back</router-link>
         <div class="flex flex-column flex-row-l justify-center items-center ">
           <div class="relative top-0 left-0">
-            <img v-if="blueFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+            <img v-if="blueFrame" class="frame mr4-l shadow-2 mb3 mw6-ns mt5 mt0-l w5-m ma0 relative" style="object-fit: cover;"
               src="../public/img/thumbnail-blue.png" alt="">
-            <img v-if="greenFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+            <img v-if="greenFrame" class="frame mr4-l shadow-2 mb3 mw6-ns mt5 mt0-l w5-m ma0 relative" style="object-fit: cover;"
               src="../public/img/thumbnail-green.png" alt="">
-            <img v-if="mintFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+            <img v-if="mintFrame" class="frame mr4-l shadow-2 mb3 mw6-ns  mt5 mt0-l w5-m ma0 relative" style="object-fit: cover;"
               src="../public/img/thumbnail-mint.png" alt="">
-            <img v-if="turquoiseFrame" class="frame mr4-l shadow-2 mb3 mw6-ns w5-m ma0 relative" style="object-fit: cover;"
+            <img v-if="turquoiseFrame" class="frame mr4-l shadow-2 mb3 mt5 mt0-l mw6-ns w5-m ma0 relative" style="object-fit: cover;"
               src="../public/img/thumbnail-turquoise.png" alt="">
             <div v-if="blueFrame || turquoiseFrame || mintFrame || greenFrame">
               <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" id="featured-img" alt=""
-                class="mr4-l shadow-2 mb3 ma0 mw6-ns w5-m absolute top-0 left-0 w-100"
-                style="object-fit: cover;   max-height: 250px; width: auto;" />
+                class="mr4-l shadow-2 mb3 ma0 mt5 mt0-l absolute top-0 left-0"
+                style="object-fit: cover; height: 250px; width: auto;" />
             </div>
             <div v-if="!blueFrame && !turquoiseFrame && !mintFrame && !greenFrame">
-              <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" id="featured-img" alt=""
-                class="mr4-ns shadow-2 mb3 mw6-ns w5-m photo" style="object-fit: cover;  max-height: 250px;" />
+              <img v-if="post.fimg_url && showFeaturedImg" :src="post.fimg_url" id="" alt=""
+                class="shadow-2 mt5 mt0-l " style=" height: 250px; width: 100%" />
             </div>
           </div>
-          <div class="blogtitle lh-solid  ph2  tc tl-l">
+          <div class="blogtitle lh-solid  ph2 ma3-l ma0 tc tl-l">
             <div>
               <h2 class="f3 f2-l lh-title" v-html="post.title.rendered"></h2>
               <div class="f4 pv2 flex items-center justify-center justify-start-l tl-l tc mb2">
@@ -296,6 +296,10 @@ body {
   text-decoration: none;
 }
 
+#featured-img {
+  aspect-ratio: 1/1;
+}
+
 .category:hover {
   color: white;
   text-decoration: underline;
@@ -323,7 +327,6 @@ h1 {
 
 .photo {
   aspect-ratio: 1/1;
-  max-width: 250px;
 }
 
 .credits {

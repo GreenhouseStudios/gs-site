@@ -10,7 +10,7 @@
           class="f6"
           @change="$router.push('/blog/category/' + $event.target.value)"
         >
-          <option value="" class="pa0" selected disabled hidden>Filter</option>
+          <option value="" class="pa0" selected disabled hidden>All</option>
           <option
             v-for="cat in $store.state.categories"
             :key="cat.slug"
