@@ -63,70 +63,40 @@
         <div class="social-media">
           <div
             v-if="person.custom_fields.email && person.custom_fields.email[0]"
-            class="email"
           >
-            <a :href="'mailto:' + person.custom_fields.email[0]"
-              ><img
-                loading="lazy"
-                class="shadow"
-                src="../../public/img/email.svg"
-                alt="email"
-            /></a>
+            <a :href="'mailto:' + person.custom_fields.email[0]" class="icons"
+              ><i class="fa fa-envelope"></i></a>
           </div>
           <div
             v-if="person.custom_fields.site && person.custom_fields.site[0]"
-            class="site"
           >
-            <a :href="person.custom_fields.site[0]"
-              ><img
-                loading="lazy"
-                class="shadow"
-                src="../../public/img/site.png"
-                alt="website"
-            /></a>
+            <a :href="person.custom_fields.site[0]" class="icons"
+              ><i class="fa fa-globe"></i></a>
           </div>
           <div
             v-if="
               person.custom_fields.instagram &&
               person.custom_fields.instagram[0]
             "
-            class="instagram"
           >
-            <a :href="person.custom_fields.instagram[0]"
-              ><img
-                class="shadow"
-                src="../../public/img/instagram.svg"
-                alt="instagram"
-                loading="lazy"
-            /></a>
+            <a :href="person.custom_fields.instagram[0]" class="icons"
+              ><i class="fa fa-instagram"></i></a>
           </div>
           <div
             v-if="
               person.custom_fields.linkedin && person.custom_fields.linkedin[0]
             "
-            class="facebook"
           >
-            <a :href="person.custom_fields.linkedin[0]"
-              ><img
-                class="shadow"
-                src="../../public/img/linkedin.png"
-                alt="linkedin"
-                loading="lazy"
-            /></a>
+            <a :href="person.custom_fields.linkedin[0]" class="icons"
+              ><i class="fa fa-linkedin"></i></a>
           </div>
           <div
             v-if="
               person.custom_fields.twitter && person.custom_fields.twitter[0]
             "
-            class="twitter"
           >
-            <a :href="person.custom_fields.twitter[0]"
-              ><img
-                class="shadow"
-                src="../../public/img/twitter.svg"
-                alt="twitter"
-                loading="lazy"
-            /></a>
+            <a :href="person.custom_fields.twitter[0]" class="icons"
+              ><i class="fa fa-twitter"></i></a>
           </div>
         </div>
         <img
@@ -176,11 +146,11 @@ export default {
       return Math.sin(this.phase) * 20 + 30;
     },
     image() {
-      if (this.person.image.source_url) return this.person.image.source_url;
-      else return this.person.image;
+      return this.person.image;
     },
     usesPlaceholder() {
-      return this.image.includes("placeholder");
+      if(this.image) return this.image.includes("placeholder");
+      else return true
     },
   },
   methods: {
@@ -197,14 +167,45 @@ export default {
   font-family: "Libre Franklin";
   text-transform: capitalize;
 }
-.shadow:hover {
-  -webkit-filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.6))
-    drop-shadow(0px 1px 1px black);
-  filter: invert(100%) drop-shadow(0px 1px 3px rgba(0, 0, 0, 0.6));
-}
 .people-img {
   overflow: hidden;
   display: grid;
   place-items: center;
+}
+
+i {
+  display: flex;
+  color: black;
+  font-size: 24px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 35px;
+  width: 35px;
+  border-radius: 100%;
+  text-decoration: none;
+}
+
+.icons:hover {
+  text-decoration: none;
+  transition: transform .25s ;
+  transform: scale(1.2) ;
+}
+
+.social-media {
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  padding-bottom: 12px;
+}
+
+i:hover {
+text-decoration: none;
 }
 </style>

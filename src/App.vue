@@ -6,8 +6,9 @@
       menuOn ? 'overflow-y: hidden; height: 100vh; position: fixed' : ''
     }`"
   >
-    <Header></Header>
-    <Nav v-on:toggle="menuOn = !menuOn"></Nav>
+    <Header v-if="!$route.path.includes('blog')"></Header>
+    <Nav v-on:toggle="menuOn = !menuOn" v-if="!$route.path.includes('blog')"></Nav>
+    <BlogNav v-if="$route.path.includes('blog') && $route.name !== 'BlogRead'" v-on:toggle="menuOn = !menuOn" ></BlogNav>
     <!-- <loading v-if="$store.getters.loading"></loading> -->
     <!-- <div
       :style="`height:${height}; width:${width}`"
@@ -32,12 +33,14 @@ import Footer from "./components/Footer.vue";
 import Header from './components/Header.vue';
 // import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
+import BlogNav from "./components/BlogNav.vue";
 export default {
   name: "App",
   components: {
     Nav,
     Footer,
     Header,
+    BlogNav
     // Loading,
   },
   data() {

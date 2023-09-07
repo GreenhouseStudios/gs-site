@@ -79,37 +79,42 @@ a:visited {
     color: #5c1c5c;
 }
  
-a:hover {
-    color: #8cc947;
-}
 
 
-.grid {
+
+.blog-grid {
     display: grid;
     grid-gap: 3rem;
-    grid-template-rows: repeat(4, 400px);
+    grid-template-rows: repeat(4, 428px);
     grid-template-columns: repeat(3, 300px);
     justify-content: center;
     padding-top: 20px;
 }
 
 @media (max-width: 660px) {
-    .grid {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(1, 300px);
     }
 }
 
 @media (min-width: 661px) {
-    .grid {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(2, 300px);
     }
 }
 
-@media (min-width: 1010px) {
-    .grid {
+@media (min-width: 1100px) {
+    .blog-grid {
         display: grid;
         grid-template-columns: repeat(3, 300px);
     }
+}
+
+@media (min-width: 1500px) {
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 300px);
+        }
 }

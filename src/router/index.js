@@ -8,40 +8,39 @@ import BlogRead from "../BlogRead";
 import Projects from "../Projects";
 import Page from "../Page";
 import ProjectPage from "../ProjectPage";
-// import NotFound from "../NotFound";
+import NotFound from "../NotFound";
 import VueRouter from "vue-router";
 
 Vue.use(VueRouter);
 const routes = [
   { name: "Projects", path: "/projects", component: Projects },
   { name: "People", path: "/people", component: People },
-  { name: "People", path: "/person/:name/", component: About },
+  { name: "PersonAbout", path: "/person/:name/", component: About },
   { name: "Blog", path: "/blog", component: Blog },
-  { path: "/blog/:slug", component: BlogRead },
-  { path: "/projects/:slug", component: ProjectPage },
+  { name: "BlogRead", path: "/blog/:slug", component: BlogRead },
+  { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
+  { name: "ProjectPage", path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
   { name: "Home", path: "/", component: Home },
-  // { path: "/404", component: NotFound },
-  // { path: "*", redirect: "/404" },
+  { path: "*", component: NotFound },
 ];
 
-const router =  new VueRouter({
-  mode: 'history',
+const router = new VueRouter({
+  mode: "history",
   routes, // short for `routes: routes`
   scrollBehavior(to, from, savedPosition) {
     // console.log(to);
     // console.log(from);
-    if (savedPosition && !to.params.name) {
+    if (savedPosition && !to.params.name || to.path.includes('/blog') && to.name !== 'BlogRead') {
       return savedPosition;
-    } 
-    else {
+    } else {
       return { x: 0, y: 0 };
     }
   },
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.fullPath.substring(0,2) === "/#") {
+  if (to.fullPath.substring(0, 2) === "/#") {
     const path = to.fullPath.substring(2);
     next(path);
     return;

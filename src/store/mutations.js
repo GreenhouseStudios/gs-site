@@ -5,7 +5,7 @@ const mutations = {
   setPostCount(state, payload) {
     state.postCount = payload;
   },
-  setPeopleCount(state, payload){
+  setPeopleCount(state, payload) {
     state.peopleCount = payload;
   },
   setPeople(state, payload) {
@@ -18,18 +18,33 @@ const mutations = {
     state.loading = payload;
   },
   addPost(state, payload) {
-    state.posts.push(payload)
+    state.posts.push(payload);
   },
-  addPosts(state,payload){
+  addPosts(state, payload) {
     state.posts = state.posts.concat(payload);
   },
-  addPeople(state,payload){
+  addPeople(state, payload) {
     state.people = state.people.concat(payload);
   },
-  addPerson(state,payload){
-    if(state.people.filter(p => p.slug === payload.slug) > 0) return;
+  addPerson(state, payload) {
+    if (state.people.filter((p) => p.slug === payload.slug) > 0) return;
     else state.people.push(payload);
-  }
+  },
+  setCategoryCount(state, payload) {
+    state.categoryCount = payload;
+  },
+  setCategories(state, payload) {
+    state.categories = payload;
+  },
+  setTags(state, payload) {
+    state.tags = payload;
+  },
+  setPeopleCategories(state, payload) {
+    state.peopleCategories = payload;
+  },
+  setPageCategories(state, payload) {
+    state.pageCategories = payload;
+  },
 };
 
 export default mutations;

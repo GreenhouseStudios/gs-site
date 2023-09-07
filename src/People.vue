@@ -2,33 +2,19 @@
   <div v-if="!$store.getters.loading">
     <div class="w-50 f3-ns f4 mh5 mv3 mh6-l mv3-l pv3-ns pv3 fw4">
       <h2 class="page-title f1">People</h2>
-      <p class="f4">We are an interdisciplinary team with diverse backgrounds who bring their
-      individual interests and passions into the Greenhouse Studios community.</p>
+      We are an interdisciplinary team with diverse backgrounds who bring their
+      individual interests and passions into the Greenhouse Studios community.
     </div>
-    <div
-      id="tab-btn-container"
-      class="w-50-ns center flex flex-row justify-around"
-    >
-      <button
-        @click="changeActiveTab(index)"
-        class="ma3 pa3 br2 ma1 bg-transparent w5"
-        id="subnav-btn"
-        :class="{ active: activeTab === index, inactive: activeTab !== index }"
-        v-for="(tab, index) in tabs"
-        :key="tab"
-      >
+    <div id="tab-btn-container" class="w-50-ns center flex flex-row justify-around ">
+      <button @click="changeActiveTab(index)" class="ma3 pa3 br2 ma1 bg-transparent w5" id="subnav-btn"
+        :class="{ active: activeTab === index, inactive: activeTab !== index }" v-for="(tab, index) in tabs" :key="tab">
         <h3 class="ma0 f1 f4-ns f4" style="color: #333333">{{ tab }}</h3>
       </button>
     </div>
     <div id="active-people w-100" v-show="activeTab === 0">
-      <div class="grid pa4" v-if="activePeople.length > 0">
-        <person-card
-          v-for="(person, index) in activePeople"
-          :key="person.slug"
-          :person="person"
-          :index="index"
-          ref="cards"
-        ></person-card>
+      <div class="blog-grid pa4" v-if="activePeople.length > 0">
+        <person-card v-for="(person, index) in activePeople" :key="person.slug" :person="person" :index="index"
+          ref="cards"></person-card>
       </div>
     </div>
     <div
@@ -144,6 +130,9 @@
 <script>
 import PersonCard from "./components/PersonCard.vue";
 import _ from "lodash";
+
+const PEOPLE_CAT_ALUMNI = 98;
+
 export default {
   name: "People",
   components: { PersonCard },
@@ -170,9 +159,9 @@ export default {
       this.activeTab = i;
       this.$emit("subnav-change");
     },
-    findPersonYOffset(slug){
-      let cardIndex = this.activePeople.findIndex( x => x.slug === slug);
-      return ((cardIndex+1)/3)*420 + 780;
+    findPersonYOffset(slug) {
+      let cardIndex = this.activePeople.findIndex(x => x.slug === slug);
+      return ((cardIndex + 1) / 3) * 420 + 780;
     }
   },
   computed: {
@@ -186,21 +175,24 @@ export default {
       ]);
     },
     alumni() {
-      if (this.people.length > 0) {
-        return _.sortBy(
-          this.people.filter((p) => p.categories.indexOf(86) >= 0),
-          function (o) {
+      let alumniList = [];
+      let people = this.people;
+      for (let i = 0; i < people.length; i++) {
+        for (let x = 0; x < people[i].people_category.length; x++) {
+          if (people[i].people_category[x] == PEOPLE_CAT_ALUMNI) {
+            alumniList.push(people[i])
+          }
+        }
+      }
+      return _.sortBy(alumniList, function (o) {
             return o.custom_fields.last_name
               ? o.custom_fields.last_name[0].toLowerCase()
-              : "";
-          }
-        );
-      } else return [];
+              : "";});
     },
     activePeople() {
       if (!this.$store.getters.loading && this.people.length > 0) {
         return _.sortBy(
-          this.people.filter((p) => p.categories.indexOf(86) < 0),
+          this.people.filter((p) => p.people_category.indexOf(PEOPLE_CAT_ALUMNI) < 0),
           [
             function (o) {
               return o.custom_fields.last_name
@@ -226,10 +218,10 @@ export default {
           left: 0,
           behavior: "smooth",
         });
-      },100);
+      }, 100);
     }
   },
-  beforeRouteLeave(to, from, next){
+  beforeRouteLeave(to, from, next) {
     console.log(to)
     console.log(from);
     this.$refs.cards.map(x => x.reset())
@@ -241,48 +233,52 @@ export default {
 <style scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/projects.css";
+
 .active {
   border: 2px solid black;
   background-color: #8cc947;
 }
+
 .inactive {
   border: 2px dashed rgba(128, 128, 128, 0.4);
 }
+
 .partner {
   grid-template-rows: repeat(4, 200px) !important;
 }
+
 .partner-img {
   margin: auto;
 }
-button{
-  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
-}
+
 .alumni-list {
-  font-family: "Libre Franklin", Arial, Helvetica, sans-serif;
+  font-family: "Libre-Franklin", Arial, Helvetica, sans-serif;
   margin: 0;
   padding: 0;
   position: relative;
   list-style-type: none;
 }
+
 #tab-btn-container {
   display: flex;
   flex-direction: row;
   padding: 16px 0px;
 }
+
 @media (max-width: 660px) {
   #tab-btn-container {
+    flex-direction: column;
     align-items: center;
   }
 }
+
 #subnav-btn {
   color: #8cc947;
   border: 2px solid #8cc947;
 }
+
 #subnav-btn:hover {
   background-color: #bde491;
   color: white;
-}
-p{
-  font-family: "Libre Franklin";
 }
 </style>
