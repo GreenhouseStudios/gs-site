@@ -1,15 +1,19 @@
 <template>
   <div id="blogmain">
     <div v-if="!$store.getters.loading && post">
-      <div v-bind:style="this.post.custom_fields.headerBgColor
-          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
-          : { backgroundColor: '#8cc947', backgroundImage: slugLength }
+      <div  v-bind:style="categoryList[0].name
+          ? { background: categoryColor }
+          : { background: '#8cc947' }
         " class="flex pa6-l pa2 items-center justify-center white relative" id="blog-read-header">
         <img :src="slugLength" class="cover absolute line-art">
         <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"
-         v-bind:style="this.post.custom_fields.headerBgColor
-          ? { backgroundColor: this.post.custom_fields.headerBgColor[0], backgroundImage: slugLength }
-          : { backgroundColor: '#8cc947', backgroundImage: slugLength }"><i>&#8592;</i> Back</router-link>
+
+        v-bind:style="categoryList[0].name
+          ? { background: categoryColor }
+          : { background: '#8cc947' }
+        ">
+          
+          <i>&#8592;</i> Back </router-link>
         <div class="flex flex-column flex-row-l justify-center items-center ">
           <div class="relative top-0 left-0">
             <img v-if="blueFrame" class="frame mr4-l shadow-2 mb3 mw6-ns mt5 mt0-l w5-m ma0 relative" style="object-fit: cover;"
@@ -61,7 +65,7 @@
             <span class="dn-l di"><share-links></share-links></span>
             <p class="di fw7 mr3">Topics:</p>
             <a :href="'/blog/category/' + cat.name.toLowerCase()" class="ph2 pv1 f6 fw6 mh2 category"
-              style="background: #8cc947" v-for="cat in categoryList" :key="cat.name">{{ cat.name }}</a>
+            v-bind:style="categoryList[0].name? { background: categoryColor }: { background: '#8cc947' }"  v-for="cat in categoryList" :key="cat.name">{{ cat.name }}</a>
           </div>
           <div class="text-1 mv5" v-if="getSuggestedPosts.length > 0">
             <div class="fprojects-text">
@@ -214,6 +218,20 @@ export default {
       } else {
         return "..//public/bgImg/GSBlogHeaderTexture_3_transparent.png"
       }
+    },
+        categoryColor(){
+     let color
+     if (this.categoryList[0].name == "Opportunities")
+     color = '#644ea2';
+     if (this.categoryList[0].name == "People")
+     color = '#F4783C';
+     if (this.categoryList[0].name == "Research")
+     color = '#8CC947';
+     if (this.categoryList[0].name == "News")
+     color = '#5EC6B0';
+     if (this.categoryList[0].name == "Projects")
+     color = '#00A192';
+     return color;
     }
   },
   methods: {

@@ -46,7 +46,14 @@
         id="card-info"
       >
         <div class="ph3 pv2 mt1">
-          <span class="ph2 pv1 white f6 fw6 mt5" style="background: #8CC947">{{mainCategory}}</span>
+          <span class="ph2 pv1 white f6 fw6 mt5" v-bind:style="this.mainCategory
+          ? { background: categoryColor }
+          : { background: '#8cc947' }
+        ">
+            
+            {{mainCategory}}
+          
+          </span>
           <h3 class="mv1 f5 blogcardtext title">{{ removeTags(title.rendered) }}</h3>
           <div class="absolute date-text">
           <span class="month">{{ getDate(date).month }} </span>
@@ -144,6 +151,20 @@ export default {
     greenFrame(){
      return this.post.custom_fields.greenFrame;
     },
+    categoryColor(){
+     let color
+     if (this.mainCategory == "People")
+     color = '#F4783C';
+     if (this.mainCategory == "Opportunities")
+     color = '#644ea2';
+     if (this.mainCategory == "Research")
+     color = '#8CC947';
+     if (this.mainCategory == "News")
+     color = '#5EC6B0';
+     if (this.mainCategory == "Projects")
+     color = '#00A192';
+     return color;
+    }
   },
 };
 </script>
