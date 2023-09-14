@@ -83,7 +83,7 @@ const actions = {
         if (img) {
           if (img.full && img.full.height < 300)
             person["image"] = img.full.source_url;
-          else if (img.medium) person["image"] = img.medium;
+          else if (img.medium) person["image"] = img.medium.source_url;
           else if (img.thumbnail.source_url) {
             person["image"] = img.thumbnail.source_url;
           } else

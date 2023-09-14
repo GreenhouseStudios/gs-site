@@ -130,6 +130,9 @@
 <script>
 import PersonCard from "./components/PersonCard.vue";
 import _ from "lodash";
+
+const PEOPLE_CAT_ALUMNI = 98;
+
 export default {
   name: "People",
   components: { PersonCard },
@@ -176,29 +179,20 @@ export default {
       let people = this.people;
       for (let i = 0; i < people.length; i++) {
         for (let x = 0; x < people[i].people_category.length; x++) {
-          if (people[i].people_category[x] == 98) {
+          if (people[i].people_category[x] == PEOPLE_CAT_ALUMNI) {
             alumniList.push(people[i])
           }
         }
       }
-      return alumniList;
-    },
-    /*alumni() {
-      if (this.people.length > 0) {
-        return _.sortBy(
-          this.people.filter((p) => p.categories.indexOf(86) >= 0),
-          function (o) {
+      return _.sortBy(alumniList, function (o) {
             return o.custom_fields.last_name
               ? o.custom_fields.last_name[0].toLowerCase()
-              : "";
-          }
-        );
-      } else return [];
-    },*/
+              : "";});
+    },
     activePeople() {
       if (!this.$store.getters.loading && this.people.length > 0) {
         return _.sortBy(
-          this.people.filter((p) => p.categories.indexOf(86) < 0),
+          this.people.filter((p) => p.people_category.indexOf(PEOPLE_CAT_ALUMNI) < 0),
           [
             function (o) {
               return o.custom_fields.last_name

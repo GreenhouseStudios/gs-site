@@ -5,7 +5,7 @@
           ? { background: categoryColor }
           : { background: '#8cc947' }
         " class="flex pa6-l pa2 items-center justify-center white relative" id="blog-read-header">
-        <img :src="slugLength" class="cover absolute line-art">
+        <img :src="headerBgTexture" class="cover absolute line-art">
         <router-link class="absolute left-2 top-2 fw7 f4" id="back-link" to="/blog"
 
         v-bind:style="categoryList[0].name
@@ -210,13 +210,13 @@ export default {
         );
       return result;
     },
-    slugLength() {
+    headerBgTexture() {
       if (this.post.slug.length <= 22) {
-        return "..//public/bgImg/GSBlogHeaderTexture_1_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_1_transparent.png")
       } else if (this.post.slug.length > 22 && this.post.slug.length < 35) {
-        return "..//public/bgImg/GSBlogHeaderTexture_2_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_2_transparent.png")
       } else {
-        return "..//public/bgImg/GSBlogHeaderTexture_3_transparent.png"
+        return require("..//public/bgImg/GSBlogHeaderTexture_3_transparent.png")
       }
     },
         categoryColor(){
@@ -481,6 +481,7 @@ li {
   height: 100%;
   background-size: cover;
   z-index: 0;
+  opacity: 0.4;
   object-fit: cover;
 }
 

@@ -146,11 +146,11 @@ export default {
       return Math.sin(this.phase) * 20 + 30;
     },
     image() {
-      if (this.person.image) return this.person.image;
-      else return this.person.image;
+      return this.person.image;
     },
     usesPlaceholder() {
-      return this.image.includes("placeholder");
+      if(this.image) return this.image.includes("placeholder");
+      else return true
     },
   },
   methods: {
