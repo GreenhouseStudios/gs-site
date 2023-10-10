@@ -21,6 +21,7 @@ const routes = [
   { name: "FilteredBlog", path: "/blog/category/:id", component: Blog },
   { name: "ProjectPage", path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
+  { name: "PrivatePage", path: "/networklab/:slug", component: Page },
   { name: "Home", path: "/", component: Home },
   { path: "*", component: NotFound },
 ];

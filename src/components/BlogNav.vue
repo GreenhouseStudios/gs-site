@@ -383,7 +383,7 @@ li:hover {}
 
 #blog-header::after{
   content: "";
-  background-image: url('../../public/bgImg/BlogHeaderBG.png');
+  background-image: url('../../public/bgImg/GSBlogHeaderTexture.png');
   background-repeat: no-repeat;
   background-size: 100% 100%;
   background-position: 10%;
