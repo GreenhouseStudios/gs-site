@@ -55,7 +55,7 @@ const actions = {
       return imgSrc.data.guid.rendered;
     });
   },
-  async getMorePosts({ state, dispatch }, page) {
+  async getMorePosts({ state  }, page) {
     let remainingPostCount = state.postCount - state.posts.length;
     console.log(`remaining posts: ${remainingPostCount}`);
     if (remainingPostCount > 0) {
@@ -66,11 +66,6 @@ const actions = {
             "&page=" +
             page
         )
-        .then((res) => {
-          dispatch("getBlogImages", res.data).then(() => {
-            
-          });
-        });
     }
   },
   async getPersonImage({ commit }, person) {
@@ -78,7 +73,7 @@ const actions = {
       person.categories.indexOf(86) < 0 &&
       person._links["wp:featuredmedia"]
     ) {
-      axios.get("media/" + person.featured_media).then((imgSrc) => {
+      return axios.get("media/" + person.featured_media).then((imgSrc) => {
         let img = imgSrc.data.media_details.sizes;
         if (img) {
           if (img.full && img.full.height < 300)
