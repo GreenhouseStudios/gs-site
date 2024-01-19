@@ -3,9 +3,9 @@ import App from './App.vue'
 import router from './router'
 import { store } from './store/store.js'
 import 'tachyons/css/tachyons.min.css'
-import InfiniteLoading from 'vue-infinite-loading';
+// import InfiniteLoading from 'vue-infinite-loading';
 
-Vue.use(InfiniteLoading, { /* options */ });
+// Vue.use(InfiniteLoading, { /* options */ });
 
 Vue.config.productionTip = false
 

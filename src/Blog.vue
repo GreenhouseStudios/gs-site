@@ -23,7 +23,7 @@
     <div class="center w-60 relative">
       <div class="blog-grid" v-if="!$store.getters.loading && posts">
         <blog-card v-for="post in filter" :key="post.slug" :post="post" :title="post.title" :content="post.content"
-          :date="post.date" :slug="post.slug" v-show="!post?.custom_fields?.draft"></blog-card>
+          :date="post.date" :slug="post.slug" v-show="!post.custom_fields.draft"></blog-card>
         <div style="margin-bottom: 5%"></div>
       </div>
     </div>
