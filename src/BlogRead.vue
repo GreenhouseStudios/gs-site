@@ -181,10 +181,8 @@ export default {
       return this.$store.state.peopleCategories.find(x => x.id === this.authorPersonRecord?.people_category[0])?.name;
     },
     authorImage() {
-      let result = this.$store.state.people.find(
-        (p) => p.title.rendered === this.post._embedded.author[0].name
-      );
-      result = result?.image?.source_url;
+      let result = this.authorPersonRecord;
+      result = result?.image;
       if (!result)
         result =
           "https://dev-greenhouse-studios.pantheonsite.io/wp-content/uploads/2017/01/g_icon-placeholder-1.jpg";
