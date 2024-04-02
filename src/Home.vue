@@ -142,7 +142,7 @@ export default {
     },
     featuredPosts: function () {
       if (this.posts) {
-        return this.posts.slice(0, 6);
+        return this.posts.filter(p => !p.custom_fields.draft).slice(0, 6);
       } else {
         return null;
       }

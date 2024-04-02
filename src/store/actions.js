@@ -41,10 +41,12 @@ const actions = {
           axios.get("media/" + post.featured_media).then((imgSrc) => {
             post["image"] = imgSrc.data.media_details.sizes.medium?.source_url;
           });
-          posts.push(post);
-          commit("setPosts", posts);
         }
+
+        posts.push(post);
       });
+
+      commit("setPosts", posts);
       if (page < pageTotal) {
         dispatch("getPosts", page + 1);
       }
@@ -55,17 +57,16 @@ const actions = {
       return imgSrc.data.guid.rendered;
     });
   },
-  async getMorePosts({ state  }, page) {
+  async getMorePosts({ state }, page) {
     let remainingPostCount = state.postCount - state.posts.length;
     console.log(`remaining posts: ${remainingPostCount}`);
     if (remainingPostCount > 0) {
-      return axios
-        .get(
-          "posts?per_page=" +
-            (remainingPostCount >= 12 ? 12 : remainingPostCount) +
-            "&page=" +
-            page
-        )
+      return axios.get(
+        "posts?per_page=" +
+          (remainingPostCount >= 12 ? 12 : remainingPostCount) +
+          "&page=" +
+          page
+      );
     }
   },
   async getPersonImage({ commit }, person) {
