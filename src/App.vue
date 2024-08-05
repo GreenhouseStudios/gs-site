@@ -34,6 +34,7 @@ import Header from './components/Header.vue';
 // import Loading from "./components/Loading.vue";
 import Nav from "./components/Nav.vue";
 import BlogNav from "./components/BlogNav.vue";
+import './assets/blog-read.css';
 export default {
   name: "App",
   components: {
@@ -165,4 +166,6 @@ a, a:link, a:visited, a:focus, a:hover, a:active{
     background-position: 12.5rem top; /*200px*/
   }
 }
+
+
 </style>

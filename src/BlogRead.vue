@@ -59,7 +59,7 @@
             {{ post.custom_fields.byline[0] }}
           </h3>
 
-          <span v-html="post.content.rendered" ref="contentContainer"></span>
+          <span v-html="post.content.rendered" ref="contentContainer" id="from-wp-content"></span>
 
           <div class="mv2">
             <span class="dn-l di"><share-links></share-links></span>
@@ -96,6 +96,7 @@ import BlogCard from "./components/BlogCard.vue";
 import NotFound from "./NotFound.vue";
 import ShareLinks from "./components/ShareLinks.vue";
 import Loading from "./components/Loading.vue";
+
 export default {
   name: "BlogRead",
   components: { NotFound, ShareLinks, Loading, BlogCard },
@@ -108,7 +109,7 @@ export default {
   },
   updated() {
     console.log( "updated" );
-    this.wrapImagesWithText();
+    // this.wrapImagesWithText();
 
     // this.$forceUpdate();
   },
@@ -347,7 +348,14 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="scss">
+
+#from-wp-content >>> p{
+  background-color: #8cc947;
+}
+</style>
+
+<style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@100;200;300;400;500;600;700;800;900&display=swap");
 @import "./assets/blog.css";
 
@@ -374,13 +382,16 @@ body {
 
 
 
-h1 {
+#from-wp-content{
+  h1 {
   font-family: inherit;
   font-weight: 500;
   line-height: 1.1;
   color: #161616;
   margin-top: 20px;
   margin-bottom: 10px;
+  // font-size: 100pt;
+}
 }
 
 .date {
@@ -562,6 +573,15 @@ p>img.alignleft {
   margin-right: 1.5em;
 }
 
+#from-wp-content >>> .alignleft,
+#from-wp-content >>> img.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+
+
 .alignright,
 img.alignright {
   display: inline;
@@ -576,4 +596,5 @@ img.aligncenter {
   margin-left: auto;
   margin-right: auto;
 }
+
 </style>
