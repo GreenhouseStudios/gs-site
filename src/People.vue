@@ -65,65 +65,6 @@
         </li>
       </ul>
     </div>
-    <!-- <div v-show="activeTab === 2">
-      <div class="grid partner">
-        <img v-for="p in partners" :key="p" class="partner-img" :src="p" />
-      </div>
-    </div> -->
-    <!-- <div v-show="activeTab === 3">
-      <div class="relative center w-50-ns w-90">
-        <div class="ma2 mb4">
-          <h3 class="f3">Greenhouse Studios Leadership</h3>
-          <p class="f4">Director, Tom Scheinfeldt</p>
-          <p class="f4">Associate Director (Research), Clarissa Ceglio</p>
-          <p class="f4">Associate Director (Coordinator), Sara Sikes</p>
-        </div>
-
-        <div class="ma2 mb4">
-          <h3 class="f3">Steering Committee</h3>
-          <p class="f4">CLAS: Alexis Boylan, Anke Finger, Brendan Kane,</p>
-          <p class="f4">
-            SFA: Clarissa Ceglio, Cora Lynn Deibler, Tom Scheinfeldt
-          </p>
-          <p class="f4">
-            University Library: Greg Colati, Sara Harrington, Sara Sikes
-          </p>
-        </div>
-
-        <div class="ma2 mb4">
-          <h3 class="f3">Advisory Board</h3>
-          <p class="f4">
-            Matthew Battles, Associate Director, metaLAB, Harvard University
-          </p>
-          <p class="f4">
-            Michael Edson, Associate Director/Head of Digital at United Nations
-            Live Museum for Humanity, Copenhagen, Denmark
-          </p>
-          <p class="f4">
-            Kathleen Fitzpatrick, PhD, Director of Scholarly Communication,
-            Modern Language Association
-          </p>
-          <p class="f4">
-            Matthew K. Gold, PhD, Director, GC Digital Scholarship Lab, City
-            University of New York
-          </p>
-          <p class="f4">
-            Ian Gonsher, MFA, Associate Director, Brown Creative Mind Initiative
-          </p>
-          <p class="f4">Tara McPherson, PhD, Founding Editor, Vectors</p>
-
-          <p class="f4">
-            Amy Papaelias, MFA Intermedia Design, Assistant Professor of Graphic
-            Design/Foundations, Fine Art Department, State University of New
-            York at New Paltz
-          </p>
-          <p class="f4">
-            Barbara Rockenbach, MSLIS, Director, Humanities & History Libraries,
-            Columbia University Libraries/Information Services
-          </p>
-        </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -208,7 +149,9 @@ export default {
   updated() {
     this.people = this.$store.getters.allPeople;
   },
-  mounted() {
+  async mounted() {
+    this.loading = true;
+    await this.$store.dispatch("getPeople",1);
     this.people = this.$store.getters.allPeople;
     if (this.$route.params.name) {
       setTimeout(() => {
@@ -220,6 +163,7 @@ export default {
         });
       }, 100);
     }
+    this.loading = false;
   },
   beforeRouteLeave(to, from, next) {
     console.log(to)
