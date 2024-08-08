@@ -1,33 +1,13 @@
 <template>
-  <div>
-    <header class="header bg-transparent z-5">
+  <nav class="flex justify-end" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
+    
       <img
         :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
         class="absolute"
         id="watercolor-bg"
+        v-if="!isBlogRoute"
       />
-      <home-button class="o-0"></home-button>
-      <div
-        class="
-          absolute
-          top-0
-          left-0
-          ttu
-          ph3
-          mh3
-          mv0
-          f2-l
-          f3
-          o-90
-          db-l
-          dn
-          off-black
-        "
-        id="page-indicator"
-      >
-        <!-- <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2> -->
-      </div>
       <input
         class="menu-btn"
         type="checkbox"
@@ -41,36 +21,12 @@
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
       <ul class="menu ttc">
-        <li>
-          <router-link class="shimmer relative" to="/"
-            >home
+        <li v-for="item in menuItems" :key="item.title" class="menu-link">
+          <router-link class="relative" :to="item.title.toLowerCase()"
+            >{{ item.title }}
             <img
               class="w-70 absolute bottom-0 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
-          /></router-link>
-        </li>
-        <li>
-          <router-link class="shimmer relative" to="/people"
-            >people<img
-              class="w-70 absolute bottom-0 left-1 dn"
-          /></router-link>
-        </li>
-        <li>
-          <router-link class="shimmer relative" to="/projects"
-            >projects<img
-              class="w-70 absolute bottom-0 left-1 dn"
-          /></router-link>
-        </li>
-        <li>
-          <router-link class="shimmer relative" to="/page/join-us"
-            >join us<img
-              class="w-70 absolute bottom-0 left-1 dn"
-          /></router-link>
-        </li>
-        <li>
-          <router-link class="shimmer relative" to="/blog"
-            >blog<img
-              class="w-70 absolute bottom-0 left-1 dn"
           /></router-link>
         </li>
       </ul>
@@ -101,14 +57,13 @@
           </ul>
         </div></transition
       >
-    </header>
-  </div>
+  </nav>
 </template>
 
 <script>
-import HomeButton from "./HomeButton.vue";
+// import HomeButton from "./HomeButton.vue";
 export default {
-  components: { HomeButton },
+  // components: { HomeButton },
   data() {
     return {
       showMenu: false,
@@ -121,6 +76,12 @@ export default {
     currentPage() {
       return this.$route.name;
     },
+    menuItems(){
+      return this.$store.state.menuItems
+    },
+    isBlogRoute(){
+      return this.$route.path.includes('blog')
+    }
   },
   methods: {
     toggleMenu() {
@@ -185,6 +146,19 @@ li:hover {
   width: 100%;
 }
 
+.blog-nav{
+  background-color: #058A85;
+  
+}
+
+.blog-nav ul > li > a{
+  color: white !important;
+}
+
+.header ul > li > a{
+  color: black;
+}
+
 .header ul {
   font-family: "Libre Franklin";
   font-weight: 300;
@@ -198,7 +172,6 @@ li:hover {
   display: block;
   padding: 20px 20px;
   text-decoration: none;
-  color: #161616;
   font-size: 1.5rem;
 }
 #mobile-menu-list > li a {
@@ -211,7 +184,7 @@ li:hover {
 
 .header .logo {
   display: block;
-  float: left;
+  // float: left;
   font-size: 2em;
   padding: 10px 20px;
   text-decoration: none;
@@ -231,7 +204,7 @@ li:hover {
 
 .header .menu-icon {
   cursor: pointer;
-  float: right;
+  // float: right;
   padding: 35px 30px;
   position: relative;
   user-select: none;
@@ -294,14 +267,14 @@ li:hover {
 
 @media (min-width: 60em) {
   .header li {
-    float: left;
+    // float: left;
   }
   .header li a {
     padding: 20px 30px;
   }
   .header .menu {
     clear: none;
-    float: right;
+    // float: right;
     max-height: none;
   }
   .header .menu-icon {
@@ -364,5 +337,12 @@ li:hover {
   background-color: #f5f5f5;
   background-size: 100%;
   transition: background 0s;
+}
+
+.blog-nav > a{
+  color: white;
+}
+.blog-nav > .menu-link:visited{
+  color: white;
 }
 </style>

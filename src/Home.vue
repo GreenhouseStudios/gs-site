@@ -1,7 +1,7 @@
 <template>
   <div class="body ph4-ns flex-column items-center">
     <div
-      class="flex flex-row-ns flex-column flex-column-m mt4"
+      class="flex flex-row-ns flex-column flex-column-m mt4 justify-between w-100"
       style="justify-content: space-evenly"
     >
       <div class="flex mh5-ns mb5">
