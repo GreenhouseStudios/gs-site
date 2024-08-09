@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-end ph3" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
+  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
     
       <img
         :src="require('../../public/img/watercolor-nav.png')"
@@ -20,16 +20,16 @@
       >
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
-      <ul class="menu ttc">
-        <li v-for="item in menuItems" :key="item.title" class="menu-link relative" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
+      <ul class="menu ttc overflow-visible">
+        <li v-for="item in menuItems" :key="item.title" class="menu-link relative f3 overflow-visible" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
           <router-link class="relative" :to="item.slug ? item.slug : item.title.toLowerCase()"
             >{{ item.title }}
             <img
               class="w-70 absolute bottom-2 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
           /></router-link>
-          <ul v-if="item.child_items && activeDropdown == item.child_items" class="bg-white pa2 flex flex-column relative bottom-0">
-            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-hidden"><router-link :to="child.slug ? child.slug : child.title">{{ child.title }}</router-link></li>
+          <ul v-if="item.child_items && activeDropdown == item.child_items" class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
+            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 "><router-link class="overflow-visible" :to="child.slug ? child.slug : child.title">{{ child.title }}</router-link></li>
           </ul>
         </li>
       </ul>
@@ -169,17 +169,16 @@ li:hover {
   margin: 0;
   padding: 0;
   list-style: none;
-  overflow: hidden;
+  // overflow: hidden;
 }
 .menu > li a {
   display: block;
-  padding: 20px 20px;
+  // padding: 20px 20px;
   text-decoration: none;
-  font-size: 1.5rem;
 }
 #mobile-menu-list > li a {
   display: block;
-  padding: 20px 20px;
+  // padding: 20px 20px;
   color: white;
   font-size: 1.75rem;
   text-decoration: none;
@@ -272,9 +271,7 @@ li:hover {
   .header li {
     // float: left;
   }
-  .header li a {
-    padding: 20px 30px;
-  }
+
   .header .menu {
     clear: none;
     // float: right;
@@ -350,16 +347,20 @@ li:hover {
 }
 
 li.nav-dropdown-item {
-  font-size: 0.1rem;
-  padding: 0.1rem;
   text-align: center;
   background-color: white;
   color: black;
   max-width: 100%;
   min-width: none;
+  margin: 0;
 }
 
 .nav-dropdown-item:hover {
   background-color: #f5f5f5;
+}
+
+.nav-dropdown-item > a{
+  margin: 0;
+  padding: 0%;
 }
 </style>
