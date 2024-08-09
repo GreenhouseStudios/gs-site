@@ -24,6 +24,7 @@ const routes = [
   { name: "PrivatePage", path: "/networklab/:slug", component: Page },
   { name: "Home", path: "/home", component: Home },
   { name: "Home", path: "/", component: Home },
+  { name: "Page", path: "/:slug", component: Page},
   { path: "*", component: NotFound },
 ];
 

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-end" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
+  <nav class="flex justify-end ph3" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
     
       <img
         :src="require('../../public/img/watercolor-nav.png')"
@@ -21,13 +21,16 @@
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
       <ul class="menu ttc">
-        <li v-for="item in menuItems" :key="item.title" class="menu-link">
-          <router-link class="relative" :to="item.title.toLowerCase()"
+        <li v-for="item in menuItems" :key="item.title" class="menu-link relative" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
+          <router-link class="relative" :to="item.slug ? item.slug : item.title.toLowerCase()"
             >{{ item.title }}
             <img
-              class="w-70 absolute bottom-0 left-1 dn"
+              class="w-70 absolute bottom-2 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
           /></router-link>
+          <ul v-if="item.child_items && activeDropdown == item.child_items" class="bg-white pa2 flex flex-column relative bottom-0">
+            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-hidden"><router-link :to="child.slug ? child.slug : child.title">{{ child.title }}</router-link></li>
+          </ul>
         </li>
       </ul>
       <transition name="slide-fade">
@@ -49,11 +52,7 @@
             class="flex flex-column items-center justify-center h-100"
             id="mobile-menu-list"
           >
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/">Home</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/people">People</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/projects">Projects</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/page/join-us">Join Us</router-link></li>
-            <li class="w-100"><router-link class="mobilebutton ripple" to="/blog">Blog</router-link></li>
+          <li class="w-100" v-for="item in menuItems" :key="item.title"><router-link class="mobilebutton ripple" :to="item.slug ? item.slug : item.title.toLowerCase()" >{{ item.title }}</router-link></li>
           </ul>
         </div></transition
       >
@@ -67,6 +66,7 @@ export default {
   data() {
     return {
       showMenu: false,
+      activeDropdown: null,
     };
   },
   computed: {
@@ -90,6 +90,12 @@ export default {
     },
     toggleMenuDelay() {
       setTimeout(() => this.toggleMenu(), 300);
+    },
+    showDropdown(index) {
+      this.activeDropdown = index;
+    },
+    hideDropdown() {
+      this.activeDropdown = null;
     },
   },
 };
@@ -136,9 +142,6 @@ export default {
   }
 }
 
-li {
-  font-size: 1.2rem;
-}
 li:hover {
 }
 
@@ -344,5 +347,19 @@ li:hover {
 }
 .blog-nav > .menu-link:visited{
   color: white;
+}
+
+li.nav-dropdown-item {
+  font-size: 0.1rem;
+  padding: 0.1rem;
+  text-align: center;
+  background-color: white;
+  color: black;
+  max-width: 100%;
+  min-width: none;
+}
+
+.nav-dropdown-item:hover {
+  background-color: #f5f5f5;
 }
 </style>
