@@ -1,13 +1,33 @@
 <template>
-  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
-    
+  <div>
+    <header class="header bg-transparent z-5">
       <img
         :src="require('../../public/img/watercolor-nav.png')"
         alt="gs-watercolor-background"
         class="absolute"
         id="watercolor-bg"
-        v-if="!isBlogRoute"
       />
+      <home-button class="o-0"></home-button>
+      <div
+        class="
+          absolute
+          top-0
+          left-0
+          ttu
+          ph3
+          mh3
+          mv0
+          f2-l
+          f3
+          o-90
+          db-l
+          dn
+          off-black
+        "
+        id="page-indicator"
+      >
+        <!-- <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2> -->
+      </div>
       <input
         class="menu-btn"
         type="checkbox"
@@ -20,17 +40,38 @@
       >
         <span><i class="fa fa-2x fa-bars"></i></span>
       </label>
-      <ul class="menu ttc overflow-visible">
-        <li v-for="item in menuItems" :key="item.title" class="menu-link relative f3 overflow-visible" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
-          <router-link class="relative" :to="item.slug ? item.slug : item.title.toLowerCase()"
-            >{{ item.title }}
+      <ul class="menu ttc">
+        <li>
+          <router-link class="shimmer relative" to="/"
+            >home
             <img
-              class="w-70 absolute bottom-2 left-1 dn"
+              class="w-70 absolute bottom-0 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
           /></router-link>
-          <ul v-if="item.child_items && activeDropdown == item.child_items" class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
-            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 "><router-link class="overflow-visible" :to="child.slug ? child.slug : child.title">{{ child.title }}</router-link></li>
-          </ul>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/people"
+            >people<img
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/projects"
+            >projects<img
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/page/join-us"
+            >join us<img
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/blog"
+            >blog<img
+              class="w-70 absolute bottom-0 left-1 dn"
+          /></router-link>
         </li>
       </ul>
       <transition name="slide-fade">
@@ -52,21 +93,25 @@
             class="flex flex-column items-center justify-center h-100"
             id="mobile-menu-list"
           >
-          <li class="w-100" v-for="item in menuItems" :key="item.title"><router-link class="mobilebutton ripple" :to="item.slug ? item.slug : item.title.toLowerCase()" >{{ item.title }}</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/">Home</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/people">People</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/projects">Projects</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/page/join-us">Join Us</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/blog">Blog</router-link></li>
           </ul>
         </div></transition
       >
-  </nav>
+    </header>
+  </div>
 </template>
 
 <script>
-// import HomeButton from "./HomeButton.vue";
+import HomeButton from "./HomeButton.vue";
 export default {
-  // components: { HomeButton },
+  components: { HomeButton },
   data() {
     return {
       showMenu: false,
-      activeDropdown: null,
     };
   },
   computed: {
@@ -76,12 +121,6 @@ export default {
     currentPage() {
       return this.$route.name;
     },
-    menuItems(){
-      return this.$store.state.menuItems
-    },
-    isBlogRoute(){
-      return this.$route.path.includes('blog')
-    }
   },
   methods: {
     toggleMenu() {
@@ -90,12 +129,6 @@ export default {
     },
     toggleMenuDelay() {
       setTimeout(() => this.toggleMenu(), 300);
-    },
-    showDropdown(index) {
-      this.activeDropdown = index;
-    },
-    hideDropdown() {
-      this.activeDropdown = null;
     },
   },
 };
@@ -142,24 +175,14 @@ export default {
   }
 }
 
+li {
+  font-size: 1.2rem;
+}
 li:hover {
 }
 
 .header {
   width: 100%;
-}
-
-.blog-nav{
-  background-color: #058A85;
-  
-}
-
-.blog-nav ul > li > a{
-  color: white !important;
-}
-
-.header ul > li > a{
-  color: black;
 }
 
 .header ul {
@@ -169,16 +192,18 @@ li:hover {
   margin: 0;
   padding: 0;
   list-style: none;
-  // overflow: hidden;
+  overflow: hidden;
 }
 .menu > li a {
   display: block;
-  // padding: 20px 20px;
+  padding: 20px 20px;
   text-decoration: none;
+  color: #161616;
+  font-size: 1.5rem;
 }
 #mobile-menu-list > li a {
   display: block;
-  // padding: 20px 20px;
+  padding: 20px 20px;
   color: white;
   font-size: 1.75rem;
   text-decoration: none;
@@ -186,7 +211,7 @@ li:hover {
 
 .header .logo {
   display: block;
-  // float: left;
+  float: left;
   font-size: 2em;
   padding: 10px 20px;
   text-decoration: none;
@@ -206,7 +231,7 @@ li:hover {
 
 .header .menu-icon {
   cursor: pointer;
-  // float: right;
+  float: right;
   padding: 35px 30px;
   position: relative;
   user-select: none;
@@ -269,12 +294,14 @@ li:hover {
 
 @media (min-width: 60em) {
   .header li {
-    // float: left;
+    float: left;
   }
-
+  .header li a {
+    padding: 20px 30px;
+  }
   .header .menu {
     clear: none;
-    // float: right;
+    float: right;
     max-height: none;
   }
   .header .menu-icon {
@@ -337,30 +364,5 @@ li:hover {
   background-color: #f5f5f5;
   background-size: 100%;
   transition: background 0s;
-}
-
-.blog-nav > a{
-  color: white;
-}
-.blog-nav > .menu-link:visited{
-  color: white;
-}
-
-li.nav-dropdown-item {
-  text-align: center;
-  background-color: white;
-  color: black;
-  max-width: 100%;
-  min-width: none;
-  margin: 0;
-}
-
-.nav-dropdown-item:hover {
-  background-color: #f5f5f5;
-}
-
-.nav-dropdown-item > a{
-  margin: 0;
-  padding: 0%;
 }
 </style>

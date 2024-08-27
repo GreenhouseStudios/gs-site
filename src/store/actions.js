@@ -8,7 +8,6 @@ const actions = {
     await dispatch("getPostCount");
     await dispatch("getPeopleCount");
     await dispatch("getCategoryCount");
-    await dispatch("getMenuItems");
     await dispatch("getPosts", 1);
     // await dispatch("getPeople", 1);
     await dispatch("getProjects");
@@ -31,11 +30,6 @@ const actions = {
   async getCategoryCount({ commit }) {
     return axios.get("categories?per_page=1").then((res) => {
       commit("setCategoryCount", parseInt(res.headers["x-wp-total"]));
-    });
-  },
-  async getMenuItems({ commit }) {
-    return axios.get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/menus/v1/menus/gs-nav").then((res) => {
-      commit("setMenuItems", res.data.items);
     });
   },
   async getPosts({ commit, dispatch }, page) {
