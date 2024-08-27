@@ -45,9 +45,6 @@ const mutations = {
   setPageCategories(state, payload) {
     state.pageCategories = payload;
   },
-  setMenuItems(state, payload) {
-    state.menuItems = payload;
-  }
 };
 
 export default mutations;

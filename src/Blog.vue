@@ -1,7 +1,6 @@
 <template>
-  <div class="">
-    <blog-header></blog-header>
-  <section class="w-75 center">  <span class="flex justify-between items-center ma2 mv4">
+  <div class="w-75 center">
+    <span class="flex justify-between items-center ma2 mv4">
       <h1 class="f3">Recent Posts</h1>
 
       <div class="relative flex items-right">
@@ -27,17 +26,16 @@
           :date="post.date" :slug="post.slug" v-show="!post.custom_fields.draft"></blog-card>
         <div style="margin-bottom: 5%"></div>
       </div>
-    </div></section >
+    </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
 import BlogCard from "./components/BlogCard.vue";
-import BlogHeader from "./components/BlogHeader.vue";
 export default {
   name: "Blog",
-  components: { BlogCard, BlogHeader },
+  components: { BlogCard },
   data() {
     return {
       posts: null,

@@ -22,7 +22,6 @@ export const store = new Vuex.Store({
         tags: [],
         peopleCategories: [],
         pageCategories: [],
-        menuItems: [],
         categoryCount: 0,
         loading: true,
     },

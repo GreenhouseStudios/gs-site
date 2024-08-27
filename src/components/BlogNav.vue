@@ -1,6 +1,52 @@
 <template>
-    <header class="h7 w-100 cf" style="background: #00a192">
+  <div>
+    <header class="header z-5 h7" style="background: #00a192">
       <!-- <home-button class="o-0"></home-button> -->
+
+      <div class="
+              absolute
+              top-0
+              left-0
+              ttu
+              ph3
+              mh3
+              mv0
+              f2-l
+              f3
+              o-90
+              db-l
+              dn
+              off-black
+            " id="page-indicator">
+        <!-- <h2 class="mv1" v-if="currentPage !== 'Home'">{{ currentPage }}</h2> -->
+      </div>
+      <input class="menu-btn" type="checkbox" id="menu-btn" @click="toggleMenu()" />
+      <label class="absolute-l top-0 left-0 pa3 f3-ns f5 menu-icon" for="menu-btn">
+        <span><i class="fa fa-2x fa-bars"></i></span>
+      </label>
+
+      <ul class="menu ttc relative top-0 right-0 white w-100 justify-end flex z-5" style="background: #1d8c88">        <li>
+          <router-link class="shimmer relative" to="/">home
+            <img class="w-70 absolute bottom-0 left-1 dn"
+              :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`" /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/people">people<img
+              class="w-70 absolute bottom-0 left-1 dn" /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/projects">projects<img
+              class="w-70 absolute bottom-0 left-1 dn" /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/page/join-us">join us<img
+              class="w-70 absolute bottom-0 left-1 dn" /></router-link>
+        </li>
+        <li>
+          <router-link class="shimmer relative" to="/blog">blog<img
+              class="w-70 absolute bottom-0 left-1 dn" /></router-link>
+        </li>
+      </ul>
       <div class="w-100 pv7-ns pv6 tc" id="blog-header">
         <div class="blog-header-text">
           <!-- <img src="../../public/img/GH-White-Logo.png" class="logo-white w-100 mb0"> -->
@@ -9,7 +55,23 @@
             research and initiatives.</p> -->
         </div>
       </div>
+      <transition name="slide-fade">
+        <div class="z-5 absolute top-0" v-if="showMenu" id="mobile-menu" style="width: 100vw">
+          <button @click="toggleMenu()" class="absolute h2 w2 top-1 right-1 bn bg-white f2 ma3"
+            style="color: white; background: var(--main-bg-color)">
+            <i class="dib fa fa-xs fa-times"></i>
+          </button>
+          <ul @click="toggleMenuDelay()" class="flex flex-column items-center justify-center h-100" id="mobile-menu-list">
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/">Home</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/people">People</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/projects">Projects</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/page/join-us">Join Us</router-link></li>
+            <li class="w-100"><router-link class="mobilebutton ripple" to="/blog">Blog</router-link></li>
+          </ul>
+        </div>
+      </transition>
     </header>
+  </div>
 </template>
   
 <script>
@@ -44,6 +106,27 @@ export default {
 <style scoped lang="scss">
 #page-indicator {
   font-family: SAMO;
+}
+
+.menu-title {
+  font-family: Samo;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s;
+}
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
+  opacity: 0;
+}
+
+.slide-fade-enter-active {
+  transition: all 0.3s ease;
 }
 
 .logo-white {
@@ -87,6 +170,8 @@ export default {
 li {
   font-size: 1.2rem;
 }
+
+li:hover {}
 
 .header {
   width: 100%;

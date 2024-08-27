@@ -22,16 +22,13 @@ const routes = [
   { name: "ProjectPage", path: "/projects/:slug", component: ProjectPage },
   { name: "Page", path: "/page/:slug", component: Page },
   { name: "PrivatePage", path: "/networklab/:slug", component: Page },
-  { name: "Home", path: "/home", component: Home },
   { name: "Home", path: "/", component: Home },
-  { name: "Page", path: "/:slug", component: Page},
   { path: "*", component: NotFound },
 ];
 
 const router = new VueRouter({
   mode: "history",
   routes, // short for `routes: routes`
-  // history: createWebHistory(),
   scrollBehavior(to, from, savedPosition) {
     // console.log(to);
     // console.log(from);
@@ -43,13 +40,13 @@ const router = new VueRouter({
   },
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.fullPath.substring(0, 2) === "/#") {
-//     const path = to.fullPath.substring(2);
-//     next(path);
-//     return;
-//   }
-//   next();
-// });
+router.beforeEach((to, from, next) => {
+  if (to.fullPath.substring(0, 2) === "/#") {
+    const path = to.fullPath.substring(2);
+    next(path);
+    return;
+  }
+  next();
+});
 
 export default router;
