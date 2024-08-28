@@ -221,11 +221,11 @@ export default {
     },
     headerBgTexture() {
       if ( this.post.slug.length <= 22 ) {
-        return require( "..//public/bgImg/GSBlogHeaderTexture_1_transparent.png" )
+        return require( "../public/bgImg/GSBlogHeaderTexture_1_transparent.png" )
       } else if ( this.post.slug.length > 22 && this.post.slug.length < 35 ) {
-        return require( "..//public/bgImg/GSBlogHeaderTexture_2_transparent.png" )
+        return require( "../public/bgImg/GSBlogHeaderTexture_2_transparent.png" )
       } else {
-        return require( "..//public/bgImg/GSBlogHeaderTexture_3_transparent.png" )
+        return require( "../public/bgImg/GSBlogHeaderTexture_3_transparent.png" )
       }
     },
     categoryColor() {
