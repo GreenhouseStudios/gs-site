@@ -43,13 +43,4 @@ const router = new VueRouter({
   },
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (to.fullPath.substring(0, 2) === "/#") {
-//     const path = to.fullPath.substring(2);
-//     next(path);
-//     return;
-//   }
-//   next();
-// });
-
 export default router;

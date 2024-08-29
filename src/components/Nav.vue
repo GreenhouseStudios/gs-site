@@ -22,14 +22,14 @@
       </label>
       <ul class="menu ttc overflow-visible">
         <li v-for="item in menuItems" :key="item.title" class="menu-link relative f3 overflow-visible" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
-          <router-link class="relative" :to="item.slug ? item.slug : item.title.toLowerCase()"
+          <router-link class="relative" :to="item.slug ?  '/' + item.slug : '/' + item.title.toLowerCase()"
             >{{ item.title }}
             <img
               class="w-70 absolute bottom-2 left-1 dn"
               :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
           /></router-link>
           <ul v-if="item.child_items && activeDropdown == item.child_items" class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
-            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 "><router-link class="overflow-visible" :to="child.slug ? child.slug : child.title">{{ child.title }}</router-link></li>
+            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 "><router-link class="overflow-visible" :to="child.slug ? '/' + child.slug : '/' + child.title">{{ child.title }}</router-link></li>
           </ul>
         </li>
       </ul>
