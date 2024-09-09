@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'" :style="`background-color: ${ isBlogReadRoute ? $store.state.navColor : isBlogRoute? '#058A85' : 'transparent'}; filter: brightness(0.9)`"> 
+  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'" :style="`background-color: ${ isBlogReadRoute ? $store.state.navColor : isBlogRoute? '#058A85' : 'transparent'}; ${isBlogReadRoute ? ' filter: brightness(0.9)' : ''}`"> 
     
       <img
         :src="require('../../public/img/watercolor-nav.png')"
