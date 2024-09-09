@@ -47,6 +47,10 @@ const mutations = {
   },
   setMenuItems(state, payload) {
     state.menuItems = payload;
+  },
+  setNavColor(state, payload) {
+    state.navColor = payload;
+    console.log(state.navColor);
   }
 };
 

@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'">
+  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'" :style="`background-color: ${ isBlogReadRoute ? $store.state.navColor : isBlogRoute? '#058A85' : 'transparent'}; filter: brightness(0.9)`"> 
     
       <img
         :src="require('../../public/img/watercolor-nav.png')"
@@ -60,6 +60,7 @@
 </template>
 
 <script>
+
 // import HomeButton from "./HomeButton.vue";
 export default {
   // components: { HomeButton },
@@ -81,6 +82,9 @@ export default {
     },
     isBlogRoute(){
       return this.$route.path.includes('blog')
+    },
+    isBlogReadRoute(){
+      return this.$route.name == 'BlogRead'
     }
   },
   methods: {
@@ -147,11 +151,6 @@ li:hover {
 
 .header {
   width: 100%;
-}
-
-.blog-nav{
-  background-color: #058A85;
-  
 }
 
 .blog-nav ul > li > a{

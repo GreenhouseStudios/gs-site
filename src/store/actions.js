@@ -148,6 +148,9 @@ const actions = {
       commit("setTags", res.data);
     });
   },
+  setNavColor({ commit }, color) {
+    commit("setNavColor", color);
+  }
 };
 
 export default actions;

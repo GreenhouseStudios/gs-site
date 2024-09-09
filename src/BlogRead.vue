@@ -108,10 +108,7 @@ export default {
     };
   },
   updated() {
-    console.log( "updated" );
-    // this.wrapImagesWithText();
-
-    // this.$forceUpdate();
+    this.$store.dispatch('setNavColor',this.categoryColor);
   },
   computed: {
     ...mapGetters( {

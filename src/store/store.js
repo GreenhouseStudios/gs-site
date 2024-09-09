@@ -25,6 +25,7 @@ export const store = new Vuex.Store({
         menuItems: [],
         categoryCount: 0,
         loading: true,
+        navColor: '#058A85'
     },
     mutations,
     actions,
