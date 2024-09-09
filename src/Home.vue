@@ -26,7 +26,7 @@
         </h3>
         
       </div>
-      <div class="card-row sidescroll ph5-ns center w-90" v-if="projects">
+      <div class="card-row sidescroll ph5-ns center w-100 flex flex-row items-center " v-if="projects">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
@@ -82,7 +82,7 @@
 
     <div class="text-1">
       <div>
-        <h3 class="title-2 pl5" style="font-size: 32px">Recent Blog Posts  <router-link to="/blog" class="shimmer pl5-ns db di-ns">
+        <h3 class="title-2 pl5 w-80 overflow-x-hidden" style="font-size: 32px">Recent Blog Posts  <router-link to="/blog" class="shimmer pl5-ns db di-ns">
           View Blog &#8594;
         </router-link></h3>
        
@@ -462,7 +462,6 @@ footer {
   grid-template-rows: repeat(4, 350px);
   grid-template-columns: repeat(3, 300px);
   justify-content: center;
-  padding-top: 20px;
 }
 
 @media (max-width: 660px) {
@@ -533,9 +532,8 @@ p a {
 .sidescroll {
   display: flex;
   height: 450px;
-  overflow: auto;
   width: 100vw;
-  justify-content: flex-start;
+  justify-content: center;
   // white-space: nowrap;
 }
 

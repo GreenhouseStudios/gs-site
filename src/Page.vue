@@ -31,6 +31,23 @@ export default {
         }
       } );
   },
+  updated () {
+     axios
+      .get(
+        "https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?slug=" +
+        this.$route.params.slug
+      )
+      .then( ( res ) => {
+        this.page = res.data[0];
+        if(this.page.content.protected){
+          let pw = prompt("Please enter the password: ");
+          axios.get("https://dev-greenhouse-studios.pantheonsite.io/wp-json/wp/v2/pages?slug=" +
+        this.$route.params.slug + "&password=" + pw).then( ( res ) => {
+          this.page = res.data[0];
+        } );
+        }
+      } );   
+  },
 };
 </script>
 

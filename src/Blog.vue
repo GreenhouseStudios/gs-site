@@ -1,5 +1,5 @@
 <template>
-  <div class="">
+  <div class="w-100">
     <blog-header></blog-header>
   <section class="w-75 center">  <span class="flex justify-between items-center ma2 mv4">
       <h1 class="f3">Recent Posts</h1>
