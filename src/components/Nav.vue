@@ -32,7 +32,7 @@
       </li>
     </ul>
     <transition name="slide-fade">
-      <div class="z-5 absolute top-0" v-if="showMenu" id="mobile-menu" style="width: 100vw">
+      <div class="z-5 absolute top-0 left-0" v-if="showMenu" id="mobile-menu" style="width: 100vw">
         <button @click="toggleMenu()" class="absolute h2 w2 top-1 right-1 bn bg-white f2 ma3"
           style="color: white; background: var(--main-bg-color)">
           <i class="dib fa fa-xs fa-times"></i>

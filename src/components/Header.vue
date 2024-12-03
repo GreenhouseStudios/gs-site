@@ -97,21 +97,14 @@
             </div>
           </div>
         </div>
-        <div class="row-container" id="site-header">
-          <!-- <div class="row-fluid">
-          <div>
-            <p id="super-title"></p>
-            <h1 id="site-title">
-              <a href="/" style="color: #fff">Greenhouse Studios</a>
-            </h1>
-          </div>
-        </div> -->
+        <div class="row-container" id="gs-site-header">
+        
           <div data-v-61dd7a3d="" class="row-container">
             <div data-v-61dd7a3d="" class="row-fluid">
               <div data-v-61dd7a3d="" id="home-link-container">
                   <div class="">
               <p id="super-title"></p>
-              <h1 id="site-title">
+              <h1 id="site-title" class="f4 f3-ns">
                 <a href="/" style="color: #fff">Greenhouse Studios</a>
               </h1>
             </div>
@@ -129,7 +122,5 @@
     max-width: 1200px !important;
     margin: 0 auto;
   }
-  .row-container {
-    padding: 0.7rem 1.9rem;
-  }
+ 
   </style>

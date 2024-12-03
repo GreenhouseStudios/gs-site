@@ -1,10 +1,10 @@
 <template>
     <header class="h7 w-100 cf" style="background: #00a192">
       <!-- <home-button class="o-0"></home-button> -->
-      <div class="w-100 pv7-ns pv6 tc" id="blog-header">
+      <div class="w-100 pv7-ns pv6-ns pv3 tc" id="blog-header">
         <div class="blog-header-text">
           <!-- <img src="../../public/img/GH-White-Logo.png" class="logo-white w-100 mb0"> -->
-          <p class="center white f6-ns f2 mb4 mb0-ns mt0 mh3" id="blog-title">The Greenhouse Studios Blog</p>
+          <p class="center white f1-ns f3 mb4 mb0-ns mt0 mh3 " id="blog-title">The Greenhouse Studios Blog</p>
           <!-- <p class="f4 white mh0 mv1">The best place to catch up on the latest news about our
             research and initiatives.</p> -->
         </div>
@@ -315,12 +315,7 @@ li {
   // font-family: 'Samo';
   // text-shadow: 5px 5px 10px rgba(0,0,0,0.2);
   font-weight: 700;
-  font-size: 50px;
-  // background: url("../../public/img/Watercolor_background.webp") 10% 0% / cover;
-  // background-size: 200%;
-  // -webkit-background-clip: text;
-  // -webkit-text-fill-color: transparent;
-  // filter: hue-rotate(-50deg) brightness(140%) saturate(180%);
+  margin-bottom: 0 !important;
   
 }
 </style>

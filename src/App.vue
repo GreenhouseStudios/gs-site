@@ -104,9 +104,9 @@ footer {
   color: rgba(255, 255, 255, 0.7);
 }
 
-#site-header {
+.row-container#gs-site-header {
   background: #000e2f !important;
-  padding: 0 15px !important;
+  padding: 0.1em !important;
 }
 
 #uconn-header-container {
