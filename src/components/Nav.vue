@@ -1,61 +1,42 @@
 <template>
-  <nav class="flex justify-end ph3 overflow-visible" :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'" :style="`background-color: ${ isBlogReadRoute ? $store.state.navColor : isBlogRoute? '#058A85' : 'transparent'}; ${isBlogReadRoute ? ' filter: brightness(0.9)' : ''}`"> 
-    
-      <img
-        :src="require('../../public/img/watercolor-nav.png')"
-        alt="gs-watercolor-background"
-        class="absolute"
-        id="watercolor-bg"
-        v-if="!isBlogRoute"
-      />
-      <input
-        class="menu-btn"
-        type="checkbox"
-        id="menu-btn"
-        @click="toggleMenu()"
-      />
-      <label
-        class="absolute-l top-0 left-0 pa3 f3-ns f5 menu-icon"
-        for="menu-btn"
-      >
-        <span><i class="fa fa-2x fa-bars"></i></span>
-      </label>
-      <ul class="menu ttc overflow-visible">
-        <li v-for="item in menuItems" :key="item.title" class="menu-link relative f3 overflow-visible" @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
-          <router-link class="relative" :to="item.slug ?  '/' + item.slug : '/' + item.title.toLowerCase()"
-            >{{ item.title }}
-            <img
-              class="w-70 absolute bottom-2 left-1 dn"
-              :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`"
-          /></router-link>
-          <ul v-if="item.child_items && activeDropdown == item.child_items" class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
-            <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 "><router-link class="overflow-visible" :to="child.slug ? '/' + child.slug : '/' + child.title">{{ child.title }}</router-link></li>
-          </ul>
-        </li>
-      </ul>
-      <transition name="slide-fade">
-        <div
-          class="z-5 absolute top-0"
-          v-if="showMenu"
-          id="mobile-menu"
-          style="width: 100vw"
-        >
-          <button
-            @click="toggleMenu()"
-            class="absolute h2 w2 top-1 right-1 bn bg-white f2 ma3"
-            style="color: white; background: var(--main-bg-color)"
-          >
-            <i class="dib fa fa-xs fa-times"></i>
-          </button>
-          <ul
-            @click="toggleMenuDelay()"
-            class="flex flex-column items-center justify-center h-100"
-            id="mobile-menu-list"
-          >
-          <li class="w-100" v-for="item in menuItems" :key="item.title"><router-link class="mobilebutton ripple" :to="item.slug ? item.slug : item.title.toLowerCase()" >{{ item.title }}</router-link></li>
-          </ul>
-        </div></transition
-      >
+  <nav class="flex justify-end ph3 overflow-visible"
+    :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'"
+    :style="`background-color: ${isBlogReadRoute ? $store.state.navColor : isBlogRoute ? '#058A85' : 'transparent'}; ${isBlogReadRoute ? ' filter: brightness(0.9)' : ''}`">
+
+    <img :src="require('../../public/img/watercolor-nav.png')" alt="gs-watercolor-background" class="absolute"
+      id="watercolor-bg" v-if="!isBlogRoute" />
+    <input class="menu-btn" type="checkbox" id="menu-btn" @click="toggleMenu()" />
+    <label class="absolute-l top-0 left-0 pa3 f3-ns f5 menu-icon" for="menu-btn">
+      <span><i class="fa fa-2x fa-bars"></i></span>
+    </label>
+    <ul class="menu ttc visible">
+      <li v-for="item in menuItems" :key="item.title" class="menu-link relative f3 overflow-visible"
+        @mouseover="activeDropdown = item.child_items" @mouseleave="activeDropdown = null">
+        <router-link class="relative" :to="item.slug ? '/' + item.slug : '/' + item.title.toLowerCase()">{{ item.title
+          }}
+          <img class="w-70 absolute bottom-2 left-1 dn"
+            :style="`transform: scaleX(${Math.random() > 0.5 ? 1 : -1})`" /></router-link>
+        <ul v-if="item.child_items && activeDropdown == item.child_items"
+          class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
+          <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 ">
+            <router-link class="overflow-visible" :to="child.slug ? '/' + child.slug : '/' + child.title">{{ child.title
+              }}</router-link>
+          </li>
+        </ul>
+      </li>
+    </ul>
+    <transition name="slide-fade">
+      <div class="z-5 absolute top-0" v-if="showMenu" id="mobile-menu" style="width: 100vw">
+        <button @click="toggleMenu()" class="absolute h2 w2 top-1 right-1 bn bg-white f2 ma3"
+          style="color: white; background: var(--main-bg-color)">
+          <i class="dib fa fa-xs fa-times"></i>
+        </button>
+        <ul @click="toggleMenuDelay()" class="flex flex-column items-center justify-center h-100" id="mobile-menu-list">
+          <li class="w-100" v-for="item in menuItems" :key="item.title"><router-link class="mobilebutton ripple"
+              :to="item.slug ? item.slug : item.title.toLowerCase()">{{ item.title }}</router-link></li>
+        </ul>
+      </div>
+    </transition>
   </nav>
 </template>
 
@@ -72,30 +53,30 @@ export default {
   },
   computed: {
     navImg() {
-      return require("../../public/img/avif/watercolor-nav.avif");
+      return require( "../../public/img/avif/watercolor-nav.avif" );
     },
     currentPage() {
       return this.$route.name;
     },
-    menuItems(){
+    menuItems() {
       return this.$store.state.menuItems
     },
-    isBlogRoute(){
-      return this.$route.path.includes('blog')
+    isBlogRoute() {
+      return this.$route.path.includes( 'blog' )
     },
-    isBlogReadRoute(){
+    isBlogReadRoute() {
       return this.$route.name == 'BlogRead'
     }
   },
   methods: {
     toggleMenu() {
       this.showMenu = !this.showMenu;
-      this.$emit("toggle");
+      this.$emit( "toggle" );
     },
     toggleMenuDelay() {
-      setTimeout(() => this.toggleMenu(), 300);
+      setTimeout( () => this.toggleMenu(), 300 );
     },
-    showDropdown(index) {
+    showDropdown( index ) {
       this.activeDropdown = index;
     },
     hideDropdown() {
@@ -106,10 +87,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 #page-indicator {
   font-family: SAMO;
 }
+
 .menu-title {
   font-family: Samo;
 }
@@ -118,18 +99,28 @@ export default {
 .fade-leave-active {
   transition: opacity 0.5s;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.fade-enter,
+.fade-leave-to
+
+/* .fade-leave-active below version 2.1.8 */
+  {
   opacity: 0;
 }
 
 .slide-fade-enter-active {
   transition: all 0.3s ease;
 }
+
 .slide-fade-leave-active {
   transition: all 0.3s ease-in;
 }
-.slide-fade-enter, .slide-fade-leave-to
-/* .slide-fade-leave-active below version 2.1.8 */ {
+
+.slide-fade-enter,
+.slide-fade-leave-to
+
+/* .slide-fade-leave-active below version 2.1.8 */
+  {
   transform: translateY(1000px);
 }
 
@@ -137,27 +128,28 @@ export default {
   z-index: -1;
   position: absolute;
   right: 0;
+
   @media screen and (min-width: 1440px) {
     width: 65vw;
     top: 100px;
   }
+
   @media screen and (max-width: 1440px) {
     width: 130vw;
   }
 }
 
-li:hover {
-}
+li:hover {}
 
 .header {
   width: 100%;
 }
 
-.blog-nav ul > li > a{
+.blog-nav ul>li>a {
   color: white !important;
 }
 
-.header ul > li > a{
+.header ul>li>a {
   color: black;
 }
 
@@ -170,12 +162,14 @@ li:hover {
   list-style: none;
   // overflow: hidden;
 }
-.menu > li a {
+
+.menu>li a {
   display: block;
   // padding: 20px 20px;
   text-decoration: none;
 }
-#mobile-menu-list > li a {
+
+#mobile-menu-list>li a {
   display: block;
   // padding: 20px 20px;
   color: white;
@@ -190,6 +184,7 @@ li:hover {
   padding: 10px 20px;
   text-decoration: none;
 }
+
 /* menu */
 
 .header .menu {
@@ -253,17 +248,20 @@ li:hover {
   background-color: var(--main-bg-color);
   height: 100vh;
 }
+
 #mobile-menu-list {
   font-weight: 800;
-  
-  > li {
+
+  >li {
     font-family: "Libre Franklin" !important;
     color: white !important;
   }
 }
+
 .menu {
   font-family: "Libre Franklin" !important;
 }
+
 /* 48em = 768px */
 
 @media (min-width: 60em) {
@@ -276,10 +274,22 @@ li:hover {
     // float: right;
     max-height: none;
   }
+
   .header .menu-icon {
     display: none;
   }
+
+  .menu {
+    display: block;
+  }
 }
+
+@media screen and (max-width: 60em) {
+  .menu {
+    display: none;
+  }
+}
+
 
 .shimmer:hover {
   display: inline-block;
@@ -287,17 +297,20 @@ li:hover {
 
   background: #000 -webkit-gradient(linear, 100% 0, 0 0, from(#444), color-stop(0.5, #aaa), to(#444));
 
-  background-position: -4rem top; /*50px*/
+  background-position: -4rem top;
+  /*50px*/
   background-repeat: no-repeat;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   -webkit-animation-name: shimmer;
   -webkit-animation-duration: 2.2s;
   -webkit-animation-iteration-count: infinite;
-  -webkit-background-size: 4rem 100%; /*50px*/
+  -webkit-background-size: 4rem 100%;
+  /*50px*/
 }
+
 .router-link-exact-active {
-  > img {
+  >img {
     display: block;
     bottom: 5%;
   }
@@ -305,43 +318,50 @@ li:hover {
 
 @-webkit-keyframes shimmer {
   0% {
-    background-position: -4rem top; /*50px*/
+    background-position: -4rem top;
+    /*50px*/
   }
 
   70% {
-    background-position: 12.5rem top; /*200px*/
+    background-position: 12.5rem top;
+    /*200px*/
   }
 
   100% {
-    background-position: 12.5rem top; /*200px*/
+    background-position: 12.5rem top;
+    /*200px*/
   }
 }
-.mobilebutton 
-  {
+
+.mobilebutton {
   border: none;
   font-size: 16px;
   cursor: pointer;
   color: white;
   outline: none;
 }
+
 /* Ripple effect */
 .ripple {
   background-position: center;
   transition: background 0.6s;
 }
+
 .ripple:hover {
   background: #9fdd59 radial-gradient(circle, transparent 1%, #8CC947 1%) center/15000%;
 }
+
 .ripple:active {
   background-color: #f5f5f5;
   background-size: 100%;
   transition: background 0s;
 }
 
-.blog-nav > a{
+.blog-nav>a {
   color: white;
 }
-.blog-nav > .menu-link:visited{
+
+.blog-nav>.menu-link:visited {
   color: white;
 }
 
@@ -358,7 +378,7 @@ li.nav-dropdown-item {
   background-color: #f5f5f5;
 }
 
-.nav-dropdown-item > a{
+.nav-dropdown-item>a {
   margin: 0;
   padding: 0%;
 }
