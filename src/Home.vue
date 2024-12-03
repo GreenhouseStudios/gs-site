@@ -4,11 +4,11 @@
       class="flex flex-row-ns flex-column flex-column-m mt4 justify-between w-100"
       style="justify-content: space-evenly"
     >
-      <div class="flex mh5-ns mb5">
+      <div class="flex-ns mh5-ns mb5 dn">
         <img
           loading="lazy"
           id="gs-logo"
-          class="center"
+          class="center dn"
           style="margin: auto"
           :src="require('../public/img/GS-Full-Brackets-Green-Black.png')"
           alt=""
@@ -26,7 +26,7 @@
         </h3>
         
       </div>
-      <div class="card-row sidescroll ph5-ns center w-100 flex flex-row items-center " v-if="projects">
+      <div class="card-row sidescroll ph5-ns center w-100 flex flex-row items-center overflow-x-scroll">
         <div
           v-for="(project, index) in featuredProjects"
           :key="project.id"
@@ -87,7 +87,7 @@
         </router-link></h3>
        
       </div>
-      <div class="card-row sidescroll ph5-ns" v-if="!$store.getters.loading">
+      <div class="card-row sidescroll ph5-ns overflow-x-scroll" v-if="!$store.getters.loading">
         <div v-for="(post, i) in featuredPosts" :key="post.slug" :index="i">
           <blog-card
             class="featuredblog"
@@ -131,7 +131,7 @@ export default {
   computed: {
     featuredProjects: function () {
       if (this.projects) {
-        var result = [...this.projects].filter(p => p.custom_fields.featured_priority).sort((a,b) => {
+        var result = [...this.projects].filter(p => p.custom_fields?.featured_priority).sort((a,b) => {
           return a.custom_fields?.featured_priority[0] < b.custom_fields?.featured_priority[0] ? -1 : 1;
         
         });
@@ -142,7 +142,7 @@ export default {
     },
     featuredPosts: function () {
       if (this.posts) {
-        return this.posts.filter(p => !p.custom_fields.draft).slice(0, 6);
+        return this.posts.filter(p => !p.custom_fields?.draft).slice(0, 6);
       } else {
         return null;
       }
