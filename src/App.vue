@@ -16,9 +16,9 @@
       />
     </div> -->
 
-    <div class="w-100 flex flex-column items-center"><keep-alive>
+    <div class="w-100 flex flex-column items-center">
         <router-view></router-view>
-      </keep-alive></div>
+      </div>
     <Footer></Footer>
   </div>
 </template>
