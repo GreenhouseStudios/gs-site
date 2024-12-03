@@ -1,12 +1,18 @@
 <template>
-  <nav class="flex justify-end ph3 overflow-visible"
+  <nav class="flex justify-between justify-end-ns ph3 pv2 overflow-visible items-center"
     :class="isBlogRoute ? 'blog-nav header z-5 white' : 'header bg-transparent z-5'"
     :style="`background-color: ${isBlogReadRoute ? $store.state.navColor : isBlogRoute ? '#058A85' : 'transparent'}; ${isBlogReadRoute ? ' filter: brightness(0.9)' : ''}`">
-
+    <img
+          loading="lazy"
+          id="gs-logo"
+          class="w3 h3 m-0 dn-ns"
+          :src="require('../../public/img/GS-Full-Brackets-Green-Black.png')"
+          alt=""
+        />
     <img :src="require('../../public/img/watercolor-nav.png')" alt="gs-watercolor-background" class="absolute"
       id="watercolor-bg" v-if="!isBlogRoute" />
     <input class="menu-btn" type="checkbox" id="menu-btn" @click="toggleMenu()" />
-    <label class="absolute-l top-0 left-0 pa3 f3-ns f5 menu-icon" for="menu-btn">
+    <label class="absolute-l top-0 left-0 pa2 f3-ns f5 menu-icon" for="menu-btn">
       <span><i class="fa fa-2x fa-bars"></i></span>
     </label>
     <ul class="menu ttc visible">
@@ -201,7 +207,6 @@ li:hover {}
 .header .menu-icon {
   cursor: pointer;
   // float: right;
-  padding: 35px 30px;
   position: relative;
   user-select: none;
   display: flex;
