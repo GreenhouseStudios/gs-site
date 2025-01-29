@@ -533,7 +533,7 @@ p a {
   display: flex;
   height: 450px;
   width: 100vw;
-  justify-content: center;
+  justify-content: flex-start;
   // white-space: nowrap;
 }
 
