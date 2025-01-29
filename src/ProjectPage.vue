@@ -12,16 +12,16 @@
       </div>
     </div>
     <div v-else>
-      <not-found></not-found>
+      <!-- <not-found></not-found> -->
     </div>
   </div>
 </template>
 
 <script>
 import { mapGetters } from "vuex";
-import NotFound from "./NotFound.vue";
+// import NotFound from "./NotFound.vue";
 export default {
-  components: { NotFound },
+  // components: { NotFound },
   name: "ProjectPage",
   data() {
     return {
