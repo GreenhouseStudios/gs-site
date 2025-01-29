@@ -25,8 +25,8 @@
         <ul v-if="item.child_items && activeDropdown == item.child_items"
           class="z-5 bg-white pa2 flex flex-column dn absolute w-100">
           <li v-for="child in item.child_items" :key="child.slug" class=" nav-dropdown-item overflow-visible f5 pa1 ">
-            <router-link class="overflow-visible" :to="child.slug ? '/' + child.slug : '/' + child.title">{{ child.title
-              }}</router-link>
+            <router-link class="overflow-visible" :to="child.slug ? '/' + child.slug : '/' + child.title"><div class="nav-link-text">{{ child.title
+              }}</div></router-link>
           </li>
         </ul>
       </li>
@@ -373,10 +373,13 @@ li:hover {}
 li.nav-dropdown-item {
   text-align: center;
   background-color: white;
-  color: black;
   max-width: 100%;
   min-width: none;
   margin: 0;
+}
+
+.nav-link-text {
+  color: black;
 }
 
 .nav-dropdown-item:hover {
