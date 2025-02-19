@@ -10,7 +10,7 @@ const actions = {
     await dispatch("getCategoryCount");
     await dispatch("getMenuItems");
     await dispatch("getPosts", 1);
-    // await dispatch("getPeople", 1);
+    await dispatch("getPeople", 1);
     await dispatch("getProjects");
     await dispatch("getCategories");
     await dispatch("getTags");
