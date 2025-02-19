@@ -89,6 +89,9 @@
       <div v-html="person.custom_fields.about[0]" class="bio"></div>
     </div>
   </div>
+  <div v-else>
+    <h1>No person found.</h1>
+  </div>
 </template>
 
 <script>
